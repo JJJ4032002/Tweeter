@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import BannerImg from "../assets/Images/BannerImg.jpg";
+import BannerImg from "../assets/Images/BannerImg-min.jpg";
 import { devices } from "../Media Queries/Queries";
 import logo from "../assets/Icons/logo.svg";
 interface Props {
@@ -26,6 +26,7 @@ const GridContainer = styled.div`
   }
 `;
 const Image = styled.img`
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -61,8 +62,8 @@ const AbsImg = styled.img`
   width: 100%;
 `;
 const DarkImage = styled.img`
-  filter: invert(17%) sepia(26%) saturate(1140%) hue-rotate(141deg)
-    brightness(91%) contrast(96%);
+  filter: invert(51%) sepia(81%) saturate(844%) hue-rotate(174deg)
+    brightness(96%) contrast(93%);
   height: 100%;
   align-self: center;
 `;
@@ -76,15 +77,32 @@ const SecondaryHeading = styled.h2`
   font-size: clamp(1.5rem, 1.2545rem + 1.0909vw, 3rem);
 `;
 const SignUpButtonsDiv = styled.div``;
-const Buttons = styled.button`
+const Buttons = styled.button<Props>`
   display: inline-block;
   width: 70%;
   padding: 1em 1.2em;
   font-weight: 600;
+  cursor: pointer;
   margin: 0.5em 0;
   border-radius: 5em;
   background: transparent;
   border: 0.1em solid rgba(0, 0, 0, 0.2);
+
+  &.SignUp {
+    color: #2da7ed;
+  }
+  &:hover {
+    opacity: 0.7;
+  }
+  & ~ &:hover {
+    background-color: #0d7cbd;
+  }
+  ${(props) =>
+    props.primary &&
+    css`
+      background-color: #2da7ed;
+      color: white;
+    `}
   @media ${devices.tablet} {
     width: 60%;
   }
@@ -101,7 +119,7 @@ const Para = styled.p<Props>`
       font-weight: 600;
     `}
   @media ${devices.tablet} {
-    width: 50%;
+    width: 60%;
   }
   @media ${devices.laptopL} {
     width: 40%;
@@ -117,7 +135,7 @@ function AuthenticationPage() {
   return (
     <GridContainer>
       <GridItemOne>
-        <Image src={BannerImg} alt="BannerImg" />
+        <Image className="BannerImg" src={BannerImg} alt="BannerImg" />
         <AbsImg src={logo} alt="LogoImg"></AbsImg>
       </GridItemOne>
       <GridItemTwo>
@@ -127,11 +145,11 @@ function AuthenticationPage() {
         <SignUpButtonsDiv>
           <Buttons>Sign in with google</Buttons>
           <Para>or</Para>
-          <Buttons>Sign up with phone or email</Buttons>
+          <Buttons primary={true}>Sign up with phone or email</Buttons>
         </SignUpButtonsDiv>
         <SignInButtonsDiv>
           <Para primary={true}>Already have an account ?</Para>
-          <Buttons>Sign in</Buttons>
+          <Buttons className="SignUp">Sign in</Buttons>
         </SignInButtonsDiv>
       </GridItemTwo>
     </GridContainer>
