@@ -130,6 +130,31 @@ const SignInButtonsDiv = styled.div`
   flex-direction: column;
   justify-content: center;
 `;
+const Overlay = styled.div`
+  display: flex;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.3);
+  align-items: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+`;
+const FormContainer = styled.div`
+  width: 90%;
+  max-width: 600px;
+  padding: 1em 1em;
+  background-color: orange;
+  border-radius: 0.7em;
+  display: grid;
+  grid-template-rows: 0.5fr 3fr 1fr;
+`;
+const UpperContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+`;
 
 function AuthenticationPage() {
   return (
@@ -152,6 +177,11 @@ function AuthenticationPage() {
           <Buttons className="SignUp">Sign in</Buttons>
         </SignInButtonsDiv>
       </GridItemTwo>
+      <Overlay>
+        <FormContainer>
+          <UpperContainer></UpperContainer>
+        </FormContainer>
+      </Overlay>
     </GridContainer>
   );
 }
