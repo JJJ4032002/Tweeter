@@ -3,6 +3,7 @@ import styled, { css } from "styled-components";
 import BannerImg from "../assets/Images/BannerImg-min.jpg";
 import { devices } from "../Media Queries/Queries";
 import logo from "../assets/Icons/logo.svg";
+import close from "../assets/Icons/close.svg";
 interface Props {
   primary?: boolean;
 }
@@ -27,10 +28,20 @@ const GridContainer = styled.div`
 `;
 const Image = styled.img`
   display: block;
-  width: 100%;
   height: 100%;
   object-fit: cover;
-  grid-area: 1 / 1 / span 4 / span 4;
+
+  &.BannerImg {
+    grid-area: 1 / 1 / span 4 / span 4;
+    width: 100%;
+  }
+  &#closeImg {
+    height: 50%;
+  }
+  &#logoInForm {
+    filter: invert(51%) sepia(81%) saturate(844%) hue-rotate(174deg)
+      brightness(96%) contrast(93%);
+  }
 `;
 
 const GridItemOne = styled.div`
@@ -145,15 +156,39 @@ const Overlay = styled.div`
 const FormContainer = styled.div`
   width: 90%;
   max-width: 600px;
-  padding: 1em 1em;
-  background-color: orange;
+  padding: 0.4em 1em;
+  background-color: white;
   border-radius: 0.7em;
   display: grid;
+  height: 85%;
   grid-template-rows: 0.5fr 3fr 1fr;
+  overflow: auto;
+  gap: 0.5em;
 `;
 const UpperContainer = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+`;
+const MiddleContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+  overflow-y: auto;
+  width: 90%;
+  margin: 0 auto;
+`;
+const Input = styled.input`
+  width: 100%;
+  padding: 1em 0.5em;
+  font-size: 1.2rem;
+`;
+const DateOfBirthCont = styled.div``;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
 `;
 
 function AuthenticationPage() {
@@ -179,7 +214,18 @@ function AuthenticationPage() {
       </GridItemTwo>
       <Overlay>
         <FormContainer>
-          <UpperContainer></UpperContainer>
+          <UpperContainer>
+            <Image id="closeImg" src={close}></Image>
+            <Image id="logoInForm" src={logo}></Image>
+          </UpperContainer>
+          <MiddleContainer>
+            <h2>Create your account</h2>
+            <Form>
+              <Input type="text" />
+              <Input type="email" />
+              <DateOfBirthCont></DateOfBirthCont>
+            </Form>
+          </MiddleContainer>
         </FormContainer>
       </Overlay>
     </GridContainer>
