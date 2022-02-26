@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import BannerImg from "../assets/Images/BannerImg-min.jpg";
 import { devices } from "../Media Queries/Queries";
@@ -7,6 +7,14 @@ import close from "../assets/Icons/close.svg";
 interface Props {
   primary?: boolean;
 }
+
+type ChangeStyles = {
+  color: string;
+  position: string;
+  fontSize: string;
+  focus: string;
+  name: string;
+}[];
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -181,17 +189,41 @@ const MiddleContainer = styled.div`
 `;
 const Input = styled.input`
   width: 100%;
-  padding: 1em 0.5em;
+  -webkit-appearance: none;
+  border: none;
   font-size: 1.2rem;
+  margin-top: 0.8em;
+  &:focus {
+    outline: none;
+  }
 `;
+
 const DateOfBirthCont = styled.div``;
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 1.5em;
 `;
+const Label = styled.label`
+  border: 1px solid black;
+  position: relative;
+  padding: 0.5em 0.5em;
+  border-radius: 0.4em;
+`;
+const SpanText = styled.span`
+  left: 1%;
+  top: 2%;
+  font-size: 1.2rem;
+  position: absolute;
+`;
 
 function AuthenticationPage() {
+  const ChangeStyles = useState<ChangeStyles>([
+    { name: "", color: "", focus: "", fontSize: "", position: "" },
+  ]);
+  function FocusAchieved(event: React.FocusEvent<HTMLInputElement>): void {
+    console.log("Focussed", event.target);
+  }
   return (
     <GridContainer>
       <GridItemOne>
@@ -221,8 +253,18 @@ function AuthenticationPage() {
           <MiddleContainer>
             <h2>Create your account</h2>
             <Form>
-              <Input type="text" />
-              <Input type="email" />
+              <Label>
+                <Input
+                  onBlur={FocusAchieved}
+                  onFocus={FocusAchieved}
+                  type="text"
+                />
+                <SpanText>Name</SpanText>
+              </Label>
+              <Label>
+                <Input type="email" />
+                <SpanText>E-mail</SpanText>
+              </Label>
               <DateOfBirthCont></DateOfBirthCont>
             </Form>
           </MiddleContainer>
