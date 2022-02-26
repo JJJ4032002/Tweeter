@@ -6,15 +6,10 @@ import logo from "../assets/Icons/logo.svg";
 import close from "../assets/Icons/close.svg";
 interface Props {
   primary?: boolean;
+  position?: number;
+  fontSize?: number;
 }
 
-type ChangeStyles = {
-  color: string;
-  position: string;
-  fontSize: string;
-  focus: string;
-  name: string;
-}[];
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
@@ -193,6 +188,10 @@ const Input = styled.input`
   border: none;
   font-size: 1.2rem;
   margin-top: 0.8em;
+  background-color: transparent;
+  position: relative;
+  z-index: 1;
+
   &:focus {
     outline: none;
   }
@@ -204,22 +203,30 @@ const Form = styled.form`
   flex-direction: column;
   gap: 1.5em;
 `;
-const Label = styled.label`
+const Label = styled.label<Props>`
   border: 1px solid black;
   position: relative;
   padding: 0.5em 0.5em;
   border-radius: 0.4em;
+  background-color: transparent;
 `;
-const SpanText = styled.span`
+const SpanText = styled.span<Props>`
   left: 1%;
-  top: 2%;
-  font-size: 1.2rem;
+  top: ${(props) => props.position}%;
+  font-size: ${(props) => props.fontSize}rem;
   position: absolute;
 `;
-
+type ChangeStyles = {
+  color: string;
+  position: number;
+  fontSize: number;
+  focus: string;
+  name: string;
+}[];
 function AuthenticationPage() {
-  const ChangeStyles = useState<ChangeStyles>([
-    { name: "", color: "", focus: "", fontSize: "", position: "" },
+  const [ChangeStyles, setChangeStyles] = useState<ChangeStyles>([
+    { name: "name", color: "#2da7ed", focus: "", fontSize: 1.2, position: 28 },
+    { name: "email", color: "#2da7ed", focus: "", fontSize: 1.2, position: 28 },
   ]);
   function FocusAchieved(event: React.FocusEvent<HTMLInputElement>): void {
     console.log("Focussed", event.target);
@@ -253,13 +260,19 @@ function AuthenticationPage() {
           <MiddleContainer>
             <h2>Create your account</h2>
             <Form>
-              <Label>
+              <Label htmlFor="name">
                 <Input
+                  name="name"
                   onBlur={FocusAchieved}
                   onFocus={FocusAchieved}
                   type="text"
                 />
-                <SpanText>Name</SpanText>
+                <SpanText
+                  fontSize={ChangeStyles[0].fontSize}
+                  position={ChangeStyles[0].position}
+                >
+                  Name
+                </SpanText>
               </Label>
               <Label>
                 <Input type="email" />
