@@ -8,6 +8,8 @@ interface Props {
   primary?: boolean;
   position?: number;
   fontSize?: number;
+  borderColor?: string;
+  borderWidth?: number;
 }
 
 const GridContainer = styled.div`
@@ -204,32 +206,87 @@ const Form = styled.form`
   gap: 1.5em;
 `;
 const Label = styled.label<Props>`
-  border: 1px solid black;
+  border-width: ${(props) => props.borderWidth}px;
+  border-color: ${(props) => props.borderColor};
+  border-style: solid;
   position: relative;
   padding: 0.5em 0.5em;
-  border-radius: 0.4em;
+  border-radius: 0.2em;
+  transition: border-width 150 ease, border-color 150 ease;
   background-color: transparent;
 `;
 const SpanText = styled.span<Props>`
-  left: 1%;
+  left: 1.5%;
   top: ${(props) => props.position}%;
   font-size: ${(props) => props.fontSize}rem;
+  color: ${(props) => props.borderColor};
+  transition: top 150ms ease, font-size 150ms ease;
   position: absolute;
 `;
 type ChangeStyles = {
-  color: string;
+  borderColor: string;
   position: number;
   fontSize: number;
   focus: string;
   name: string;
+  borderWidth: number;
 }[];
 function AuthenticationPage() {
   const [ChangeStyles, setChangeStyles] = useState<ChangeStyles>([
-    { name: "name", color: "#2da7ed", focus: "", fontSize: 1.2, position: 28 },
-    { name: "email", color: "#2da7ed", focus: "", fontSize: 1.2, position: 28 },
+    {
+      name: "name",
+      borderColor: "black",
+      focus: "",
+      fontSize: 1,
+      position: 32,
+      borderWidth: 1,
+    },
+    {
+      name: "email",
+      borderColor: "black",
+      focus: "",
+      fontSize: 1,
+      position: 32,
+      borderWidth: 1,
+    },
   ]);
   function FocusAchieved(event: React.FocusEvent<HTMLInputElement>): void {
     console.log("Focussed", event.target);
+    let FilteredArr = ChangeStyles.filter((value) => {
+      return value.name !== event.target.name;
+    });
+    let newObj = {
+      name: event.target.name,
+      borderColor: "#2da7ed",
+      focus: "",
+      fontSize: 0.8,
+      position: 5,
+      borderWidth: 2,
+    };
+    if (event.target.name === "name") {
+      setChangeStyles([newObj, ...FilteredArr]);
+    } else {
+      setChangeStyles([...FilteredArr, newObj]);
+    }
+  }
+  function BlurAchieved(event: React.FocusEvent<HTMLInputElement>): void {
+    console.log("Blurred", event.target);
+    let FilteredArr = ChangeStyles.filter((value) => {
+      return value.name !== event.target.name;
+    });
+    let newObj = {
+      name: event.target.name,
+      borderColor: "black",
+      focus: "",
+      fontSize: 1,
+      position: 32,
+      borderWidth: 1,
+    };
+    if (event.target.name === "name") {
+      setChangeStyles([newObj, ...FilteredArr]);
+    } else {
+      setChangeStyles([...FilteredArr, newObj]);
+    }
   }
   return (
     <GridContainer>
@@ -260,23 +317,43 @@ function AuthenticationPage() {
           <MiddleContainer>
             <h2>Create your account</h2>
             <Form>
-              <Label htmlFor="name">
+              <Label
+                borderWidth={ChangeStyles[0].borderWidth}
+                borderColor={ChangeStyles[0].borderColor}
+                htmlFor="name"
+              >
                 <Input
                   name="name"
-                  onBlur={FocusAchieved}
                   onFocus={FocusAchieved}
+                  onBlur={BlurAchieved}
                   type="text"
                 />
                 <SpanText
                   fontSize={ChangeStyles[0].fontSize}
                   position={ChangeStyles[0].position}
+                  borderColor={ChangeStyles[0].borderColor}
                 >
                   Name
                 </SpanText>
               </Label>
-              <Label>
-                <Input type="email" />
-                <SpanText>E-mail</SpanText>
+              <Label
+                borderWidth={ChangeStyles[1].borderWidth}
+                borderColor={ChangeStyles[1].borderColor}
+                htmlFor="email"
+              >
+                <Input
+                  name="email"
+                  onFocus={FocusAchieved}
+                  onBlur={BlurAchieved}
+                  type="email"
+                />
+                <SpanText
+                  fontSize={ChangeStyles[1].fontSize}
+                  position={ChangeStyles[1].position}
+                  borderColor={ChangeStyles[1].borderColor}
+                >
+                  Email
+                </SpanText>
               </Label>
               <DateOfBirthCont></DateOfBirthCont>
             </Form>
