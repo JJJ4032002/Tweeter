@@ -203,7 +203,7 @@ const DateOfBirthCont = styled.div``;
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 1.5em;
+  gap: 1.8em;
 `;
 const Label = styled.label<Props>`
   border-width: ${(props) => props.borderWidth}px;
