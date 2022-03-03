@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import {
   SpanText,
   FormContainer,
@@ -9,17 +10,23 @@ import {
   Overlay,
   DateOfBirthCont,
 } from "./OverlayFormCss";
+import { FormPropsContext } from "../AuthenticationPage";
 import logo from "../../assets/Icons/logo.svg";
 import close from "../../assets/Icons/close.svg";
 import { Image } from "../AuthenticationPageCss";
 
-import { OverlayFormProps } from "../../Interfaces and Types/Interfaces";
-
-function OverlayForm({
-  ChangeStyles,
-  FocusAchieved,
-  BlurAchieved,
-}: OverlayFormProps) {
+import { useContext } from "react";
+const ErrorText = styled.span`
+  color: red;
+  font-size: 0.8rem;
+  margin-left: 0.4em;
+`;
+const LabelBlock = styled.div`
+  width: 100%;
+`;
+function OverlayForm() {
+  let { ChangeStyles, FocusAchieved, BlurAchieved } =
+    useContext(FormPropsContext);
   return (
     <>
       <Overlay>
@@ -31,44 +38,50 @@ function OverlayForm({
           <MiddleContainer>
             <h2>Create your account</h2>
             <Form>
-              <Label
-                borderWidth={ChangeStyles[0].borderWidth}
-                borderColor={ChangeStyles[0].borderColor}
-                htmlFor="name"
-              >
-                <Input
-                  name="name"
-                  onFocus={FocusAchieved}
-                  onBlur={BlurAchieved}
-                  type="text"
-                />
-                <SpanText
-                  fontSize={ChangeStyles[0].fontSize}
-                  position={ChangeStyles[0].position}
+              <LabelBlock>
+                <Label
+                  borderWidth={ChangeStyles[0].borderWidth}
                   borderColor={ChangeStyles[0].borderColor}
+                  htmlFor="name"
                 >
-                  Name
-                </SpanText>
-              </Label>
-              <Label
-                borderWidth={ChangeStyles[1].borderWidth}
-                borderColor={ChangeStyles[1].borderColor}
-                htmlFor="email"
-              >
-                <Input
-                  name="email"
-                  onFocus={FocusAchieved}
-                  onBlur={BlurAchieved}
-                  type="email"
-                />
-                <SpanText
-                  fontSize={ChangeStyles[1].fontSize}
-                  position={ChangeStyles[1].position}
+                  <Input
+                    name="name"
+                    onFocus={FocusAchieved}
+                    onBlur={BlurAchieved}
+                    type="text"
+                  />
+                  <SpanText
+                    fontSize={ChangeStyles[0].fontSize}
+                    position={ChangeStyles[0].position}
+                    borderColor={ChangeStyles[0].borderColor}
+                  >
+                    Name
+                  </SpanText>
+                </Label>
+                <ErrorText>What's your name?</ErrorText>
+              </LabelBlock>
+              <LabelBlock>
+                <Label
+                  borderWidth={ChangeStyles[1].borderWidth}
                   borderColor={ChangeStyles[1].borderColor}
+                  htmlFor="email"
                 >
-                  Email
-                </SpanText>
-              </Label>
+                  <Input
+                    name="email"
+                    onFocus={FocusAchieved}
+                    onBlur={BlurAchieved}
+                    type="email"
+                  />
+                  <SpanText
+                    fontSize={ChangeStyles[1].fontSize}
+                    position={ChangeStyles[1].position}
+                    borderColor={ChangeStyles[1].borderColor}
+                  >
+                    Email
+                  </SpanText>
+                </Label>
+                <ErrorText>Please enter a valid email</ErrorText>
+              </LabelBlock>
               <DateOfBirthCont></DateOfBirthCont>
             </Form>
           </MiddleContainer>
