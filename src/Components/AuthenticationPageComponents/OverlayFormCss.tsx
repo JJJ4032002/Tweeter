@@ -66,6 +66,8 @@ const Label = styled.label<Props>`
   position: relative;
   padding: 0.5em 0.5em;
   border-radius: 0.2em;
+  display: block;
+  width: 100%;
   transition: border-width 150 ease, border-color 150 ease;
   background-color: transparent;
 `;
