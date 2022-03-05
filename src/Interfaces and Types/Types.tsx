@@ -7,4 +7,9 @@ type ChangeStyles = {
   borderWidth: number;
 }[];
 
-export type { ChangeStyles };
+type InputValues = {
+  Name: string;
+  Email: string;
+};
+
+export type { ChangeStyles, InputValues };

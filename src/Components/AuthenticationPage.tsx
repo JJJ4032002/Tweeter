@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import MainComponent from "./AuthenticationPageComponents/MainComponent";
 import OverlayForm from "./AuthenticationPageComponents/OverlayForm";
-import { ChangeStyles } from "../Interfaces and Types/Types";
+import { ChangeStyles, InputValues } from "../Interfaces and Types/Types";
 import { GridContainer } from "./AuthenticationPageCss";
 import { OverlayFormProps } from "../Interfaces and Types/Interfaces";
 const FormPropsContext = React.createContext<OverlayFormProps>({
@@ -17,6 +17,8 @@ const FormPropsContext = React.createContext<OverlayFormProps>({
   ],
   FocusAchieved: (event) => {},
   BlurAchieved: (event) => {},
+  NameErrRef: { current: null },
+  EmailErrRef: { current: null },
 });
 function AuthenticationPage() {
   const [ChangeStyles, setChangeStyles] = useState<ChangeStyles>([
@@ -38,8 +40,16 @@ function AuthenticationPage() {
     },
   ]);
   let NameErrText = useRef(null);
+  let EmailErrText = useRef(null);
+  const [inputVals, setInputVals] = useState<InputValues>({
+    Name: "",
+    Email: "",
+  });
 
-  useEffect(() => {}, [ChangeStyles]);
+  useEffect(() => {
+    console.log(NameErrText.current);
+    console.log(EmailErrText.current);
+  }, [ChangeStyles]);
 
   function FocusAchieved(event: React.FocusEvent<HTMLInputElement>): void {
     console.log("Focussed", event.target);
@@ -87,6 +97,8 @@ function AuthenticationPage() {
           ChangeStyles: ChangeStyles,
           FocusAchieved: FocusAchieved,
           BlurAchieved: BlurAchieved,
+          NameErrRef: NameErrText,
+          EmailErrRef: EmailErrText,
         }}
       >
         <OverlayForm></OverlayForm>

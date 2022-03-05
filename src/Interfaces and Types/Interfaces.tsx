@@ -12,6 +12,8 @@ interface OverlayFormProps {
   ChangeStyles: ChangeStyles;
   FocusAchieved: (event: React.FocusEvent<HTMLInputElement>) => void;
   BlurAchieved: (event: React.FocusEvent<HTMLInputElement>) => void;
+  NameErrRef: { current: HTMLElement | null };
+  EmailErrRef: { current: HTMLElement | null };
 }
 
 export type { Props, OverlayFormProps };

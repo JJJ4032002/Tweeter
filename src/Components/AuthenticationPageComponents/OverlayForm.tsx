@@ -25,7 +25,7 @@ const LabelBlock = styled.div`
   width: 100%;
 `;
 function OverlayForm() {
-  let { ChangeStyles, FocusAchieved, BlurAchieved } =
+  let { ChangeStyles, FocusAchieved, BlurAchieved, NameErrRef, EmailErrRef } =
     useContext(FormPropsContext);
   return (
     <>
@@ -58,7 +58,7 @@ function OverlayForm() {
                     Name
                   </SpanText>
                 </Label>
-                <ErrorText>What's your name?</ErrorText>
+                <ErrorText ref={NameErrRef}>What's your name?</ErrorText>
               </LabelBlock>
               <LabelBlock>
                 <Label
@@ -80,7 +80,9 @@ function OverlayForm() {
                     Email
                   </SpanText>
                 </Label>
-                <ErrorText>Please enter a valid email</ErrorText>
+                <ErrorText ref={EmailErrRef}>
+                  Please enter a valid email
+                </ErrorText>
               </LabelBlock>
               <DateOfBirthCont></DateOfBirthCont>
             </Form>
