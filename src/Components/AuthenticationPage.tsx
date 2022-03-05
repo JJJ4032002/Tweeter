@@ -19,6 +19,8 @@ const FormPropsContext = React.createContext<OverlayFormProps>({
   BlurAchieved: (event) => {},
   NameErrRef: { current: null },
   EmailErrRef: { current: null },
+  InputChange: (event) => {},
+  InputStates: { name: "", email: "" },
 });
 function AuthenticationPage() {
   const [ChangeStyles, setChangeStyles] = useState<ChangeStyles>([
@@ -42,8 +44,8 @@ function AuthenticationPage() {
   let NameErrText = useRef(null);
   let EmailErrText = useRef(null);
   const [inputVals, setInputVals] = useState<InputValues>({
-    Name: "",
-    Email: "",
+    name: "",
+    email: "",
   });
 
   useEffect(() => {
@@ -52,7 +54,7 @@ function AuthenticationPage() {
   }, [ChangeStyles]);
 
   function FocusAchieved(event: React.FocusEvent<HTMLInputElement>): void {
-    console.log("Focussed", event.target);
+    console.log("Focussed", event.target.name);
     let FilteredArr = ChangeStyles.filter((value) => {
       return value.name !== event.target.name;
     });
@@ -89,6 +91,12 @@ function AuthenticationPage() {
       setChangeStyles([...FilteredArr, newObj]);
     }
   }
+  function InputChange(event: React.ChangeEvent<HTMLInputElement>): void {
+    console.log(event.target.name);
+    console.log(event.target.value);
+
+    setInputVals({ ...inputVals, [event.target.name]: event.target.value });
+  }
   return (
     <GridContainer>
       <MainComponent></MainComponent>
@@ -99,6 +107,8 @@ function AuthenticationPage() {
           BlurAchieved: BlurAchieved,
           NameErrRef: NameErrText,
           EmailErrRef: EmailErrText,
+          InputChange: InputChange,
+          InputStates: { ...inputVals },
         }}
       >
         <OverlayForm></OverlayForm>

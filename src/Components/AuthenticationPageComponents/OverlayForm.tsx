@@ -25,8 +25,15 @@ const LabelBlock = styled.div`
   width: 100%;
 `;
 function OverlayForm() {
-  let { ChangeStyles, FocusAchieved, BlurAchieved, NameErrRef, EmailErrRef } =
-    useContext(FormPropsContext);
+  let {
+    ChangeStyles,
+    FocusAchieved,
+    BlurAchieved,
+    NameErrRef,
+    EmailErrRef,
+    InputChange,
+    InputStates,
+  } = useContext(FormPropsContext);
   return (
     <>
       <Overlay>
@@ -45,6 +52,8 @@ function OverlayForm() {
                   htmlFor="name"
                 >
                   <Input
+                    value={InputStates.name}
+                    onChange={InputChange}
                     name="name"
                     onFocus={FocusAchieved}
                     onBlur={BlurAchieved}
@@ -64,9 +73,11 @@ function OverlayForm() {
                 <Label
                   borderWidth={ChangeStyles[1].borderWidth}
                   borderColor={ChangeStyles[1].borderColor}
-                  htmlFor="email"
+                  htmlFor="Email"
                 >
                   <Input
+                    value={InputStates.email}
+                    onChange={InputChange}
                     name="email"
                     onFocus={FocusAchieved}
                     onBlur={BlurAchieved}

@@ -8,8 +8,8 @@ type ChangeStyles = {
 }[];
 
 type InputValues = {
-  Name: string;
-  Email: string;
+  name: string;
+  email: string;
 };
 
 export type { ChangeStyles, InputValues };

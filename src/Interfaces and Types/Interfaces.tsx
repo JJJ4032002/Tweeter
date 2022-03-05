@@ -1,3 +1,4 @@
+import React from "react";
 import { ChangeStyles } from "./Types";
 
 interface Props {
@@ -14,6 +15,8 @@ interface OverlayFormProps {
   BlurAchieved: (event: React.FocusEvent<HTMLInputElement>) => void;
   NameErrRef: { current: HTMLElement | null };
   EmailErrRef: { current: HTMLElement | null };
+  InputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  InputStates: { name: string; email: string };
 }
 
 export type { Props, OverlayFormProps };
