@@ -4,6 +4,7 @@ import OverlayForm from "./AuthenticationPageComponents/OverlayForm";
 import { ChangeStyles, InputValues } from "../Interfaces and Types/Types";
 import { GridContainer } from "./AuthenticationPageCss";
 import { OverlayFormProps } from "../Interfaces and Types/Interfaces";
+import validateEmail from "../helpers/ValidateEmail";
 const FormPropsContext = React.createContext<OverlayFormProps>({
   ChangeStyles: [
     {
@@ -46,6 +47,8 @@ function AuthenticationPage() {
   const [inputVals, setInputVals] = useState<InputValues>({
     name: "",
     email: "",
+    nameBool: false,
+    emailBool: false,
   });
 
   useEffect(() => {
@@ -73,7 +76,6 @@ function AuthenticationPage() {
     }
   }
   function BlurAchieved(event: React.FocusEvent<HTMLInputElement>): void {
-    console.log("Blurred", event.target);
     let FilteredArr = ChangeStyles.filter((value) => {
       return value.name !== event.target.name;
     });
@@ -85,6 +87,28 @@ function AuthenticationPage() {
       position: 32,
       borderWidth: 1,
     };
+    if (
+      (event.target.name === "name" && inputVals.name !== "") ||
+      (event.target.name === "email" && inputVals.email !== "")
+    ) {
+      newObj = {
+        name: event.target.name,
+        borderColor: "black",
+        focus: "",
+        fontSize: 0.8,
+        position: 5,
+        borderWidth: 1,
+      };
+    } else {
+      newObj = {
+        name: event.target.name,
+        borderColor: "black",
+        focus: "",
+        fontSize: 1,
+        position: 32,
+        borderWidth: 1,
+      };
+    }
     if (event.target.name === "name") {
       setChangeStyles([newObj, ...FilteredArr]);
     } else {
@@ -92,8 +116,10 @@ function AuthenticationPage() {
     }
   }
   function InputChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    console.log(event.target.name);
-    console.log(event.target.value);
+    if (event.target.name === "email") {
+      let ans = validateEmail(event.target.value);
+      console.log(ans);
+    }
 
     setInputVals({ ...inputVals, [event.target.name]: event.target.value });
   }

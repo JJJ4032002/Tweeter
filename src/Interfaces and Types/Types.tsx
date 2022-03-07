@@ -10,6 +10,8 @@ type ChangeStyles = {
 type InputValues = {
   name: string;
   email: string;
+  nameBool: boolean;
+  emailBool: boolean;
 };
 
 export type { ChangeStyles, InputValues };
