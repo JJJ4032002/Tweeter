@@ -16,7 +16,9 @@ import close from "../../assets/Icons/close.svg";
 import { Image } from "../AuthenticationPageCss";
 
 import { useContext } from "react";
-const ErrorText = styled.span`
+import { Props } from "../../Interfaces and Types/Interfaces";
+const ErrorText = styled.span<Props>`
+  display: none;
   color: red;
   font-size: 0.8rem;
   margin-left: 0.4em;

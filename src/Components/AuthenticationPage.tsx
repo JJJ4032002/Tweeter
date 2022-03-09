@@ -42,14 +42,18 @@ function AuthenticationPage() {
       borderWidth: 1,
     },
   ]);
-  let NameErrText = useRef(null);
-  let EmailErrText = useRef(null);
+  let NameErrText = useRef<HTMLSpanElement>(null);
+  let EmailErrText = useRef<HTMLSpanElement>(null);
   const [inputVals, setInputVals] = useState<InputValues>({
     name: "",
     email: "",
     nameBool: false,
     emailBool: false,
   });
+  const [validateInpValues, setValidateInpValues] = useState([
+    { nameInpChg: false, ValidNameInp: false },
+    { emailInpChg: false, ValidEmailInp: false },
+  ]);
 
   useEffect(() => {
     console.log(NameErrText.current);
@@ -117,12 +121,65 @@ function AuthenticationPage() {
   }
   function InputChange(event: React.ChangeEvent<HTMLInputElement>): void {
     if (event.target.name === "email") {
+      setInputVals({
+        ...inputVals,
+        [event.target.name]: event.target.value,
+        emailBool: true,
+        nameBool: false,
+      });
       let ans = validateEmail(event.target.value);
-      console.log(ans);
-    }
+      if (ans) {
+        setValidateInpValues([
+          { nameInpChg: false, ValidNameInp: false },
 
-    setInputVals({ ...inputVals, [event.target.name]: event.target.value });
+          { emailInpChg: true, ValidEmailInp: true },
+        ]);
+      } else {
+        setValidateInpValues([
+          { nameInpChg: false, ValidNameInp: false },
+          { emailInpChg: true, ValidEmailInp: false },
+        ]);
+      }
+    } else {
+      setInputVals({
+        ...inputVals,
+        [event.target.name]: event.target.value,
+        emailBool: false,
+        nameBool: true,
+      });
+      if (inputVals.name) {
+        setValidateInpValues([
+          { nameInpChg: true, ValidNameInp: true },
+
+          { emailInpChg: false, ValidEmailInp: false },
+        ]);
+      } else {
+        setValidateInpValues([
+          { nameInpChg: true, ValidNameInp: false },
+          { emailInpChg: false, ValidEmailInp: false },
+        ]);
+      }
+    }
   }
+  useEffect(() => {
+    if (inputVals.emailBool) {
+      if (inputVals.email) {
+        if (null !== EmailErrText.current) {
+          if (
+            validateInpValues[1].emailInpChg === true &&
+            validateInpValues[1].ValidEmailInp === false
+          ) {
+            EmailErrText.current.style.display = "block";
+          } else {
+            EmailErrText.current.style.display = "none";
+          }
+        }
+      }
+    } else {
+    }
+  }, [validateInpValues]);
+  //Make a state which will include two variables one which will decide which state was changed last and other variable will decide if the change made passes the test or not.
+
   return (
     <GridContainer>
       <MainComponent></MainComponent>
