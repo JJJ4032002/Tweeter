@@ -50,10 +50,7 @@ function AuthenticationPage() {
     nameBool: false,
     emailBool: false,
   });
-  const [validateInpValues, setValidateInpValues] = useState([
-    { nameInpChg: false, ValidNameInp: false },
-    { emailInpChg: false, ValidEmailInp: false },
-  ]);
+  const [validEmailInp, setValidEmailInp] = useState(false);
 
   useEffect(() => {
     console.log(NameErrText.current);
@@ -73,6 +70,19 @@ function AuthenticationPage() {
       position: 5,
       borderWidth: 2,
     };
+    if (
+      (inputVals.nameBool && !inputVals.name) ||
+      (inputVals.emailBool && !validEmailInp)
+    ) {
+      newObj = {
+        name: event.target.name,
+        borderColor: "red",
+        focus: "",
+        fontSize: 0.8,
+        position: 5,
+        borderWidth: 2,
+      };
+    }
     if (event.target.name === "name") {
       setChangeStyles([newObj, ...FilteredArr]);
     } else {
@@ -92,6 +102,18 @@ function AuthenticationPage() {
       borderWidth: 1,
     };
     if (
+      (inputVals.nameBool && !inputVals.name) ||
+      (inputVals.emailBool && !validEmailInp)
+    ) {
+      newObj = {
+        name: event.target.name,
+        borderColor: "red",
+        focus: "",
+        fontSize: 1,
+        position: 32,
+        borderWidth: 1,
+      };
+    } else if (
       (event.target.name === "name" && inputVals.name !== "") ||
       (event.target.name === "email" && inputVals.email !== "")
     ) {
@@ -129,16 +151,9 @@ function AuthenticationPage() {
       });
       let ans = validateEmail(event.target.value);
       if (ans) {
-        setValidateInpValues([
-          { nameInpChg: false, ValidNameInp: false },
-
-          { emailInpChg: true, ValidEmailInp: true },
-        ]);
+        setValidEmailInp(true);
       } else {
-        setValidateInpValues([
-          { nameInpChg: false, ValidNameInp: false },
-          { emailInpChg: true, ValidEmailInp: false },
-        ]);
+        setValidEmailInp(false);
       }
     } else {
       setInputVals({
@@ -147,37 +162,88 @@ function AuthenticationPage() {
         emailBool: false,
         nameBool: true,
       });
-      if (inputVals.name) {
-        setValidateInpValues([
-          { nameInpChg: true, ValidNameInp: true },
-
-          { emailInpChg: false, ValidEmailInp: false },
-        ]);
-      } else {
-        setValidateInpValues([
-          { nameInpChg: true, ValidNameInp: false },
-          { emailInpChg: false, ValidEmailInp: false },
-        ]);
-      }
     }
   }
+  //Changing the styles of the inputs based on the inputs entered
   useEffect(() => {
     if (inputVals.emailBool) {
       if (inputVals.email) {
         if (null !== EmailErrText.current) {
-          if (
-            validateInpValues[1].emailInpChg === true &&
-            validateInpValues[1].ValidEmailInp === false
-          ) {
+          let FilteredArr = ChangeStyles.filter((value) => {
+            return value.name !== "email";
+          });
+          let newObj = {
+            name: "email",
+            borderColor: "red",
+            focus: "",
+            fontSize: 0.8,
+            position: 5,
+            borderWidth: 2,
+          };
+          if (!validEmailInp) {
             EmailErrText.current.style.display = "block";
+            newObj = {
+              name: "email",
+              borderColor: "red",
+              focus: "",
+              fontSize: 0.8,
+              position: 5,
+              borderWidth: 2,
+            };
           } else {
             EmailErrText.current.style.display = "none";
+            newObj = {
+              name: "email",
+              borderColor: "#2da7ed",
+              focus: "",
+              fontSize: 0.8,
+              position: 5,
+              borderWidth: 2,
+            };
           }
+          setChangeStyles([...FilteredArr, newObj]);
         }
       }
     } else {
+      if (inputVals.nameBool) {
+        if (null !== NameErrText.current) {
+          let FilteredArr = ChangeStyles.filter((value) => {
+            return value.name !== "name";
+          });
+          let newObj = {
+            name: "name",
+            borderColor: "red",
+            focus: "",
+            fontSize: 0.8,
+            position: 5,
+            borderWidth: 2,
+          };
+          if (inputVals.name) {
+            NameErrText.current.style.display = "none";
+            newObj = {
+              name: "name",
+              borderColor: "#2da7ed",
+              focus: "",
+              fontSize: 0.8,
+              position: 5,
+              borderWidth: 2,
+            };
+          } else {
+            NameErrText.current.style.display = "block";
+            newObj = {
+              name: "name",
+              borderColor: "red",
+              focus: "",
+              fontSize: 0.8,
+              position: 5,
+              borderWidth: 2,
+            };
+          }
+          setChangeStyles([newObj, ...FilteredArr]);
+        }
+      }
     }
-  }, [validateInpValues]);
+  }, [validEmailInp, inputVals.name]);
   //Make a state which will include two variables one which will decide which state was changed last and other variable will decide if the change made passes the test or not.
 
   return (
