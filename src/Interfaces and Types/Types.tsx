@@ -2,7 +2,7 @@ type ChangeStyles = {
   borderColor: string;
   position: number;
   fontSize: number;
-  focus: string;
+  txtClr: string;
   name: string;
   borderWidth: number;
 }[];
@@ -14,4 +14,24 @@ type InputValues = {
   emailBool: boolean;
 };
 
-export type { ChangeStyles, InputValues };
+type LabelBlockComponentProps = {
+  type: string;
+  children: string;
+};
+
+type InputStateProps = {
+  name: string;
+  email: string;
+};
+
+type OverlayContextProviderChildren = {
+  children: React.ReactNode;
+};
+
+export type {
+  ChangeStyles,
+  InputValues,
+  LabelBlockComponentProps,
+  OverlayContextProviderChildren,
+  InputStateProps,
+};
