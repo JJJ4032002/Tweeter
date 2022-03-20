@@ -16,7 +16,7 @@ const SpanText = styled.span<Props>`
   left: 1.5%;
   top: ${(props) => props.position}%;
   font-size: ${(props) => props.fontSize}rem;
-  color: ${(props) => props.borderColor};
+  color: ${(props) => props.textColor};
   transition: top 150ms ease, font-size 150ms ease;
   position: absolute;
 `;

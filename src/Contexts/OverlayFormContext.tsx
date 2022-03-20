@@ -34,7 +34,7 @@ function OverlayFormPropsProvider({
     {
       name: "name",
       borderColor: "black",
-      txtClr: "",
+      txtClr: "black",
       fontSize: 1,
       position: 32,
       borderWidth: 1,
@@ -42,7 +42,7 @@ function OverlayFormPropsProvider({
     {
       name: "email",
       borderColor: "black",
-      txtClr: "",
+      txtClr: "black",
       fontSize: 1,
       position: 32,
       borderWidth: 1,
@@ -65,14 +65,18 @@ function OverlayFormPropsProvider({
     console.log("Focussed", event.target.name);
 
     if (
-      (inputVals.nameBool && !inputVals.name) ||
-      (inputVals.emailBool && !validEmailInp)
+      (inputVals.nameBool && !inputVals.name && event.target.name === "name") ||
+      (inputVals.emailBool &&
+        !validEmailInp &&
+        event.target.name === "email" &&
+        inputVals.email) ||
+      (inputVals.emailBool && event.target.name === "name" && !inputVals.name)
     ) {
       dispatch({
         type: `${event.target.name}Change`,
         name: event.target.name,
         borderColor: "red",
-        txtClr: "",
+        txtClr: "red",
         fontSize: 0.8,
         position: 5,
         borderWidth: 2,
@@ -82,7 +86,7 @@ function OverlayFormPropsProvider({
         type: `${event.target.name}Change`,
         name: event.target.name,
         borderColor: "#2da7ed",
-        txtClr: "",
+        txtClr: "#2da7ed",
         fontSize: 0.8,
         position: 5,
         borderWidth: 2,
@@ -113,12 +117,15 @@ function OverlayFormPropsProvider({
     }
   }
   function BlurAchieved(event: React.FocusEvent<HTMLInputElement>): void {
-    if (inputVals.nameBool && !inputVals.name) {
+    if (
+      (inputVals.nameBool && !inputVals.name) ||
+      (inputVals.emailBool && !inputVals.name && event.target.name === "name")
+    ) {
       dispatch({
         type: `${event.target.name}Change`,
         name: event.target.name,
         borderColor: "red",
-        txtClr: "",
+        txtClr: "black",
         fontSize: 1,
         position: 32,
         borderWidth: 1,
@@ -131,7 +138,7 @@ function OverlayFormPropsProvider({
         type: `${event.target.name}Change`,
         name: event.target.name,
         borderColor: "black",
-        txtClr: "",
+        txtClr: "black",
         fontSize: 0.8,
         position: 5,
         borderWidth: 1,
@@ -141,7 +148,7 @@ function OverlayFormPropsProvider({
         type: `${event.target.name}Change`,
         name: event.target.name,
         borderColor: "black",
-        txtClr: "",
+        txtClr: "black",
         fontSize: 1,
         position: 32,
         borderWidth: 1,
@@ -161,7 +168,7 @@ function OverlayFormPropsProvider({
           type: `emailChange`,
           name: `email`,
           borderColor: "red",
-          txtClr: "",
+          txtClr: "red",
           fontSize: 0.8,
           position: 5,
           borderWidth: 2,
@@ -173,12 +180,28 @@ function OverlayFormPropsProvider({
           type: `emailChange`,
           name: `email`,
           borderColor: "#2da7ed",
-          txtClr: "",
+          txtClr: "#2da7ed",
           fontSize: 0.8,
           position: 5,
           borderWidth: 2,
         });
       }
+    } else if (
+      inputVals.emailBool &&
+      !inputVals.email &&
+      null != EmailErrText.current
+    ) {
+      EmailErrText.current.style.display = "none";
+
+      dispatch({
+        type: `emailChange`,
+        name: `email`,
+        borderColor: "#2da7ed",
+        txtClr: "#2da7ed",
+        fontSize: 0.8,
+        position: 5,
+        borderWidth: 2,
+      });
     } else {
       if (inputVals.nameBool && null !== NameErrText.current) {
         if (inputVals.name) {
@@ -188,7 +211,7 @@ function OverlayFormPropsProvider({
             type: `nameChange`,
             name: `name`,
             borderColor: "#2da7ed",
-            txtClr: "",
+            txtClr: "#2da7ed",
             fontSize: 0.8,
             position: 5,
             borderWidth: 2,
@@ -199,7 +222,7 @@ function OverlayFormPropsProvider({
             type: `nameChange`,
             name: `name`,
             borderColor: "red",
-            txtClr: "",
+            txtClr: "red",
             fontSize: 0.8,
             position: 5,
             borderWidth: 2,

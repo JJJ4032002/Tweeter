@@ -54,7 +54,7 @@ function LabelBlockComponent({ children, type }: LabelBlockComponentProps) {
         <SpanText
           fontSize={styles.fontSize}
           position={styles.position}
-          borderColor={styles.borderColor}
+          textColor={styles.txtClr}
         >
           {SpanName}
         </SpanText>

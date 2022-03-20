@@ -9,6 +9,7 @@ interface Props {
   borderWidth?: number;
   nameDisp?: string;
   emailDisp?: string;
+  textColor?: string;
 }
 
 interface OverlayFormProps {
