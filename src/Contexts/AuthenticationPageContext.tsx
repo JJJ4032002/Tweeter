@@ -16,11 +16,19 @@ function AuthenticationPageContextProvider({
     bottom: 1000,
   });
   function handleSignUpBtn(event: React.MouseEvent<HTMLElement>) {
-    console.log(event.target);
-    window.scrollTo(0, 0);
-    document.body.style.height = "100vh";
-    document.body.style.overflowY = "hidden";
-    setFormStyles({ opacity: 1, top: 0, bottom: 0 });
+    let ElementType = event.target as Element;
+    console.log(ElementType.nodeName);
+    if (ElementType.nodeName === "BUTTON") {
+      window.scrollTo(0, 0);
+
+      document.body.style.overflowY = "hidden";
+      setFormStyles({ opacity: 1, top: 0, bottom: 0 });
+    } else {
+      window.scrollTo(0, 0);
+
+      document.body.style.overflowY = "visible";
+      setFormStyles({ opacity: 1, top: -1000, bottom: 1000 });
+    }
   }
   let contextObj = {
     FormStyles: FormStyles,
