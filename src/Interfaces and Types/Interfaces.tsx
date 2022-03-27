@@ -1,4 +1,9 @@
 import React from "react";
+import {
+  CSSObject,
+  InterpolationFunction,
+  StyledComponent,
+} from "styled-components";
 import { ChangeStyles } from "./Types";
 
 interface Props {
@@ -10,6 +15,9 @@ interface Props {
   nameDisp?: string;
   emailDisp?: string;
   textColor?: string;
+  opacity?: number;
+  top?: number;
+  bottom?: number;
 }
 
 interface OverlayFormProps {
@@ -24,6 +32,10 @@ interface OverlayFormProps {
     email: string;
   };
 }
+interface AuthenticationPageContextProps {
+  FormStyles: { opacity: number; top: number; bottom: number };
+  handleSignUpBtn: (event: React.MouseEvent<HTMLElement>) => void;
+}
 interface actionProps {
   type: string;
   name: string;
@@ -34,4 +46,9 @@ interface actionProps {
   borderWidth: number;
 }
 
-export type { Props, OverlayFormProps, actionProps };
+export type {
+  Props,
+  OverlayFormProps,
+  actionProps,
+  AuthenticationPageContextProps,
+};

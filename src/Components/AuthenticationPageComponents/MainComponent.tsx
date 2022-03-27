@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useRef } from "react";
 
 import { Image, Buttons, Para } from "../AuthenticationPageCss";
 import logo from "../../assets/Icons/logo.svg";
@@ -11,7 +11,10 @@ import {
   PrimaryHeading,
   SecondaryHeading,
 } from "./MainComponentCss";
+import { AuthenticationPageContext } from "../../Contexts/AuthenticationPageContext";
 function MainComponent() {
+  let { handleSignUpBtn } = useContext(AuthenticationPageContext);
+
   return (
     <>
       <GridItemOne>
@@ -25,7 +28,9 @@ function MainComponent() {
         <SignUpButtonsDiv>
           <Buttons>Sign in with google</Buttons>
           <Para>or</Para>
-          <Buttons primary={true}>Sign up with phone or email</Buttons>
+          <Buttons onClick={handleSignUpBtn} primary={true}>
+            Sign up with email
+          </Buttons>
         </SignUpButtonsDiv>
         <SignInButtonsDiv>
           <Para primary={true}>Already have an account ?</Para>

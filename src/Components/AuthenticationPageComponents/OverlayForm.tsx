@@ -6,8 +6,8 @@ import {
   Form,
   Input,
   UpperContainer,
-  Overlay,
   DateOfBirthCont,
+  Overlay,
 } from "./OverlayFormCss";
 
 import { UpperContainerBlock } from "./OverlayFormComponents/UpperContainer";
@@ -15,21 +15,16 @@ import { UpperContainerBlock } from "./OverlayFormComponents/UpperContainer";
 import MiddleContainer from "./OverlayFormComponents/MiddleContainer";
 import { OverlayFormPropsProvider } from "../../Contexts/OverlayFormContext";
 import { useContext } from "react";
-import { Props } from "../../Interfaces and Types/Interfaces";
-const ErrorText = styled.span<Props>`
-  display: none;
-  color: red;
-  font-size: 0.8rem;
-  margin-left: 0.4em;
-`;
-const LabelBlock = styled.div`
-  width: 100%;
-`;
+
+import { AuthenticationPageContext } from "../../Contexts/AuthenticationPageContext";
+
 function OverlayForm() {
+  let { FormStyles } = useContext(AuthenticationPageContext);
+  let { opacity, top, bottom } = FormStyles;
   return (
     <>
       <OverlayFormPropsProvider>
-        <Overlay>
+        <Overlay opacity={opacity} top={top} bottom={bottom}>
           <FormContainer>
             <UpperContainerBlock></UpperContainerBlock>
             <MiddleContainer></MiddleContainer>

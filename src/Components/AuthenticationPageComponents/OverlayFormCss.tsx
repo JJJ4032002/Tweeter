@@ -1,13 +1,15 @@
 import styled from "styled-components";
 import { Props } from "../../Interfaces and Types/Interfaces";
-const Overlay = styled.div`
+
+const Overlay = styled.div<Props>`
   display: flex;
   justify-content: center;
   background: rgba(0, 0, 0, 0.3);
   align-items: center;
   position: absolute;
-  top: 0;
-  bottom: 0;
+  opacity: ${(props) => props.opacity};
+  top: ${(props) => props.top}px;
+  bottom: ${(props) => props.bottom}px;
   right: 0;
   left: 0;
   z-index: 1;
@@ -87,6 +89,6 @@ export {
   Input,
   MiddleContainer,
   UpperContainer,
-  Overlay,
   DateOfBirthCont,
+  Overlay,
 };

@@ -27,11 +27,14 @@ type InputStateProps = {
 type OverlayContextProviderChildren = {
   children: React.ReactNode;
 };
-
+type AuthenticationContextProviderChildren = {
+  children: React.ReactNode;
+};
 export type {
   ChangeStyles,
   InputValues,
   LabelBlockComponentProps,
   OverlayContextProviderChildren,
   InputStateProps,
+  AuthenticationContextProviderChildren,
 };

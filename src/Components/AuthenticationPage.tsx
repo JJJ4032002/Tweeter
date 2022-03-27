@@ -5,12 +5,14 @@ import { ChangeStyles, InputValues } from "../Interfaces and Types/Types";
 import { GridContainer } from "./AuthenticationPageCss";
 import { OverlayFormProps } from "../Interfaces and Types/Interfaces";
 import validateEmail from "../helpers/ValidateEmail";
-
+import { AuthenticationPageContextProvider } from "../Contexts/AuthenticationPageContext";
 function AuthenticationPage() {
   return (
     <GridContainer>
-      <MainComponent></MainComponent>
-      <OverlayForm></OverlayForm>
+      <AuthenticationPageContextProvider>
+        <MainComponent></MainComponent>
+        <OverlayForm></OverlayForm>
+      </AuthenticationPageContextProvider>
     </GridContainer>
   );
 }
