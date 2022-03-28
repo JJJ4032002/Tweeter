@@ -6,13 +6,16 @@ import { GridContainer } from "./AuthenticationPageCss";
 import { OverlayFormProps } from "../Interfaces and Types/Interfaces";
 import validateEmail from "../helpers/ValidateEmail";
 import { AuthenticationPageContextProvider } from "../Contexts/AuthenticationPageContext";
+import { OverlayFormPropsProvider } from "../Contexts/OverlayFormContext";
 function AuthenticationPage() {
   return (
     <GridContainer>
-      <AuthenticationPageContextProvider>
-        <MainComponent></MainComponent>
-        <OverlayForm></OverlayForm>
-      </AuthenticationPageContextProvider>
+      <OverlayFormPropsProvider>
+        <AuthenticationPageContextProvider>
+          <MainComponent></MainComponent>
+          <OverlayForm></OverlayForm>
+        </AuthenticationPageContextProvider>
+      </OverlayFormPropsProvider>
     </GridContainer>
   );
 }

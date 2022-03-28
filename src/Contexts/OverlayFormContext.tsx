@@ -12,7 +12,7 @@ const FormPropsContext = React.createContext<OverlayFormProps>({
   Styles: [
     {
       name: "name",
-      borderColor: "black",
+      borderColor: "#536471",
       txtClr: "",
       fontSize: 1,
       position: 32,
@@ -25,6 +25,7 @@ const FormPropsContext = React.createContext<OverlayFormProps>({
   EmailErrRef: { current: null },
   InputChange: (event) => {},
   InputStates: { name: "", email: "" },
+  ResetForm: () => {},
 });
 
 function OverlayFormPropsProvider({
@@ -33,16 +34,16 @@ function OverlayFormPropsProvider({
   const [styles, dispatch] = useReducer(StylesReducer, [
     {
       name: "name",
-      borderColor: "black",
-      txtClr: "black",
+      borderColor: "#cfd9de",
+      txtClr: "#536471",
       fontSize: 1,
       position: 32,
       borderWidth: 1,
     },
     {
       name: "email",
-      borderColor: "black",
-      txtClr: "black",
+      borderColor: "#cfd9de",
+      txtClr: "#536471",
       fontSize: 1,
       position: 32,
       borderWidth: 1,
@@ -70,7 +71,11 @@ function OverlayFormPropsProvider({
         !validEmailInp &&
         event.target.name === "email" &&
         inputVals.email) ||
-      (inputVals.emailBool && event.target.name === "name" && !inputVals.name)
+      (inputVals.emailBool &&
+        event.target.name === "name" &&
+        !inputVals.name &&
+        NameErrText.current != null &&
+        NameErrText.current.style.display === "block")
     ) {
       dispatch({
         type: `${event.target.name}Change`,
@@ -125,7 +130,7 @@ function OverlayFormPropsProvider({
         type: `${event.target.name}Change`,
         name: event.target.name,
         borderColor: "red",
-        txtClr: "black",
+        txtClr: "#536471",
         fontSize: 1,
         position: 32,
         borderWidth: 1,
@@ -137,8 +142,8 @@ function OverlayFormPropsProvider({
       dispatch({
         type: `${event.target.name}Change`,
         name: event.target.name,
-        borderColor: "black",
-        txtClr: "black",
+        borderColor: "#cfd9de",
+        txtClr: "#536471",
         fontSize: 0.8,
         position: 5,
         borderWidth: 1,
@@ -147,8 +152,8 @@ function OverlayFormPropsProvider({
       dispatch({
         type: `${event.target.name}Change`,
         name: event.target.name,
-        borderColor: "black",
-        txtClr: "black",
+        borderColor: "#cfd9de",
+        txtClr: "#536471",
         fontSize: 1,
         position: 32,
         borderWidth: 1,
@@ -231,6 +236,27 @@ function OverlayFormPropsProvider({
       }
     }
   }, [validEmailInp, inputVals.name, inputVals.email]);
+  function ResetForm() {
+    setInputVals({
+      name: "",
+      email: "",
+      nameBool: false,
+      emailBool: false,
+    });
+    dispatch({
+      type: "ResetFields",
+      name: `name`,
+      borderColor: "red",
+      txtClr: "red",
+      fontSize: 0.8,
+      position: 5,
+      borderWidth: 2,
+    });
+    if (NameErrText.current != null && EmailErrText.current != null) {
+      NameErrText.current.style.display = "none";
+      EmailErrText.current.style.display = "none";
+    }
+  }
   let contextVal = {
     Styles: styles,
     FocusAchieved: FocusAchieved,
@@ -239,6 +265,7 @@ function OverlayFormPropsProvider({
     EmailErrRef: EmailErrText,
     InputChange: InputChange,
     InputStates: { name: inputVals.name, email: inputVals.email },
+    ResetForm: ResetForm,
   };
 
   return (

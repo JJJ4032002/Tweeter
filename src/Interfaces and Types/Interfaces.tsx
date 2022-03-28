@@ -31,6 +31,7 @@ interface OverlayFormProps {
     name: string;
     email: string;
   };
+  ResetForm: () => void;
 }
 interface AuthenticationPageContextProps {
   FormStyles: { opacity: number; top: number; bottom: number };

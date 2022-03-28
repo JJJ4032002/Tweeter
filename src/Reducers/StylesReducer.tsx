@@ -29,6 +29,27 @@ function StylesReducer(
       };
       return newStyles;
     }
+    case "ResetFields": {
+      let newStyles = [
+        {
+          name: "name",
+          borderColor: "black",
+          txtClr: "black",
+          fontSize: 1,
+          position: 32,
+          borderWidth: 1,
+        },
+        {
+          name: "email",
+          borderColor: "black",
+          txtClr: "black",
+          fontSize: 1,
+          position: 32,
+          borderWidth: 1,
+        },
+      ];
+      return newStyles;
+    }
     default: {
       throw Error("Unknown action: " + action.type);
     }
