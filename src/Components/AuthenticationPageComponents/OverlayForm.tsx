@@ -13,7 +13,7 @@ import {
 import { UpperContainerBlock } from "./OverlayFormComponents/UpperContainer";
 
 import MiddleContainer from "./OverlayFormComponents/MiddleContainer";
-import { OverlayFormPropsProvider } from "../../Contexts/OverlayFormContext";
+
 import { useContext } from "react";
 
 import { AuthenticationPageContext } from "../../Contexts/AuthenticationPageContext";
@@ -23,14 +23,12 @@ function OverlayForm() {
   let { opacity, top, bottom } = FormStyles;
   return (
     <>
-      <OverlayFormPropsProvider>
-        <Overlay opacity={opacity} top={top} bottom={bottom}>
-          <FormContainer>
-            <UpperContainerBlock></UpperContainerBlock>
-            <MiddleContainer></MiddleContainer>
-          </FormContainer>
-        </Overlay>
-      </OverlayFormPropsProvider>
+      <Overlay opacity={opacity} top={top} bottom={bottom}>
+        <FormContainer>
+          <UpperContainerBlock></UpperContainerBlock>
+          <MiddleContainer></MiddleContainer>
+        </FormContainer>
+      </Overlay>
     </>
   );
 }
