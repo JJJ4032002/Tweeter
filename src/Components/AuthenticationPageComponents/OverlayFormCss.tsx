@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Props } from "../../Interfaces and Types/Interfaces";
-
+import { devices } from "../../Media Queries/Queries";
 const Overlay = styled.div<Props>`
   display: flex;
   justify-content: center;
@@ -15,16 +15,27 @@ const Overlay = styled.div<Props>`
   z-index: 1;
 `;
 const FormContainer = styled.div`
-  width: 90%;
+  width: 100%;
   max-width: 600px;
   padding: 0.4em 1em;
   background-color: white;
   border-radius: 0.7em;
   display: grid;
-  height: 85%;
-  grid-template-rows: 0.5fr 3fr 1fr;
+  height: 100%;
+  grid-template-rows: 0.3fr 3fr 1fr;
   overflow: auto;
   gap: 0.5em;
+  @media ${devices.mobileL} {
+    width: 90%;
+    height: 85%;
+    grid-template-rows: 0.5fr 3fr 1fr;
+  }
+  @media ${devices.tablet} {
+    height: 50%;
+  }
+  @media ${devices.laptop} {
+    height: 85%;
+  }
 `;
 const UpperContainer = styled.div`
   display: grid;

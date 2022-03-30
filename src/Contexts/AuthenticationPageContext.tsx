@@ -12,8 +12,8 @@ function AuthenticationPageContextProvider({
 }: AuthenticationContextProviderChildren) {
   let [FormStyles, setFormStyles] = useState({
     opacity: 1,
-    top: -1000,
-    bottom: 1000,
+    top: -15000,
+    bottom: 15000,
   });
   function handleSignUpBtn(event: React.MouseEvent<HTMLElement>) {
     let ElementType = event.target as Element;
@@ -27,7 +27,7 @@ function AuthenticationPageContextProvider({
       window.scrollTo(0, 0);
 
       document.body.style.overflowY = "visible";
-      setFormStyles({ opacity: 1, top: -1000, bottom: 1000 });
+      setFormStyles({ opacity: 1, top: -15000, bottom: 15000 });
     }
   }
   let contextObj = {
