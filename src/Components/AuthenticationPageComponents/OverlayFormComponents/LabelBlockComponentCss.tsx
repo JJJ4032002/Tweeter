@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { Props } from "../../../Interfaces and Types/Interfaces";
 const Label = styled.label<Props>`
-  border-width: ${(props) => props.borderWidth}px;
-  border-color: ${(props) => props.borderColor};
+  border-width: 1px;
+  border-color: #cfd9de;
   border-style: solid;
   position: relative;
   padding: 0.5em 0.5em;
@@ -11,14 +11,66 @@ const Label = styled.label<Props>`
   width: 100%;
   transition: border-width 150 ease, border-color 150 ease;
   background-color: transparent;
+  ${(props) =>
+    props.WhichState === "AllRedFocussed" &&
+    css`
+      border-width: 2px;
+      border-color: red;
+    `}
+  ${(props) =>
+    props.WhichState === "AllRedBlurred" &&
+    css`
+      border-width: 1px;
+      border-color: red;
+    `}
+      ${(props) =>
+    props.WhichState === "AllBlueFocussed" &&
+    css`
+      border-width: 2px;
+      border-color: #2da7ed;
+    `}
+        ${(props) =>
+    props.WhichState === "WithTextBlurred" &&
+    css`
+      border-width: 1px;
+      border-color: #cfd9de;
+    `}
 `;
 const SpanText = styled.span<Props>`
   left: 1.5%;
-  top: ${(props) => props.position}%;
-  font-size: ${(props) => props.fontSize}rem;
-  color: ${(props) => props.textColor};
-  transition: top 150ms ease, font-size 150ms ease;
+  top: 32%;
+  font-size: 1rem;
+  color: #536471;
+  transition: top 150ms ease, font-size 150ms ease, color 150ms ease;
   position: absolute;
+  ${(props) =>
+    props.WhichState === "AllRedFocussed" &&
+    css`
+      top: 5%;
+      font-size: 0.8rem;
+      color: red;
+    `}
+  ${(props) =>
+    props.WhichState === "AllRedBlurred" &&
+    css`
+      top: 32%;
+      font-size: 1rem;
+      color: #536471;
+    `}
+     ${(props) =>
+    props.WhichState === "AllBlueFocussed" &&
+    css`
+      top: 5%;
+      font-size: 0.8rem;
+      color: #2da7ed;
+    `}
+      ${(props) =>
+    props.WhichState === "WithTextBlurred" &&
+    css`
+      top: 5%;
+      font-size: 0.8rem;
+      color: #536471;
+    `}
 `;
 
 const ErrorText = styled.span<Props>`

@@ -22,12 +22,8 @@ function LabelBlockComponent({ children, type }: LabelBlockComponentProps) {
     InputStates,
   } = useContext(FormPropsContext);
   let styles = {
-    name: "name",
-    borderColor: "black",
-    txtClr: "",
-    fontSize: 1,
-    position: 32,
-    borderWidth: 1,
+    type: "name",
+    WhichState: "",
   };
   let ref = type === "name" ? NameErrRef : EmailErrRef;
   let SpanName = type === "name" ? "Name" : "Email";
@@ -38,11 +34,7 @@ function LabelBlockComponent({ children, type }: LabelBlockComponentProps) {
   }
   return (
     <LabelBlock>
-      <Label
-        borderWidth={styles.borderWidth}
-        borderColor={styles.borderColor}
-        htmlFor={type}
-      >
+      <Label WhichState={styles.WhichState} htmlFor={type}>
         <Input
           value={InputStates[type as keyof InputStateProps]}
           onChange={InputChange}
@@ -51,13 +43,7 @@ function LabelBlockComponent({ children, type }: LabelBlockComponentProps) {
           onBlur={BlurAchieved}
           type={type}
         />
-        <SpanText
-          fontSize={styles.fontSize}
-          position={styles.position}
-          textColor={styles.txtClr}
-        >
-          {SpanName}
-        </SpanText>
+        <SpanText WhichState={styles.WhichState}>{SpanName}</SpanText>
       </Label>
       <ErrorText ref={ref}>{children}</ErrorText>
     </LabelBlock>

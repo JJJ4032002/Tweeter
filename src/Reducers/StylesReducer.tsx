@@ -8,44 +8,28 @@ function StylesReducer(
     case "nameChange": {
       let newStyles = [...styles];
       newStyles[0] = {
-        name: "name",
-        borderColor: action.borderColor,
-        txtClr: action.txtClr,
-        fontSize: action.fontSize,
-        position: action.position,
-        borderWidth: action.borderWidth,
+        type: "name",
+        WhichState: action.WhichState,
       };
       return newStyles;
     }
     case "emailChange": {
       let newStyles = [...styles];
       newStyles[1] = {
-        name: "email",
-        borderColor: action.borderColor,
-        txtClr: action.txtClr,
-        fontSize: action.fontSize,
-        position: action.position,
-        borderWidth: action.borderWidth,
+        type: "email",
+        WhichState: action.WhichState,
       };
       return newStyles;
     }
     case "ResetFields": {
       let newStyles = [
         {
-          name: "name",
-          borderColor: "black",
-          txtClr: "black",
-          fontSize: 1,
-          position: 32,
-          borderWidth: 1,
+          type: "name",
+          WhichState: "",
         },
         {
-          name: "email",
-          borderColor: "black",
-          txtClr: "black",
-          fontSize: 1,
-          position: 32,
-          borderWidth: 1,
+          type: "email",
+          WhichState: "",
         },
       ];
       return newStyles;

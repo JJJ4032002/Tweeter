@@ -1,10 +1,6 @@
 type ChangeStyles = {
-  borderColor: string;
-  position: number;
-  fontSize: number;
-  txtClr: string;
-  name: string;
-  borderWidth: number;
+  WhichState: string;
+  type: string;
 }[];
 
 type InputValues = {

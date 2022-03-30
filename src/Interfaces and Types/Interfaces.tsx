@@ -18,6 +18,7 @@ interface Props {
   opacity?: number;
   top?: number;
   bottom?: number;
+  WhichState?: string;
 }
 
 interface OverlayFormProps {
@@ -39,12 +40,7 @@ interface AuthenticationPageContextProps {
 }
 interface actionProps {
   type: string;
-  name: string;
-  borderColor: string;
-  txtClr: string;
-  fontSize: number;
-  position: number;
-  borderWidth: number;
+  WhichState: string;
 }
 
 export type {

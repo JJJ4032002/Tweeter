@@ -11,12 +11,8 @@ import validateEmail from "../helpers/ValidateEmail";
 const FormPropsContext = React.createContext<OverlayFormProps>({
   Styles: [
     {
-      name: "name",
-      borderColor: "#536471",
-      txtClr: "",
-      fontSize: 1,
-      position: 32,
-      borderWidth: 1,
+      type: "name",
+      WhichState: "",
     },
   ],
   FocusAchieved: (event) => {},
@@ -33,20 +29,12 @@ function OverlayFormPropsProvider({
 }: OverlayContextProviderChildren) {
   const [styles, dispatch] = useReducer(StylesReducer, [
     {
-      name: "name",
-      borderColor: "#cfd9de",
-      txtClr: "#536471",
-      fontSize: 1,
-      position: 32,
-      borderWidth: 1,
+      type: "name",
+      WhichState: "",
     },
     {
-      name: "email",
-      borderColor: "#cfd9de",
-      txtClr: "#536471",
-      fontSize: 1,
-      position: 32,
-      borderWidth: 1,
+      type: "email",
+      WhichState: "",
     },
   ]);
   let NameErrText = useRef<HTMLSpanElement>(null);
@@ -79,22 +67,12 @@ function OverlayFormPropsProvider({
     ) {
       dispatch({
         type: `${event.target.name}Change`,
-        name: event.target.name,
-        borderColor: "red",
-        txtClr: "red",
-        fontSize: 0.8,
-        position: 5,
-        borderWidth: 2,
+        WhichState: "AllRedFocussed",
       });
     } else {
       dispatch({
         type: `${event.target.name}Change`,
-        name: event.target.name,
-        borderColor: "#2da7ed",
-        txtClr: "#2da7ed",
-        fontSize: 0.8,
-        position: 5,
-        borderWidth: 2,
+        WhichState: "AllBlueFocussed",
       });
     }
   }
@@ -128,12 +106,7 @@ function OverlayFormPropsProvider({
     ) {
       dispatch({
         type: `${event.target.name}Change`,
-        name: event.target.name,
-        borderColor: "red",
-        txtClr: "#536471",
-        fontSize: 1,
-        position: 32,
-        borderWidth: 1,
+        WhichState: "AllRedBlurred",
       });
     } else if (
       (event.target.name === "name" && inputVals.name !== "") ||
@@ -141,22 +114,12 @@ function OverlayFormPropsProvider({
     ) {
       dispatch({
         type: `${event.target.name}Change`,
-        name: event.target.name,
-        borderColor: "#cfd9de",
-        txtClr: "#536471",
-        fontSize: 0.8,
-        position: 5,
-        borderWidth: 1,
+        WhichState: "WithTextBlurred",
       });
     } else {
       dispatch({
         type: `${event.target.name}Change`,
-        name: event.target.name,
-        borderColor: "#cfd9de",
-        txtClr: "#536471",
-        fontSize: 1,
-        position: 32,
-        borderWidth: 1,
+        WhichState: "",
       });
     }
   }
@@ -171,24 +134,14 @@ function OverlayFormPropsProvider({
 
         dispatch({
           type: `emailChange`,
-          name: `email`,
-          borderColor: "red",
-          txtClr: "red",
-          fontSize: 0.8,
-          position: 5,
-          borderWidth: 2,
+          WhichState: "AllRedFocussed",
         });
       } else {
         EmailErrText.current.style.display = "none";
 
         dispatch({
           type: `emailChange`,
-          name: `email`,
-          borderColor: "#2da7ed",
-          txtClr: "#2da7ed",
-          fontSize: 0.8,
-          position: 5,
-          borderWidth: 2,
+          WhichState: "AllBlueFocussed",
         });
       }
     } else if (
@@ -200,12 +153,7 @@ function OverlayFormPropsProvider({
 
       dispatch({
         type: `emailChange`,
-        name: `email`,
-        borderColor: "#2da7ed",
-        txtClr: "#2da7ed",
-        fontSize: 0.8,
-        position: 5,
-        borderWidth: 2,
+        WhichState: "AllBlueFocussed",
       });
     } else {
       if (inputVals.nameBool && null !== NameErrText.current) {
@@ -214,23 +162,13 @@ function OverlayFormPropsProvider({
 
           dispatch({
             type: `nameChange`,
-            name: `name`,
-            borderColor: "#2da7ed",
-            txtClr: "#2da7ed",
-            fontSize: 0.8,
-            position: 5,
-            borderWidth: 2,
+            WhichState: "AllBlueFocussed",
           });
         } else {
           NameErrText.current.style.display = "block";
           dispatch({
             type: `nameChange`,
-            name: `name`,
-            borderColor: "red",
-            txtClr: "red",
-            fontSize: 0.8,
-            position: 5,
-            borderWidth: 2,
+            WhichState: "AllRedFocussed",
           });
         }
       }
@@ -245,12 +183,7 @@ function OverlayFormPropsProvider({
     });
     dispatch({
       type: "ResetFields",
-      name: `name`,
-      borderColor: "red",
-      txtClr: "red",
-      fontSize: 0.8,
-      position: 5,
-      borderWidth: 2,
+      WhichState: "",
     });
     if (NameErrText.current != null && EmailErrText.current != null) {
       NameErrText.current.style.display = "none";
