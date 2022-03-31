@@ -1,27 +1,25 @@
 import React from "react";
-import LabelBlockComponent from "./LabelBlockComponent";
+import styled from "styled-components";
+import LabelBlockComponent from "./MiddleContainerComponents/LabelBlockComponent";
 import {
   MiddleContainerBlock,
   Form,
-  SpanText,
-  Label,
   DateOfBirthCont,
-  Input,
-  LabelBlock,
-  ErrorText,
 } from "./MiddleContainerCss";
+
+const FormHeading = styled.h2`
+  font-size: clamp(1.2rem, 1.1571rem + 0.2143vw, 1.5rem);
+`;
 
 function MiddleContainer() {
   return (
     <MiddleContainerBlock>
-      <h2>Create your account</h2>
+      <FormHeading>Create your account</FormHeading>
       <Form>
         <LabelBlockComponent type="name">What's your name</LabelBlockComponent>
         <LabelBlockComponent type="email">
           Please enter a valid email
         </LabelBlockComponent>
-
-        <DateOfBirthCont></DateOfBirthCont>
       </Form>
     </MiddleContainerBlock>
   );

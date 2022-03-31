@@ -101,6 +101,15 @@ function OverlayFormPropsProvider({
   }
   function BlurAchieved(event: React.FocusEvent<HTMLInputElement>): void {
     if (
+      inputVals.nameBool &&
+      !inputVals.email &&
+      event.target.name === "email"
+    ) {
+      dispatch({
+        type: `${event.target.name}Change`,
+        WhichState: "",
+      });
+    } else if (
       (inputVals.nameBool && !inputVals.name) ||
       (inputVals.emailBool && !inputVals.name && event.target.name === "name")
     ) {
