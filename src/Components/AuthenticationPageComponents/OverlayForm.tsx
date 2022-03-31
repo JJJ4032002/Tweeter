@@ -1,21 +1,12 @@
 import styled from "styled-components";
-import {
-  SpanText,
-  FormContainer,
-  Label,
-  Form,
-  Input,
-  UpperContainer,
-  DateOfBirthCont,
-  Overlay,
-} from "./OverlayFormCss";
+import { FormContainer, Overlay } from "./OverlayFormCss";
 
 import { UpperContainerBlock } from "./OverlayFormComponents/UpperContainer";
 
 import MiddleContainer from "./OverlayFormComponents/MiddleContainer";
 
 import { useContext } from "react";
-
+import LowerContainer from "./OverlayFormComponents/LowerContainer";
 import { AuthenticationPageContext } from "../../Contexts/AuthenticationPageContext";
 
 function OverlayForm() {
@@ -27,6 +18,7 @@ function OverlayForm() {
         <FormContainer>
           <UpperContainerBlock></UpperContainerBlock>
           <MiddleContainer></MiddleContainer>
+          <LowerContainer></LowerContainer>
         </FormContainer>
       </Overlay>
     </>
