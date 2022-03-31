@@ -53,12 +53,18 @@ const Para = styled.p<Props>`
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 70vh 40vh;
+  grid-template-rows: 80vh 40vh;
   grid-template-areas:
     "form"
     "Banner";
+  @media ${devices.mobileM} {
+    grid-template-rows: 65vh 40vh;
+  }
+  @media ${devices.mobileL} {
+    grid-template-rows: 70vh 40vh;
+  }
   @media ${devices.tablet} {
-    grid-template-rows: 60vh 40vh;
+    grid-template-rows: 70vh 40vh;
   }
   @media ${devices.laptop} {
     grid-template-columns: 1.1fr 0.9fr;

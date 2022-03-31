@@ -1,10 +1,36 @@
 type ChangeStyles = {
-  borderColor: string;
-  position: number;
-  fontSize: number;
-  focus: string;
-  name: string;
-  borderWidth: number;
+  WhichState: string;
+  type: string;
 }[];
 
-export type { ChangeStyles };
+type InputValues = {
+  name: string;
+  email: string;
+  nameBool: boolean;
+  emailBool: boolean;
+};
+
+type LabelBlockComponentProps = {
+  type: string;
+  children: string;
+};
+
+type InputStateProps = {
+  name: string;
+  email: string;
+};
+
+type OverlayContextProviderChildren = {
+  children: React.ReactNode;
+};
+type AuthenticationContextProviderChildren = {
+  children: React.ReactNode;
+};
+export type {
+  ChangeStyles,
+  InputValues,
+  LabelBlockComponentProps,
+  OverlayContextProviderChildren,
+  InputStateProps,
+  AuthenticationContextProviderChildren,
+};
