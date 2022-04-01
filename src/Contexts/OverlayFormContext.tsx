@@ -22,6 +22,7 @@ const FormPropsContext = React.createContext<OverlayFormProps>({
   InputChange: (event) => {},
   InputStates: { name: "", email: "" },
   ResetForm: () => {},
+  FinBtnState: true,
 });
 
 function OverlayFormPropsProvider({
@@ -37,6 +38,7 @@ function OverlayFormPropsProvider({
       WhichState: "",
     },
   ]);
+  const [allowBtn, setAllowBtn] = useState({ name: false, email: false });
   let NameErrText = useRef<HTMLSpanElement>(null);
   let EmailErrText = useRef<HTMLSpanElement>(null);
   const [inputVals, setInputVals] = useState<InputValues>({
@@ -140,14 +142,14 @@ function OverlayFormPropsProvider({
     ) {
       if (!validEmailInp) {
         EmailErrText.current.style.display = "block";
-
+        setAllowBtn((prev) => ({ ...prev, email: false }));
         dispatch({
           type: `emailChange`,
           WhichState: "AllRedFocussed",
         });
       } else {
         EmailErrText.current.style.display = "none";
-
+        setAllowBtn((prev) => ({ ...prev, email: true }));
         dispatch({
           type: `emailChange`,
           WhichState: "AllBlueFocussed",
@@ -159,6 +161,7 @@ function OverlayFormPropsProvider({
       null != EmailErrText.current
     ) {
       EmailErrText.current.style.display = "none";
+      setAllowBtn((prev) => ({ ...prev, email: false }));
 
       dispatch({
         type: `emailChange`,
@@ -167,6 +170,7 @@ function OverlayFormPropsProvider({
     } else {
       if (inputVals.nameBool && null !== NameErrText.current) {
         if (inputVals.name) {
+          setAllowBtn((prev) => ({ ...prev, name: true }));
           NameErrText.current.style.display = "none";
 
           dispatch({
@@ -174,6 +178,7 @@ function OverlayFormPropsProvider({
             WhichState: "AllBlueFocussed",
           });
         } else {
+          setAllowBtn((prev) => ({ ...prev, name: false }));
           NameErrText.current.style.display = "block";
           dispatch({
             type: `nameChange`,
@@ -190,6 +195,7 @@ function OverlayFormPropsProvider({
       nameBool: false,
       emailBool: false,
     });
+    setAllowBtn({ name: false, email: false });
     dispatch({
       type: "ResetFields",
       WhichState: "",
@@ -199,6 +205,7 @@ function OverlayFormPropsProvider({
       EmailErrText.current.style.display = "none";
     }
   }
+  let FinBtnState = allowBtn.name && allowBtn.email ? true : false;
   let contextVal = {
     Styles: styles,
     FocusAchieved: FocusAchieved,
@@ -208,6 +215,7 @@ function OverlayFormPropsProvider({
     InputChange: InputChange,
     InputStates: { name: inputVals.name, email: inputVals.email },
     ResetForm: ResetForm,
+    FinBtnState: FinBtnState,
   };
 
   return (
