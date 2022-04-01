@@ -19,6 +19,7 @@ interface Props {
   top?: number;
   bottom?: number;
   WhichState?: string;
+  FinBtnState?: boolean;
 }
 
 interface OverlayFormProps {
@@ -33,6 +34,7 @@ interface OverlayFormProps {
     email: string;
   };
   ResetForm: () => void;
+  FinBtnState: boolean;
 }
 interface AuthenticationPageContextProps {
   FormStyles: { opacity: number; top: number; bottom: number };
