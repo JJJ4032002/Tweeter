@@ -1,22 +1,13 @@
-import React from "react";
-import styled from "styled-components";
-import { Buttons } from "../../AuthenticationPageCss";
-const SubmitButton = styled(Buttons)`
-  width: 100%;
-  border-radius: 5em;
-  margin: 0;
-  font-size: 1rem;
-  background-color: black;
-  color: white;
-`;
-const LowerContainerBlock = styled.div`
-  width: 90%;
-  margin: 0.5em auto 0.8em auto;
-`;
+import React, { useContext } from "react";
+
+import { FormPropsContext } from "../../../Contexts/OverlayFormContext";
+import { SubmitButton, LowerContainerBlock } from "./LowerContainerCss";
+
 function LowerContainer() {
+  let { FinBtnState } = useContext(FormPropsContext);
   return (
     <LowerContainerBlock>
-      <SubmitButton>Submit</SubmitButton>
+      <SubmitButton FinBtnState={FinBtnState}>Submit</SubmitButton>
     </LowerContainerBlock>
   );
 }
