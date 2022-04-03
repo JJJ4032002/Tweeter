@@ -15,19 +15,20 @@ const Overlay = styled.div<Props>`
   z-index: 1;
 `;
 const FormContainer = styled.div`
-  width: 95%;
+  width: 100%;
   max-width: 600px;
   padding: 0.4em 1em;
   background-color: white;
   border-radius: 0.7em;
   display: grid;
-  height: 50%;
-  grid-template-rows: 0.3fr 1.5fr 0.7fr;
+  min-height: 100%;
+  grid-template-rows: 0.2fr 1.5fr 0.7fr;
   overflow: auto;
   gap: 0.5em;
   @media ${devices.mobileL} {
+    min-height: 50%;
     width: 90%;
-    height: 50%;
+    height: 90%;
     grid-template-rows: 0.3fr 1.5fr 0.7fr;
   }
   @media ${devices.tablet} {

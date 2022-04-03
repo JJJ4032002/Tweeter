@@ -20,6 +20,9 @@ const SubmitButton = styled(Buttons)<Props>`
 `;
 const LowerContainerBlock = styled.div`
   width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin: 0.5em auto 0.8em auto;
 `;
 export { SubmitButton, LowerContainerBlock };
