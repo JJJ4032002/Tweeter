@@ -14,6 +14,10 @@ const FormPropsContext = React.createContext<OverlayFormProps>({
       type: "name",
       WhichState: "",
     },
+    {
+      type: "email",
+      WhichState: "",
+    },
   ],
   FocusAchieved: (event) => {},
   BlurAchieved: (event) => {},

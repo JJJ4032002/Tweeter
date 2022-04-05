@@ -37,6 +37,7 @@ function LabelBlockComponent({ children, type }: LabelBlockComponentProps) {
       <Label WhichState={styles.WhichState} htmlFor={type}>
         <Input
           value={InputStates[type as keyof InputStateProps]}
+          id={type}
           onChange={InputChange}
           name={type}
           onFocus={FocusAchieved}

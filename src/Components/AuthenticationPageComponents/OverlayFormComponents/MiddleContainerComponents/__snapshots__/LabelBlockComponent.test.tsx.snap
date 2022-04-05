@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render label component Renders email Label block correctly 1`] = `
+<div>
+  <div
+    class="sc-hKwDye iXxlrE"
+  >
+    <label
+      class="sc-bdvvtL fIHPDE"
+      for="email"
+    >
+      <input
+        class="sc-eCImPb dSoxdF"
+        id="email"
+        name="email"
+        type="email"
+        value=""
+      />
+      <span
+        class="sc-gsDKAQ eBVvmx"
+      >
+        Email
+      </span>
+    </label>
+    <span
+      class="sc-dkPtRN jJFEIl"
+    >
+      Please enter a valid email
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Render label component Renders name Label block correctly 1`] = `
+<div>
+  <div
+    class="sc-hKwDye iXxlrE"
+  >
+    <label
+      class="sc-bdvvtL fIHPDE"
+      for="name"
+    >
+      <input
+        class="sc-eCImPb dSoxdF"
+        id="name"
+        name="name"
+        type="name"
+        value=""
+      />
+      <span
+        class="sc-gsDKAQ eBVvmx"
+      >
+        Name
+      </span>
+    </label>
+    <span
+      class="sc-dkPtRN jJFEIl"
+    >
+      What's your name
+    </span>
+  </div>
+</div>
+`;
