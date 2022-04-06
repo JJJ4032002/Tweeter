@@ -53,8 +53,8 @@ function OverlayFormPropsProvider({
   });
   const [validEmailInp, setValidEmailInp] = useState(false);
   useEffect(() => {
-    console.log(NameErrText.current);
-    console.log(EmailErrText.current);
+    // console.log(NameErrText.current);
+    // console.log(EmailErrText.current);
   }, [styles]);
   function FocusAchieved(event: React.FocusEvent<HTMLInputElement>): void {
     console.log("Focussed", event.target.name);
