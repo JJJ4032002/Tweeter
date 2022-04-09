@@ -32,6 +32,7 @@ function LabelBlockComponent({ children, type }: LabelBlockComponentProps) {
   } else {
     styles = Styles[1];
   }
+  let FinType = "text";
   return (
     <LabelBlock>
       <Label WhichState={styles.WhichState} htmlFor={type}>
@@ -42,7 +43,7 @@ function LabelBlockComponent({ children, type }: LabelBlockComponentProps) {
           name={type}
           onFocus={FocusAchieved}
           onBlur={BlurAchieved}
-          type={type}
+          type={FinType}
         />
         <SpanText WhichState={styles.WhichState}>{SpanName}</SpanText>
       </Label>

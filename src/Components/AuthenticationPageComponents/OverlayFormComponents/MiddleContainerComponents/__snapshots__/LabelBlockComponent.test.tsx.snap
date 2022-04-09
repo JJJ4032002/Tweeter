@@ -13,7 +13,7 @@ exports[`Render label component Renders email Label block correctly 1`] = `
         class="sc-eCImPb dSoxdF"
         id="email"
         name="email"
-        type="email"
+        type="text"
         value=""
       />
       <span
@@ -44,7 +44,7 @@ exports[`Render label component Renders name Label block correctly 1`] = `
         class="sc-eCImPb dSoxdF"
         id="name"
         name="name"
-        type="name"
+        type="text"
         value=""
       />
       <span
