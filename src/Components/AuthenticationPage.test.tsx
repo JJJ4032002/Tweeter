@@ -76,7 +76,7 @@ describe("Input Email validation", () => {
     userEvent.type(inputEmail, "Example");
     inputEmail.setSelectionRange(0, 7);
     userEvent.type(inputEmail, "{backspace}");
-
+    userEvent.click(getByText("Please enter a valid email"));
     expect(inputEmail.parentElement).toHaveStyleRule("border-color", "#cfd9de");
     expect(inputEmail.parentElement).toHaveStyleRule("border-width", "1px");
   });
@@ -88,17 +88,17 @@ describe("Input Email validation", () => {
     expect(inputEmail.parentElement).toHaveStyleRule("border-color", "#cfd9de");
     expect(inputEmail.parentElement).toHaveStyleRule("border-width", "1px");
   });
-  // it("Border thick and blue after after focussing the input which was initially typed", () => {
-  //   const { getByText } = render(<AuthenticationPage></AuthenticationPage>);
-  //   const inputEmail = screen.getByLabelText("Email") as HTMLInputElement;
-  //   userEvent.type(inputEmail, "Example");
-  //   inputEmail.setSelectionRange(0, 7);
-  //   userEvent.type(inputEmail, "{backspace}");
-  //   expect(inputEmail).toHaveValue("");
-  //   userEvent.click(inputEmail);
-  //   expect(inputEmail.parentElement).toHaveStyleRule("border-color", "#2da7ed");
-  //   expect(inputEmail.parentElement).toHaveStyleRule("border-width", "2px");
-  // });
+  it("Border thick and blue after after focussing the input which was initially typed", () => {
+    const { getByText } = render(<AuthenticationPage></AuthenticationPage>);
+    const inputEmail = screen.getByLabelText("Email") as HTMLInputElement;
+    userEvent.type(inputEmail, "Example");
+    inputEmail.setSelectionRange(0, 7);
+    userEvent.type(inputEmail, "{backspace}");
+    expect(inputEmail).toHaveValue("");
+    userEvent.click(inputEmail);
+    expect(inputEmail.parentElement).toHaveStyleRule("border-color", "#2da7ed");
+    expect(inputEmail.parentElement).toHaveStyleRule("border-width", "2px");
+  });
   it("Error text present in document when Email input is incorrectly filled", () => {
     const { getByText } = render(<AuthenticationPage></AuthenticationPage>);
     const inputEmail = screen.getByLabelText("Email") as HTMLInputElement;

@@ -57,7 +57,7 @@ function OverlayFormPropsProvider({
     // console.log(EmailErrText.current);
   }, [styles]);
   function FocusAchieved(event: React.FocusEvent<HTMLInputElement>): void {
-    console.log("Focussed", event.target.name);
+    console.log("Focussed", event.target, event.relatedTarget);
 
     if (
       (inputVals.nameBool && !inputVals.name && event.target.name === "name") ||
