@@ -23,8 +23,9 @@ const FormPropsContext = React.createContext<OverlayFormProps>({
   BlurAchieved: (event) => {},
   NameErrRef: { current: null },
   EmailErrRef: { current: null },
+  PasswordErrRef: { current: null },
   InputChange: (event) => {},
-  InputStates: { name: "", email: "" },
+  InputStates: { name: "", email: "", password: "" },
   ResetForm: () => {},
   FinBtnState: true,
   validNameEmail: true,
@@ -43,15 +44,22 @@ function OverlayFormPropsProvider({
       type: "email",
       WhichState: "",
     },
+    {
+      type: "password",
+      WhichState: "",
+    },
   ]);
   const [allowBtn, setAllowBtn] = useState({ name: false, email: false });
-  let NameErrText = useRef<HTMLSpanElement>(null);
-  let EmailErrText = useRef<HTMLSpanElement>(null);
+  let NameErrText = useRef<HTMLSpanElement | null>(null);
+  let EmailErrText = useRef<HTMLSpanElement | null>(null);
+  let PasswordErrText = useRef<HTMLSpanElement | null>(null);
   const [inputVals, setInputVals] = useState<InputValues>({
     name: "",
     email: "",
+    password: "",
     nameBool: false,
     emailBool: false,
+    passwordBool: false,
   });
   const [validEmailInp, setValidEmailInp] = useState(false);
   const [validNameEmail, setValidNameEmail] = useState(true);
@@ -203,8 +211,10 @@ function OverlayFormPropsProvider({
     setInputVals({
       name: "",
       email: "",
+      password: "",
       nameBool: false,
       emailBool: false,
+      passwordBool: false,
     });
     setAllowBtn({ name: false, email: false });
     dispatch({
@@ -223,8 +233,13 @@ function OverlayFormPropsProvider({
     BlurAchieved: BlurAchieved,
     NameErrRef: NameErrText,
     EmailErrRef: EmailErrText,
+    PasswordErrRef: PasswordErrText,
     InputChange: InputChange,
-    InputStates: { name: inputVals.name, email: inputVals.email },
+    InputStates: {
+      name: inputVals.name,
+      email: inputVals.email,
+      password: inputVals.password,
+    },
     ResetForm: ResetForm,
     FinBtnState: FinBtnState,
     validNameEmail: validNameEmail,

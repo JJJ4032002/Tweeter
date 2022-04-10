@@ -6,8 +6,10 @@ type ChangeStyles = {
 type InputValues = {
   name: string;
   email: string;
+  password: string;
   nameBool: boolean;
   emailBool: boolean;
+  passwordBool: boolean;
 };
 
 type LabelBlockComponentProps = {
@@ -18,6 +20,7 @@ type LabelBlockComponentProps = {
 type InputStateProps = {
   name: string;
   email: string;
+  password: string;
 };
 
 type OverlayContextProviderChildren = {

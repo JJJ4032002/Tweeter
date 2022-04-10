@@ -18,6 +18,7 @@ function LabelBlockComponent({ children, type }: LabelBlockComponentProps) {
     BlurAchieved,
     NameErrRef,
     EmailErrRef,
+    PasswordErrRef,
     InputChange,
     InputStates,
   } = useContext(FormPropsContext);
@@ -25,12 +26,22 @@ function LabelBlockComponent({ children, type }: LabelBlockComponentProps) {
     type: "name",
     WhichState: "",
   };
-  let ref = type === "name" ? NameErrRef : EmailErrRef;
-  let SpanName = type === "name" ? "Name" : "Email";
+  let SpanName = "Name";
+  let ref = NameErrRef;
+  if (type === "email") {
+    ref = EmailErrRef;
+    SpanName = "Email";
+  } else if (type === "password") {
+    ref = PasswordErrRef;
+    SpanName = "Password";
+  }
+
   if (type === "name") {
     styles = Styles[0];
-  } else {
+  } else if (type === "email") {
     styles = Styles[1];
+  } else {
+    styles = Styles[2];
   }
   let FinType = "text";
   return (

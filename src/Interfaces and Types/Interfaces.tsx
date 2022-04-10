@@ -28,10 +28,12 @@ interface OverlayFormProps {
   BlurAchieved: (event: React.FocusEvent<HTMLInputElement>) => void;
   NameErrRef: { current: HTMLElement | null };
   EmailErrRef: { current: HTMLElement | null };
+  PasswordErrRef: { current: HTMLElement | null };
   InputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   InputStates: {
     name: string;
     email: string;
+    password: string;
   };
   ResetForm: () => void;
   FinBtnState: boolean;

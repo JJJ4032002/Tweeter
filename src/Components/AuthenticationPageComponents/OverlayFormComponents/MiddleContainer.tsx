@@ -32,7 +32,7 @@ function MiddleContainer() {
       ) : (
         <>
           {" "}
-          <FormHeading>Enter password</FormHeading>
+          <FormHeading>Enter Password</FormHeading>
           <Form>
             <LabelBlockComponent type="password">
               Please enter a valid password
