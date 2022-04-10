@@ -35,6 +35,8 @@ interface OverlayFormProps {
   };
   ResetForm: () => void;
   FinBtnState: boolean;
+  validNameEmail: boolean;
+  handleSubmitBtnClick: () => void;
 }
 interface AuthenticationPageContextProps {
   FormStyles: { opacity: number; top: number; bottom: number };

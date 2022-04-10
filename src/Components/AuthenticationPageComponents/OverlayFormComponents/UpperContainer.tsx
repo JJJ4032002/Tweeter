@@ -3,20 +3,26 @@ import { UpperContainer } from "./UpperContainerCss";
 import { Image } from "../../AuthenticationPageCss";
 import logo from "../../../assets/Icons/logo.svg";
 import close from "../../../assets/Icons/close.svg";
+import leftArrow from "../../../assets/Icons/leftArrow.svg";
 import { AuthenticationPageContext } from "../../../Contexts/AuthenticationPageContext";
 import { FormPropsContext } from "../../../Contexts/OverlayFormContext";
 export const UpperContainerBlock = () => {
   let { handleSignUpBtn } = useContext(AuthenticationPageContext);
-  let { ResetForm } = useContext(FormPropsContext);
+  let { ResetForm, validNameEmail, handleSubmitBtnClick } =
+    useContext(FormPropsContext);
   return (
     <UpperContainer>
       <Image
         onClick={(event) => {
-          handleSignUpBtn(event);
-          ResetForm();
+          if (validNameEmail) {
+            handleSignUpBtn(event);
+            ResetForm();
+          } else {
+            handleSubmitBtnClick();
+          }
         }}
         id="closeImg"
-        src={close}
+        src={validNameEmail ? close : leftArrow}
       ></Image>
       <Image id="logoInForm" src={logo}></Image>
     </UpperContainer>

@@ -27,6 +27,8 @@ const FormPropsContext = React.createContext<OverlayFormProps>({
   InputStates: { name: "", email: "" },
   ResetForm: () => {},
   FinBtnState: true,
+  validNameEmail: true,
+  handleSubmitBtnClick: () => {},
 });
 
 function OverlayFormPropsProvider({
@@ -52,10 +54,14 @@ function OverlayFormPropsProvider({
     emailBool: false,
   });
   const [validEmailInp, setValidEmailInp] = useState(false);
-  useEffect(() => {
-    // console.log(NameErrText.current);
-    // console.log(EmailErrText.current);
-  }, [styles]);
+  const [validNameEmail, setValidNameEmail] = useState(true);
+  function handleSubmitBtnClick() {
+    if (validNameEmail) {
+      setValidNameEmail(false);
+    } else {
+      setValidNameEmail(true);
+    }
+  }
   function FocusAchieved(event: React.FocusEvent<HTMLInputElement>): void {
     console.log("Focussed", event.target, event.relatedTarget);
 
@@ -79,29 +85,6 @@ function OverlayFormPropsProvider({
       dispatch({
         type: `${event.target.name}Change`,
         WhichState: "AllBlueFocussed",
-      });
-    }
-  }
-  function InputChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    if (event.target.name === "email") {
-      setInputVals({
-        ...inputVals,
-        [event.target.name]: event.target.value,
-        emailBool: true,
-        nameBool: false,
-      });
-      let ans = validateEmail(event.target.value);
-      if (ans) {
-        setValidEmailInp(true);
-      } else {
-        setValidEmailInp(false);
-      }
-    } else {
-      setInputVals({
-        ...inputVals,
-        [event.target.name]: event.target.value,
-        emailBool: false,
-        nameBool: true,
       });
     }
   }
@@ -138,6 +121,30 @@ function OverlayFormPropsProvider({
       });
     }
   }
+  function InputChange(event: React.ChangeEvent<HTMLInputElement>): void {
+    if (event.target.name === "email") {
+      setInputVals({
+        ...inputVals,
+        [event.target.name]: event.target.value,
+        emailBool: true,
+        nameBool: false,
+      });
+      let ans = validateEmail(event.target.value);
+      if (ans) {
+        setValidEmailInp(true);
+      } else {
+        setValidEmailInp(false);
+      }
+    } else {
+      setInputVals({
+        ...inputVals,
+        [event.target.name]: event.target.value,
+        emailBool: false,
+        nameBool: true,
+      });
+    }
+  }
+
   useEffect(() => {
     if (
       inputVals.emailBool &&
@@ -220,6 +227,8 @@ function OverlayFormPropsProvider({
     InputStates: { name: inputVals.name, email: inputVals.email },
     ResetForm: ResetForm,
     FinBtnState: FinBtnState,
+    validNameEmail: validNameEmail,
+    handleSubmitBtnClick: handleSubmitBtnClick,
   };
 
   return (

@@ -4,10 +4,12 @@ import { FormPropsContext } from "../../../Contexts/OverlayFormContext";
 import { SubmitButton, LowerContainerBlock } from "./LowerContainerCss";
 
 function LowerContainer() {
-  let { FinBtnState } = useContext(FormPropsContext);
+  let { FinBtnState, handleSubmitBtnClick } = useContext(FormPropsContext);
   return (
     <LowerContainerBlock>
-      <SubmitButton FinBtnState={FinBtnState}>Submit</SubmitButton>
+      <SubmitButton onClick={handleSubmitBtnClick} FinBtnState={FinBtnState}>
+        Submit
+      </SubmitButton>
     </LowerContainerBlock>
   );
 }
