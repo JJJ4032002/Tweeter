@@ -62,8 +62,11 @@ function OverlayFormPropsProvider({
     passwordBool: false,
   });
   const [validEmailInp, setValidEmailInp] = useState(false);
+
   const [validNameEmail, setValidNameEmail] = useState(true);
   function handleSubmitBtnClick() {
+    setInputVals({ ...inputVals, password: "", passwordBool: false });
+    dispatch({ type: "passwordChange", WhichState: "" });
     if (validNameEmail) {
       setValidNameEmail(false);
     } else {
@@ -79,11 +82,14 @@ function OverlayFormPropsProvider({
         !validEmailInp &&
         event.target.name === "email" &&
         inputVals.email) ||
-      (inputVals.emailBool &&
+      ((inputVals.emailBool || inputVals.passwordBool) &&
         event.target.name === "name" &&
         !inputVals.name &&
         NameErrText.current != null &&
-        NameErrText.current.style.display === "block")
+        NameErrText.current.style.display === "block") ||
+      (inputVals.passwordBool &&
+        inputVals.password.length < 8 &&
+        event.target.name === "password")
     ) {
       dispatch({
         type: `${event.target.name}Change`,
@@ -98,7 +104,7 @@ function OverlayFormPropsProvider({
   }
   function BlurAchieved(event: React.FocusEvent<HTMLInputElement>): void {
     if (
-      inputVals.nameBool &&
+      (inputVals.nameBool || inputVals.passwordBool) &&
       !inputVals.email &&
       event.target.name === "email"
     ) {
@@ -107,8 +113,16 @@ function OverlayFormPropsProvider({
         WhichState: "",
       });
     } else if (
-      (inputVals.nameBool && !inputVals.name) ||
-      (inputVals.emailBool && !inputVals.name && event.target.name === "name")
+      (inputVals.nameBool && !inputVals.name && event.target.name === "name") ||
+      ((inputVals.emailBool || inputVals.passwordBool) &&
+        !inputVals.name &&
+        event.target.name === "name") ||
+      (inputVals.passwordBool &&
+        !inputVals.password &&
+        event.target.name === "password") ||
+      ((inputVals.nameBool || inputVals.emailBool) &&
+        !inputVals.password &&
+        event.target.name === "password")
     ) {
       dispatch({
         type: `${event.target.name}Change`,
@@ -116,7 +130,8 @@ function OverlayFormPropsProvider({
       });
     } else if (
       (event.target.name === "name" && inputVals.name !== "") ||
-      (event.target.name === "email" && inputVals.email !== "")
+      (event.target.name === "email" && inputVals.email !== "") ||
+      (event.target.name === "password" && inputVals.password !== "")
     ) {
       dispatch({
         type: `${event.target.name}Change`,
@@ -136,6 +151,7 @@ function OverlayFormPropsProvider({
         [event.target.name]: event.target.value,
         emailBool: true,
         nameBool: false,
+        passwordBool: false,
       });
       let ans = validateEmail(event.target.value);
       if (ans) {
@@ -143,12 +159,21 @@ function OverlayFormPropsProvider({
       } else {
         setValidEmailInp(false);
       }
+    } else if (event.target.name === "password") {
+      setInputVals({
+        ...inputVals,
+        [event.target.name]: event.target.value,
+        emailBool: false,
+        nameBool: false,
+        passwordBool: true,
+      });
     } else {
       setInputVals({
         ...inputVals,
         [event.target.name]: event.target.value,
         emailBool: false,
         nameBool: true,
+        passwordBool: false,
       });
     }
   }
@@ -171,6 +196,23 @@ function OverlayFormPropsProvider({
         setAllowBtn((prev) => ({ ...prev, email: true }));
         dispatch({
           type: `emailChange`,
+          WhichState: "AllBlueFocussed",
+        });
+      }
+    } else if (inputVals.passwordBool && null !== PasswordErrText.current) {
+      if (inputVals.password.length < 8) {
+        console.log("PasswordError");
+        PasswordErrText.current.style.display = "block";
+
+        dispatch({
+          type: `passwordChange`,
+          WhichState: "AllRedFocussed",
+        });
+      } else {
+        PasswordErrText.current.style.display = "none";
+
+        dispatch({
+          type: `passwordChange`,
           WhichState: "AllBlueFocussed",
         });
       }
@@ -206,7 +248,7 @@ function OverlayFormPropsProvider({
         }
       }
     }
-  }, [validEmailInp, inputVals.name, inputVals.email]);
+  }, [validEmailInp, inputVals.name, inputVals.email, inputVals.password]);
   function ResetForm() {
     setInputVals({
       name: "",

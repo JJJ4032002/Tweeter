@@ -21,6 +21,14 @@ function StylesReducer(
       };
       return newStyles;
     }
+    case "passwordChange": {
+      let newStyles = [...styles];
+      newStyles[2] = {
+        type: "password",
+        WhichState: action.WhichState,
+      };
+      return newStyles;
+    }
     case "ResetFields": {
       let newStyles = [
         {
@@ -29,6 +37,10 @@ function StylesReducer(
         },
         {
           type: "email",
+          WhichState: "",
+        },
+        {
+          type: "password",
           WhichState: "",
         },
       ];

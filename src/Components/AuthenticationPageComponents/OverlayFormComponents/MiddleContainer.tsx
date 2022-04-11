@@ -34,9 +34,11 @@ function MiddleContainer() {
           {" "}
           <FormHeading>Enter Password</FormHeading>
           <Form>
-            <LabelBlockComponent type="password">
-              Please enter a valid password
-            </LabelBlockComponent>
+            <div>
+              <LabelBlockComponent type="password">
+                Please enter a password greater than 8 characters
+              </LabelBlockComponent>
+            </div>
           </Form>
         </>
       )}
