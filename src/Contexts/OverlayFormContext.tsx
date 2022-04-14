@@ -49,7 +49,11 @@ function OverlayFormPropsProvider({
       WhichState: "",
     },
   ]);
-  const [allowBtn, setAllowBtn] = useState({ name: false, email: false });
+  const [allowBtn, setAllowBtn] = useState({
+    name: false,
+    email: false,
+    password: false,
+  });
   let NameErrText = useRef<HTMLSpanElement | null>(null);
   let EmailErrText = useRef<HTMLSpanElement | null>(null);
   let PasswordErrText = useRef<HTMLSpanElement | null>(null);
@@ -71,6 +75,7 @@ function OverlayFormPropsProvider({
       setValidNameEmail(false);
     } else {
       setValidNameEmail(true);
+      setAllowBtn((prev) => ({ ...prev, password: false }));
     }
   }
   function FocusAchieved(event: React.FocusEvent<HTMLInputElement>): void {
@@ -203,14 +208,14 @@ function OverlayFormPropsProvider({
       if (inputVals.password.length < 8) {
         console.log("PasswordError");
         PasswordErrText.current.style.display = "block";
-
+        setAllowBtn((prev) => ({ ...prev, password: false }));
         dispatch({
           type: `passwordChange`,
           WhichState: "AllRedFocussed",
         });
       } else {
         PasswordErrText.current.style.display = "none";
-
+        setAllowBtn((prev) => ({ ...prev, password: true }));
         dispatch({
           type: `passwordChange`,
           WhichState: "AllBlueFocussed",
@@ -258,7 +263,7 @@ function OverlayFormPropsProvider({
       emailBool: false,
       passwordBool: false,
     });
-    setAllowBtn({ name: false, email: false });
+    setAllowBtn({ name: false, email: false, password: false });
     dispatch({
       type: "ResetFields",
       WhichState: "",
@@ -268,7 +273,13 @@ function OverlayFormPropsProvider({
       EmailErrText.current.style.display = "none";
     }
   }
-  let FinBtnState = allowBtn.name && allowBtn.email ? true : false;
+  let FinBtnState = true;
+  if (!validNameEmail) {
+    FinBtnState = allowBtn.password ? true : false;
+  } else {
+    FinBtnState = allowBtn.name && allowBtn.email ? true : false;
+  }
+
   let contextVal = {
     Styles: styles,
     FocusAchieved: FocusAchieved,
