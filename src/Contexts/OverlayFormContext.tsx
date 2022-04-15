@@ -8,6 +8,12 @@ import { useState } from "react";
 import { InputValues } from "../Interfaces and Types/Types";
 import { useEffect } from "react";
 import validateEmail from "../helpers/ValidateEmail";
+import {
+  FocusAllRedCombinations,
+  BlurAllRedCombinations,
+  BlurWithTextCombinations,
+  BlurWithoutTextCombinations,
+} from "../helpers/OverlayFormContextHelpers";
 const FormPropsContext = React.createContext<OverlayFormProps>({
   Styles: [
     {
@@ -81,21 +87,7 @@ function OverlayFormPropsProvider({
   function FocusAchieved(event: React.FocusEvent<HTMLInputElement>): void {
     console.log("Focussed", event.target, event.relatedTarget);
 
-    if (
-      (inputVals.nameBool && !inputVals.name && event.target.name === "name") ||
-      (inputVals.emailBool &&
-        !validEmailInp &&
-        event.target.name === "email" &&
-        inputVals.email) ||
-      ((inputVals.emailBool || inputVals.passwordBool) &&
-        event.target.name === "name" &&
-        !inputVals.name &&
-        NameErrText.current != null &&
-        NameErrText.current.style.display === "block") ||
-      (inputVals.passwordBool &&
-        inputVals.password.length < 8 &&
-        event.target.name === "password")
-    ) {
+    if (FocusAllRedCombinations(inputVals, event, validEmailInp, NameErrText)) {
       dispatch({
         type: `${event.target.name}Change`,
         WhichState: "AllRedFocussed",
@@ -108,36 +100,17 @@ function OverlayFormPropsProvider({
     }
   }
   function BlurAchieved(event: React.FocusEvent<HTMLInputElement>): void {
-    if (
-      (inputVals.nameBool || inputVals.passwordBool) &&
-      !inputVals.email &&
-      event.target.name === "email"
-    ) {
+    if (BlurWithoutTextCombinations(inputVals, event)) {
       dispatch({
         type: `${event.target.name}Change`,
         WhichState: "",
       });
-    } else if (
-      (inputVals.nameBool && !inputVals.name && event.target.name === "name") ||
-      ((inputVals.emailBool || inputVals.passwordBool) &&
-        !inputVals.name &&
-        event.target.name === "name") ||
-      (inputVals.passwordBool &&
-        !inputVals.password &&
-        event.target.name === "password") ||
-      ((inputVals.nameBool || inputVals.emailBool) &&
-        !inputVals.password &&
-        event.target.name === "password")
-    ) {
+    } else if (BlurAllRedCombinations(inputVals, event)) {
       dispatch({
         type: `${event.target.name}Change`,
         WhichState: "AllRedBlurred",
       });
-    } else if (
-      (event.target.name === "name" && inputVals.name !== "") ||
-      (event.target.name === "email" && inputVals.email !== "") ||
-      (event.target.name === "password" && inputVals.password !== "")
-    ) {
+    } else if (BlurWithTextCombinations(inputVals, event)) {
       dispatch({
         type: `${event.target.name}Change`,
         WhichState: "WithTextBlurred",
