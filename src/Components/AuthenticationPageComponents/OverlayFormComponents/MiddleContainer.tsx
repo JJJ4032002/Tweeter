@@ -1,11 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import LabelBlockComponent from "./MiddleContainerComponents/LabelBlockComponent";
-import {
-  MiddleContainerBlock,
-  Form,
-  DateOfBirthCont,
-} from "./MiddleContainerCss";
+import { MiddleContainerBlock, Form, PasswordSpan } from "./MiddleContainerCss";
 import { FormPropsContext } from "../../../Contexts/OverlayFormContext";
 
 const FormHeading = styled.h2`
@@ -13,7 +9,12 @@ const FormHeading = styled.h2`
 `;
 
 function MiddleContainer() {
-  let { validNameEmail } = useContext(FormPropsContext);
+  let { validNameEmail, showPassword, handleShowPasswordSpan } =
+    useContext(FormPropsContext);
+  let passwordType = "password";
+  if (showPassword) {
+    passwordType = "text";
+  }
   return (
     <MiddleContainerBlock>
       {validNameEmail ? (
@@ -35,9 +36,18 @@ function MiddleContainer() {
           <FormHeading>Enter Password</FormHeading>
           <Form>
             <div>
-              <LabelBlockComponent type="password">
+              <LabelBlockComponent type={passwordType}>
                 Please enter a password greater than 8 characters
               </LabelBlockComponent>
+              {!showPassword ? (
+                <PasswordSpan onClick={handleShowPasswordSpan}>
+                  Show Password
+                </PasswordSpan>
+              ) : (
+                <PasswordSpan onClick={handleShowPasswordSpan}>
+                  Hide Password
+                </PasswordSpan>
+              )}
             </div>
           </Form>
         </>

@@ -39,6 +39,8 @@ interface OverlayFormProps {
   FinBtnState: boolean;
   validNameEmail: boolean;
   handleSubmitBtnClick: () => void;
+  showPassword: boolean;
+  handleShowPasswordSpan: () => void;
 }
 interface AuthenticationPageContextProps {
   FormStyles: { opacity: number; top: number; bottom: number };

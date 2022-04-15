@@ -19,5 +19,13 @@ const Form = styled.form`
   flex-direction: column;
   gap: 1.8em;
 `;
+const PasswordSpan = styled.span`
+  font-size: 0.8rem;
+  color: #2da7ed;
 
-export { MiddleContainerBlock, Form, DateOfBirthCont };
+  margin-top: 0.4em;
+  margin-left: 0.4em;
+  cursor: pointer;
+`;
+
+export { MiddleContainerBlock, Form, DateOfBirthCont, PasswordSpan };

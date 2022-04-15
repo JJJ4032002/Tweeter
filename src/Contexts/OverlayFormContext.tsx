@@ -36,6 +36,8 @@ const FormPropsContext = React.createContext<OverlayFormProps>({
   FinBtnState: true,
   validNameEmail: true,
   handleSubmitBtnClick: () => {},
+  showPassword: false,
+  handleShowPasswordSpan: () => {},
 });
 
 function OverlayFormPropsProvider({
@@ -72,7 +74,7 @@ function OverlayFormPropsProvider({
     passwordBool: false,
   });
   const [validEmailInp, setValidEmailInp] = useState(false);
-
+  const [showPassword, setShowPassword] = useState(false);
   const [validNameEmail, setValidNameEmail] = useState(true);
   function handleSubmitBtnClick() {
     setInputVals({ ...inputVals, password: "", passwordBool: false });
@@ -82,6 +84,14 @@ function OverlayFormPropsProvider({
     } else {
       setValidNameEmail(true);
       setAllowBtn((prev) => ({ ...prev, password: false }));
+      setShowPassword(false);
+    }
+  }
+  function handleShowPasswordSpan() {
+    if (!showPassword) {
+      setShowPassword(true);
+    } else {
+      setShowPassword(false);
     }
   }
   function FocusAchieved(event: React.FocusEvent<HTMLInputElement>): void {
@@ -270,6 +280,8 @@ function OverlayFormPropsProvider({
     FinBtnState: FinBtnState,
     validNameEmail: validNameEmail,
     handleSubmitBtnClick: handleSubmitBtnClick,
+    showPassword: showPassword,
+    handleShowPasswordSpan: handleShowPasswordSpan,
   };
 
   return (

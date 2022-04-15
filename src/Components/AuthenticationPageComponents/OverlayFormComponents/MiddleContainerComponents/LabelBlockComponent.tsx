@@ -31,7 +31,7 @@ function LabelBlockComponent({ children, type }: LabelBlockComponentProps) {
   if (type === "email") {
     ref = EmailErrRef;
     SpanName = "Email";
-  } else if (type === "password") {
+  } else if (type === "password" || type === "text") {
     ref = PasswordErrRef;
     SpanName = "Password";
   }
@@ -44,6 +44,11 @@ function LabelBlockComponent({ children, type }: LabelBlockComponentProps) {
     styles = Styles[2];
   }
   let FinType = "text";
+  if (type === "password") {
+    FinType = "password";
+  } else if (type === "text") {
+    type = "password";
+  }
   return (
     <LabelBlock>
       <Label WhichState={styles.WhichState} htmlFor={type}>
