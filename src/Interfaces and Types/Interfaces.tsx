@@ -49,9 +49,19 @@ interface actionProps {
   WhichState: string;
 }
 
+interface InputValsInterface {
+  name: string;
+  email: string;
+  password: string;
+  nameBool: boolean;
+  emailBool: boolean;
+  passwordBool: boolean;
+}
+
 export type {
   Props,
   OverlayFormProps,
   actionProps,
   AuthenticationPageContextProps,
+  InputValsInterface,
 };
