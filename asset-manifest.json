@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/Tweeter/static/css/main.852d63f3.css",
-    "main.js": "/Tweeter/static/js/main.8675d895.js",
+    "main.js": "/Tweeter/static/js/main.13c10290.js",
     "static/js/787.e0d44d36.chunk.js": "/Tweeter/static/js/787.e0d44d36.chunk.js",
     "static/media/BannerImg-min.jpg": "/Tweeter/static/media/BannerImg-min.9b7edbd87bf2ac8e93c7.jpg",
     "index.html": "/Tweeter/index.html",
@@ -9,11 +9,11 @@
     "static/media/leftArrow.svg": "/Tweeter/static/media/leftArrow.ceecbfa5efdd8fe4e763afa75999f094.svg",
     "static/media/logo.svg": "/Tweeter/static/media/logo.02393a46a4395632491eaf56495bb813.svg",
     "main.852d63f3.css.map": "/Tweeter/static/css/main.852d63f3.css.map",
-    "main.8675d895.js.map": "/Tweeter/static/js/main.8675d895.js.map",
+    "main.13c10290.js.map": "/Tweeter/static/js/main.13c10290.js.map",
     "787.e0d44d36.chunk.js.map": "/Tweeter/static/js/787.e0d44d36.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.852d63f3.css",
-    "static/js/main.8675d895.js"
+    "static/js/main.13c10290.js"
   ]
 }
