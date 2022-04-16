@@ -13,6 +13,7 @@ import {
   BlurAllRedCombinations,
   BlurWithTextCombinations,
   BlurWithoutTextCombinations,
+  invalidInputLengthChecker,
 } from "../helpers/OverlayFormContextHelpers";
 const FormPropsContext = React.createContext<OverlayFormProps>({
   Styles: [
@@ -133,36 +134,42 @@ function OverlayFormPropsProvider({
     }
   }
   function InputChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    if (event.target.name === "email") {
-      setInputVals({
-        ...inputVals,
-        [event.target.name]: event.target.value,
-        emailBool: true,
-        nameBool: false,
-        passwordBool: false,
-      });
-      let ans = validateEmail(event.target.value);
-      if (ans) {
-        setValidEmailInp(true);
-      } else {
-        setValidEmailInp(false);
-      }
-    } else if (event.target.name === "password") {
-      setInputVals({
-        ...inputVals,
-        [event.target.name]: event.target.value,
-        emailBool: false,
-        nameBool: false,
-        passwordBool: true,
-      });
+    console.log(event.target.value);
+    if (invalidInputLengthChecker(inputVals, event)) {
+      console.log("Do nothing");
+      console.log(event.target.value);
     } else {
-      setInputVals({
-        ...inputVals,
-        [event.target.name]: event.target.value,
-        emailBool: false,
-        nameBool: true,
-        passwordBool: false,
-      });
+      if (event.target.name === "email") {
+        setInputVals({
+          ...inputVals,
+          [event.target.name]: event.target.value,
+          emailBool: true,
+          nameBool: false,
+          passwordBool: false,
+        });
+        let ans = validateEmail(event.target.value);
+        if (ans) {
+          setValidEmailInp(true);
+        } else {
+          setValidEmailInp(false);
+        }
+      } else if (event.target.name === "password") {
+        setInputVals({
+          ...inputVals,
+          [event.target.name]: event.target.value,
+          emailBool: false,
+          nameBool: false,
+          passwordBool: true,
+        });
+      } else {
+        setInputVals({
+          ...inputVals,
+          [event.target.name]: event.target.value,
+          emailBool: false,
+          nameBool: true,
+          passwordBool: false,
+        });
+      }
     }
   }
 
