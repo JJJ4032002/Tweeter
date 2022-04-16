@@ -18,7 +18,7 @@ export const UpperContainerBlock = () => {
             handleSignUpBtn(event);
             ResetForm();
           } else {
-            handleSubmitBtnClick();
+            handleSubmitBtnClick(event);
           }
         }}
         id="closeImg"

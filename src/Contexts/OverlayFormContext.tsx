@@ -8,6 +8,7 @@ import { useState } from "react";
 import { InputValues } from "../Interfaces and Types/Types";
 import { useEffect } from "react";
 import validateEmail from "../helpers/ValidateEmail";
+import { app } from "../firebase/InitializeFirebase";
 import {
   FocusAllRedCombinations,
   BlurAllRedCombinations,
@@ -15,6 +16,7 @@ import {
   BlurWithoutTextCombinations,
   invalidInputLengthChecker,
 } from "../helpers/OverlayFormContextHelpers";
+import RegisterUser from "../firebase/RegisterUser";
 const FormPropsContext = React.createContext<OverlayFormProps>({
   Styles: [
     {
@@ -36,7 +38,7 @@ const FormPropsContext = React.createContext<OverlayFormProps>({
   ResetForm: () => {},
   FinBtnState: true,
   validNameEmail: true,
-  handleSubmitBtnClick: () => {},
+  handleSubmitBtnClick: (event) => {},
   showPassword: false,
   handleShowPasswordSpan: () => {},
 });
@@ -77,15 +79,20 @@ function OverlayFormPropsProvider({
   const [validEmailInp, setValidEmailInp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [validNameEmail, setValidNameEmail] = useState(true);
-  function handleSubmitBtnClick() {
+  function handleSubmitBtnClick(event: React.MouseEvent<HTMLElement>) {
+    let ElementType = event.target as Element;
     setInputVals({ ...inputVals, password: "", passwordBool: false });
     dispatch({ type: "passwordChange", WhichState: "" });
     if (validNameEmail) {
       setValidNameEmail(false);
     } else {
-      setValidNameEmail(true);
-      setAllowBtn((prev) => ({ ...prev, password: false }));
-      setShowPassword(false);
+      if (ElementType.nodeName === "BUTTON") {
+        RegisterUser(inputVals.email, inputVals.password);
+      } else {
+        setValidNameEmail(true);
+        setAllowBtn((prev) => ({ ...prev, password: false }));
+        setShowPassword(false);
+      }
     }
   }
   function handleShowPasswordSpan() {

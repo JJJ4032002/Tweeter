@@ -38,7 +38,7 @@ interface OverlayFormProps {
   ResetForm: () => void;
   FinBtnState: boolean;
   validNameEmail: boolean;
-  handleSubmitBtnClick: () => void;
+  handleSubmitBtnClick: (event: React.MouseEvent<HTMLElement>) => void;
   showPassword: boolean;
   handleShowPasswordSpan: () => void;
 }
