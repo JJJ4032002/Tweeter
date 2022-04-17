@@ -43,9 +43,7 @@ const FormPropsContext = React.createContext<OverlayFormProps>({
   handleShowPasswordSpan: () => {},
 });
 
-function OverlayFormPropsProvider({
-  children,
-}: OverlayContextProviderChildren) {
+function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
   const [styles, dispatch] = useReducer(StylesReducer, [
     {
       type: "name",
@@ -305,4 +303,4 @@ function OverlayFormPropsProvider({
   );
 }
 
-export { OverlayFormPropsProvider, FormPropsContext };
+export { SignUpFormPropsProvider, FormPropsContext };

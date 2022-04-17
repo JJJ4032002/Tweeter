@@ -5,7 +5,7 @@ import logo from "../../../assets/Icons/logo.svg";
 import close from "../../../assets/Icons/close.svg";
 import leftArrow from "../../../assets/Icons/leftArrow.svg";
 import { AuthenticationPageContext } from "../../../Contexts/AuthenticationPageContext";
-import { FormPropsContext } from "../../../Contexts/OverlayFormContext";
+import { FormPropsContext } from "../../../Contexts/SignUpFormContext";
 export const UpperContainerBlock = () => {
   let { handleSignUpBtn } = useContext(AuthenticationPageContext);
   let { ResetForm, validNameEmail, handleSubmitBtnClick } =

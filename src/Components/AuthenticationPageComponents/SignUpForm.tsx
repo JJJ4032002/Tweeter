@@ -1,20 +1,20 @@
 import styled from "styled-components";
-import { FormContainer, Overlay } from "./OverlayFormCss";
+import { FormContainer, Overlay } from "./SignUpFormCss";
 
-import { UpperContainerBlock } from "./OverlayFormComponents/UpperContainer";
+import { UpperContainerBlock } from "./SignUpFormComponents/UpperContainer";
 
-import MiddleContainer from "./OverlayFormComponents/MiddleContainer";
+import MiddleContainer from "./SignUpFormComponents/MiddleContainer";
 
 import { useContext } from "react";
-import LowerContainer from "./OverlayFormComponents/LowerContainer";
+import LowerContainer from "./SignUpFormComponents/LowerContainer";
 import { AuthenticationPageContext } from "../../Contexts/AuthenticationPageContext";
 
-function OverlayForm() {
+function SignUpForm() {
   let { FormStyles } = useContext(AuthenticationPageContext);
-  let { opacity, top, bottom } = FormStyles;
+  let { opacity, display } = FormStyles;
   return (
     <>
-      <Overlay opacity={opacity} top={top} bottom={bottom}>
+      <Overlay opacity={opacity} display={display}>
         <FormContainer>
           <UpperContainerBlock></UpperContainerBlock>
           <MiddleContainer></MiddleContainer>
@@ -25,4 +25,4 @@ function OverlayForm() {
   );
 }
 
-export default OverlayForm;
+export default SignUpForm;

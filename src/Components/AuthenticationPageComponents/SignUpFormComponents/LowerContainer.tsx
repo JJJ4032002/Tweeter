@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import { FormPropsContext } from "../../../Contexts/OverlayFormContext";
+import { FormPropsContext } from "../../../Contexts/SignUpFormContext";
 import { SubmitButton, LowerContainerBlock } from "./LowerContainerCss";
 
 function LowerContainer() {

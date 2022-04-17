@@ -15,6 +15,7 @@ interface Props {
   nameDisp?: string;
   emailDisp?: string;
   textColor?: string;
+  display?: string;
   opacity?: number;
   top?: number;
   bottom?: number;
@@ -43,7 +44,7 @@ interface OverlayFormProps {
   handleShowPasswordSpan: () => void;
 }
 interface AuthenticationPageContextProps {
-  FormStyles: { opacity: number; top: number; bottom: number };
+  FormStyles: { opacity: number; display: string };
   handleSignUpBtn: (event: React.MouseEvent<HTMLElement>) => void;
 }
 interface actionProps {

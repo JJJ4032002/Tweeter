@@ -10,7 +10,7 @@ import {
   InputStateProps,
   LabelBlockComponentProps,
 } from "../../../../Interfaces and Types/Types";
-import { FormPropsContext } from "../../../../Contexts/OverlayFormContext";
+import { FormPropsContext } from "../../../../Contexts/SignUpFormContext";
 function LabelBlockComponent({ children, type }: LabelBlockComponentProps) {
   let {
     Styles,

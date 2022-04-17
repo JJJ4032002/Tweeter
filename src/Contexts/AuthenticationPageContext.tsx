@@ -3,7 +3,7 @@ import { AuthenticationPageContextProps } from "../Interfaces and Types/Interfac
 import { AuthenticationContextProviderChildren } from "../Interfaces and Types/Types";
 
 let AuthenticationPageContext = createContext<AuthenticationPageContextProps>({
-  FormStyles: { opacity: 1, top: 0, bottom: 0 },
+  FormStyles: { opacity: 1, display: "none" },
   handleSignUpBtn: (event) => {},
 });
 
@@ -12,8 +12,7 @@ function AuthenticationPageContextProvider({
 }: AuthenticationContextProviderChildren) {
   let [FormStyles, setFormStyles] = useState({
     opacity: 1,
-    top: -15000,
-    bottom: 15000,
+    display: "none",
   });
   function handleSignUpBtn(event: React.MouseEvent<HTMLElement>) {
     let ElementType = event.target as Element;
@@ -22,12 +21,12 @@ function AuthenticationPageContextProvider({
       window.scrollTo(0, 0);
 
       document.body.style.overflowY = "hidden";
-      setFormStyles({ opacity: 1, top: 0, bottom: 0 });
+      setFormStyles({ opacity: 1, display: "flex" });
     } else {
       window.scrollTo(0, 0);
 
       document.body.style.overflowY = "visible";
-      setFormStyles({ opacity: 1, top: -15000, bottom: 15000 });
+      setFormStyles({ opacity: 1, display: "none" });
     }
   }
   let contextObj = {
