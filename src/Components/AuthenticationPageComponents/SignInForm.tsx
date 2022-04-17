@@ -1,7 +1,11 @@
 import React from "react";
-
+import { Overlay, FormContainer } from "./SignUpFormCss";
 function SignInForm() {
-  return <div>SignInForm</div>;
+  return (
+    <Overlay>
+      <FormContainer></FormContainer>
+    </Overlay>
+  );
 }
 
 export default SignInForm;

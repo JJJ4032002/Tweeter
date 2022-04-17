@@ -7,6 +7,7 @@ import { OverlayFormProps } from "../Interfaces and Types/Interfaces";
 import validateEmail from "../helpers/ValidateEmail";
 import { AuthenticationPageContextProvider } from "../Contexts/AuthenticationPageContext";
 import { SignUpFormPropsProvider } from "../Contexts/SignUpFormContext";
+import SignInForm from "./AuthenticationPageComponents/SignInForm";
 function AuthenticationPage() {
   return (
     <GridContainer>
