@@ -11,6 +11,7 @@ import {
   LabelBlockComponentProps,
 } from "../../../../Interfaces and Types/Types";
 import { FormPropsContext } from "../../../../Contexts/SignUpFormContext";
+import LabelComponent from "./LabelComponent";
 function LabelBlockComponent({ children, type }: LabelBlockComponentProps) {
   let {
     Styles,
@@ -61,6 +62,7 @@ function LabelBlockComponent({ children, type }: LabelBlockComponentProps) {
           onBlur={BlurAchieved}
           type={FinType}
         />
+        <LabelComponent inputType="signUp"></LabelComponent>
         <SpanText WhichState={styles.WhichState}>{SpanName}</SpanText>
       </Label>
       <ErrorText ref={ref}>{children}</ErrorText>

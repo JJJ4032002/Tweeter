@@ -1,7 +1,8 @@
 import React from "react";
 import { Label, SpanText, Input } from "./LabelComponentCss";
 import { InputStateProps } from "../../../../Interfaces and Types/Types";
-function LabelComponent() {
+import { inputTypeInterface } from "../../../../Interfaces and Types/Interfaces";
+function LabelComponent({ inputType }: inputTypeInterface) {
   let styles = {
     type: "name",
     WhichState: "",
