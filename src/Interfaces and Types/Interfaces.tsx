@@ -43,6 +43,9 @@ interface OverlayFormProps {
   showPassword: boolean;
   handleShowPasswordSpan: () => void;
 }
+interface OverlaySignInFormProps {
+  Styles: ChangeStyles;
+}
 interface AuthenticationPageContextProps {
   FormStyles: { opacity: number; display: string };
   handleSignUpBtn: (event: React.MouseEvent<HTMLElement>) => void;
@@ -60,6 +63,12 @@ interface InputValsInterface {
   emailBool: boolean;
   passwordBool: boolean;
 }
+interface SignInInputValsInterface {
+  email: string;
+  password: string;
+  emailBool: boolean;
+  passwordBool: boolean;
+}
 
 export type {
   Props,
@@ -67,4 +76,6 @@ export type {
   actionProps,
   AuthenticationPageContextProps,
   InputValsInterface,
+  OverlaySignInFormProps,
+  SignInInputValsInterface,
 };
