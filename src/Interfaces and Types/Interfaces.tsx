@@ -44,7 +44,11 @@ interface OverlayFormProps {
   handleShowPasswordSpan: () => void;
 }
 interface OverlaySignInFormProps {
-  Styles: ChangeStyles;
+  SignInStyles: ChangeStyles;
+  SignInFocusAchieved: (event: React.FocusEvent<HTMLInputElement>) => void;
+  SignInBlurAchieved: (event: React.FocusEvent<HTMLInputElement>) => void;
+  SignInInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  SignInResetForm: () => void;
 }
 interface AuthenticationPageContextProps {
   FormStyles: { opacity: number; display: string };
@@ -69,7 +73,9 @@ interface SignInInputValsInterface {
   emailBool: boolean;
   passwordBool: boolean;
 }
-
+interface inputTypeInterface {
+  inputType: string;
+}
 export type {
   Props,
   OverlayFormProps,
@@ -78,4 +84,5 @@ export type {
   InputValsInterface,
   OverlaySignInFormProps,
   SignInInputValsInterface,
+  inputTypeInterface,
 };
