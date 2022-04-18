@@ -4,8 +4,9 @@ import {
   SignInWithoutTextBlurCombinations,
   SignInWithTextBlurCombinations,
 } from "../helpers/OverlayFormContextHelpers";
+import { OverlayContextProviderChildren } from "../Interfaces and Types/Types";
 const SignInFormPropsContext = React.createContext<OverlaySignInFormProps>({
-  Styles: [
+  SignInStyles: [
     {
       type: "email",
       WhichState: "",
@@ -15,9 +16,15 @@ const SignInFormPropsContext = React.createContext<OverlaySignInFormProps>({
       WhichState: "",
     },
   ],
+  SignInFocusAchieved: (event) => {},
+  SignInBlurAchieved: (event) => {},
+  SignInInputChange: (event) => {},
+  SignInResetForm: () => {},
 });
 
-function SignInFormContextProvider() {
+function SignInFormContextProvider({
+  children,
+}: OverlayContextProviderChildren) {
   const [styles, setStyles] = useState([
     {
       type: "email",
@@ -120,8 +127,14 @@ function SignInFormContextProvider() {
     SignInStyles: styles,
     SignInFocusAchieved: SignInFocusAchieved,
     SignInBlurAchieved: SignInBlurAchieved,
+    SignInInputChange: SignInInputChange,
+    SignInResetForm: SignInResetForm,
   };
-  return <div>SignInFormContext</div>;
+  return (
+    <SignInFormPropsContext.Provider value={ContextObj}>
+      {children}
+    </SignInFormPropsContext.Provider>
+  );
 }
 
 export default SignInFormContextProvider;
