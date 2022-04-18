@@ -1,4 +1,7 @@
-import { InputValsInterface } from "../Interfaces and Types/Interfaces";
+import {
+  InputValsInterface,
+  SignInInputValsInterface,
+} from "../Interfaces and Types/Interfaces";
 
 function FocusAllRedCombinations(
   inputVals: InputValsInterface,
@@ -96,10 +99,43 @@ function invalidInputLengthChecker(
   }
 }
 
+function SignInWithoutTextBlurCombinations(
+  inputVals: SignInInputValsInterface,
+  event: React.FocusEvent<HTMLInputElement>
+) {
+  if (
+    (event.target.name === "password" && inputVals.passwordBool) ||
+    (inputVals.emailBool && !inputVals.email) ||
+    (event.target.name === "email" && inputVals.passwordBool) ||
+    (inputVals.emailBool && !inputVals.password)
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+function SignInWithTextBlurCombinations(
+  inputVals: SignInInputValsInterface,
+  event: React.FocusEvent<HTMLInputElement>
+) {
+  if (
+    (event.target.name === "password" && inputVals.passwordBool) ||
+    (inputVals.emailBool && inputVals.email) ||
+    (event.target.name === "email" && inputVals.passwordBool) ||
+    (inputVals.emailBool && inputVals.password)
+  ) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 export {
   FocusAllRedCombinations,
   BlurAllRedCombinations,
   BlurWithTextCombinations,
   BlurWithoutTextCombinations,
   invalidInputLengthChecker,
+  SignInWithoutTextBlurCombinations,
+  SignInWithTextBlurCombinations,
 };
