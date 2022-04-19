@@ -15,7 +15,6 @@ function AuthenticationPage() {
         <AuthenticationPageContextProvider>
           <MainComponent></MainComponent>
           <SignUpForm></SignUpForm>
-          <SignInForm></SignInForm>
         </AuthenticationPageContextProvider>
       </SignUpFormPropsProvider>
     </GridContainer>

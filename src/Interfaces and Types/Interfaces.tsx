@@ -32,7 +32,7 @@ interface OverlayFormProps {
   PasswordErrRef: { current: HTMLElement | null };
   InputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   InputStates: {
-    name: string;
+    name?: string;
     email: string;
     password: string;
   };
@@ -45,6 +45,7 @@ interface OverlayFormProps {
 }
 interface OverlaySignInFormProps {
   SignInStyles: ChangeStyles;
+  signInInputStates: { email: string; password: string };
   SignInFocusAchieved: (event: React.FocusEvent<HTMLInputElement>) => void;
   SignInBlurAchieved: (event: React.FocusEvent<HTMLInputElement>) => void;
   SignInInputChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
@@ -74,6 +75,7 @@ interface SignInInputValsInterface {
   passwordBool: boolean;
 }
 interface inputTypeInterface {
+  type: string;
   inputType: string;
 }
 export type {

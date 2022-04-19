@@ -16,6 +16,7 @@ const SignInFormPropsContext = React.createContext<OverlaySignInFormProps>({
       WhichState: "",
     },
   ],
+  signInInputStates: { email: "", password: "" },
   SignInFocusAchieved: (event) => {},
   SignInBlurAchieved: (event) => {},
   SignInInputChange: (event) => {},
@@ -125,6 +126,7 @@ function SignInFormContextProvider({
   }
   let ContextObj = {
     SignInStyles: styles,
+    signInInputStates: { email: inputVals.email, password: inputVals.password },
     SignInFocusAchieved: SignInFocusAchieved,
     SignInBlurAchieved: SignInBlurAchieved,
     SignInInputChange: SignInInputChange,
@@ -137,4 +139,4 @@ function SignInFormContextProvider({
   );
 }
 
-export default SignInFormContextProvider;
+export { SignInFormContextProvider, SignInFormPropsContext };
