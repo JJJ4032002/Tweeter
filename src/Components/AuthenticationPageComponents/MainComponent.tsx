@@ -28,13 +28,19 @@ function MainComponent() {
         <SignUpButtonsDiv>
           <Buttons>Sign in with google</Buttons>
           <Para>or</Para>
-          <Buttons onClick={handleSignUpBtn} primary={true}>
+          <Buttons
+            className="SignUpBtn"
+            onClick={handleSignUpBtn}
+            primary={true}
+          >
             Sign up with email
           </Buttons>
         </SignUpButtonsDiv>
         <SignInButtonsDiv>
           <Para primary={true}>Already have an account ?</Para>
-          <Buttons className="SignUp">Sign in</Buttons>
+          <Buttons onClick={handleSignUpBtn} className="SignIn">
+            Sign in
+          </Buttons>
         </SignInButtonsDiv>
       </GridItemTwo>
     </>

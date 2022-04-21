@@ -23,9 +23,7 @@ const SignInFormPropsContext = React.createContext<OverlaySignInFormProps>({
   SignInResetForm: () => {},
 });
 
-function SignInFormContextProvider({
-  children,
-}: OverlayContextProviderChildren) {
+function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
   const [styles, setStyles] = useState([
     {
       type: "email",
@@ -139,4 +137,4 @@ function SignInFormContextProvider({
   );
 }
 
-export { SignInFormContextProvider, SignInFormPropsContext };
+export { SignInFormPropsProvider, SignInFormPropsContext };
