@@ -12,7 +12,7 @@ const Buttons = styled.button<Props>`
   background: transparent;
   border: 0.1em solid rgba(0, 0, 0, 0.2);
 
-  &.SignUp {
+  &.SignIn {
     color: #2da7ed;
   }
   &:hover {
