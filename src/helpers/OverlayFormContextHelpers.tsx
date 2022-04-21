@@ -104,10 +104,14 @@ function SignInWithoutTextBlurCombinations(
   event: React.FocusEvent<HTMLInputElement>
 ) {
   if (
-    (event.target.name === "password" && inputVals.passwordBool) ||
-    (inputVals.emailBool && !inputVals.email) ||
-    (event.target.name === "email" && inputVals.passwordBool) ||
-    (inputVals.emailBool && !inputVals.password)
+    (event.target.name === "password" &&
+      (inputVals.emailBool || inputVals.passwordBool) &&
+      !inputVals.password) ||
+    (event.target.name === "password" && !inputVals.password) ||
+    (event.target.name === "email" && !inputVals.email) ||
+    (event.target.name === "email" &&
+      (inputVals.emailBool || inputVals.passwordBool) &&
+      !inputVals.email)
   ) {
     return true;
   } else {
