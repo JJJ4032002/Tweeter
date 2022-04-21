@@ -5,6 +5,7 @@ import { AuthenticationContextProviderChildren } from "../Interfaces and Types/T
 let AuthenticationPageContext = createContext<AuthenticationPageContextProps>({
   FormStyles: { opacity: 1, display: "none" },
   handleSignUpBtn: (event) => {},
+  signInFormStyles: { opacity: 1, display: "none" },
 });
 
 function AuthenticationPageContextProvider({
@@ -14,24 +15,38 @@ function AuthenticationPageContextProvider({
     opacity: 1,
     display: "none",
   });
+  let [signInFormStyles, setSignInFormStyles] = useState({
+    opacity: 1,
+    display: "none",
+  });
   function handleSignUpBtn(event: React.MouseEvent<HTMLElement>) {
     let ElementType = event.target as Element;
-    console.log(ElementType.nodeName);
+
     if (ElementType.nodeName === "BUTTON") {
       window.scrollTo(0, 0);
 
       document.body.style.overflowY = "hidden";
-      setFormStyles({ opacity: 1, display: "flex" });
+      if (ElementType.className === "SignUpBtn") {
+        setFormStyles({ opacity: 1, display: "flex" });
+      } else {
+        console.log("hello");
+        setSignInFormStyles({ opacity: 1, display: "flex" });
+      }
     } else {
       window.scrollTo(0, 0);
 
       document.body.style.overflowY = "visible";
-      setFormStyles({ opacity: 1, display: "none" });
+      if (ElementType.className === "SignUpBtn") {
+        setFormStyles({ opacity: 1, display: "none" });
+      } else {
+        setSignInFormStyles({ opacity: 1, display: "none" });
+      }
     }
   }
   let contextObj = {
     FormStyles: FormStyles,
     handleSignUpBtn: handleSignUpBtn,
+    signInFormStyles: signInFormStyles,
   };
   return (
     <AuthenticationPageContext.Provider value={contextObj}>
