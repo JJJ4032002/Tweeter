@@ -6,21 +6,19 @@ import { GridContainer } from "./AuthenticationPageCss";
 import { OverlayFormProps } from "../Interfaces and Types/Interfaces";
 import validateEmail from "../helpers/ValidateEmail";
 import { AuthenticationPageContextProvider } from "../Contexts/AuthenticationPageContext";
-import { SignUpFormPropsProvider } from "../Contexts/SignUpFormContext";
+
 import { SignInFormPropsProvider } from "../Contexts/SignInFormContext";
 import SignInForm from "./AuthenticationPageComponents/SignInForm";
 function AuthenticationPage() {
   return (
     <GridContainer>
-      <SignUpFormPropsProvider>
-        <SignInFormPropsProvider>
-          <AuthenticationPageContextProvider>
-            <MainComponent></MainComponent>
-            <SignUpForm></SignUpForm>
-            <SignInForm></SignInForm>
-          </AuthenticationPageContextProvider>
-        </SignInFormPropsProvider>
-      </SignUpFormPropsProvider>
+      <SignInFormPropsProvider>
+        <AuthenticationPageContextProvider>
+          <MainComponent></MainComponent>
+          <SignUpForm></SignUpForm>
+          <SignInForm></SignInForm>
+        </AuthenticationPageContextProvider>
+      </SignInFormPropsProvider>
     </GridContainer>
   );
 }
