@@ -26,7 +26,9 @@ function AuthenticationPageContextProvider({
       window.scrollTo(0, 0);
 
       document.body.style.overflowY = "hidden";
-      if (ElementType.className === "SignUpBtn") {
+
+      if (ElementType.classList.contains("SignUpBtn")) {
+        console.log("It works");
         setFormStyles({ opacity: 1, display: "flex" });
       } else {
         console.log("hello");
@@ -36,7 +38,7 @@ function AuthenticationPageContextProvider({
       window.scrollTo(0, 0);
 
       document.body.style.overflowY = "visible";
-      if (ElementType.className === "SignUpBtn") {
+      if (ElementType.classList.contains("SignUpBtn")) {
         setFormStyles({ opacity: 1, display: "none" });
       } else {
         setSignInFormStyles({ opacity: 1, display: "none" });
