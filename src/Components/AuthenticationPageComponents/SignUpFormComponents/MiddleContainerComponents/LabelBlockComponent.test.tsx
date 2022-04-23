@@ -19,4 +19,12 @@ describe("Render label component", () => {
     );
     expect(container).toMatchSnapshot();
   });
+  it("Renders password Label block correctly", () => {
+    const { container } = render(
+      <LabelBlockComponent type="password">
+        Please enter a password greater than 8 characters
+      </LabelBlockComponent>
+    );
+    expect(container).toMatchSnapshot();
+  });
 });
