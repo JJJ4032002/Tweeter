@@ -14,8 +14,8 @@ function SignUpForm() {
       <SignUpFormPropsProvider>
         <Overlay opacity={opacity} display={display}>
           <FormContainer>
-            <UpperContainer></UpperContainer>
-            <MiddleContainer></MiddleContainer>
+            <UpperContainer signIn={false}></UpperContainer>
+            <MiddleContainer signIn={false}></MiddleContainer>
             <LowerContainer></LowerContainer>
           </FormContainer>
         </Overlay>

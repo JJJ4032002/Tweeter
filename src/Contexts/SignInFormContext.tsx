@@ -21,6 +21,8 @@ const SignInFormPropsContext = React.createContext<OverlaySignInFormProps>({
   SignInBlurAchieved: (event) => {},
   SignInInputChange: (event) => {},
   SignInResetForm: () => {},
+  signInShowPassword: false,
+  handleSignInShowPasswordSpan: () => {},
 });
 
 function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
@@ -40,6 +42,14 @@ function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
     emailBool: false,
     passwordBool: false,
   });
+  const [signInShowPassword, setSignInShowPassword] = useState(false);
+  function handleSignInShowPasswordSpan() {
+    if (!signInShowPassword) {
+      setSignInShowPassword(true);
+    } else {
+      setSignInShowPassword(false);
+    }
+  }
   function SignInFocusAchieved(
     event: React.FocusEvent<HTMLInputElement>
   ): void {
@@ -121,6 +131,7 @@ function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
         WhichState: "",
       },
     ]);
+    setSignInShowPassword(false);
   }
   let ContextObj = {
     SignInStyles: styles,
@@ -129,6 +140,8 @@ function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
     SignInBlurAchieved: SignInBlurAchieved,
     SignInInputChange: SignInInputChange,
     SignInResetForm: SignInResetForm,
+    signInShowPassword: signInShowPassword,
+    handleSignInShowPasswordSpan: handleSignInShowPasswordSpan,
   };
   return (
     <SignInFormPropsContext.Provider value={ContextObj}>
