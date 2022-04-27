@@ -11,7 +11,6 @@ const Buttons = styled.button<Props>`
   border-radius: 5em;
   background: transparent;
   border: 0.1em solid rgba(0, 0, 0, 0.2);
-
   &.SignIn {
     color: #2da7ed;
   }
@@ -37,6 +36,7 @@ const Buttons = styled.button<Props>`
 const Para = styled.p<Props>`
   width: 70%;
   text-align: center;
+  font-size: clamp(0.8rem, 0.65rem + 0.6667vw, 1rem);
   ${(props) =>
     props.primary &&
     css`

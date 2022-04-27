@@ -16,7 +16,7 @@ function SignUpForm() {
           <FormContainer>
             <UpperContainer signIn={false}></UpperContainer>
             <MiddleContainer signIn={false}></MiddleContainer>
-            <LowerContainer></LowerContainer>
+            <LowerContainer signIn={false}></LowerContainer>
           </FormContainer>
         </Overlay>
       </SignUpFormPropsProvider>
