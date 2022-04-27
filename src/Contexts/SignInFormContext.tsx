@@ -5,6 +5,7 @@ import {
   SignInWithTextBlurCombinations,
 } from "../helpers/OverlayFormContextHelpers";
 import { OverlayContextProviderChildren } from "../Interfaces and Types/Types";
+import SignInUser from "../firebase/SignInUser";
 const SignInFormPropsContext = React.createContext<OverlaySignInFormProps>({
   SignInStyles: [
     {
@@ -116,7 +117,9 @@ function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
       });
     }
   }
-  function handleSignInSubmitButton(event: React.MouseEvent<HTMLElement>) {}
+  function handleSignInSubmitButton(event: React.MouseEvent<HTMLElement>) {
+    SignInUser(inputVals.email, inputVals.password);
+  }
   function SignInResetForm() {
     setInputVals({
       email: "",
