@@ -16,7 +16,7 @@ import {
   BlurWithoutTextCombinations,
   invalidInputLengthChecker,
 } from "../helpers/OverlayFormContextHelpers";
-import RegisterUser from "../firebase/RegisterUser";
+import SignUpUser from "../firebase/SignUpUser";
 const FormPropsContext = React.createContext<OverlayFormProps>({
   Styles: [
     {
@@ -89,7 +89,7 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
       setValidNameEmail(false);
     } else {
       if (ElementType.nodeName === "BUTTON") {
-        RegisterUser(inputVals.email, inputVals.password);
+        SignUpUser(inputVals.email, inputVals.password);
       } else {
         setValidNameEmail(true);
         setAllowBtn((prev) => ({ ...prev, password: false }));
