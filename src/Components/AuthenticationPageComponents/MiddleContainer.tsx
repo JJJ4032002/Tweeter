@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import LabelBlockComponent from "./MiddleContainerComponents/LabelBlockComponent";
+import LabelBlockComponent from "./SignUpFormComponents/MiddleContainerComponents/LabelBlockComponent";
 import { MiddleContainerBlock, Form, PasswordSpan } from "./MiddleContainerCss";
-import { FormPropsContext } from "../../../Contexts/SignUpFormContext";
-import PasswordSpanComponent from "./MiddleContainerComponents/PasswordSpanComponent";
-import { SignInFormPropsContext } from "../../../Contexts/SignInFormContext";
-import { FormContainersProps } from "../../../Interfaces and Types/Interfaces";
-import LabelComponent from "./MiddleContainerComponents/LabelComponent";
+import { FormPropsContext } from "../../Contexts/SignUpFormContext";
+import PasswordSpanComponent from "./PasswordSpanComponent";
+import { SignInFormPropsContext } from "../../Contexts/SignInFormContext";
+import { FormContainersProps } from "../../Interfaces and Types/Interfaces";
+import LabelComponent from "./LabelComponent";
 const FormHeading = styled.h2`
   font-size: clamp(1.2rem, 1.1571rem + 0.2143vw, 1.5rem);
 `;

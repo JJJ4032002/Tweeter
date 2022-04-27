@@ -1,6 +1,6 @@
-import { Props } from "../../../Interfaces and Types/Interfaces";
+import { Props } from "../../Interfaces and Types/Interfaces";
 import styled, { css } from "styled-components";
-import { Buttons } from "../../AuthenticationPageCss";
+import { Buttons } from "../AuthenticationPageCss";
 const SubmitButton = styled(Buttons)<Props>`
   width: 100%;
   border-radius: 5em;

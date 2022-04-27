@@ -1,6 +1,6 @@
 import React from "react";
-import { PasswordSpan } from "../MiddleContainerCss";
-import { PasswordSpanProps } from "../../../../Interfaces and Types/Interfaces";
+import { PasswordSpan } from "./MiddleContainerCss";
+import { PasswordSpanProps } from "../../Interfaces and Types/Interfaces";
 function PasswordSpanComponent({
   showPassword,
   handleShowPasswordSpan,

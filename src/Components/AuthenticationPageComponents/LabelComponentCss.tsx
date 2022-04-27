@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { Props } from "../../../../Interfaces and Types/Interfaces";
+import { Props } from "../../Interfaces and Types/Interfaces";
 const Label = styled.label<Props>`
   border-width: 1px;
   border-color: #cfd9de;

@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Overlay, FormContainer } from "./SignUpFormCss";
 import { AuthenticationPageContext } from "../../Contexts/AuthenticationPageContext";
-import { UpperContainer } from "./SignUpFormComponents/UpperContainer";
-import MiddleContainer from "./SignUpFormComponents/MiddleContainer";
-import LowerContainer from "./SignUpFormComponents/LowerContainer";
+import { UpperContainer } from "./UpperContainer";
+import MiddleContainer from "./MiddleContainer";
+import LowerContainer from "./LowerContainer";
 function SignInForm() {
   let { signInFormStyles } = useContext(AuthenticationPageContext);
 

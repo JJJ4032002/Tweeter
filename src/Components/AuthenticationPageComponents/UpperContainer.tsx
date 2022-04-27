@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import { UpperContainerBlock } from "./UpperContainerCss";
-import { Image } from "../../AuthenticationPageCss";
-import logo from "../../../assets/Icons/logo.svg";
-import close from "../../../assets/Icons/close.svg";
-import leftArrow from "../../../assets/Icons/leftArrow.svg";
-import { AuthenticationPageContext } from "../../../Contexts/AuthenticationPageContext";
-import { FormPropsContext } from "../../../Contexts/SignUpFormContext";
-import { SignInFormPropsContext } from "../../../Contexts/SignInFormContext";
-import { FormContainersProps } from "../../../Interfaces and Types/Interfaces";
+import { Image } from "../AuthenticationPageCss";
+import logo from "../../assets/Icons/logo.svg";
+import close from "../../assets/Icons/close.svg";
+import leftArrow from "../../assets/Icons/leftArrow.svg";
+import { AuthenticationPageContext } from "../../Contexts/AuthenticationPageContext";
+import { FormPropsContext } from "../../Contexts/SignUpFormContext";
+import { SignInFormPropsContext } from "../../Contexts/SignInFormContext";
+import { FormContainersProps } from "../../Interfaces and Types/Interfaces";
 export const UpperContainer = ({ signIn }: FormContainersProps) => {
   let { handleSignUpBtn } = useContext(AuthenticationPageContext);
   let { ResetForm, validNameEmail, handleSubmitBtnClick } =

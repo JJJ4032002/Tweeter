@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Label, SpanText, Input } from "./LabelComponentCss";
-import { InputStateProps } from "../../../../Interfaces and Types/Types";
-import { inputTypeInterface } from "../../../../Interfaces and Types/Interfaces";
-import { FormPropsContext } from "../../../../Contexts/SignUpFormContext";
-import { SignInFormPropsContext } from "../../../../Contexts/SignInFormContext";
+import { InputStateProps } from "../../Interfaces and Types/Types";
+import { inputTypeInterface } from "../../Interfaces and Types/Interfaces";
+import { FormPropsContext } from "../../Contexts/SignUpFormContext";
+import { SignInFormPropsContext } from "../../Contexts/SignInFormContext";
 function LabelComponent({ type, inputType }: inputTypeInterface) {
   let { Styles, FocusAchieved, BlurAchieved, InputChange, InputStates } =
     useContext(FormPropsContext);

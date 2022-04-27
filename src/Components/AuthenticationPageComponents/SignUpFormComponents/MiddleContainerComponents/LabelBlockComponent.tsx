@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { LabelBlock, ErrorText } from "./LabelBlockComponentCss";
 import { LabelBlockComponentProps } from "../../../../Interfaces and Types/Types";
 import { FormPropsContext } from "../../../../Contexts/SignUpFormContext";
-import LabelComponent from "./LabelComponent";
+import LabelComponent from "../../LabelComponent";
 function LabelBlockComponent({ children, type }: LabelBlockComponentProps) {
   let { NameErrRef, EmailErrRef, PasswordErrRef } =
     useContext(FormPropsContext);

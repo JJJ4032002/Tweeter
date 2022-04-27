@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 
-import { FormPropsContext } from "../../../Contexts/SignUpFormContext";
-import { FormContainersProps } from "../../../Interfaces and Types/Interfaces";
+import { FormPropsContext } from "../../Contexts/SignUpFormContext";
+import { FormContainersProps } from "../../Interfaces and Types/Interfaces";
 import { SubmitButton, LowerContainerBlock } from "./LowerContainerCss";
-import { SignInFormPropsContext } from "../../../Contexts/SignInFormContext";
+import { SignInFormPropsContext } from "../../Contexts/SignInFormContext";
 function LowerContainer({ signIn }: FormContainersProps) {
   let { FinBtnState, handleSubmitBtnClick } = useContext(FormPropsContext);
   let { SignInFinBtnState, handleSignInSubmitButton } = useContext(
