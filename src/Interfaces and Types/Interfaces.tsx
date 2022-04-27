@@ -52,6 +52,8 @@ interface OverlaySignInFormProps {
   SignInResetForm: () => void;
   signInShowPassword: boolean;
   handleSignInShowPasswordSpan: () => void;
+  handleSignInSubmitButton: (event: React.MouseEvent<HTMLElement>) => void;
+  SignInFinBtnState: boolean;
 }
 interface AuthenticationPageContextProps {
   FormStyles: { opacity: number; display: string };
