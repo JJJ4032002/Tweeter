@@ -45,6 +45,7 @@ const FormPropsContext = React.createContext<OverlayFormProps>({
   handleSubmitBtnClick: (event) => {},
   showPassword: false,
   handleShowPasswordSpan: () => {},
+  SignUpErr: false,
 });
 
 function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
@@ -81,6 +82,7 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
   const [validEmailInp, setValidEmailInp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [validNameEmail, setValidNameEmail] = useState(true);
+  const [SignUpErr, setSignUpErr] = useState(false);
   function handleSubmitBtnClick(event: React.MouseEvent<HTMLElement>) {
     let ElementType = event.target as Element;
     setInputVals({ ...inputVals, password: "", passwordBool: false });
@@ -89,13 +91,16 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
       setValidNameEmail(false);
     } else {
       if (ElementType.nodeName === "BUTTON") {
-        SignUpUser(inputVals.email, inputVals.password);
+        SignUpUser(inputVals.email, inputVals.password, handleSignUpErr);
       } else {
         setValidNameEmail(true);
         setAllowBtn((prev) => ({ ...prev, password: false }));
         setShowPassword(false);
       }
     }
+  }
+  function handleSignUpErr(param: boolean) {
+    setSignUpErr(param);
   }
   function handleShowPasswordSpan() {
     if (!showPassword) {
@@ -104,6 +109,11 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
       setShowPassword(false);
     }
   }
+  useEffect(() => {
+    setTimeout(() => {
+      handleSignUpErr(false);
+    }, 1000);
+  }, [SignUpErr]);
   function FocusAchieved(event: React.FocusEvent<HTMLInputElement>): void {
     console.log("Focussed", event.target, event.relatedTarget);
 
@@ -298,6 +308,7 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
     handleSubmitBtnClick: handleSubmitBtnClick,
     showPassword: showPassword,
     handleShowPasswordSpan: handleShowPasswordSpan,
+    SignUpErr: SignUpErr,
   };
 
   return (

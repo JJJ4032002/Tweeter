@@ -6,6 +6,7 @@ import {
 } from "../helpers/OverlayFormContextHelpers";
 import { OverlayContextProviderChildren } from "../Interfaces and Types/Types";
 import SignInUser from "../firebase/SignInUser";
+import { useNavigate } from "react-router-dom";
 const SignInFormPropsContext = React.createContext<OverlaySignInFormProps>({
   SignInStyles: [
     {
@@ -29,6 +30,7 @@ const SignInFormPropsContext = React.createContext<OverlaySignInFormProps>({
 });
 
 function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
+  let navigate = useNavigate();
   const [styles, setStyles] = useState([
     {
       type: "email",
@@ -119,6 +121,7 @@ function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
   }
   function handleSignInSubmitButton(event: React.MouseEvent<HTMLElement>) {
     SignInUser(inputVals.email, inputVals.password);
+    navigate(`${process.env.PUBLIC_URL}/home`);
   }
   function SignInResetForm() {
     setInputVals({

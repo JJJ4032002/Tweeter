@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
+import { Props } from "../../Interfaces and Types/Interfaces";
 
 const MiddleContainerBlock = styled.div`
   display: flex;
@@ -27,5 +28,21 @@ const PasswordSpan = styled.span`
   margin-left: 0.4em;
   cursor: pointer;
 `;
-
-export { MiddleContainerBlock, Form, DateOfBirthCont, PasswordSpan };
+const SignInErrText = styled.span<Props>`
+  text-align: center;
+  color: red;
+  font-weight: 800;
+  display: none;
+  ${(props) =>
+    props.ErrTextDispState === true &&
+    css`
+      display: inline;
+    `}
+`;
+export {
+  MiddleContainerBlock,
+  Form,
+  DateOfBirthCont,
+  PasswordSpan,
+  SignInErrText,
+};

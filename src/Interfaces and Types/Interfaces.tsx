@@ -21,6 +21,7 @@ interface Props {
   bottom?: number;
   WhichState?: string;
   FinBtnState?: boolean;
+  ErrTextDispState?: boolean;
 }
 
 interface OverlayFormProps {
@@ -42,6 +43,7 @@ interface OverlayFormProps {
   handleSubmitBtnClick: (event: React.MouseEvent<HTMLElement>) => void;
   showPassword: boolean;
   handleShowPasswordSpan: () => void;
+  SignUpErr: boolean;
 }
 interface OverlaySignInFormProps {
   SignInStyles: ChangeStyles;

@@ -1,7 +1,12 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import LabelBlockComponent from "./SignUpFormComponents/MiddleContainerComponents/LabelBlockComponent";
-import { MiddleContainerBlock, Form, PasswordSpan } from "./MiddleContainerCss";
+import {
+  MiddleContainerBlock,
+  Form,
+  PasswordSpan,
+  SignInErrText,
+} from "./MiddleContainerCss";
 import { FormPropsContext } from "../../Contexts/SignUpFormContext";
 import PasswordSpanComponent from "./PasswordSpanComponent";
 import { SignInFormPropsContext } from "../../Contexts/SignInFormContext";
@@ -12,7 +17,7 @@ const FormHeading = styled.h2`
 `;
 
 function MiddleContainer({ signIn }: FormContainersProps) {
-  let { validNameEmail, showPassword, handleShowPasswordSpan } =
+  let { validNameEmail, showPassword, handleShowPasswordSpan, SignUpErr } =
     useContext(FormPropsContext);
   let { signInShowPassword, handleSignInShowPasswordSpan } = useContext(
     SignInFormPropsContext
@@ -56,23 +61,29 @@ function MiddleContainer({ signIn }: FormContainersProps) {
                     handleShowPasswordSpan={handleShowPasswordSpan}
                   ></PasswordSpanComponent>
                 </div>
+                <SignInErrText ErrTextDispState={SignUpErr}>
+                  This email is already in use!
+                </SignInErrText>
               </Form>
             </>
           )}
         </>
       ) : (
         <>
+          <FormHeading>Sign In into your account</FormHeading>
           <LabelComponent type="email" inputType="signIn"></LabelComponent>
-          <div>
-            <LabelComponent
-              type={signInpasswordType}
-              inputType="signIn"
-            ></LabelComponent>
-            <PasswordSpanComponent
-              showPassword={signInShowPassword}
-              handleShowPasswordSpan={handleSignInShowPasswordSpan}
-            ></PasswordSpanComponent>
-          </div>
+          <Form>
+            <div>
+              <LabelComponent
+                type={signInpasswordType}
+                inputType="signIn"
+              ></LabelComponent>
+              <PasswordSpanComponent
+                showPassword={signInShowPassword}
+                handleShowPasswordSpan={handleSignInShowPasswordSpan}
+              ></PasswordSpanComponent>
+            </div>
+          </Form>
         </>
       )}
     </MiddleContainerBlock>
