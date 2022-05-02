@@ -12,7 +12,7 @@ function SignInForm() {
 
   return (
     <SignInFormPropsProvider>
-      <Overlay display={display} opacity={opacity}>
+      <Overlay id="signIn" display={display} opacity={opacity}>
         <FormContainer>
           <UpperContainer signIn={true}></UpperContainer>
           <MiddleContainer signIn={true}></MiddleContainer>

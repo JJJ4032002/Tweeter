@@ -19,9 +19,8 @@ const FormHeading = styled.h2`
 function MiddleContainer({ signIn }: FormContainersProps) {
   let { validNameEmail, showPassword, handleShowPasswordSpan, SignUpErr } =
     useContext(FormPropsContext);
-  let { signInShowPassword, handleSignInShowPasswordSpan } = useContext(
-    SignInFormPropsContext
-  );
+  let { signInShowPassword, handleSignInShowPasswordSpan, SignInErr } =
+    useContext(SignInFormPropsContext);
   let passwordType = "password";
   if (showPassword) {
     passwordType = "text";
@@ -82,6 +81,9 @@ function MiddleContainer({ signIn }: FormContainersProps) {
                 showPassword={signInShowPassword}
                 handleShowPasswordSpan={handleSignInShowPasswordSpan}
               ></PasswordSpanComponent>
+              <SignInErrText ErrTextDispState={SignInErr}>
+                Invalid email/password!
+              </SignInErrText>
             </div>
           </Form>
         </>

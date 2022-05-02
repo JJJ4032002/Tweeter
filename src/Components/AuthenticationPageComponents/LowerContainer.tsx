@@ -5,10 +5,10 @@ import { FormContainersProps } from "../../Interfaces and Types/Interfaces";
 import { SubmitButton, LowerContainerBlock } from "./LowerContainerCss";
 import { SignInFormPropsContext } from "../../Contexts/SignInFormContext";
 function LowerContainer({ signIn }: FormContainersProps) {
-  let { FinBtnState, handleSubmitBtnClick } = useContext(FormPropsContext);
-  let { SignInFinBtnState, handleSignInSubmitButton } = useContext(
-    SignInFormPropsContext
-  );
+  let { FinBtnState, handleSubmitBtnClick, loader } =
+    useContext(FormPropsContext);
+  let { SignInFinBtnState, handleSignInSubmitButton, signInLoader } =
+    useContext(SignInFormPropsContext);
   return (
     <LowerContainerBlock>
       {!signIn ? (
@@ -17,7 +17,7 @@ function LowerContainer({ signIn }: FormContainersProps) {
             onClick={handleSubmitBtnClick}
             FinBtnState={FinBtnState}
           >
-            Submit
+            {!loader ? "Submit" : "Loading..."}
           </SubmitButton>
         </>
       ) : (
@@ -26,7 +26,7 @@ function LowerContainer({ signIn }: FormContainersProps) {
             onClick={handleSignInSubmitButton}
             FinBtnState={SignInFinBtnState}
           >
-            Submit
+            {!signInLoader ? "Submit" : "Loading..."}
           </SubmitButton>
         </>
       )}

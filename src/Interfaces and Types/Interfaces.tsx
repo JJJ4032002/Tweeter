@@ -44,6 +44,7 @@ interface OverlayFormProps {
   showPassword: boolean;
   handleShowPasswordSpan: () => void;
   SignUpErr: boolean;
+  loader: boolean;
 }
 interface OverlaySignInFormProps {
   SignInStyles: ChangeStyles;
@@ -56,6 +57,8 @@ interface OverlaySignInFormProps {
   handleSignInShowPasswordSpan: () => void;
   handleSignInSubmitButton: (event: React.MouseEvent<HTMLElement>) => void;
   SignInFinBtnState: boolean;
+  SignInErr: boolean;
+  signInLoader: boolean;
 }
 interface AuthenticationPageContextProps {
   FormStyles: { opacity: number; display: string };

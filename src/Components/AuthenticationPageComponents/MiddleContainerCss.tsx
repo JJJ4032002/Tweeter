@@ -36,7 +36,7 @@ const SignInErrText = styled.span<Props>`
   ${(props) =>
     props.ErrTextDispState === true &&
     css`
-      display: inline;
+      display: block;
     `}
 `;
 export {

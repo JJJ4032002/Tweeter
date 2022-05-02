@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { OverlaySignInFormProps } from "../Interfaces and Types/Interfaces";
 import {
   SignInWithoutTextBlurCombinations,
@@ -27,6 +27,8 @@ const SignInFormPropsContext = React.createContext<OverlaySignInFormProps>({
   handleSignInShowPasswordSpan: () => {},
   handleSignInSubmitButton: (event) => {},
   SignInFinBtnState: false,
+  SignInErr: false,
+  signInLoader: false,
 });
 
 function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
@@ -41,6 +43,8 @@ function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
       WhichState: "",
     },
   ]);
+  const [SignInErr, setSignInErr] = useState(false);
+  const [signInLoader, setSignInLoader] = useState(false);
   const [inputVals, setInputVals] = useState({
     email: "",
     password: "",
@@ -55,6 +59,18 @@ function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
       setSignInShowPassword(false);
     }
   }
+  function handleSignInErr(param: boolean) {
+    setSignInErr(param);
+  }
+  function handleSuccesfulSignIn() {
+    navigate(`${process.env.PUBLIC_URL}/home`);
+  }
+  useEffect(() => {
+    setSignInLoader(false);
+    setTimeout(() => {
+      handleSignInErr(false);
+    }, 2500);
+  }, [SignInErr]);
   function SignInFocusAchieved(
     event: React.FocusEvent<HTMLInputElement>
   ): void {
@@ -120,8 +136,19 @@ function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
     }
   }
   function handleSignInSubmitButton(event: React.MouseEvent<HTMLElement>) {
-    SignInUser(inputVals.email, inputVals.password);
-    navigate(`${process.env.PUBLIC_URL}/home`);
+    setSignInLoader(true);
+    SignInUser(
+      inputVals.email,
+      inputVals.password,
+      handleSignInErr,
+      handleSuccesfulSignIn
+    );
+    setInputVals({
+      email: "",
+      password: "",
+      emailBool: false,
+      passwordBool: false,
+    });
   }
   function SignInResetForm() {
     setInputVals({
@@ -154,6 +181,8 @@ function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
     handleSignInShowPasswordSpan: handleSignInShowPasswordSpan,
     handleSignInSubmitButton: handleSignInSubmitButton,
     SignInFinBtnState: SignInFinBtnState,
+    SignInErr: SignInErr,
+    signInLoader: signInLoader,
   };
   return (
     <SignInFormPropsContext.Provider value={ContextObj}>

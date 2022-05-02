@@ -9,6 +9,7 @@ import { InputValues } from "../Interfaces and Types/Types";
 import { useEffect } from "react";
 import validateEmail from "../helpers/ValidateEmail";
 import { app } from "../firebase/InitializeFirebase";
+import { useNavigate } from "react-router-dom";
 import {
   FocusAllRedCombinations,
   BlurAllRedCombinations,
@@ -46,9 +47,11 @@ const FormPropsContext = React.createContext<OverlayFormProps>({
   showPassword: false,
   handleShowPasswordSpan: () => {},
   SignUpErr: false,
+  loader: false,
 });
 
 function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
+  let navigate = useNavigate();
   const [styles, dispatch] = useReducer(StylesReducer, [
     {
       type: "name",
@@ -83,21 +86,32 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
   const [showPassword, setShowPassword] = useState(false);
   const [validNameEmail, setValidNameEmail] = useState(true);
   const [SignUpErr, setSignUpErr] = useState(false);
+  const [loader, setLoader] = useState(false);
   function handleSubmitBtnClick(event: React.MouseEvent<HTMLElement>) {
     let ElementType = event.target as Element;
     setInputVals({ ...inputVals, password: "", passwordBool: false });
     dispatch({ type: "passwordChange", WhichState: "" });
+    setAllowBtn((prev) => ({ ...prev, password: false }));
     if (validNameEmail) {
       setValidNameEmail(false);
     } else {
       if (ElementType.nodeName === "BUTTON") {
-        SignUpUser(inputVals.email, inputVals.password, handleSignUpErr);
+        setLoader(true);
+        SignUpUser(
+          inputVals.email,
+          inputVals.password,
+          handleSignUpErr,
+          handleSuccesfulSignUp
+        );
       } else {
         setValidNameEmail(true);
-        setAllowBtn((prev) => ({ ...prev, password: false }));
+
         setShowPassword(false);
       }
     }
+  }
+  function handleSuccesfulSignUp() {
+    navigate(`${process.env.PUBLIC_URL}/home`);
   }
   function handleSignUpErr(param: boolean) {
     setSignUpErr(param);
@@ -110,9 +124,10 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
     }
   }
   useEffect(() => {
+    setLoader(false);
     setTimeout(() => {
       handleSignUpErr(false);
-    }, 1000);
+    }, 2500);
   }, [SignUpErr]);
   function FocusAchieved(event: React.FocusEvent<HTMLInputElement>): void {
     console.log("Focussed", event.target, event.relatedTarget);
@@ -309,6 +324,7 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
     showPassword: showPassword,
     handleShowPasswordSpan: handleShowPasswordSpan,
     SignUpErr: SignUpErr,
+    loader: loader,
   };
 
   return (
