@@ -30,7 +30,7 @@ export const UpperContainer = ({ signIn }: FormContainersProps) => {
             id="closeImg"
             src={validNameEmail ? close : leftArrow}
           ></Image>
-          <Image id="logoInForm" src={logo}></Image>
+          <Image className="logoInForm" src={logo}></Image>
         </>
       ) : (
         <>
@@ -43,7 +43,7 @@ export const UpperContainer = ({ signIn }: FormContainersProps) => {
             }}
             src={close}
           ></Image>
-          <Image id="logoInForm" src={logo}></Image>
+          <Image className="logoInForm" src={logo}></Image>
         </>
       )}
     </UpperContainerBlock>

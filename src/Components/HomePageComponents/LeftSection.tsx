@@ -8,10 +8,14 @@ const LeftContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   grid-area: LeftSection;
+  @media ${devices.mobileL} {
+    flex-direction: column;
+    padding: 0.5em 0;
+  }
 `;
 const FlexItems = styled.div`
   display: flex;
-  gap: 1em;
+  gap: 0.7em;
 `;
 function LeftSection() {
   let windowWidth = useWindowSize();
@@ -42,4 +46,4 @@ function LeftSectionMobile() {
   );
 }
 
-export default LeftSection;
+export { LeftSection, LeftSectionMobile };

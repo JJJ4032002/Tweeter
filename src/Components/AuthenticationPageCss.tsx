@@ -88,7 +88,7 @@ const Image = styled.img`
   &#closeImg {
     height: 50%;
   }
-  &#logoInForm {
+  &.logoInForm {
     filter: invert(51%) sepia(81%) saturate(844%) hue-rotate(174deg)
       brightness(96%) contrast(93%);
   }
@@ -102,6 +102,22 @@ const Image = styled.img`
       brightness(96%) contrast(93%);
     height: 100%;
     align-self: center;
+  }
+  &.leftSection {
+    height: initial;
+  }
+  &.gridItemLogo {
+    margin: 0.1em auto;
+    padding: 0.3em;
+    border-radius: 50%;
+    border: 1px solid transparent;
+  }
+  &.gridItemLogo:hover {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  &.TweetLogo {
+    filter: invert(100%) sepia(0%) saturate(109%) hue-rotate(181deg)
+      brightness(115%) contrast(101%);
   }
 `;
 
