@@ -1,22 +1,12 @@
 import React, { useLayoutEffect, useState } from "react";
 import useWindowSize from "../../hooks/useWindowSize";
-import styled from "styled-components";
-import { devices, sizes } from "../../Media Queries/Queries";
-import LeftSectionMobileL from "./HomePageSectionComponents/LeftSectionMobileL";
-const LeftContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  grid-area: LeftSection;
-  @media ${devices.mobileL} {
-    flex-direction: column;
-    padding: 0.5em 0;
-  }
-`;
-const FlexItems = styled.div`
-  display: flex;
-  gap: 0.7em;
-`;
+import { sizes } from "../../Media Queries/Queries";
+import {
+  LeftSectionMobileL,
+  LeftSectionMobile,
+} from "./HomePageSectionComponents/LeftSectionComponents";
+import { LeftContainer } from "./LeftSectionCss";
+
 function LeftSection() {
   let windowWidth = useWindowSize();
   let [LeftSectionContent, setLeftSectionContent] = useState(LeftSectionMobile);
@@ -33,17 +23,6 @@ function LeftSection() {
   }, [windowWidth]);
 
   return <LeftContainer>{LeftSectionContent}</LeftContainer>;
-}
-
-function LeftSectionMobile() {
-  return (
-    <>
-      <FlexItems>
-        <img src="" alt="gh" />
-        <h4>Home</h4>
-      </FlexItems>
-    </>
-  );
 }
 
 export { LeftSection, LeftSectionMobile };

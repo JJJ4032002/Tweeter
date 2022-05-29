@@ -8,26 +8,18 @@ import settings from "../../../assets/Icons/settings.svg";
 import tweet from "../../../assets/Icons/tweet.svg";
 import { Image } from "../../AuthenticationPageCss";
 import styled from "styled-components";
+import { ItemDiv } from "../../HomePageCss";
+import { devices } from "../../../Media Queries/Queries";
 const FlexItems = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  gap: 0.7em;
+  @media ${devices.mobileL} {
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+  }
+`;
 
-  gap: 2em;
-`;
-const ItemDiv = styled.div`
-  padding: 0.2em;
-  &.TweetLogo {
-    padding: 0.8em;
-    cursor: pointer;
-    background: #2da7ed;
-    border-radius: 50%;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  }
-  &.TweetLogo:hover {
-    background: #0d7cbd;
-  }
-`;
 function LeftSectionMobileL() {
   return (
     <>
@@ -63,4 +55,15 @@ function LeftSectionMobileL() {
   );
 }
 
-export default LeftSectionMobileL;
+function LeftSectionMobile() {
+  return (
+    <>
+      <FlexItems>
+        <img src="" alt="gh" />
+        <h4>Home</h4>
+      </FlexItems>
+    </>
+  );
+}
+
+export { LeftSectionMobileL, LeftSectionMobile };
