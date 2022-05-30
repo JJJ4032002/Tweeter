@@ -10,6 +10,7 @@ import { Image } from "../../AuthenticationPageCss";
 import styled from "styled-components";
 import { ItemDiv } from "../../HomePageCss";
 import { devices } from "../../../Media Queries/Queries";
+
 const FlexItems = styled.div`
   display: flex;
   gap: 0.7em;
@@ -55,11 +56,11 @@ function LeftSectionMobileL() {
   );
 }
 
-function LeftSectionMobile() {
+function LeftSectionMobile(handleSidebarState: () => void) {
   return (
     <>
       <FlexItems>
-        <img src="" alt="gh" />
+        <img onClick={handleSidebarState} src="" alt="gh" />
         <h4>Home</h4>
       </FlexItems>
     </>

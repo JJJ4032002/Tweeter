@@ -22,6 +22,7 @@ interface Props {
   WhichState?: string;
   FinBtnState?: boolean;
   ErrTextDispState?: boolean;
+  sideBarDisp?: boolean;
 }
 
 interface OverlayFormProps {
@@ -92,6 +93,11 @@ interface PasswordSpanProps {
   showPassword: boolean;
   handleShowPasswordSpan: () => void;
 }
+interface sideBarProps {
+  sideBarState?: boolean;
+  handleSidebarState: () => void;
+}
+
 interface FormContainersProps {
   signIn: boolean;
 }
@@ -106,4 +112,5 @@ export type {
   inputTypeInterface,
   PasswordSpanProps,
   FormContainersProps,
+  sideBarProps,
 };
