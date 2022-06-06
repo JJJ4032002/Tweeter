@@ -16,9 +16,6 @@ function LeftSection() {
   );
 
   useLayoutEffect(() => {
-    console.log("hmm");
-    console.log(windowWidth);
-
     if (windowWidth >= Number(sizes.mobileL.split("px")[0])) {
       setLeftSectionContent(LeftSectionMobileL);
     } else if (windowWidth >= 0) {

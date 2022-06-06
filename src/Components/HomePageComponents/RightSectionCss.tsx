@@ -12,6 +12,9 @@ const RightContainer = styled.div`
   @media ${devices.tablet} {
     grid-template-columns: 0.6fr 5fr;
   }
+  @media ${devices.laptop} {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export { RightContainer };
