@@ -66,6 +66,10 @@ interface AuthenticationPageContextProps {
   handleSignUpBtn: (event: React.MouseEvent<HTMLElement>) => void;
   signInFormStyles: { opacity: number; display: string };
 }
+interface sideBarContextProps {
+  sideBarState: boolean;
+  handleSideBarState: () => void;
+}
 interface actionProps {
   type: string;
   WhichState: string;
@@ -93,10 +97,6 @@ interface PasswordSpanProps {
   showPassword: boolean;
   handleShowPasswordSpan: () => void;
 }
-interface sideBarProps {
-  sideBarState?: boolean;
-  handleSidebarState: () => void;
-}
 
 interface FormContainersProps {
   signIn: boolean;
@@ -112,5 +112,5 @@ export type {
   inputTypeInterface,
   PasswordSpanProps,
   FormContainersProps,
-  sideBarProps,
+  sideBarContextProps,
 };

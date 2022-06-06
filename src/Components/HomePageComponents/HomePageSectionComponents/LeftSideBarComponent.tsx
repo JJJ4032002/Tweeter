@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import close from "../../../assets/Icons/close.svg";
+import profile from "../../../assets/Icons/profile.svg";
 import { sideBarOptions } from "../../../Data";
+import { sideBarPropsContext } from "../../../Contexts/SideBarContext";
 const LeftSideBarContainer = styled.div`
   background: white;
   padding: 1em 0.7em;
@@ -27,7 +29,10 @@ const FlexItems = styled.div`
   }
 `;
 const ProfileDiv = styled.div`
-  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.4em;
   border-radius: 50%;
   width: min-content;
   border: 0.5px solid black;
@@ -39,15 +44,18 @@ const LowerContainer = styled.div`
   gap: 1.8em;
 `;
 function LeftSideBarComponent() {
+  let { handleSideBarState } = useContext(sideBarPropsContext);
   return (
     <LeftSideBarContainer>
       <UpperContainer>
         <h3>Account info</h3>
-        <img src={close} alt="" />
+        <img onClick={handleSideBarState} src={close} alt="" />
       </UpperContainer>
       <MiddleContainer>
         <FlexItems>
-          <ProfileDiv></ProfileDiv>
+          <ProfileDiv>
+            <img src={profile} alt="" />
+          </ProfileDiv>
         </FlexItems>
         <FlexItems>
           <Name>Rohan Patel</Name>

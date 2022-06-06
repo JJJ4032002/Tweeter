@@ -1,17 +1,18 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useContext, useLayoutEffect, useState } from "react";
 import useWindowSize from "../../hooks/useWindowSize";
 import { sizes } from "../../Media Queries/Queries";
-import { sideBarProps } from "../../Interfaces and Types/Interfaces";
 import {
   LeftSectionMobileL,
   LeftSectionMobile,
 } from "./HomePageSectionComponents/LeftSectionComponents";
 import { LeftContainer } from "./LeftSectionCss";
+import { sideBarPropsContext } from "../../Contexts/SideBarContext";
 
-function LeftSection({ handleSidebarState }: sideBarProps) {
+function LeftSection() {
   let windowWidth = useWindowSize();
+  let { handleSideBarState } = useContext(sideBarPropsContext);
   let [LeftSectionContent, setLeftSectionContent] = useState(
-    LeftSectionMobile(handleSidebarState)
+    LeftSectionMobile(handleSideBarState)
   );
 
   useLayoutEffect(() => {
@@ -21,7 +22,7 @@ function LeftSection({ handleSidebarState }: sideBarProps) {
     if (windowWidth >= Number(sizes.mobileL.split("px")[0])) {
       setLeftSectionContent(LeftSectionMobileL);
     } else if (windowWidth >= 0) {
-      setLeftSectionContent(LeftSectionMobile(handleSidebarState));
+      setLeftSectionContent(LeftSectionMobile(handleSideBarState));
     }
   }, [windowWidth]);
 
