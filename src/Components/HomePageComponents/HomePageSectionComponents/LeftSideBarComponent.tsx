@@ -65,7 +65,7 @@ function LeftSideBarComponent() {
       <LowerContainer>
         {sideBarOptions.map((ele) => {
           return (
-            <FlexItems className="flex">
+            <FlexItems key={ele.key} className="flex">
               <img src={ele.imgSrc} alt="" />
               <p>{ele.OptionName}</p>
             </FlexItems>

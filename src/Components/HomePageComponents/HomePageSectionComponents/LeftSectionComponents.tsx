@@ -25,7 +25,7 @@ function LeftSectionMobileL() {
       <FlexItems>
         {LeftSectionMobileLData.map((item) => {
           return (
-            <ItemDiv>
+            <ItemDiv key={item.key}>
               <Image className="leftSection" src={item.imgSrc} alt="" />
             </ItemDiv>
           );

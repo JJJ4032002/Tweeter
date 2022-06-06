@@ -9,7 +9,7 @@ function RightSectionMobile() {
     <>
       {RightSectionMobileData.map((item) => {
         return (
-          <ItemDiv>
+          <ItemDiv key={item.key}>
             <Image className="leftSection" src={item.imgSrc} alt="" />
           </ItemDiv>
         );
@@ -28,10 +28,14 @@ function RightSectionMobileL() {
         />
       </ItemDiv>
       <ItemDiv className="HeadingDiv">
-        <HomeHeading>Home</HomeHeading>
+        <HomeHeading className="RightSectionMobileL">Home</HomeHeading>
       </ItemDiv>
     </>
   );
 }
 
-export { RightSectionMobile, RightSectionMobileL };
+function RightSectionLaptop() {
+  return <></>;
+}
+
+export { RightSectionMobile, RightSectionMobileL, RightSectionLaptop };
