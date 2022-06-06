@@ -4,6 +4,7 @@ import close from "../../../assets/Icons/close.svg";
 import profile from "../../../assets/Icons/profile.svg";
 import { sideBarOptions } from "../../../Data";
 import { sideBarPropsContext } from "../../../Contexts/SideBarContext";
+import { ProfileDiv } from "../../HomePageCss";
 const LeftSideBarContainer = styled.div`
   background: white;
   padding: 1em 0.7em;
@@ -28,15 +29,7 @@ const FlexItems = styled.div`
     align-items: center;
   }
 `;
-const ProfileDiv = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.4em;
-  border-radius: 50%;
-  width: min-content;
-  border: 0.5px solid black;
-`;
+
 const Name = styled.h3``;
 const LowerContainer = styled.div`
   display: flex;
