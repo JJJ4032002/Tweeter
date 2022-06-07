@@ -7,17 +7,21 @@ import { devices } from "../../../Media Queries/Queries";
 import { ProfileDiv } from "../../HomePageCss";
 import { HomeHeading } from "../../HomePageCss";
 import { LeftSectionMobileLData } from "../../../Data";
+import logo from "../../../assets/Icons/logo.svg";
+import { FlexItems } from "../../HomePageCss";
 
-const FlexItems = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.7em;
-  @media ${devices.mobileL} {
-    flex-direction: column;
-    align-items: center;
-    gap: 2em;
-  }
-`;
+function LeftSectionMobile(handleSidebarState: () => void) {
+  return (
+    <>
+      <FlexItems>
+        <ProfileDiv className="LeftSectionMobileS">
+          <img onClick={handleSidebarState} src={profile} alt="gh" />
+        </ProfileDiv>
+        <HomeHeading>Home</HomeHeading>
+      </FlexItems>
+    </>
+  );
+}
 
 function LeftSectionMobileL() {
   return (
@@ -35,24 +39,9 @@ function LeftSectionMobileL() {
         </ItemDiv>
       </FlexItems>
       <FlexItems>
-        <ItemDiv>
-          <ProfileDiv className="LeftSectionMobileS">
-            <img src={profile} alt="gh" />
-          </ProfileDiv>
-        </ItemDiv>
-      </FlexItems>
-    </>
-  );
-}
-
-function LeftSectionMobile(handleSidebarState: () => void) {
-  return (
-    <>
-      <FlexItems>
         <ProfileDiv className="LeftSectionMobileS">
-          <img onClick={handleSidebarState} src={profile} alt="gh" />
+          <img src={profile} alt="gh" />
         </ProfileDiv>
-        <HomeHeading>Home</HomeHeading>
       </FlexItems>
     </>
   );
