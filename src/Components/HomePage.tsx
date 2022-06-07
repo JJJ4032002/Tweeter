@@ -5,6 +5,7 @@ import RightSection from "./HomePageComponents/RightSection";
 import SideBar from "./HomePageComponents/SideBar";
 import { HomeContainer } from "./HomePageCss";
 import { SideBarContextProvider } from "../Contexts/SideBarContext";
+import ExtraSection from "./HomePageComponents/ExtraSection";
 
 function HomePage() {
   return (
@@ -14,6 +15,7 @@ function HomePage() {
         <MiddleSection></MiddleSection>
         <RightSection></RightSection>
         <SideBar></SideBar>
+        <ExtraSection></ExtraSection>
       </HomeContainer>
     </SideBarContextProvider>
   );

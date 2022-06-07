@@ -27,6 +27,9 @@ const HomeContainer = styled.div`
   }
   @media ${devices.laptop} {
     grid-template-columns: 0.6fr 5fr 2.5fr;
+    grid-template-areas:
+      "ExtraSection ExtraSection RightSection"
+      "LeftSection MiddleSection RightSection";
     max-width: 100%;
   }
 `;
@@ -67,4 +70,15 @@ let HomeHeading = styled.div`
     padding: 0 0.7em;
   }
 `;
-export { HomeContainer, ItemDiv, ProfileDiv, HomeHeading };
+
+const FlexItems = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+  @media ${devices.mobileL} {
+    flex-direction: column;
+    align-items: center;
+    gap: 2em;
+  }
+`;
+export { HomeContainer, ItemDiv, ProfileDiv, HomeHeading, FlexItems };
