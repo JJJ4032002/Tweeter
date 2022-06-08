@@ -27,6 +27,7 @@ const HomeContainer = styled.div`
   }
   @media ${devices.laptop} {
     grid-template-columns: 0.6fr 5fr 2.5fr;
+    grid-template-rows: 0.5fr 5fr;
     grid-template-areas:
       "ExtraSection ExtraSection RightSection"
       "LeftSection MiddleSection RightSection";

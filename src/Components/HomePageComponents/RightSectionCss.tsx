@@ -13,7 +13,12 @@ const RightContainer = styled.div`
     grid-template-columns: 0.6fr 5fr;
   }
   @media ${devices.laptop} {
-    grid-template-columns: 1fr;
+    padding: 0.3em 1.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    overflow: scroll;
+    gap: 1.5em;
   }
 `;
 

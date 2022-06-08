@@ -1,13 +1,10 @@
 import profile from "../../../assets/Icons/profile.svg";
 import tweet from "../../../assets/Icons/tweet.svg";
 import { Image } from "../../AuthenticationPageCss";
-import styled from "styled-components";
 import { ItemDiv } from "../../HomePageCss";
-import { devices } from "../../../Media Queries/Queries";
 import { ProfileDiv } from "../../HomePageCss";
 import { HomeHeading } from "../../HomePageCss";
 import { LeftSectionMobileLData } from "../../../Data";
-import logo from "../../../assets/Icons/logo.svg";
 import { FlexItems } from "../../HomePageCss";
 
 function LeftSectionMobile(handleSidebarState: () => void) {

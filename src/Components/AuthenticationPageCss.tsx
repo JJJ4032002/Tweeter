@@ -119,6 +119,9 @@ const Image = styled.img`
     filter: invert(100%) sepia(0%) saturate(109%) hue-rotate(181deg)
       brightness(115%) contrast(101%);
   }
+  &.flexImage {
+    width: 100%;
+  }
 `;
 
 export { Buttons, Para, Image, GridContainer };

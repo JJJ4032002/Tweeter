@@ -17,6 +17,7 @@ function RightSection() {
   useLayoutEffect(() => {
     console.log("hello");
     if (windowWidth >= Number(sizes.laptop.split("px")[0])) {
+      console.log("yo");
       setRightSectionContent(RightSectionLaptop);
     } else if (windowWidth >= Number(sizes.mobileL.split("px")[0])) {
       setRightSectionContent(RightSectionMobileL);
