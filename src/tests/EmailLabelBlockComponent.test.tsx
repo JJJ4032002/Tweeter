@@ -1,18 +1,20 @@
-import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom"; // optional
 import userEvent from "@testing-library/user-event";
 import LabelBlockComponent from "../Components/AuthenticationPageComponents/SignUpFormComponents/MiddleContainerComponents/LabelBlockComponent";
 import { SignUpFormPropsProvider } from "../Contexts/SignUpFormContext";
 import "jest-styled-components";
+import { BrowserRouter } from "react-router-dom";
 
 beforeEach(() => {
   render(
-    <SignUpFormPropsProvider>
-      <LabelBlockComponent type="email">
-        Please enter a valid email
-      </LabelBlockComponent>
-    </SignUpFormPropsProvider>
+    <BrowserRouter>
+      <SignUpFormPropsProvider>
+        <LabelBlockComponent type="email">
+          Please enter a valid email
+        </LabelBlockComponent>
+      </SignUpFormPropsProvider>
+    </BrowserRouter>
   );
 });
 

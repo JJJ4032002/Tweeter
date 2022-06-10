@@ -1,7 +1,6 @@
-import React, { useState } from "react";
 import "./App.css";
 import { AuthenticationPage } from "./Components/AuthenticationPage";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import HomePage from "./Components/HomePage";
 function App() {
   return (

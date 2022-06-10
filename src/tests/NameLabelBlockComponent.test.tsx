@@ -5,12 +5,15 @@ import userEvent from "@testing-library/user-event";
 import LabelBlockComponent from "../Components/AuthenticationPageComponents/SignUpFormComponents/MiddleContainerComponents/LabelBlockComponent";
 import { SignUpFormPropsProvider } from "../Contexts/SignUpFormContext";
 import "jest-styled-components";
+import { BrowserRouter } from "react-router-dom";
 
 beforeEach(() => {
   render(
-    <SignUpFormPropsProvider>
-      <LabelBlockComponent type="name">What's your name</LabelBlockComponent>
-    </SignUpFormPropsProvider>
+    <BrowserRouter>
+      <SignUpFormPropsProvider>
+        <LabelBlockComponent type="name">What's your name</LabelBlockComponent>
+      </SignUpFormPropsProvider>
+    </BrowserRouter>
   );
 });
 
@@ -66,7 +69,7 @@ describe("Name Input validation", () => {
     expect(screen.getByText("What's your name")).toHaveStyle("display : none");
     expect(inputName.parentElement).toHaveStyleRule("border-color", "#2da7ed");
   });
-  it("Error text present in document when Name input is empty", () => {
+  it("Error text present in document when Name input is empty after initially typing", () => {
     const inputName = screen.getByLabelText("Name") as HTMLInputElement;
     userEvent.type(inputName, "Example");
     inputName.setSelectionRange(0, 7);
