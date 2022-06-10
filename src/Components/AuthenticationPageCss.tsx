@@ -120,6 +120,10 @@ const Image = styled.img`
       brightness(115%) contrast(101%);
   }
   &.flexImage {
+    width: 60%;
+    margin-left: auto;
+  }
+  &.AccountImage {
     width: 100%;
   }
 `;

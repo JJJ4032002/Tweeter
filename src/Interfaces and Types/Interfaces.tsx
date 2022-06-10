@@ -101,6 +101,16 @@ interface PasswordSpanProps {
 interface FormContainersProps {
   signIn: boolean;
 }
+interface TrendingBlockProps {
+  TrendingBlockHeading?: string;
+  HashTag?: string;
+  NoOfTweets?: string;
+  ImgSrc?: string;
+}
+interface FollowBlockProps {
+  FollowBlockHeading: string;
+  ImgSrc: string;
+}
 export type {
   Props,
   OverlayFormProps,
@@ -113,4 +123,6 @@ export type {
   PasswordSpanProps,
   FormContainersProps,
   sideBarContextProps,
+  TrendingBlockProps,
+  FollowBlockProps,
 };
