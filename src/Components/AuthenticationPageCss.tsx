@@ -20,6 +20,10 @@ const Buttons = styled.button<Props>`
   & ~ &:hover {
     background-color: #0d7cbd;
   }
+  &.TweetButton {
+    width: 100%;
+    padding: 1em 5em;
+  }
   ${(props) =>
     props.primary &&
     css`
@@ -111,6 +115,10 @@ const Image = styled.img`
     padding: 0.3em;
     border-radius: 50%;
     border: 1px solid transparent;
+    @media ${devices.laptopM} {
+      margin: 0.1em 0;
+      padding: 0;
+    }
   }
   &.gridItemLogo:hover {
     background: rgba(0, 0, 0, 0.1);

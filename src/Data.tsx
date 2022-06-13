@@ -25,5 +25,18 @@ const LeftSectionMobileLData = [
   { imgSrc: profile, key: uuidv4() },
   { imgSrc: settings, key: uuidv4() },
 ];
+const LeftSectionMobileMData = [
+  { imgSrc: home, key: uuidv4(), text: "Home" },
+  { imgSrc: search, key: uuidv4(), text: "Search" },
+  { imgSrc: notifications, key: uuidv4(), text: "Notifications" },
+  { imgSrc: messages, key: uuidv4(), text: "Messages" },
+  { imgSrc: profile, key: uuidv4(), text: "Profile" },
+  { imgSrc: settings, key: uuidv4(), text: "Settings" },
+];
 
-export { sideBarOptions, RightSectionMobileData, LeftSectionMobileLData };
+export {
+  sideBarOptions,
+  RightSectionMobileData,
+  LeftSectionMobileLData,
+  LeftSectionMobileMData,
+};

@@ -10,6 +10,10 @@ const LeftContainer = styled.div`
     flex-direction: column;
     padding: 0.5em 0;
   }
+  @media ${devices.laptopM} {
+    align-items: start;
+    padding-left: 2em;
+  }
 `;
 
 export { LeftContainer };

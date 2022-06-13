@@ -4,8 +4,9 @@ import { Image } from "../../AuthenticationPageCss";
 import { ItemDiv } from "../../HomePageCss";
 import { ProfileDiv } from "../../HomePageCss";
 import { HomeHeading } from "../../HomePageCss";
-import { LeftSectionMobileLData } from "../../../Data";
+import { LeftSectionMobileLData, LeftSectionMobileMData } from "../../../Data";
 import { FlexItems } from "../../HomePageCss";
+import { Buttons } from "../../AuthenticationPageCss";
 
 function LeftSectionMobile(handleSidebarState: () => void) {
   return (
@@ -37,11 +38,39 @@ function LeftSectionMobileL() {
       </FlexItems>
       <FlexItems>
         <ProfileDiv className="LeftSectionMobileS">
-          <img src={profile} alt="gh" />
+          <img src={profile} alt="profile" />
         </ProfileDiv>
       </FlexItems>
     </>
   );
 }
 
-export { LeftSectionMobileL, LeftSectionMobile };
+function LeftSectionLaptopM() {
+  return (
+    <>
+      <FlexItems>
+        {LeftSectionMobileMData.map((item) => {
+          return (
+            <ItemDiv key={item.key}>
+              <Image className="leftSection" src={item.imgSrc} alt="" />
+              <p>{item.text}</p>
+            </ItemDiv>
+          );
+        })}
+        <ItemDiv>
+          <Buttons className="TweetButton" primary={true}>
+            Tweet
+          </Buttons>
+        </ItemDiv>
+      </FlexItems>
+      <FlexItems className="flex-row">
+        <ProfileDiv className="LeftSectionMobileS">
+          <img src={profile} alt="gh" />
+        </ProfileDiv>
+        <h5>Home</h5>
+      </FlexItems>
+    </>
+  );
+}
+
+export { LeftSectionMobileL, LeftSectionMobile, LeftSectionLaptopM };

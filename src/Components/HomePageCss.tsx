@@ -33,11 +33,17 @@ const HomeContainer = styled.div`
       "LeftSection MiddleSection RightSection";
     max-width: 100%;
   }
+  @media ${devices.laptopM} {
+    grid-template-columns: 1.2fr 3fr 2fr;
+    width: 95%;
+    max-width: 1500px;
+  }
 `;
 
 const ItemDiv = styled.div`
   display: flex;
   align-items: center;
+  gap: 1em;
   &.HeadingDiv {
     border-left: 1px solid #cfd9de;
   }
@@ -76,10 +82,19 @@ const FlexItems = styled.div`
   display: flex;
   align-items: center;
   gap: 0.7em;
+
   @media ${devices.mobileL} {
     flex-direction: column;
     align-items: center;
     gap: 2em;
+  }
+  @media ${devices.laptopM} {
+    align-items: start;
+  }
+  &.flex-row {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5em;
   }
 `;
 export { HomeContainer, ItemDiv, ProfileDiv, HomeHeading, FlexItems };
