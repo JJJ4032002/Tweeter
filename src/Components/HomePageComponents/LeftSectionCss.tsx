@@ -12,7 +12,7 @@ const LeftContainer = styled.div`
   }
   @media ${devices.laptopM} {
     align-items: start;
-    padding-left: 2em;
+    padding-left: 1.1em;
   }
 `;
 

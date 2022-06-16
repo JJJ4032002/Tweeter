@@ -22,7 +22,7 @@ const Buttons = styled.button<Props>`
   }
   &.TweetButton {
     width: 100%;
-    padding: 1em 5em;
+    padding: 1.2em 6em;
   }
   ${(props) =>
     props.primary &&

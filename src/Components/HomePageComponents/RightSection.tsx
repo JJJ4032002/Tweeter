@@ -26,7 +26,11 @@ function RightSection() {
     }
   }, [windowWidth]);
 
-  return <RightContainer>{RightSectionContent}</RightContainer>;
+  return (
+    <RightContainer className="RightContainer">
+      {RightSectionContent}
+    </RightContainer>
+  );
 }
 
 export default RightSection;

@@ -23,6 +23,7 @@ interface Props {
   FinBtnState?: boolean;
   ErrTextDispState?: boolean;
   sideBarDisp?: boolean;
+  height?: number;
 }
 
 interface OverlayFormProps {
@@ -111,6 +112,10 @@ interface FollowBlockProps {
   FollowBlockHeading: string;
   ImgSrc: string;
 }
+interface TweetButtonProps {
+  primary: boolean;
+  height: number | undefined;
+}
 export type {
   Props,
   OverlayFormProps,
@@ -125,4 +130,5 @@ export type {
   sideBarContextProps,
   TrendingBlockProps,
   FollowBlockProps,
+  TweetButtonProps,
 };

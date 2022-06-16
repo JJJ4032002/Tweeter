@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { LeftSection } from "./HomePageComponents/LeftSection";
 import MiddleSection from "./HomePageComponents/MiddleSection";
 import RightSection from "./HomePageComponents/RightSection";
@@ -6,8 +6,17 @@ import SideBar from "./HomePageComponents/SideBar";
 import { HomeContainer } from "./HomePageCss";
 import { SideBarContextProvider } from "../Contexts/SideBarContext";
 import ExtraSection from "./HomePageComponents/ExtraSection";
+import TweetButtonLogo from "./HomePageComponents/TweetButtonLogo";
 
 function HomePage() {
+  const [RightContainerHeight, setRightContainerHeight] = useState<
+    number | undefined
+  >(0);
+  useEffect(() => {
+    setRightContainerHeight(
+      document.body.querySelector(".RightContainer")?.clientHeight
+    );
+  }, []);
   return (
     <SideBarContextProvider>
       <HomeContainer>
@@ -16,6 +25,10 @@ function HomePage() {
         <RightSection></RightSection>
         <SideBar></SideBar>
         <ExtraSection></ExtraSection>
+        <TweetButtonLogo
+          height={RightContainerHeight}
+          primary={true}
+        ></TweetButtonLogo>
       </HomeContainer>
     </SideBarContextProvider>
   );
