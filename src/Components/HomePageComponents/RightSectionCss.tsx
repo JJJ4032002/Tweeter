@@ -20,6 +20,19 @@ const RightContainer = styled.div`
     overflow: scroll;
     gap: 1.5em;
   }
+  &::-webkit-scrollbar {
+    width: 0.3em;
+    height: 0px;
+    border-radius: 0.3em;
+  }
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: darkgrey;
+    outline: 1px solid slategrey;
+    border-radius: 0.3em;
+  }
 `;
 
 export { RightContainer };
