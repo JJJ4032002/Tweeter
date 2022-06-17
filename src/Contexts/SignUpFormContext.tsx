@@ -8,6 +8,7 @@ import { useState } from "react";
 import { InputValues } from "../Interfaces and Types/Types";
 import { useEffect } from "react";
 import validateEmail from "../helpers/ValidateEmail";
+import InputsReducer from "../Reducers/InputsReducer";
 import { app } from "../firebase/InitializeFirebase";
 import { useNavigate } from "react-router-dom";
 import {
@@ -52,7 +53,7 @@ const FormPropsContext = React.createContext<OverlayFormProps>({
 
 function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
   let navigate = useNavigate();
-  const [styles, dispatch] = useReducer(StylesReducer, [
+  const [styles, dispatchStyles] = useReducer(StylesReducer, [
     {
       type: "name",
       WhichState: "",
@@ -74,7 +75,8 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
   let NameErrText = useRef<HTMLSpanElement | null>(null);
   let EmailErrText = useRef<HTMLSpanElement | null>(null);
   let PasswordErrText = useRef<HTMLSpanElement | null>(null);
-  const [inputVals, setInputVals] = useState<InputValues>({
+
+  const [inputVals, dispatchInputs] = useReducer(InputsReducer, {
     name: "",
     email: "",
     password: "",
@@ -89,8 +91,8 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
   const [loader, setLoader] = useState(false);
   function handleSubmitBtnClick(event: React.MouseEvent<HTMLElement>) {
     let ElementType = event.target as Element;
-    setInputVals({ ...inputVals, password: "", passwordBool: false });
-    dispatch({ type: "passwordChange", WhichState: "" });
+    dispatchInputs({ type: "passwordReset", Value: "" });
+    dispatchStyles({ type: "passwordChange", WhichState: "" });
     setAllowBtn((prev) => ({ ...prev, password: false }));
     if (validNameEmail) {
       setValidNameEmail(false);
@@ -133,12 +135,12 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
     console.log("Focussed", event.target, event.relatedTarget);
 
     if (FocusAllRedCombinations(inputVals, event, validEmailInp, NameErrText)) {
-      dispatch({
+      dispatchStyles({
         type: `${event.target.name}Change`,
         WhichState: "AllRedFocussed",
       });
     } else {
-      dispatch({
+      dispatchStyles({
         type: `${event.target.name}Change`,
         WhichState: "AllBlueFocussed",
       });
@@ -146,22 +148,22 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
   }
   function BlurAchieved(event: React.FocusEvent<HTMLInputElement>): void {
     if (BlurWithoutTextCombinations(inputVals, event)) {
-      dispatch({
+      dispatchStyles({
         type: `${event.target.name}Change`,
         WhichState: "",
       });
     } else if (BlurAllRedCombinations(inputVals, event)) {
-      dispatch({
+      dispatchStyles({
         type: `${event.target.name}Change`,
         WhichState: "AllRedBlurred",
       });
     } else if (BlurWithTextCombinations(inputVals, event)) {
-      dispatch({
+      dispatchStyles({
         type: `${event.target.name}Change`,
         WhichState: "WithTextBlurred",
       });
     } else {
-      dispatch({
+      dispatchStyles({
         type: `${event.target.name}Change`,
         WhichState: "",
       });
@@ -170,17 +172,14 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
   function InputChange(event: React.ChangeEvent<HTMLInputElement>): void {
     console.log(event.target.value);
     if (invalidInputLengthChecker(inputVals, event)) {
-      console.log("Do nothing");
-      console.log(event.target.value);
+      return;
     } else {
       if (event.target.name === "email") {
-        setInputVals({
-          ...inputVals,
-          [event.target.name]: event.target.value,
-          emailBool: true,
-          nameBool: false,
-          passwordBool: false,
+        dispatchInputs({
+          type: "emailInputChange",
+          Value: event.target.value,
         });
+
         let ans = validateEmail(event.target.value);
         if (ans) {
           setValidEmailInp(true);
@@ -188,20 +187,14 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
           setValidEmailInp(false);
         }
       } else if (event.target.name === "password") {
-        setInputVals({
-          ...inputVals,
-          [event.target.name]: event.target.value,
-          emailBool: false,
-          nameBool: false,
-          passwordBool: true,
+        dispatchInputs({
+          type: "passwordInputChange",
+          Value: event.target.value,
         });
       } else {
-        setInputVals({
-          ...inputVals,
-          [event.target.name]: event.target.value,
-          emailBool: false,
-          nameBool: true,
-          passwordBool: false,
+        dispatchInputs({
+          type: "nameInputChange",
+          Value: event.target.value,
         });
       }
     }
@@ -216,14 +209,14 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
       if (!validEmailInp) {
         EmailErrText.current.style.display = "block";
         setAllowBtn((prev) => ({ ...prev, email: false }));
-        dispatch({
+        dispatchStyles({
           type: `emailChange`,
           WhichState: "AllRedFocussed",
         });
       } else {
         EmailErrText.current.style.display = "none";
         setAllowBtn((prev) => ({ ...prev, email: true }));
-        dispatch({
+        dispatchStyles({
           type: `emailChange`,
           WhichState: "AllBlueFocussed",
         });
@@ -233,14 +226,14 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
         console.log("PasswordError");
         PasswordErrText.current.style.display = "block";
         setAllowBtn((prev) => ({ ...prev, password: false }));
-        dispatch({
+        dispatchStyles({
           type: `passwordChange`,
           WhichState: "AllRedFocussed",
         });
       } else {
         PasswordErrText.current.style.display = "none";
         setAllowBtn((prev) => ({ ...prev, password: true }));
-        dispatch({
+        dispatchStyles({
           type: `passwordChange`,
           WhichState: "AllBlueFocussed",
         });
@@ -253,7 +246,7 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
       EmailErrText.current.style.display = "none";
       setAllowBtn((prev) => ({ ...prev, email: false }));
 
-      dispatch({
+      dispatchStyles({
         type: `emailChange`,
         WhichState: "AllBlueFocussed",
       });
@@ -263,14 +256,14 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
           setAllowBtn((prev) => ({ ...prev, name: true }));
           NameErrText.current.style.display = "none";
 
-          dispatch({
+          dispatchStyles({
             type: `nameChange`,
             WhichState: "AllBlueFocussed",
           });
         } else {
           setAllowBtn((prev) => ({ ...prev, name: false }));
           NameErrText.current.style.display = "block";
-          dispatch({
+          dispatchStyles({
             type: `nameChange`,
             WhichState: "AllRedFocussed",
           });
@@ -279,16 +272,9 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
     }
   }, [validEmailInp, inputVals.name, inputVals.email, inputVals.password]);
   function ResetForm() {
-    setInputVals({
-      name: "",
-      email: "",
-      password: "",
-      nameBool: false,
-      emailBool: false,
-      passwordBool: false,
-    });
+    dispatchInputs({ type: "ResetInputs", Value: "" });
     setAllowBtn({ name: false, email: false, password: false });
-    dispatch({
+    dispatchStyles({
       type: "ResetFields",
       WhichState: "",
     });
