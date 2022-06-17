@@ -1,19 +1,32 @@
 {
   "files": {
     "main.css": "/Tweeter/static/css/main.f74649b0.css",
-    "main.js": "/Tweeter/static/js/main.c0edc15a.js",
+    "main.js": "/Tweeter/static/js/main.b108f0f4.js",
     "static/js/787.e0d44d36.chunk.js": "/Tweeter/static/js/787.e0d44d36.chunk.js",
+    "static/media/cat3.jpg": "/Tweeter/static/media/cat3.3726540d1aaa2d1540f4.jpg",
+    "static/media/cat5.jpg": "/Tweeter/static/media/cat5.cb0b2ae057f0b759a941.jpg",
+    "static/media/cat2.jpg": "/Tweeter/static/media/cat2.51e3aee2a19c70a13097.jpg",
+    "static/media/cat1.jpg": "/Tweeter/static/media/cat1.a928c2c9e927d135baf4.jpg",
+    "static/media/cat4.jpg": "/Tweeter/static/media/cat4.26f37e522c129e6c2956.jpg",
     "static/media/BannerImg-min.jpg": "/Tweeter/static/media/BannerImg-min.9b7edbd87bf2ac8e93c7.jpg",
+    "static/media/settings.svg": "/Tweeter/static/media/settings.33b3a2970742ca02869e2566193e25ab.svg",
+    "static/media/profile.svg": "/Tweeter/static/media/profile.f216bafa1d4d494363fa15693e6b6d27.svg",
     "index.html": "/Tweeter/index.html",
+    "static/media/notifications.svg": "/Tweeter/static/media/notifications.8d66346fb1cdfa721609818142df4c9a.svg",
+    "static/media/search.svg": "/Tweeter/static/media/search.778c5f98fa706beba39c914794f036fc.svg",
+    "static/media/messages.svg": "/Tweeter/static/media/messages.66fafb0f4be66d7d4ab205d55bf1ee30.svg",
+    "static/media/tweet.svg": "/Tweeter/static/media/tweet.5694d36d6623f50c0bc86768c4c6a4c4.svg",
+    "static/media/bookmark.svg": "/Tweeter/static/media/bookmark.a0a128d95881fbc4900835dd1c8325fc.svg",
     "static/media/close.svg": "/Tweeter/static/media/close.244b66874c46718f7e0607d3acebaccf.svg",
     "static/media/leftArrow.svg": "/Tweeter/static/media/leftArrow.ceecbfa5efdd8fe4e763afa75999f094.svg",
     "static/media/logo.svg": "/Tweeter/static/media/logo.02393a46a4395632491eaf56495bb813.svg",
+    "static/media/home.svg": "/Tweeter/static/media/home.de7315ec9c29b521d5eca26e4b7b0d7b.svg",
     "main.f74649b0.css.map": "/Tweeter/static/css/main.f74649b0.css.map",
-    "main.c0edc15a.js.map": "/Tweeter/static/js/main.c0edc15a.js.map",
+    "main.b108f0f4.js.map": "/Tweeter/static/js/main.b108f0f4.js.map",
     "787.e0d44d36.chunk.js.map": "/Tweeter/static/js/787.e0d44d36.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f74649b0.css",
-    "static/js/main.c0edc15a.js"
+    "static/js/main.b108f0f4.js"
   ]
 }
