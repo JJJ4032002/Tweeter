@@ -10,8 +10,8 @@ const HomeContainer = styled.div`
     "LeftSection"
     "MiddleSection"
     "RightSection";
-
-  height: 100vh;
+  min-height: 100vh;
+  min-height: -webkit-fill-available;
   width: 100%;
   margin: 0 auto;
   position: relative;
