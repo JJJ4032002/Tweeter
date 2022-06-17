@@ -16,6 +16,7 @@ function HomePage() {
     setRightContainerHeight(
       document.body.querySelector(".RightContainer")?.clientHeight
     );
+    document.body.style.overflowY = "scroll";
   }, []);
   return (
     <SideBarContextProvider>
