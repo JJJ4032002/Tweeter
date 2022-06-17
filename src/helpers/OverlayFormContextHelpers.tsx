@@ -123,16 +123,20 @@ function SignInWithTextBlurCombinations(
   event: React.FocusEvent<HTMLInputElement>
 ) {
   if (
-    (event.target.name === "password" && inputVals.passwordBool) ||
-    (inputVals.emailBool && inputVals.email) ||
-    (event.target.name === "email" && inputVals.passwordBool) ||
-    (inputVals.emailBool && inputVals.password)
+    (event.target.name === "password" &&
+      (inputVals.passwordBool || inputVals.emailBool) &&
+      inputVals.password) ||
+    (event.target.name === "email" &&
+      (inputVals.passwordBool || inputVals.emailBool)) ||
+    inputVals.email
   ) {
     return true;
   } else {
     return false;
   }
 }
+
+function handleEmailStyles() {}
 
 export {
   FocusAllRedCombinations,
