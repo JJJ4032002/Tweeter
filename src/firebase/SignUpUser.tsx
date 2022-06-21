@@ -1,10 +1,17 @@
 import { app } from "./InitializeFirebase";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
+import { User } from "../Interfaces and Types/Interfaces";
 
 const auth = getAuth(app);
 function SignUpUser(
   email: string,
   password: string,
+  name: string,
+  setUserHelper: (user: User) => void,
   ErrFunc: (state: boolean) => void,
   SuccesfulSignUp: () => void
 ) {
@@ -13,6 +20,24 @@ function SignUpUser(
       // Signed in
       const user = userCredential.user;
       console.log(user);
+
+      updateProfile(userCredential.user, {
+        displayName: name,
+      })
+        .then(() => {
+          // Profile updated!
+          // ...
+        })
+        .catch((error) => {
+          // An error occurred
+          // ...
+        });
+      setUserHelper({
+        displayName: name,
+        email: email,
+        photoURL: "",
+        userId: userCredential.user.uid,
+      });
       SuccesfulSignUp();
 
       // ...

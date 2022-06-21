@@ -116,6 +116,17 @@ interface TweetButtonProps {
   primary: boolean;
   height: number | undefined;
 }
+interface User {
+  displayName: string;
+  email: string;
+  photoURL: string;
+  userId: string;
+}
+
+interface UserPropsContext {
+  user: User;
+  setUserHelper: (user: User) => void;
+}
 export type {
   Props,
   OverlayFormProps,
@@ -131,4 +142,6 @@ export type {
   TrendingBlockProps,
   FollowBlockProps,
   TweetButtonProps,
+  User,
+  UserPropsContext,
 };

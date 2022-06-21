@@ -12,7 +12,9 @@ import {
   UpperContainer,
   SideBarFlexItems,
 } from "./LeftSideBarComponentCss";
+import { UserContext } from "../../../Contexts/UserContext";
 function LeftSideBarComponent() {
+  let { user } = useContext(UserContext);
   let { handleSideBarState } = useContext(sideBarPropsContext);
   return (
     <LeftSideBarContainer>
@@ -27,7 +29,7 @@ function LeftSideBarComponent() {
           </ProfileDiv>
         </SideBarFlexItems>
         <SideBarFlexItems>
-          <Name>Rohan Patel</Name>
+          <Name>{UserContext.displayName}</Name>
         </SideBarFlexItems>
         <SideBarFlexItems className="flex">
           <p>
