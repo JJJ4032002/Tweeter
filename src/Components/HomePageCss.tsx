@@ -17,6 +17,7 @@ const HomeContainer = styled.div`
   position: relative;
   @media ${devices.mobileL} {
     width: 100%;
+    height: 100vh;
     grid-template-columns: 0.9fr 5fr;
 
     grid-template-rows: 0.3fr 5fr;
