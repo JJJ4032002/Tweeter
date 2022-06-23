@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import { OverlayFormProps } from "../Interfaces and Types/Interfaces";
 import StylesReducer from "../Reducers/StylesReducer";
 import { useReducer } from "react";
@@ -8,7 +8,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import validateEmail from "../helpers/ValidateEmail";
 import InputsReducer from "../Reducers/InputsReducer";
-import { app } from "../firebase/InitializeFirebase";
 import { useNavigate } from "react-router-dom";
 import {
   FocusAllRedCombinations,
@@ -18,7 +17,6 @@ import {
   invalidInputLengthChecker,
 } from "../helpers/OverlayFormContextHelpers";
 import SignUpUser from "../firebase/SignUpUser";
-import { UserContext } from "./UserContext";
 const FormPropsContext = React.createContext<OverlayFormProps>({
   Styles: [
     {
@@ -53,7 +51,6 @@ const FormPropsContext = React.createContext<OverlayFormProps>({
 
 function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
   let navigate = useNavigate();
-  let { setUserHelper } = useContext(UserContext);
   const [styles, dispatchStyles] = useReducer(StylesReducer, [
     {
       type: "name",
@@ -104,7 +101,6 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
           inputVals.email,
           inputVals.password,
           inputVals.name,
-          setUserHelper,
           handleSignUpErr,
           handleSuccesfulSignUp
         );

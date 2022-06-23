@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { OverlaySignInFormProps } from "../Interfaces and Types/Interfaces";
 import {
   SignInWithoutTextBlurCombinations,
@@ -7,7 +7,6 @@ import {
 import { OverlayContextProviderChildren } from "../Interfaces and Types/Types";
 import SignInUser from "../firebase/SignInUser";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "./UserContext";
 const SignInFormPropsContext = React.createContext<OverlaySignInFormProps>({
   SignInStyles: [
     {
@@ -34,7 +33,6 @@ const SignInFormPropsContext = React.createContext<OverlaySignInFormProps>({
 
 function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
   let navigate = useNavigate();
-  let { setUserHelper } = useContext(UserContext);
   const [styles, setStyles] = useState([
     {
       type: "email",
@@ -142,7 +140,6 @@ function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
     SignInUser(
       inputVals.email,
       inputVals.password,
-      setUserHelper,
       handleSignInErr,
       handleSuccesfulSignIn
     );
