@@ -8,8 +8,7 @@ import { LeftSectionMobileLData, LeftSectionMobileMData } from "../../../Data";
 import { FlexItems } from "../../HomePageCss";
 import { Buttons } from "../../AuthenticationPageCss";
 import TweetButtonLogo from "../TweetButtonLogo";
-import { UserContext } from "../../../Contexts/UserContext";
-import { useContext } from "react";
+import { User } from "firebase/auth";
 
 function LeftSectionMobile(handleSidebarState: () => void) {
   return (
@@ -46,8 +45,7 @@ function LeftSectionMobileL() {
   );
 }
 
-function LeftSectionLaptopM() {
-  let { user } = useContext(UserContext);
+function LeftSectionLaptopM(user: User | null) {
   return (
     <>
       <FlexItems>
@@ -70,7 +68,7 @@ function LeftSectionLaptopM() {
           <ProfileDiv className="LeftSectionMobileS">
             <img src={profile} alt="gh" />
           </ProfileDiv>
-          <h5>{user.displayName}</h5>
+          {user !== null ? <h5>{user.displayName}</h5> : <h5>Loading..</h5>}
         </ItemDiv>
       </FlexItems>
     </>
