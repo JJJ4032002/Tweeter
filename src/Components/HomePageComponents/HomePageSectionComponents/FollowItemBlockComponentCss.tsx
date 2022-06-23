@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 const FollowButton = styled.button`
   padding: 0.5em 1.2em;
   border-radius: 2.5em;

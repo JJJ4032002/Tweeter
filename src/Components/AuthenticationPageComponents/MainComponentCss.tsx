@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { devices } from "../../Media Queries/Queries";
 const GridItemOne = styled.div`
   display: grid;

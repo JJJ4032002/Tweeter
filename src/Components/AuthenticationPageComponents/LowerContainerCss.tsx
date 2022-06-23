@@ -1,5 +1,5 @@
 import { Props } from "../../Interfaces and Types/Interfaces";
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components/macro";
 import { Buttons } from "../AuthenticationPageCss";
 const SubmitButton = styled(Buttons)<Props>`
   width: 100%;

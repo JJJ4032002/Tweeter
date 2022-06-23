@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 const LeftSideBarContainer = styled.div`
   background: white;
   padding: 1em 0.7em;

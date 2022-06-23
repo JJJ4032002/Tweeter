@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 import { Props } from "../../Interfaces and Types/Interfaces";
 import { devices } from "../../Media Queries/Queries";
 const Overlay = styled.div<Props>`

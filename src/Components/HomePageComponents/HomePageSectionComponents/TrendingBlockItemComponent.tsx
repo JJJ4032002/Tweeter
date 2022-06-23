@@ -1,5 +1,3 @@
-import React from "react";
-import styled from "styled-components";
 import { TrendingBlockProps } from "../../../Interfaces and Types/Interfaces";
 import { Image } from "../../AuthenticationPageCss";
 import {

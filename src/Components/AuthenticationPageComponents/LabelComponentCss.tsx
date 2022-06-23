@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled, { css } from "styled-components/macro";
 import { Props } from "../../Interfaces and Types/Interfaces";
 const Label = styled.label<Props>`
   border-width: 1px;

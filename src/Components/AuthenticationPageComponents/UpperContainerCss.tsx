@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 const UpperContainerBlock = styled.div`
   display: grid;
   grid-template-rows: 1fr;

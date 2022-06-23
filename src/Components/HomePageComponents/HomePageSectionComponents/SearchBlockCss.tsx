@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 const SearchBarBlock = styled.div`
   padding: 0.7em 0.7em;
   border-radius: 2.5em 2.5em 2.5em 2.5em;
