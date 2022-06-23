@@ -29,7 +29,11 @@ function LeftSideBarComponent() {
           </ProfileDiv>
         </SideBarFlexItems>
         <SideBarFlexItems>
-          <Name>{UserContext.displayName}</Name>
+          {user !== null ? (
+            <Name>{user.displayName}</Name>
+          ) : (
+            <Name>Loading..</Name>
+          )}
         </SideBarFlexItems>
         <SideBarFlexItems className="flex">
           <p>
