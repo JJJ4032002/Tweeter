@@ -1,10 +1,6 @@
 import React from "react";
-import {
-  CSSObject,
-  InterpolationFunction,
-  StyledComponent,
-} from "styled-components";
 import { ChangeStyles } from "./Types";
+import { User } from "firebase/auth";
 
 interface Props {
   primary?: boolean;
@@ -116,16 +112,9 @@ interface TweetButtonProps {
   primary: boolean;
   height: number | undefined;
 }
-interface User {
-  displayName: string;
-  email: string;
-  photoURL: string;
-  userId: string;
-}
 
 interface UserPropsContext {
-  user: User;
-  setUserHelper: (user: User) => void;
+  user: User | null;
 }
 export type {
   Props,
@@ -142,6 +131,5 @@ export type {
   TrendingBlockProps,
   FollowBlockProps,
   TweetButtonProps,
-  User,
   UserPropsContext,
 };
