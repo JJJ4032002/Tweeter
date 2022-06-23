@@ -4,14 +4,12 @@ import {
   createUserWithEmailAndPassword,
   updateProfile,
 } from "firebase/auth";
-import { User } from "../Interfaces and Types/Interfaces";
 
 const auth = getAuth(app);
 function SignUpUser(
   email: string,
   password: string,
   name: string,
-  setUserHelper: (user: User) => void,
   ErrFunc: (state: boolean) => void,
   SuccesfulSignUp: () => void
 ) {
@@ -32,12 +30,7 @@ function SignUpUser(
           // An error occurred
           // ...
         });
-      setUserHelper({
-        displayName: name,
-        email: email,
-        photoURL: "",
-        userId: userCredential.user.uid,
-      });
+
       SuccesfulSignUp();
 
       // ...
