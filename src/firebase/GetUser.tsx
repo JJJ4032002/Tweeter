@@ -12,7 +12,10 @@ function GetUser(setUserHelper: (user: User) => void) {
         setUserHelper(user);
       }
     });
-    return unsubscribe();
+    return () => {
+      unsubscribe();
+      console.log("unsub");
+    };
   }, []);
 }
 

@@ -9,6 +9,9 @@ import { FlexItems } from "../../HomePageCss";
 import { Buttons } from "../../AuthenticationPageCss";
 import TweetButtonLogo from "../TweetButtonLogo";
 import { User } from "firebase/auth";
+import LightTooltip from "../../Elements/LightTooltip";
+import SignOutOption from "../../Elements/SignOutOption";
+import UserStatus from "../../Elements/UserStatus";
 
 function LeftSectionMobile(handleSidebarState: () => void) {
   return (
@@ -64,12 +67,20 @@ function LeftSectionLaptopM(user: User | null) {
         </ItemDiv>
       </FlexItems>
       <FlexItems className="flex-row">
-        <ItemDiv>
-          <ProfileDiv className="LeftSectionMobileS">
-            <img src={profile} alt="gh" />
-          </ProfileDiv>
-          {user !== null ? <h5>{user.displayName}</h5> : <h5>Loading..</h5>}
-        </ItemDiv>
+        <LightTooltip
+          title={
+            <>
+              <UserStatus user={user} className="Tooltip"></UserStatus>
+              <SignOutOption
+                text={`Log out ${user?.displayName}`}
+              ></SignOutOption>
+            </>
+          }
+        >
+          <div>
+            <UserStatus user={user} className="OptionsText"></UserStatus>
+          </div>
+        </LightTooltip>
       </FlexItems>
     </>
   );
