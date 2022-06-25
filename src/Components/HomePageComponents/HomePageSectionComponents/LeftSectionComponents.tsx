@@ -1,48 +1,44 @@
-import profile from "../../../assets/Icons/profile.svg";
-import tweet from "../../../assets/Icons/tweet.svg";
 import { Image } from "../../AuthenticationPageCss";
-import { ItemDiv } from "../../HomePageCss";
-import { ProfileDiv } from "../../HomePageCss";
 import { HomeHeading } from "../../HomePageCss";
 import { LeftSectionMobileLData, LeftSectionMobileMData } from "../../../Data";
 import { FlexItems } from "../../HomePageCss";
-import { Buttons } from "../../AuthenticationPageCss";
 import TweetButtonLogo from "../TweetButtonLogo";
 import { User } from "firebase/auth";
-import LightTooltip from "../../Elements/LightTooltip";
-import SignOutOption from "../../Elements/SignOutOption";
 import UserStatus from "../../Elements/UserStatus";
+import Options from "../../Elements/Options/Options";
+import OptionsButton from "../../Elements/Options/OptionsButton";
+import TweetButton from "../../Elements/TweetButton";
+import ProfilePicture from "../../Elements/ProfilePicture";
+import SignOutTooltip from "../../Elements/Tooltip/SignOutTooltip";
 
 function LeftSectionMobile(handleSidebarState: () => void) {
   return (
     <>
       <FlexItems>
-        <ProfileDiv className="LeftSectionMobileS">
-          <img onClick={handleSidebarState} src={profile} alt="gh" />
-        </ProfileDiv>
+        <ProfilePicture InteractOnClick={handleSidebarState}></ProfilePicture>
         <HomeHeading>Home</HomeHeading>
       </FlexItems>
     </>
   );
 }
 
-function LeftSectionMobileL() {
+function LeftSectionMobileL(user: User | null) {
   return (
     <>
       <FlexItems>
         {LeftSectionMobileLData.map((item) => {
           return (
-            <ItemDiv key={item.key}>
+            <Options key={item.key}>
               <Image className="leftSection" src={item.imgSrc} alt="" />
-            </ItemDiv>
+            </Options>
           );
         })}
         <TweetButtonLogo height={undefined} primary={false}></TweetButtonLogo>
       </FlexItems>
       <FlexItems>
-        <ProfileDiv className="LeftSectionMobileS">
-          <img src={profile} alt="profile" />
-        </ProfileDiv>
+        <SignOutTooltip clickable={true} user={user}>
+          <ProfilePicture InteractOnClick={null}></ProfilePicture>
+        </SignOutTooltip>
       </FlexItems>
     </>
   );
@@ -54,33 +50,20 @@ function LeftSectionLaptopM(user: User | null) {
       <FlexItems>
         {LeftSectionMobileMData.map((item) => {
           return (
-            <ItemDiv className="OptionsText" key={item.key}>
+            <Options key={item.key}>
               <Image className="leftSection" src={item.imgSrc} alt="" />
               <p>{item.text}</p>
-            </ItemDiv>
+            </Options>
           );
         })}
-        <ItemDiv className="TweetButtonDiv">
-          <Buttons className="TweetButton" primary={true}>
-            Tweet
-          </Buttons>
-        </ItemDiv>
+        <OptionsButton>
+          <TweetButton></TweetButton>
+        </OptionsButton>
       </FlexItems>
       <FlexItems className="flex-row">
-        <LightTooltip
-          title={
-            <>
-              <UserStatus user={user} className="Tooltip"></UserStatus>
-              <SignOutOption
-                text={`Log out ${user?.displayName}`}
-              ></SignOutOption>
-            </>
-          }
-        >
-          <div>
-            <UserStatus user={user} className="OptionsText"></UserStatus>
-          </div>
-        </LightTooltip>
+        <SignOutTooltip clickable={false} user={user}>
+          <UserStatus user={user} className="OptionsText"></UserStatus>
+        </SignOutTooltip>
       </FlexItems>
     </>
   );
