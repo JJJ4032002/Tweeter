@@ -22,7 +22,7 @@ function LeftSection() {
     if (windowWidth >= Number(sizes.laptopM.split("px")[0])) {
       setLeftSectionContent(LeftSectionLaptopM(user));
     } else if (windowWidth >= Number(sizes.mobileL.split("px")[0])) {
-      setLeftSectionContent(LeftSectionMobileL);
+      setLeftSectionContent(LeftSectionMobileL(user));
     } else if (windowWidth >= 0) {
       setLeftSectionContent(LeftSectionMobile(handleSideBarState));
     }
