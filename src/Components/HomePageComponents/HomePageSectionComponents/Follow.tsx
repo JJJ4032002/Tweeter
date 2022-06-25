@@ -1,7 +1,7 @@
 import Cat3 from "../../../assets/Images/cat3.jpg";
 import Cat4 from "../../../assets/Images/cat4.jpg";
 import Cat5 from "../../../assets/Images/cat5.jpg";
-import FollowBlockItemComponent from "./FollowBlockItemComponent";
+import FollowBlockItemComponent from "../../Elements/FollowBlockItemComponent";
 import { TrendingBlockItemT3Component } from "./TrendingBlockItemComponent";
 import { TrendingBlock } from "./RightSectionComponentsCss";
 function Follow() {
