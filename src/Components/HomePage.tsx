@@ -7,6 +7,7 @@ import { HomeContainer } from "./HomePageCss";
 import { SideBarContextProvider } from "../Contexts/SideBarContext";
 import ExtraSection from "./HomePageComponents/ExtraSection";
 import TweetButtonLogo from "./HomePageComponents/TweetButtonLogo";
+import ProfilePage from "./ProfilePage";
 
 function HomePage() {
   const [RightContainerHeight, setRightContainerHeight] = useState<
@@ -22,7 +23,7 @@ function HomePage() {
     <SideBarContextProvider>
       <HomeContainer>
         <LeftSection></LeftSection>
-        <MiddleSection></MiddleSection>
+        <ProfilePage></ProfilePage>
         <RightSection></RightSection>
         <SideBar></SideBar>
         <ExtraSection></ExtraSection>

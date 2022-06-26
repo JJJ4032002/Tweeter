@@ -3,7 +3,7 @@ import { devices } from "../../Media Queries/Queries";
 const RightContainer = styled.div`
   display: flex;
   justify-content: space-around;
-
+  border-left: 1px solid #cfd9de;
   grid-area: RightSection;
   @media ${devices.mobileL} {
     grid-template-columns: 0.9fr 5fr;
