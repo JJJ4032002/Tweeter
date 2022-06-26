@@ -11,6 +11,10 @@ const Buttons = styled.button<Props>`
   border-radius: 5em;
   background: transparent;
   border: 0.1em solid rgba(0, 0, 0, 0.2);
+  &.Edit {
+    width: max-content;
+    padding: 0.7em 1.5em;
+  }
   &.SignIn {
     color: #2da7ed;
   }
