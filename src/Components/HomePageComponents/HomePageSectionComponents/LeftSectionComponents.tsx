@@ -28,7 +28,7 @@ function LeftSectionMobileL(user: User | null) {
       <FlexItems>
         {LeftSectionMobileLData.map((item) => {
           return (
-            <Options LinkTo="disabled" key={item.key}>
+            <Options LinkTo={item.to} key={item.key}>
               <Image className="leftSection" src={item.imgSrc} alt="" />
             </Options>
           );
