@@ -1,6 +1,6 @@
 import { Image } from "../../AuthenticationPageCss";
 import { HomeHeading } from "../../HomePageCss";
-import { LeftSectionMobileLData, LeftSectionMobileMData } from "../../../Data";
+import { LeftSectionMobileLData, LeftSectionLaptopMData } from "../../../Data";
 import { FlexItems } from "../../HomePageCss";
 import TweetButtonLogo from "../TweetButtonLogo";
 import { User } from "firebase/auth";
@@ -28,7 +28,7 @@ function LeftSectionMobileL(user: User | null) {
       <FlexItems>
         {LeftSectionMobileLData.map((item) => {
           return (
-            <Options key={item.key}>
+            <Options LinkTo="disabled" key={item.key}>
               <Image className="leftSection" src={item.imgSrc} alt="" />
             </Options>
           );
@@ -48,9 +48,9 @@ function LeftSectionLaptopM(user: User | null) {
   return (
     <>
       <FlexItems>
-        {LeftSectionMobileMData.map((item) => {
+        {LeftSectionLaptopMData.map((item) => {
           return (
-            <Options key={item.key}>
+            <Options LinkTo={item.to} key={item.key}>
               <Image className="leftSection" src={item.imgSrc} alt="" />
               <p>{item.text}</p>
             </Options>
