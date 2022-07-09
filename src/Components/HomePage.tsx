@@ -8,6 +8,7 @@ import { SideBarContextProvider } from "../Contexts/SideBarContext";
 import ExtraSection from "./HomePageComponents/ExtraSection";
 import TweetButtonLogo from "./HomePageComponents/TweetButtonLogo";
 import ProfilePage from "./ProfilePage";
+import { Outlet } from "react-router-dom";
 
 function HomePage() {
   const [RightContainerHeight, setRightContainerHeight] = useState<
@@ -23,7 +24,7 @@ function HomePage() {
     <SideBarContextProvider>
       <HomeContainer>
         <LeftSection></LeftSection>
-        <ProfilePage></ProfilePage>
+        <Outlet></Outlet>
         <RightSection></RightSection>
         <SideBar></SideBar>
         <ExtraSection></ExtraSection>
