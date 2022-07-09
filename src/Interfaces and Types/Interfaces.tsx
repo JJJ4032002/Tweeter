@@ -115,6 +115,7 @@ interface TweetButtonProps {
 
 interface UserPropsContext {
   user: User | null;
+  RouteProfile: boolean;
 }
 export type {
   Props,
