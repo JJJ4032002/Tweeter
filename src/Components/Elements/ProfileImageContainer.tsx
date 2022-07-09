@@ -9,21 +9,14 @@ const ProfileContainer = styled.div`
   margin-left: 1em;
   align-self: center;
   height: 100%;
-`;
-const ImageDiv = styled.div`
-  width: 60%;
-  height: 60%;
-  border: 5px solid white;
+  aspect-ratio: 1/1;
   background-color: lightgray;
-  box-shadow: 0 0 0 10vmax red;
-  clip-path: circle(71%);
+  border: 0.3em solid white;
+  border-radius: 50%;
 `;
+
 function ProfileImageContainer() {
-  return (
-    <ProfileContainer>
-      <ImageDiv></ImageDiv>
-    </ProfileContainer>
-  );
+  return <ProfileContainer></ProfileContainer>;
 }
 
 export default ProfileImageContainer;
