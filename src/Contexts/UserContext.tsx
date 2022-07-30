@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useLayoutEffect } from "react";
 import { UserPropsContext } from "../Interfaces and Types/Interfaces";
 import { OverlayContextProviderChildren } from "../Interfaces and Types/Types";
 import { User } from "firebase/auth";
@@ -21,7 +21,7 @@ function UserContextProvider({ children }: OverlayContextProviderChildren) {
   function handleSuccessfulSignIn() {
     navigate(`${process.env.PUBLIC_URL}/home`);
   }
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (location.pathname === "/Tweeter/home/profile") {
       setRouteProfile(true);
     } else if (location.pathname === "/Tweeter/home") {
