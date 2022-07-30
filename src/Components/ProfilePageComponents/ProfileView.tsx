@@ -25,14 +25,25 @@ const EditButtonContainer = styled.div`
   padding: 0em 1em;
   align-items: flex-start;
 `;
-function ProfileView() {
+function ProfileView({
+  handleDispEditProfile,
+}: {
+  handleDispEditProfile: (state: boolean) => void;
+}) {
   return (
     <>
       <Grid>
         <BannerImageContainer></BannerImageContainer>
         <ProfileImageContainer></ProfileImageContainer>
         <EditButtonContainer>
-          <Buttons className="Edit">Edit profile</Buttons>
+          <Buttons
+            onClick={() => {
+              handleDispEditProfile(true);
+            }}
+            className="Edit"
+          >
+            Edit profile
+          </Buttons>
         </EditButtonContainer>
       </Grid>
     </>

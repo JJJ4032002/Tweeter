@@ -1,6 +1,6 @@
 import React from "react";
-
-function EditProfile() {
+import { Overlay } from "../AuthenticationPageComponents/SignUpFormCss";
+function EditProfile({ EditProfileState }: { EditProfileState: boolean }) {
   return <div>EditProfile</div>;
 }
 
