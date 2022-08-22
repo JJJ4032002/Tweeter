@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components/macro";
-import { Props } from "../../Interfaces and Types/Interfaces";
+import { Props } from "../../../Interfaces and Types/Interfaces";
 const Label = styled.label<Props>`
   border-width: 1px;
   border-color: #cfd9de;
@@ -72,6 +72,16 @@ const SpanText = styled.span<Props>`
       color: #536471;
     `}
 `;
+
+const ErrorText = styled.span<Props>`
+  display: none;
+  color: red;
+  font-size: 0.8rem;
+  margin-left: 0.4em;
+`;
+const InputBlockWrapper = styled.div`
+  width: 100%;
+`;
 const Input = styled.input`
   width: 100%;
   -webkit-appearance: none;
@@ -86,4 +96,4 @@ const Input = styled.input`
     outline: none;
   }
 `;
-export { Label, SpanText, Input };
+export { Label, InputBlockWrapper, SpanText, Input, ErrorText };
