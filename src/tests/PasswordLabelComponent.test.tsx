@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom"; // optional
 import userEvent from "@testing-library/user-event";
-import LabelBlockComponent from "../Components/AuthenticationPageComponents/SignUpFormComponents/MiddleContainerComponents/LabelBlockComponent";
+import InputBlock from "../Components/Elements/Inputs/InputBlock";
 import { SignUpFormPropsProvider } from "../Contexts/SignUpFormContext";
 import "jest-styled-components";
 import { BrowserRouter } from "react-router-dom";
@@ -10,9 +10,9 @@ beforeEach(() => {
   render(
     <BrowserRouter>
       <SignUpFormPropsProvider>
-        <LabelBlockComponent type="password">
+        <InputBlock>
           Please enter a password greater than 8 characters
-        </LabelBlockComponent>
+        </InputBlock>
       </SignUpFormPropsProvider>
     </BrowserRouter>
   );

@@ -2,7 +2,7 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom"; // optional
 import userEvent from "@testing-library/user-event";
-import LabelBlockComponent from "../Components/AuthenticationPageComponents/SignUpFormComponents/MiddleContainerComponents/LabelBlockComponent";
+import InputBlock from "../Components/Elements/Inputs/InputBlock";
 import { SignUpFormPropsProvider } from "../Contexts/SignUpFormContext";
 import "jest-styled-components";
 import { BrowserRouter } from "react-router-dom";
@@ -11,7 +11,7 @@ beforeEach(() => {
   render(
     <BrowserRouter>
       <SignUpFormPropsProvider>
-        <LabelBlockComponent type="name">What's your name</LabelBlockComponent>
+        <InputBlock>What's your name</InputBlock>
       </SignUpFormPropsProvider>
     </BrowserRouter>
   );
