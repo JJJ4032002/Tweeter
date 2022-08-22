@@ -18,7 +18,7 @@ const DateOfBirthCont = styled.div`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 1.8em;
+  gap: 1.7em;
 `;
 const PasswordSpan = styled.span`
   font-size: 0.8rem;
