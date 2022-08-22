@@ -13,8 +13,7 @@ type InputValues = {
 };
 
 type LabelBlockComponentProps = {
-  type: string;
-  children: string;
+  children: React.ReactNode;
 };
 
 type InputStateProps = {

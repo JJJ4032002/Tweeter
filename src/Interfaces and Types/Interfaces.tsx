@@ -87,8 +87,7 @@ interface SignInInputValsInterface {
   passwordBool: boolean;
 }
 interface inputTypeInterface {
-  type: string;
-  inputType: string;
+  children: React.ReactNode;
 }
 interface PasswordSpanProps {
   showPassword: boolean;
