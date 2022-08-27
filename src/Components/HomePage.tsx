@@ -9,8 +9,9 @@ import ExtraSection from "./HomePageComponents/ExtraSection";
 import TweetButtonLogo from "./HomePageComponents/TweetButtonLogo";
 import ProfilePage from "./ProfilePage";
 import { Outlet } from "react-router-dom";
+import EditProfile from "./ProfilePageComponents/EditProfile";
 
-function HomePage() {
+function HomePage({ EditProfileState }: { EditProfileState: boolean }) {
   const [RightContainerHeight, setRightContainerHeight] = useState<
     number | undefined
   >(0);
@@ -33,6 +34,7 @@ function HomePage() {
           primary={true}
         ></TweetButtonLogo>
       </HomeContainer>
+      <EditProfile EditProfileState={EditProfileState}></EditProfile>
     </SideBarContextProvider>
   );
 }
