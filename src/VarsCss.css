@@ -1,0 +1,37 @@
+body[data-theme="light"] {
+  --colors-primary: #1d9bf0;
+  --colors-primaryHover: #1a8cd8;
+  --colors-background: white;
+  --colors-textPrimary: black;
+  --colors-textSecondary: #536471;
+  --colors-primaryBtnText: white;
+  --colors-primaryBtnBackground: var(--colors-primary);
+  --colors-primarySignUpBtnText: var(--colors-primary);
+  --colors-primarySignUpBtnBackground: transparent;
+  --colors-primarySignUpBtnBackgroundHover: rgba(29, 155, 240, 0.1);
+  --colors-primarySignUpBtnBorderColour: rgba(0, 0, 0, 0.2);
+  --colors-secondarySignUpBtnText: black;
+  --colors-secondarySignUpBtnBackground: transparent;
+  --colors-secondarySignUpBtnBackgroundHover: rgb(230, 230, 230);
+  --colors-secondaryBtnText: white;
+  --colors-secondaryBtnBackground: black;
+}
+
+body[data-theme="dark"] {
+  --colors-primary: #1d9bf0;
+  --colors-primaryHover: #1a8cd8;
+  --colors-background: black;
+  --colors-textPrimary: white;
+  --colors-textSecondary: #536471;
+  --colors-primaryBtnText: white;
+  --colors-primaryBtnBackground: var(--colors-primary);
+  --colors-primarySignUpBtnText: var(--colors-primary);
+  --colors-primarySignUpBtnBackground: transparent;
+  --colors-primarySignUpBtnBackgroundHover: rgba(29, 155, 240, 0.1);
+  --colors-primarySignUpBtnBorderColour: #536471;
+  --colors-secondarySignUpBtnText: black;
+  --colors-secondarySignUpBtnBackground: white;
+  --colors-secondarySignUpBtnBackgroundHover: rgb(230, 230, 230);
+  --colors-secondaryBtnText: black;
+  --colors-secondaryBtnBackground: white;
+}
