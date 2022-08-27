@@ -6,8 +6,8 @@ const SubmitButton = styled(Buttons)<Props>`
   border-radius: 5em;
   margin: 0;
   font-size: 1rem;
-  background-color: black;
-  color: white;
+  background-color: ${(props) => props.theme.colors.secondaryBtnBackgound};
+  color: ${(props) => props.theme.colors.secondaryBtnText};
   pointer-events: none;
   opacity: 0.7;
   ${(props) =>

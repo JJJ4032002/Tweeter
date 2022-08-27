@@ -18,7 +18,8 @@ const FormContainer = styled.div`
   width: 100%;
   max-width: 600px;
   padding: 0.4em 1em;
-  background-color: white;
+  background-color: ${(props) => props.theme.colors.background};
+  color: ${(props) => props.theme.colors.textPrimary};
   border-radius: 0.7em;
   display: grid;
   min-height: 100%;

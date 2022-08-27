@@ -27,8 +27,8 @@ const FollowButton = styled.button`
   padding: 0.5em 1.2em;
   border-radius: 2.5em;
   border: transparent;
-  background-color: black;
-  color: white;
+  background-color: ${(props) => props.theme.colors.secondaryBtnBackgound};
+  color: ${(props) => props.theme.colors.secondaryBtnText};
   font-weight: 800;
   cursor: pointer;
 `;

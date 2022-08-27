@@ -9,20 +9,28 @@ const Buttons = styled.button<Props>`
   cursor: pointer;
   margin: 0.5em 0;
   border-radius: 5em;
-  background: transparent;
-  border: 0.1em solid rgba(0, 0, 0, 0.2);
+  background: ${(props) => props.theme.colors.secondarySignUpBtnBackground};
+  color: ${(props) => props.theme.colors.secondarySignUpBtnText};
+  border: 0.1em solid
+    ${(props) => props.theme.colors.primarySignUpBtnBorderColour};
   &.Edit {
     width: max-content;
     padding: 0.7em 1.5em;
   }
   &.SignIn {
-    color: #2da7ed;
+    background: ${(props) => props.theme.colors.primarySignUpBtnBackground};
+    color: ${(props) => props.theme.colors.primarySignUpBtnText};
+  }
+  &.SignIn:hover {
+    background: ${(props) =>
+      props.theme.colors.primarySignUpBtnBackgroundHover};
   }
   &:hover {
-    opacity: 0.7;
+    background: ${(props) =>
+      props.theme.colors.secondarySignUpBtnBackgroundHover};
   }
   & ~ &:hover {
-    background-color: #0d7cbd;
+    background-color: ${(props) => props.theme.colors.primaryHover};
   }
   &.TweetButton {
     width: 100%;
@@ -31,8 +39,8 @@ const Buttons = styled.button<Props>`
   ${(props) =>
     props.primary &&
     css`
-      background-color: #2da7ed;
-      color: white;
+      background-color: ${(props) => props.theme.colors.primaryBtnBackground};
+      color: ${(props) => props.theme.colors.primaryBtnText};
     `}
   @media ${devices.tablet} {
     width: 60%;
