@@ -4,6 +4,7 @@ import styled from "styled-components/macro";
 import { devices } from "../../Media Queries/Queries";
 import { Image } from "../AuthenticationPageCss";
 import close from "../../assets/Icons/close.svg";
+import ProfileView from "./ProfileView";
 let EditProfileForm = styled.div`
   width: 100%;
   background: white;
@@ -42,6 +43,7 @@ const SaveButton = styled.button`
   cursor: pointer;
 `;
 const ProfileInformation = styled.div``;
+const ImagesContainer = styled.div``;
 
 function EditProfile({ EditProfileState }: { EditProfileState: boolean }) {
   return (
@@ -56,6 +58,9 @@ function EditProfile({ EditProfileState }: { EditProfileState: boolean }) {
             <SaveButton>Save</SaveButton>
           </HeaderItems>
         </Header>
+        <ImagesContainer>
+          <ProfileView></ProfileView>
+        </ImagesContainer>
       </EditProfileForm>
     </ModalBackdrop>
   );

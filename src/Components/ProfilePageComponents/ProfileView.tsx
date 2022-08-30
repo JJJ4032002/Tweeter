@@ -25,25 +25,32 @@ const EditButtonContainer = styled.div`
   padding: 0em 1em;
   align-items: flex-start;
 `;
+const PlaceHolder = styled.div`
+  padding: 1.5em 1.5em;
+`;
 function ProfileView({
   handleDispEditProfile,
 }: {
-  handleDispEditProfile: (state: boolean) => void;
+  handleDispEditProfile?: (state: boolean) => void;
 }) {
   return (
     <>
       <Grid>
-        <BannerImageContainer></BannerImageContainer>
-        <ProfileImageContainer></ProfileImageContainer>
+        <BannerImageContainer Editable={true}></BannerImageContainer>
+        <ProfileImageContainer Editable={true}></ProfileImageContainer>
         <EditButtonContainer>
-          <Buttons
-            onClick={() => {
-              handleDispEditProfile(true);
-            }}
-            className="Edit"
-          >
-            Edit profile
-          </Buttons>
+          {handleDispEditProfile === undefined ? (
+            <PlaceHolder></PlaceHolder>
+          ) : (
+            <Buttons
+              onClick={() => {
+                handleDispEditProfile(true);
+              }}
+              className="Edit"
+            >
+              Edit profile
+            </Buttons>
+          )}
         </EditButtonContainer>
       </Grid>
     </>

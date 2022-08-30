@@ -15,7 +15,7 @@ const ProfileContainer = styled.div`
   border-radius: 50%;
 `;
 
-function ProfileImageContainer() {
+function ProfileImageContainer({ Editable }: { Editable: boolean }) {
   return <ProfileContainer></ProfileContainer>;
 }
 

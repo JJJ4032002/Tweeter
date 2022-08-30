@@ -20,7 +20,7 @@ const BannerContainer = styled.div`
     height: 250px;
   }
 `;
-function BannerImageContainer() {
+function BannerImageContainer({ Editable }: { Editable: boolean }) {
   return <BannerContainer></BannerContainer>;
 }
 
