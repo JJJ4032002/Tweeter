@@ -1,6 +1,5 @@
 import "./VarsCss.css";
 import { DefaultTheme } from "styled-components";
-import { isWhiteSpaceLike } from "typescript";
 const theme: DefaultTheme = {
   colors: {
     primary: "var(--colors-primary)",
