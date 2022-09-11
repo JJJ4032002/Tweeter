@@ -60,7 +60,9 @@ interface OverlaySignInFormProps {
 }
 interface AuthenticationPageContextProps {
   FormStyles: { opacity: number; display: string };
-  handleSignUpBtn: (event: React.MouseEvent<HTMLElement>) => void;
+  handleSignUpBtn: (
+    event: React.MouseEvent<HTMLButtonElement | HTMLImageElement>
+  ) => void;
   signInFormStyles: { opacity: number; display: string };
 }
 interface sideBarContextProps {
