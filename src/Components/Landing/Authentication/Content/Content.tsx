@@ -1,23 +1,22 @@
-import React, { useContext } from "react";
-import styled from "styled-components";
-import InputBlock from "../Elements/Inputs/InputBlock";
+import { ContentBlock, Form, SignInErrText } from "./ContentCss";
+import styled from "styled-components/macro";
+import { Input } from "../../../Elements/Inputs/InputBlockCss";
+import { useContext } from "react";
+import { SignInFormPropsContext } from "../../../../Contexts/SignInFormContext";
+import { FormPropsContext } from "../../../../Contexts/SignUpFormContext";
+import { FormContainersProps } from "../../../../Interfaces and Types/Interfaces";
+import PasswordDisplayToggle from "../../../Elements/Inputs/PasswordDisplayToggle";
+import InputBlock from "../../../Elements/Inputs/InputBlock";
 import {
-  MiddleContainerBlock,
-  Form,
-  PasswordSpan,
-  SignInErrText,
-} from "./MiddleContainerCss";
-import { FormPropsContext } from "../../Contexts/SignUpFormContext";
-import PasswordSpanComponent from "./PasswordSpanComponent";
-import { SignInFormPropsContext } from "../../Contexts/SignInFormContext";
-import { FormContainersProps } from "../../Interfaces and Types/Interfaces";
-import { Label, SpanText } from "../Elements/Inputs/InputBlockCss";
-import { ErrorText, Input } from "../Elements/Inputs/InputBlockCss";
+  Label,
+  SpanText,
+  ErrorText,
+} from "../../../Elements/Inputs/InputBlockCss";
 const FormHeading = styled.h2`
   font-size: clamp(1.2rem, 1.1571rem + 0.2143vw, 1.5rem);
 `;
 
-function MiddleContainer({ signIn }: FormContainersProps) {
+function Content({ signIn }: FormContainersProps) {
   let {
     validNameEmail,
     showPassword,
@@ -51,7 +50,7 @@ function MiddleContainer({ signIn }: FormContainersProps) {
     signInpasswordType = "text";
   }
   return (
-    <MiddleContainerBlock>
+    <ContentBlock>
       {!signIn ? (
         <>
           {validNameEmail ? (
@@ -132,10 +131,10 @@ function MiddleContainer({ signIn }: FormContainersProps) {
                       </ErrorText>
                     </>
                   </InputBlock>
-                  <PasswordSpanComponent
+                  <PasswordDisplayToggle
                     showPassword={showPassword}
                     handleShowPasswordSpan={handleShowPasswordSpan}
-                  ></PasswordSpanComponent>
+                  ></PasswordDisplayToggle>
                 </div>
                 <SignInErrText ErrTextDispState={SignUpErr}>
                   This email is already in use!
@@ -178,10 +177,10 @@ function MiddleContainer({ signIn }: FormContainersProps) {
                 </SpanText>
               </Label>
 
-              <PasswordSpanComponent
+              <PasswordDisplayToggle
                 showPassword={signInShowPassword}
                 handleShowPasswordSpan={handleSignInShowPasswordSpan}
-              ></PasswordSpanComponent>
+              ></PasswordDisplayToggle>
               <SignInErrText ErrTextDispState={SignInErr}>
                 Invalid email/password!
               </SignInErrText>
@@ -189,8 +188,8 @@ function MiddleContainer({ signIn }: FormContainersProps) {
           </Form>
         </>
       )}
-    </MiddleContainerBlock>
+    </ContentBlock>
   );
 }
 
-export default MiddleContainer;
+export default Content;

@@ -1,18 +1,19 @@
 import React, { useContext, useRef } from "react";
+import { AuthenticationPageContext } from "../../../Contexts/AuthenticationPageContext";
 
-import { Image, Buttons, Para } from "../AuthenticationPageCss";
-import logo from "../../assets/Icons/logo.svg";
-import BannerImg from "../../assets/Images/BannerImg-min.jpg";
 import {
   GridItemOne,
   GridItemTwo,
-  SignInButtonsDiv,
-  SignUpButtonsDiv,
   PrimaryHeading,
   SecondaryHeading,
-} from "./MainComponentCss";
-import { AuthenticationPageContext } from "../../Contexts/AuthenticationPageContext";
-function MainComponent() {
+  SignUpButtonsDiv,
+  SignInButtonsDiv,
+} from "./MainCss";
+import BannerImg from "../../../assets/Images/BannerImg-min.jpg";
+import logo from "../../../assets/Icons/logo.svg";
+import { Buttons, Para, Image } from "../LandingCss";
+
+function Main() {
   let { handleSignUpBtn } = useContext(AuthenticationPageContext);
 
   return (
@@ -47,4 +48,4 @@ function MainComponent() {
   );
 }
 
-export default MainComponent;
+export default Main;

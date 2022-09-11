@@ -1,5 +1,5 @@
 import React from "react";
-import { Buttons } from "../AuthenticationPageCss";
+import { Buttons } from "../Landing/LandingCss";
 function TweetButton() {
   return (
     <Buttons className="TweetButton" primary={true}>

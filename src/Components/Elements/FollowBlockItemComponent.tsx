@@ -1,4 +1,4 @@
-import { Image } from "../AuthenticationPageCss";
+import { Image } from "../Landing/LandingCss";
 import { FollowBlockProps } from "../../Interfaces and Types/Interfaces";
 import {
   TrendingBlockItem,

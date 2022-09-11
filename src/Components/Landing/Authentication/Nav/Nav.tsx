@@ -1,20 +1,20 @@
 import React, { useContext } from "react";
-import { UpperContainerBlock } from "./UpperContainerCss";
-import { Image } from "../AuthenticationPageCss";
-import logo from "../../assets/Icons/logo.svg";
-import close from "../../assets/Icons/close.svg";
-import leftArrow from "../../assets/Icons/leftArrow.svg";
-import { AuthenticationPageContext } from "../../Contexts/AuthenticationPageContext";
-import { FormPropsContext } from "../../Contexts/SignUpFormContext";
-import { SignInFormPropsContext } from "../../Contexts/SignInFormContext";
-import { FormContainersProps } from "../../Interfaces and Types/Interfaces";
-export const UpperContainer = ({ signIn }: FormContainersProps) => {
+import { AuthenticationPageContext } from "../../../../Contexts/AuthenticationPageContext";
+import { SignInFormPropsContext } from "../../../../Contexts/SignInFormContext";
+import { FormPropsContext } from "../../../../Contexts/SignUpFormContext";
+import { FormContainersProps } from "../../../../Interfaces and Types/Interfaces";
+import { Image } from "../../LandingCss";
+import logo from "../../../../assets/Icons/logo.svg";
+import leftArrow from "../../../../assets/Icons/leftArrow.svg";
+import close from "../../../../assets/Icons/close.svg";
+import { NavBlock } from "./NavCss";
+export const Nav = ({ signIn }: FormContainersProps) => {
   let { handleSignUpBtn } = useContext(AuthenticationPageContext);
   let { ResetForm, validNameEmail, handleSubmitBtnClick } =
     useContext(FormPropsContext);
   let { SignInResetForm } = useContext(SignInFormPropsContext);
   return (
-    <UpperContainerBlock>
+    <NavBlock>
       {!signIn ? (
         <>
           <Image
@@ -46,6 +46,6 @@ export const UpperContainer = ({ signIn }: FormContainersProps) => {
           <Image className="logoInForm" src={logo}></Image>
         </>
       )}
-    </UpperContainerBlock>
+    </NavBlock>
   );
 };

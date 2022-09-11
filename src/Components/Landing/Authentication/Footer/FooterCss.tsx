@@ -1,6 +1,6 @@
-import { Props } from "../../Interfaces and Types/Interfaces";
+import { Props } from "../../../../Interfaces and Types/Interfaces";
 import styled, { css } from "styled-components/macro";
-import { Buttons } from "../AuthenticationPageCss";
+import { Buttons } from "../../LandingCss";
 const SubmitButton = styled(Buttons)<Props>`
   width: 100%;
   border-radius: 5em;
@@ -18,11 +18,11 @@ const SubmitButton = styled(Buttons)<Props>`
       cursor: pointer;
     `}
 `;
-const LowerContainerBlock = styled.div`
+const FooterBlock = styled.div`
   width: 90%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   margin: 0.5em auto 0.8em auto;
 `;
-export { SubmitButton, LowerContainerBlock };
+export { SubmitButton, FooterBlock };

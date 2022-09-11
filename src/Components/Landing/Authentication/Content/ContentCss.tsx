@@ -1,7 +1,7 @@
 import styled, { css } from "styled-components/macro";
-import { Props } from "../../Interfaces and Types/Interfaces";
+import { Props } from "../../../../Interfaces and Types/Interfaces";
 
-const MiddleContainerBlock = styled.div`
+const ContentBlock = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1.2em;
@@ -39,10 +39,4 @@ const SignInErrText = styled.span<Props>`
       display: block;
     `}
 `;
-export {
-  MiddleContainerBlock,
-  Form,
-  DateOfBirthCont,
-  PasswordSpan,
-  SignInErrText,
-};
+export { ContentBlock, Form, DateOfBirthCont, PasswordSpan, SignInErrText };

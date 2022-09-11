@@ -1,6 +1,6 @@
 import styled, { css } from "styled-components/macro";
-import { devices } from "../Media Queries/Queries";
-import { Props } from "../Interfaces and Types/Interfaces";
+import { devices } from "../../Media Queries/Queries";
+import { Props } from "../../Interfaces and Types/Interfaces";
 const Buttons = styled.button<Props>`
   display: inline-block;
   width: 70%;

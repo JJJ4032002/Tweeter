@@ -1,16 +1,15 @@
-import React, { useContext } from "react";
-
-import { FormPropsContext } from "../../Contexts/SignUpFormContext";
-import { FormContainersProps } from "../../Interfaces and Types/Interfaces";
-import { SubmitButton, LowerContainerBlock } from "./LowerContainerCss";
-import { SignInFormPropsContext } from "../../Contexts/SignInFormContext";
+import { useContext } from "react";
+import { SignInFormPropsContext } from "../../../../Contexts/SignInFormContext";
+import { FormPropsContext } from "../../../../Contexts/SignUpFormContext";
+import { FormContainersProps } from "../../../../Interfaces and Types/Interfaces";
+import { SubmitButton, FooterBlock } from "./FooterCss";
 function LowerContainer({ signIn }: FormContainersProps) {
   let { FinBtnState, handleSubmitBtnClick, loader } =
     useContext(FormPropsContext);
   let { SignInFinBtnState, handleSignInSubmitButton, signInLoader } =
     useContext(SignInFormPropsContext);
   return (
-    <LowerContainerBlock>
+    <FooterBlock>
       {!signIn ? (
         <>
           <SubmitButton
@@ -30,7 +29,7 @@ function LowerContainer({ signIn }: FormContainersProps) {
           </SubmitButton>
         </>
       )}
-    </LowerContainerBlock>
+    </FooterBlock>
   );
 }
 
