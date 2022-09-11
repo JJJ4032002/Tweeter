@@ -1,4 +1,4 @@
-import { Image } from "../../AuthenticationPageCss";
+import Img from "../../Elements/Img";
 import { HomeHeading } from "../../HomePageCss";
 import { LeftSectionMobileLData, LeftSectionLaptopMData } from "../../../Data";
 import { FlexItems } from "../../HomePageCss";
@@ -29,7 +29,7 @@ function LeftSectionMobileL(user: User | null) {
         {LeftSectionMobileLData.map((item) => {
           return (
             <Options LinkTo={item.to} key={item.key}>
-              <Image className="leftSection" src={item.imgSrc} alt="" />
+              <Img className="leftSection" src={item.imgSrc} alt="" />
             </Options>
           );
         })}
@@ -51,7 +51,7 @@ function LeftSectionLaptopM(user: User | null) {
         {LeftSectionLaptopMData.map((item) => {
           return (
             <Options LinkTo={item.to} key={item.key}>
-              <Image className="leftSection" src={item.imgSrc} alt="" />
+              <Img className="leftSection" src={item.imgSrc} alt="" />
               <p>{item.text}</p>
             </Options>
           );

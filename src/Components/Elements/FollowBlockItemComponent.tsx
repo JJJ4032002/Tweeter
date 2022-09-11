@@ -1,4 +1,4 @@
-import { Image } from "../Landing/LandingCss";
+import Img from "./Img";
 import { FollowBlockProps } from "../../Interfaces and Types/Interfaces";
 import {
   TrendingBlockItem,
@@ -13,7 +13,7 @@ function FollowBlockItemComponent({
     <TrendingBlockItem className="flexBoxType2">
       <FlexItem className="flexBoxItem">
         <AccountImageDiv>
-          <Image className="AccountImage" src={ImgSrc} alt="" />
+          <Img className="AccountImage" src={ImgSrc} alt="" />
         </AccountImageDiv>
         <h4>{FollowBlockHeading}</h4>
       </FlexItem>

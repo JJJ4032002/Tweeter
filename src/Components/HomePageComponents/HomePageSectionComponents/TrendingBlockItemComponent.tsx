@@ -1,5 +1,5 @@
 import { TrendingBlockProps } from "../../../Interfaces and Types/Interfaces";
-import { Image } from "../../AuthenticationPageCss";
+import Img from "../../Elements/Img";
 import {
   TrendingBlockItem,
   FlexItem,
@@ -30,7 +30,7 @@ function TrendingBlockItemT2Component({
         <h4>{TrendingBlockHeading}</h4>
       </FlexItem>
       <FlexItem className="flexImageDiv">
-        <Image className="flexImage" src={ImgSrc} alt="" />
+        <Img className="flexImage" src={ImgSrc} alt="" />
       </FlexItem>
     </TrendingBlockItem>
   );

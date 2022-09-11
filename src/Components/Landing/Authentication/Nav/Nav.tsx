@@ -3,7 +3,7 @@ import { AuthenticationPageContext } from "../../../../Contexts/AuthenticationPa
 import { SignInFormPropsContext } from "../../../../Contexts/SignInFormContext";
 import { FormPropsContext } from "../../../../Contexts/SignUpFormContext";
 import { FormContainersProps } from "../../../../Interfaces and Types/Interfaces";
-import { Image } from "../../LandingCss";
+import Img from "../../../Elements/Img";
 import logo from "../../../../assets/Icons/logo.svg";
 import leftArrow from "../../../../assets/Icons/leftArrow.svg";
 import close from "../../../../assets/Icons/close.svg";
@@ -17,7 +17,7 @@ export const Nav = ({ signIn }: FormContainersProps) => {
     <NavBlock>
       {!signIn ? (
         <>
-          <Image
+          <Img
             onClick={(event) => {
               if (validNameEmail) {
                 handleSignUpBtn(event);
@@ -29,21 +29,21 @@ export const Nav = ({ signIn }: FormContainersProps) => {
             className="SignUpBtn"
             id="closeImg"
             src={validNameEmail ? close : leftArrow}
-          ></Image>
-          <Image className="logoInForm" src={logo}></Image>
+          ></Img>
+          <Img className="logoInForm" src={logo}></Img>
         </>
       ) : (
         <>
           {" "}
-          <Image
+          <Img
             id="closeImg"
             onClick={(event) => {
               handleSignUpBtn(event);
               SignInResetForm();
             }}
             src={close}
-          ></Image>
-          <Image className="logoInForm" src={logo}></Image>
+          ></Img>
+          <Img className="logoInForm" src={logo}></Img>
         </>
       )}
     </NavBlock>

@@ -1,5 +1,5 @@
 import { ItemDiv } from "../../HomePageCss";
-import { Image } from "../../AuthenticationPageCss";
+import Img from "../../Elements/Img";
 import logo from "../../../assets/Icons/logo.svg";
 import { HomeHeading } from "../../HomePageCss";
 import { RightSectionMobileData } from "../../../Data";
@@ -16,7 +16,7 @@ function RightSectionMobile() {
       {RightSectionMobileData.map((item) => {
         return (
           <ItemDiv key={item.key}>
-            <Image className="leftSection" src={item.imgSrc} alt="" />
+            <Img className="leftSection" src={item.imgSrc} alt="" />
           </ItemDiv>
         );
       })}
@@ -27,7 +27,7 @@ function RightSectionMobileL(user: User | null, RouteProfile: boolean) {
   return (
     <>
       <ItemDiv>
-        <Image
+        <Img
           className="leftSection logoInForm gridItemLogo"
           src={logo}
           alt=""

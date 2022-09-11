@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components/macro";
 import BannerImageContainer from "../Elements/BannerImageContainer";
 import ProfileImageContainer from "../Elements/ProfileImageContainer";
-import { Buttons } from "../AuthenticationPageCss";
+import Button from "../Elements/Button";
 import { devices } from "../../Media Queries/Queries";
 const Grid = styled.div`
   display: grid;
@@ -42,14 +42,14 @@ function ProfileView({
           {handleDispEditProfile === undefined ? (
             <PlaceHolder></PlaceHolder>
           ) : (
-            <Buttons
+            <Button
               onClick={() => {
                 handleDispEditProfile(true);
               }}
               className="Edit"
             >
               Edit profile
-            </Buttons>
+            </Button>
           )}
         </EditButtonContainer>
       </Grid>

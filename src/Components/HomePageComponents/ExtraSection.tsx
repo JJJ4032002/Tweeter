@@ -1,6 +1,6 @@
 import { ExtraSectionContainer, ExtraSectionDiv } from "./ExtraSectionCss";
 import { ItemDiv } from "../HomePageCss";
-import { Image } from "../AuthenticationPageCss";
+import Img from "../Elements/Img";
 import logo from "../../assets/Icons/logo.svg";
 import { HomeHeading } from "../HomePageCss";
 import { useContext } from "react";
@@ -11,7 +11,7 @@ function ExtraSection() {
   return (
     <ExtraSectionContainer>
       <ExtraSectionDiv>
-        <Image
+        <Img
           className="leftSection logoInForm gridItemLogo"
           src={logo}
           alt=""

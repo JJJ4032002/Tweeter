@@ -19,7 +19,9 @@ function AuthenticationPageContextProvider({
     opacity: 1,
     display: "none",
   });
-  function handleSignUpBtn(event: React.MouseEvent<HTMLElement>) {
+  function handleSignUpBtn(
+    event: React.MouseEvent<HTMLButtonElement | HTMLImageElement>
+  ) {
     let ElementType = event.target as Element;
 
     if (ElementType.nodeName === "BUTTON") {

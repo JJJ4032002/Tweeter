@@ -1,6 +1,7 @@
 import React, { useContext, useRef } from "react";
 import { AuthenticationPageContext } from "../../../Contexts/AuthenticationPageContext";
-
+import Button from "../../Elements/Button";
+import Img from "../../Elements/Img";
 import {
   GridItemOne,
   GridItemTwo,
@@ -11,7 +12,7 @@ import {
 } from "./MainCss";
 import BannerImg from "../../../assets/Images/BannerImg-min.jpg";
 import logo from "../../../assets/Icons/logo.svg";
-import { Buttons, Para, Image } from "../LandingCss";
+import { Para } from "../LandingCss";
 
 function Main() {
   let { handleSignUpBtn } = useContext(AuthenticationPageContext);
@@ -19,29 +20,29 @@ function Main() {
   return (
     <>
       <GridItemOne>
-        <Image className="BannerImg" src={BannerImg} alt="BannerImg" />
-        <Image id="AbsBannerImg" src={logo} alt="LogoImg"></Image>
+        <Img className="BannerImg" src={BannerImg} alt="BannerImg" />
+        <Img id="AbsBannerImg" src={logo} alt="LogoImg"></Img>
       </GridItemOne>
       <GridItemTwo>
-        <Image id="DarkLogo" src={logo} alt="LogoImg"></Image>
+        <Img id="DarkLogo" src={logo} alt="LogoImg"></Img>
         <PrimaryHeading>Happening Now</PrimaryHeading>
         <SecondaryHeading>Join Tweeter today</SecondaryHeading>
         <SignUpButtonsDiv>
-          <Buttons>Sign in with google</Buttons>
+          <Button>Sign in with google</Button>
           <Para>or</Para>
-          <Buttons
+          <Button
             className="SignUpBtn"
-            onClick={handleSignUpBtn}
             primary={true}
+            onClick={handleSignUpBtn}
           >
             Sign up with email
-          </Buttons>
+          </Button>
         </SignUpButtonsDiv>
         <SignInButtonsDiv>
           <Para primary={true}>Already have an account ?</Para>
-          <Buttons onClick={handleSignUpBtn} className="SignIn">
+          <Button onClick={handleSignUpBtn} className="SignIn">
             Sign in
-          </Buttons>
+          </Button>
         </SignInButtonsDiv>
       </GridItemTwo>
     </>

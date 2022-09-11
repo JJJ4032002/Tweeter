@@ -2,7 +2,7 @@ import React from "react";
 import ModalBackdrop from "../Elements/Modals/ModalBackdrop";
 import styled from "styled-components/macro";
 import { devices } from "../../Media Queries/Queries";
-import { Image } from "../AuthenticationPageCss";
+import Img from "../Elements/Img";
 import close from "../../assets/Icons/close.svg";
 import ProfileView from "./ProfileView";
 let EditProfileForm = styled.div`
@@ -51,7 +51,7 @@ function EditProfile({ EditProfileState }: { EditProfileState: boolean }) {
       <EditProfileForm>
         <Header>
           <HeaderItems>
-            <Image src={close}></Image>
+            <Img src={close}></Img>
             <FormHeading>Edit Profile</FormHeading>
           </HeaderItems>
           <HeaderItems>
