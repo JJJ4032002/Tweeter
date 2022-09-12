@@ -1,6 +1,7 @@
 import React, { ButtonHTMLAttributes } from "react";
 import * as S from "./ButtonCss";
 import { Props } from "../../../Interfaces and Types/Interfaces";
+
 interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     Props,

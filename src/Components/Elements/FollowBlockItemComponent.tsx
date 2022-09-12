@@ -1,5 +1,6 @@
 import Img from "./Img";
 import { FollowBlockProps } from "../../Interfaces and Types/Interfaces";
+import { Button } from "./Button/ButtonCss";
 import {
   TrendingBlockItem,
   FlexItem,
@@ -18,20 +19,13 @@ function FollowBlockItemComponent({
         <h4>{FollowBlockHeading}</h4>
       </FlexItem>
       <FlexItem>
-        <FollowButton>Follow</FollowButton>
+        <Button className="FollowButton" secondary={true}>
+          Follow
+        </Button>
       </FlexItem>
     </TrendingBlockItem>
   );
 }
-const FollowButton = styled.button`
-  padding: 0.5em 1.2em;
-  border-radius: 2.5em;
-  border: transparent;
-  background-color: ${(props) => props.theme.colors.secondaryBtnBackgound};
-  color: ${(props) => props.theme.colors.secondaryBtnText};
-  font-weight: 800;
-  cursor: pointer;
-`;
 const AccountImageDiv = styled.div`
   width: 50px;
   height: 50px;

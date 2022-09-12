@@ -1,42 +1,46 @@
 import styled, { css } from "styled-components/macro";
 import { devices } from "../../../Media Queries/Queries";
 import { Props } from "../../../Interfaces and Types/Interfaces";
+import { GridContainer as LandingPageGridContainer } from "../../Landing/LandingCss";
 const Button = styled.button<Props>`
   display: inline-block;
-  width: 70%;
   padding: 1em 1.2em;
   font-weight: 600;
   cursor: pointer;
   margin: 0.5em 0;
   border-radius: 5em;
-  background: ${(props) => props.theme.colors.secondarySignUpBtnBackground};
-  color: ${(props) => props.theme.colors.secondarySignUpBtnText};
+  background: ${(props) => props.theme.colors.secondarySignInBtnBackground};
+  color: ${(props) => props.theme.colors.secondarySignInBtnText};
   border: 0.1em solid
-    ${(props) => props.theme.colors.primarySignUpBtnBorderColour};
+    ${(props) => props.theme.colors.primarySignInBtnBorderColour};
   &.Edit {
     width: max-content;
     padding: 0.7em 1.5em;
   }
   &.SignIn {
-    background: ${(props) => props.theme.colors.primarySignUpBtnBackground};
-    color: ${(props) => props.theme.colors.primarySignUpBtnText};
+    background: ${(props) => props.theme.colors.primarySignInBtnBackground};
+    color: ${(props) => props.theme.colors.primarySignInBtnText};
   }
   &.SignIn:hover {
     background: ${(props) =>
-      props.theme.colors.primarySignUpBtnBackgroundHover};
+      props.theme.colors.primarySignInBtnBackgroundHover};
   }
   &:hover {
     background: ${(props) =>
-      props.theme.colors.secondarySignUpBtnBackgroundHover};
+      props.theme.colors.secondarySignInBtnBackgroundHover};
   }
-  & ~ &:hover {
-    background-color: ${(props) => props.theme.colors.primaryHover};
+
+  &.FollowButton {
+    padding: 0.5em 1.2em;
+    border-radius: 2.5em;
+    border: transparent;
+    font-weight: 800;
   }
   &.TweetButton {
     width: 100%;
     padding: 1.2em 6em;
   }
-  ${(props) =>
+  ${(props: Props) =>
     props.primary &&
     css`
       background-color: ${(props) => props.theme.colors.primaryBtnBackground};
@@ -45,11 +49,34 @@ const Button = styled.button<Props>`
         background-color: ${(props) => props.theme.colors.primaryHover};
       }
     `}
+
+  ${(props: Props) => {
+    return (
+      props.secondary &&
+      css`
+        background-color: ${(props) =>
+          props.theme.colors.secondaryBtnBackgound};
+        color: ${(props) => props.theme.colors.secondaryBtnText};
+        &:hover {
+          background-color: ${(props) =>
+            props.theme.colors.secondaryBtnBackgroundHover};
+        }
+      `
+    );
+  }}
+  ${LandingPageGridContainer} & {
+    width: 70%;
+  }
+
   @media ${devices.tablet} {
-    width: 60%;
+    ${LandingPageGridContainer} & {
+      width: 60%;
+    }
   }
   @media ${devices.laptopL} {
-    width: 40%;
+    ${LandingPageGridContainer} & {
+      width: 40%;
+    }
   }
 `;
 

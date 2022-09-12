@@ -9,25 +9,25 @@ const Buttons = styled.button<Props>`
   cursor: pointer;
   margin: 0.5em 0;
   border-radius: 5em;
-  background: ${(props) => props.theme.colors.secondarySignUpBtnBackground};
-  color: ${(props) => props.theme.colors.secondarySignUpBtnText};
+  background: ${(props) => props.theme.colors.secondarySignInBtnBackground};
+  color: ${(props) => props.theme.colors.secondarySignInBtnText};
   border: 0.1em solid
-    ${(props) => props.theme.colors.primarySignUpBtnBorderColour};
+    ${(props) => props.theme.colors.primarySignInBtnBorderColour};
   &.Edit {
     width: max-content;
     padding: 0.7em 1.5em;
   }
   &.SignIn {
-    background: ${(props) => props.theme.colors.primarySignUpBtnBackground};
-    color: ${(props) => props.theme.colors.primarySignUpBtnText};
+    background: ${(props) => props.theme.colors.primarySignInBtnBackground};
+    color: ${(props) => props.theme.colors.primarySignInBtnText};
   }
   &.SignIn:hover {
     background: ${(props) =>
-      props.theme.colors.primarySignUpBtnBackgroundHover};
+      props.theme.colors.primarySignInBtnBackgroundHover};
   }
   &:hover {
     background: ${(props) =>
-      props.theme.colors.secondarySignUpBtnBackgroundHover};
+      props.theme.colors.secondarySignInBtnBackgroundHover};
   }
   & ~ &:hover {
     background-color: ${(props) => props.theme.colors.primaryHover};

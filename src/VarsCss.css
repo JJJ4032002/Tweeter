@@ -6,15 +6,16 @@ body[data-theme="light"] {
   --colors-textSecondary: #536471;
   --colors-primaryBtnText: white;
   --colors-primaryBtnBackground: var(--colors-primary);
-  --colors-primarySignUpBtnText: var(--colors-primary);
-  --colors-primarySignUpBtnBackground: transparent;
-  --colors-primarySignUpBtnBackgroundHover: rgba(29, 155, 240, 0.1);
-  --colors-primarySignUpBtnBorderColour: rgba(0, 0, 0, 0.2);
-  --colors-secondarySignUpBtnText: black;
-  --colors-secondarySignUpBtnBackground: transparent;
-  --colors-secondarySignUpBtnBackgroundHover: rgb(230, 230, 230);
+  --colors-primarySignInBtnText: var(--colors-primary);
+  --colors-primarySignInBtnBackground: transparent;
+  --colors-primarySignInBtnBackgroundHover: rgba(29, 155, 240, 0.1);
+  --colors-primarySignInBtnBorderColour: rgba(0, 0, 0, 0.2);
+  --colors-secondarySignInBtnText: black;
+  --colors-secondarySignInBtnBackground: transparent;
+  --colors-secondarySignInBtnBackgroundHover: rgb(230, 230, 230);
   --colors-secondaryBtnText: white;
   --colors-secondaryBtnBackground: black;
+  --colors-secondaryBtnBackgroundHover: rgb(39, 44, 48);
 }
 
 body[data-theme="dark"] {
@@ -25,13 +26,14 @@ body[data-theme="dark"] {
   --colors-textSecondary: #536471;
   --colors-primaryBtnText: white;
   --colors-primaryBtnBackground: var(--colors-primary);
-  --colors-primarySignUpBtnText: var(--colors-primary);
-  --colors-primarySignUpBtnBackground: transparent;
-  --colors-primarySignUpBtnBackgroundHover: rgba(29, 155, 240, 0.1);
-  --colors-primarySignUpBtnBorderColour: #536471;
-  --colors-secondarySignUpBtnText: black;
-  --colors-secondarySignUpBtnBackground: white;
-  --colors-secondarySignUpBtnBackgroundHover: rgb(230, 230, 230);
+  --colors-primarySignInBtnText: var(--colors-primary);
+  --colors-primarySignInBtnBackground: transparent;
+  --colors-primarySignInBtnBackgroundHover: rgba(29, 155, 240, 0.1);
+  --colors-primarySignInBtnBorderColour: #536471;
+  --colors-secondarySignInBtnText: black;
+  --colors-secondarySignInBtnBackground: white;
+  --colors-secondarySignInBtnBackgroundHover: rgb(230, 230, 230);
   --colors-secondaryBtnText: black;
   --colors-secondaryBtnBackground: white;
+  --colors-secondaryBtnBackgroundHover: rgb(215, 219, 220);
 }

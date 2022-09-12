@@ -9,17 +9,18 @@ const theme: DefaultTheme = {
     textSecondary: "var(--colors-textSecondary)",
     primaryBtnText: "var( --colors-primaryBtnText)",
     primaryBtnBackground: "var(--colors-primaryBtnBackground)",
-    primarySignUpBtnText: "var(--colors-primarySignUpBtnText)",
-    primarySignUpBtnBackground: "var(--colors-primarySignUpBtnBackground)",
-    primarySignUpBtnBackgroundHover:
-      "var(--colors-primarySignUpBtnBackgroundHover)",
-    primarySignUpBtnBorderColour: "var(--colors-primarySignUpBtnBorderColour)",
-    secondarySignUpBtnText: "var(--colors-secondarySignUpBtnText)",
-    secondarySignUpBtnBackground: "var(--colors-secondarySignUpBtnBackground)",
-    secondarySignUpBtnBackgroundHover:
-      "var(--colors-secondarySignUpBtnBackgroundHover)",
+    primarySignInBtnText: "var(--colors-primarySignInBtnText)",
+    primarySignInBtnBackground: "var(--colors-primarySignInBtnBackground)",
+    primarySignInBtnBackgroundHover:
+      "var(--colors-primarySignInBtnBackgroundHover)",
+    primarySignInBtnBorderColour: "var(--colors-primarySignInBtnBorderColour)",
+    secondarySignInBtnText: "var(--colors-secondarySignInBtnText)",
+    secondarySignInBtnBackground: "var(--colors-secondarySignInBtnBackground)",
+    secondarySignInBtnBackgroundHover:
+      "var(--colors-secondarySignInBtnBackgroundHover)",
     secondaryBtnText: "var(--colors-secondaryBtnText)",
     secondaryBtnBackgound: "var( --colors-secondaryBtnBackground)",
+    secondaryBtnBackgroundHover: "var(--colors-secondaryBtnBackgroundHover)",
   },
 };
 

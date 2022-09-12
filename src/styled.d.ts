@@ -11,15 +11,16 @@ declare module "styled-components" {
       textSecondary: string;
       primaryBtnText: string;
       primaryBtnBackground: string;
-      primarySignUpBtnText: string;
-      primarySignUpBtnBackground: string;
-      primarySignUpBtnBackgroundHover: string;
-      primarySignUpBtnBorderColour: string;
-      secondarySignUpBtnText: string;
-      secondarySignUpBtnBackground: string;
-      secondarySignUpBtnBackgroundHover: string;
+      primarySignInBtnText: string;
+      primarySignInBtnBackground: string;
+      primarySignInBtnBackgroundHover: string;
+      primarySignInBtnBorderColour: string;
+      secondarySignInBtnText: string;
+      secondarySignInBtnBackground: string;
+      secondarySignInBtnBackgroundHover: string;
       secondaryBtnText: string;
       secondaryBtnBackgound: string;
+      secondaryBtnBackgroundHover: string;
     };
   }
 }
