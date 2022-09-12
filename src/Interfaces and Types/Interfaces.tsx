@@ -4,6 +4,7 @@ import { User } from "firebase/auth";
 
 interface Props {
   primary?: boolean;
+  secondary?: boolean;
   position?: number;
   fontSize?: number;
   borderColor?: string;
