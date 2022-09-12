@@ -47,7 +47,7 @@ const ImagesContainer = styled.div``;
 
 function EditProfile({ EditProfileState }: { EditProfileState: boolean }) {
   return (
-    <ModalBackdrop opacity={1} display="flex">
+    <ModalBackdrop opacity={1} display="none">
       <EditProfileForm>
         <Header>
           <HeaderItems>
