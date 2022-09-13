@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { ItemDiv } from "../../HomePageCss";
+import { ItemDiv } from "../../Home/HomeCss";
 import styled from "styled-components/macro";
 const OptionsLink = styled(Link)`
   color: black;

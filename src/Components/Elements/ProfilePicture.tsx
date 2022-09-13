@@ -1,5 +1,5 @@
 import React from "react";
-import { ProfileDiv } from "../HomePageCss";
+import { ProfileDiv } from "../Home/HomeCss";
 import profile from "../../assets/Icons/profile.svg";
 function ProfilePicture({
   InteractOnClick,

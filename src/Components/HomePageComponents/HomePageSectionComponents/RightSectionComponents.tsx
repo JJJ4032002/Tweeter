@@ -2,7 +2,7 @@ import { ItemDiv } from "../../HomePageCss";
 import Img from "../../Elements/Img";
 import logo from "../../../assets/Icons/logo.svg";
 import { HomeHeading } from "../../HomePageCss";
-import { RightSectionMobileData } from "../../../Data";
+import { MenuLayoutMobileData } from "../../../Data";
 import Trending from "./Trending";
 import SearchBar from "./SearchBar";
 
@@ -13,7 +13,7 @@ import { User } from "firebase/auth";
 function RightSectionMobile() {
   return (
     <>
-      {RightSectionMobileData.map((item) => {
+      {MenuLayoutMobileData.map((item) => {
         return (
           <ItemDiv key={item.key}>
             <Img className="leftSection" src={item.imgSrc} alt="" />

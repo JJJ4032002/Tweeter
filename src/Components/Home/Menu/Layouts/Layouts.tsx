@@ -1,28 +1,34 @@
-import Img from "../../Elements/Img";
-import { HomeHeading } from "../../HomePageCss";
-import { MenuLayoutMobileLData, MenuLayoutLaptopMData } from "../../../Data";
-import { FlexItems } from "../../HomePageCss";
-import TweetButtonLogo from "../../Elements/TweetButtonLogo";
 import { User } from "firebase/auth";
-import UserStatus from "../../Elements/UserStatus";
-import Options from "../../Elements/Options/Options";
-import OptionsButton from "../../Elements/Options/OptionsButton";
-import TweetButton from "../../Elements/TweetButton";
-import ProfilePicture from "../../Elements/ProfilePicture";
-import SignOutTooltip from "../../Elements/Tooltip/SignOutTooltip";
+import {
+  MenuLayoutLaptopMData,
+  MenuLayoutMobileData,
+  MenuLayoutMobileLData,
+} from "../../../../Data";
+import Img from "../../../Elements/Img";
+import Options from "../../../Elements/Options/Options";
+import OptionsButton from "../../../Elements/Options/OptionsButton";
+import ProfilePicture from "../../../Elements/ProfilePicture";
+import SignOutTooltip from "../../../Elements/Tooltip/SignOutTooltip";
+import TweetButton from "../../../Elements/TweetButton";
+import UserStatus from "../../../Elements/UserStatus";
+import TweetButtonLogo from "../../../Elements/TweetButtonLogo";
+import { FlexItems, ItemDiv } from "../../HomeCss";
 
-function LeftSectionMobile(handleSidebarState: () => void) {
+function Mobile() {
   return (
     <>
-      <FlexItems>
-        <ProfilePicture InteractOnClick={handleSidebarState}></ProfilePicture>
-        <HomeHeading>Home</HomeHeading>
-      </FlexItems>
+      {MenuLayoutMobileData.map((item) => {
+        return (
+          <ItemDiv key={item.key}>
+            <Img className="leftSection" src={item.imgSrc} alt="" />
+          </ItemDiv>
+        );
+      })}
     </>
   );
 }
 
-function LeftSectionMobileL(user: User | null) {
+function MobileL(user: User | null) {
   return (
     <>
       <FlexItems>
@@ -44,7 +50,7 @@ function LeftSectionMobileL(user: User | null) {
   );
 }
 
-function LeftSectionLaptopM(user: User | null) {
+function LaptopM(user: User | null) {
   return (
     <>
       <FlexItems>
@@ -69,4 +75,4 @@ function LeftSectionLaptopM(user: User | null) {
   );
 }
 
-export { LeftSectionMobileL, LeftSectionMobile, LeftSectionLaptopM };
+export { MobileL, Mobile, LaptopM };

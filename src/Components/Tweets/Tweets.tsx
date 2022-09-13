@@ -1,14 +1,14 @@
 import React from "react";
 import styled from "styled-components/macro";
-const MiddleContainer = styled.div`
+const TweetsWrapper = styled.div`
   padding: 0em 1em;
   border-right: 1px solid #cfd9de;
   border-left: 1px solid #cfd9de;
   background: pink;
-  grid-area: MiddleSection;
+  grid-area: MainContent;
 `;
-function MiddleSection() {
-  return <MiddleContainer>Middle Container</MiddleContainer>;
+function Tweets() {
+  return <TweetsWrapper>Middle Container</TweetsWrapper>;
 }
 
-export default MiddleSection;
+export default Tweets;

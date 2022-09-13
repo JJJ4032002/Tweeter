@@ -1,13 +1,13 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import HomePage from "./Components/HomePage";
 import { UserContextProvider } from "./Contexts/UserContext";
 import ProfilePage from "./Components/ProfilePage";
-import MiddleSection from "./Components/HomePageComponents/MiddleSection";
+import Home from "./Components/Home/Home";
 import { useEffect, useState } from "react";
 import theme from "./theme";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { Landing } from "./Components/Landing/Landing";
+import Tweets from "./Components/Tweets/Tweets";
 const GlobalStyles = createGlobalStyle`
 body{
   background: ${(props) => props.theme.colors.background};
@@ -38,9 +38,9 @@ function App() {
             ></Route>
             <Route
               path={process.env.PUBLIC_URL + "/home"}
-              element={<HomePage EditProfileState={dispEditProfile}></HomePage>}
+              element={<Home EditProfileState={dispEditProfile}></Home>}
             >
-              <Route index element={<MiddleSection />} />
+              <Route index element={<Tweets />} />
               <Route
                 path="profile"
                 element={

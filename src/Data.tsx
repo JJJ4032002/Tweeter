@@ -11,13 +11,13 @@ const sideBarOptions = [
   { imgSrc: profile, OptionName: "Profile", key: uuidv4() },
   { imgSrc: bookmark, OptionName: "Bookmarks", key: uuidv4() },
 ];
-const RightSectionMobileData = [
+const MenuLayoutMobileData = [
   { imgSrc: home, key: uuidv4() },
   { imgSrc: search, key: uuidv4() },
   { imgSrc: notifications, key: uuidv4() },
   { imgSrc: messages, key: uuidv4() },
 ];
-const LeftSectionMobileLData = [
+const MenuLayoutMobileLData = [
   { imgSrc: home, key: uuidv4(), to: "/home" },
   { imgSrc: search, key: uuidv4(), to: "disable" },
   { imgSrc: notifications, key: uuidv4(), to: "disable" },
@@ -25,7 +25,7 @@ const LeftSectionMobileLData = [
   { imgSrc: profile, key: uuidv4(), to: "/home/profile" },
   { imgSrc: settings, key: uuidv4(), to: "disable" },
 ];
-const LeftSectionLaptopMData = [
+const MenuLayoutLaptopMData = [
   { imgSrc: home, key: uuidv4(), text: "Home", to: "/home" },
   { imgSrc: search, key: uuidv4(), text: "Search", to: "disable" },
   {
@@ -41,7 +41,7 @@ const LeftSectionLaptopMData = [
 
 export {
   sideBarOptions,
-  RightSectionMobileData,
-  LeftSectionMobileLData,
-  LeftSectionLaptopMData,
+  MenuLayoutMobileData,
+  MenuLayoutMobileLData,
+  MenuLayoutLaptopMData,
 };

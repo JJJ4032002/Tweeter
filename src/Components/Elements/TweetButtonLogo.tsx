@@ -1,6 +1,6 @@
 import React from "react";
-import { ItemDiv } from "../HomePageCss";
-import Img from "../Elements/Img";
+import { ItemDiv } from "../Home/HomeCss";
+import Img from "./Img";
 import tweet from "../../assets/Icons/tweet.svg";
 import { TweetButtonProps } from "../../Interfaces and Types/Interfaces";
 function TweetButtonLogo({ primary, height }: TweetButtonProps) {

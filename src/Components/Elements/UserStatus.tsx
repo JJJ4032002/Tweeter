@@ -1,6 +1,6 @@
 import React from "react";
-import { ItemDiv } from "../HomePageCss";
-import { ProfileDiv } from "../HomePageCss";
+import { ItemDiv } from "../Home/HomeCss";
+import { ProfileDiv } from "../Home/HomeCss";
 import profile from "../../assets/Icons/profile.svg";
 import { User } from "firebase/auth";
 import styled from "styled-components/macro";
