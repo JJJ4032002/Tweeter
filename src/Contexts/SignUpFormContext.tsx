@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { OverlayFormProps } from "../Interfaces and Types/Interfaces";
 import StylesReducer from "../Reducers/StylesReducer";
 import { useReducer } from "react";
@@ -17,6 +17,7 @@ import {
   invalidInputLengthChecker,
 } from "../helpers/OverlayFormContextHelpers";
 import SignUpUser from "../firebase/SignUpUser";
+import { UserContext } from "./UserContext";
 const FormPropsContext = React.createContext<OverlayFormProps>({
   Styles: [
     {
@@ -50,6 +51,7 @@ const FormPropsContext = React.createContext<OverlayFormProps>({
 });
 
 function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
+  let { setUserHelper } = useContext(UserContext);
   let navigate = useNavigate();
   const [styles, dispatchStyles] = useReducer(StylesReducer, [
     {
@@ -102,7 +104,7 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
           inputVals.password,
           inputVals.name,
           handleSignUpErr,
-          handleSuccesfulSignUp
+          setUserHelper
         );
       } else {
         setValidNameEmail(true);
