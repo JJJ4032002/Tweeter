@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components/macro";
-import FollowTally from "../Elements/FollowTally";
+import FollowTally from "../../Elements/FollowTally";
 const ProfileContainer = styled.div`
   display: flex;
   flex-direction: column;

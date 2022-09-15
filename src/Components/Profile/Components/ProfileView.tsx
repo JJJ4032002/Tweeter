@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components/macro";
-import BannerImageContainer from "../Elements/BannerImageContainer";
-import ProfileImageContainer from "../Elements/ProfileImageContainer";
-import Button from "../Elements/Button";
-import { devices } from "../../Media Queries/Queries";
+import BannerImageContainer from "../../Elements/BannerImageContainer";
+import ProfileImageContainer from "../../Elements/ProfileImageContainer";
+import Button from "../../Elements/Button";
+import { devices } from "../../../Media Queries/Queries";
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 0.5fr 0.5fr;

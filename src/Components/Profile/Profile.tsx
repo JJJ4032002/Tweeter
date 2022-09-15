@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components/macro";
-import ProfileView from "./ProfilePageComponents/ProfileView";
-import ProfileInformation from "./ProfilePageComponents/ProfileInformation";
-import EditProfile from "./ProfilePageComponents/EditProfile";
+import ProfileView from "./Components/ProfileView";
+import ProfileInformation from "./Components/ProfileInformation";
+import EditProfile from "./Components/EditProfile/EditProfile";
 const ProfileContainer = styled.div`
-  grid-area: MiddleSection;
+  grid-area: MainContent;
   border-left: 1px solid #cfd9de;
   border-top: 1px solid #cfd9de;
 `;
 
-function ProfilePage({
+function Profile({
   handleDispEditProfile,
 }: {
   handleDispEditProfile: (state: boolean) => void;
@@ -22,4 +22,4 @@ function ProfilePage({
   );
 }
 
-export default ProfilePage;
+export default Profile;
