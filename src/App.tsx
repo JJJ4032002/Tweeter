@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import { UserContextProvider } from "./Contexts/UserContext";
-import ProfilePage from "./Components/ProfilePage";
+import Profile from "./Components/Profile/Profile";
 import Home from "./Components/Home/Home";
 import { useEffect, useState } from "react";
 import theme from "./theme";
@@ -38,13 +38,18 @@ function App() {
             ></Route>
             <Route
               path={process.env.PUBLIC_URL + "/home"}
-              element={<Home EditProfileState={dispEditProfile}></Home>}
+              element={
+                <Home
+                  handleDispEditProfile={handleDispEditProfile}
+                  EditProfileState={dispEditProfile}
+                ></Home>
+              }
             >
               <Route index element={<Tweets />} />
               <Route
                 path="profile"
                 element={
-                  <ProfilePage handleDispEditProfile={handleDispEditProfile} />
+                  <Profile handleDispEditProfile={handleDispEditProfile} />
                 }
               ></Route>
             </Route>
