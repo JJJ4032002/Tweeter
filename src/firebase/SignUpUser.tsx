@@ -3,15 +3,16 @@ import {
   getAuth,
   createUserWithEmailAndPassword,
   updateProfile,
+  User,
 } from "firebase/auth";
-
+import GetLatestUserData from "./GetLatestUserData";
 const auth = getAuth(app);
 function SignUpUser(
   email: string,
   password: string,
   name: string,
   ErrFunc: (state: boolean) => void,
-  SuccesfulSignUp: () => void
+  setUserHelper: (user: User) => void
 ) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
@@ -25,13 +26,13 @@ function SignUpUser(
         .then(() => {
           // Profile updated!
           // ...
+          GetLatestUserData(setUserHelper);
+          console.log("Profile updated");
         })
         .catch((error) => {
           // An error occurred
           // ...
         });
-
-      SuccesfulSignUp();
 
       // ...
     })
