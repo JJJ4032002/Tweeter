@@ -14,7 +14,6 @@ const HomeWrapper = styled.div`
   min-height: -webkit-fill-available;
   width: 100%;
   margin: 0 auto;
-  position: relative;
   @media ${devices.mobileL} {
     width: 100%;
     height: 100vh;
