@@ -13,7 +13,7 @@ function Trending() {
     <TrendingWrapper>
       <TrendingBlockT3 TrendingBlockHeading="What's Happening?"></TrendingBlockT3>
       <TrendingBlockT2
-        TrendingBlockHeading="Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet ."
+        TrendingBlockHeading="Cats are believed to be the only mammals who don't taste sweetness.."
         ImgSrc={Cat1}
       ></TrendingBlockT2>
       <TrendingBlockT1
@@ -27,7 +27,7 @@ function Trending() {
         NoOfTweets="160k Tweets"
       ></TrendingBlockT1>
       <TrendingBlockT2
-        TrendingBlockHeading="Lorem ipsum dolor sit amet elit. Ad ."
+        TrendingBlockHeading="Cats can jump up to six times their length"
         ImgSrc={Cat2}
       ></TrendingBlockT2>
     </TrendingWrapper>
