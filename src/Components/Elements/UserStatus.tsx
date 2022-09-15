@@ -15,6 +15,7 @@ function UserStatus({
   user: User | null;
   className: string;
 }) {
+  console.log(user?.displayName, "HereUserName in UserStatus");
   return (
     <>
       <ItemDiv className={className}>

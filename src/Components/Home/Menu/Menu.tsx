@@ -12,6 +12,7 @@ function Menu() {
   let [Content, setContent] = useState(Mobile);
 
   useEffect(() => {
+    console.log("Change in useEffect");
     if (windowWidth >= Number(sizes.laptopM.split("px")[0])) {
       setContent(LaptopM(user));
     } else if (windowWidth >= Number(sizes.mobileL.split("px")[0])) {

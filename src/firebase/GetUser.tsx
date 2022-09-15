@@ -7,8 +7,10 @@ function GetUser(setUserHelper: (user: User) => void, succSignIn: () => void) {
     const auth = getAuth(app);
     let unsubscribe = onAuthStateChanged(auth, (user) => {
       // Check for user status
-      console.log(user);
+      console.log(user, "From listener");
+
       if (user !== null) {
+        console.log("This happens again");
         setUserHelper(user);
         succSignIn();
       }
