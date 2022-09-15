@@ -5,10 +5,16 @@ import { Menu } from "./Menu/Menu";
 import SecondaryContent from "./SecondaryContent/SecondaryContent";
 import Header from "./Header/Header";
 import TweetButtonLogo from "../Elements/TweetButtonLogo";
-import EditProfile from "../ProfilePageComponents/EditProfile";
+import EditProfile from "../Profile/Components/EditProfile/EditProfile";
 import { HomeWrapper } from "./HomeCss";
 import { SideBarContextProvider } from "../../Contexts/SideBarContext";
-function Home({ EditProfileState }: { EditProfileState: boolean }) {
+function Home({
+  EditProfileState,
+  handleDispEditProfile,
+}: {
+  EditProfileState: boolean;
+  handleDispEditProfile: (state: boolean) => void;
+}) {
   const [MenuHeight, setMenuHeight] = useState<number | undefined>(0);
   useEffect(() => {
     setMenuHeight(document.body.querySelector(".Menu")?.clientHeight);
@@ -23,8 +29,11 @@ function Home({ EditProfileState }: { EditProfileState: boolean }) {
         <SideBar></SideBar>
         <Header></Header>
         <TweetButtonLogo height={MenuHeight} primary={true}></TweetButtonLogo>
+        <EditProfile
+          handleDispEditProfile={handleDispEditProfile}
+          EditProfileState={EditProfileState}
+        ></EditProfile>
       </HomeWrapper>
-      <EditProfile EditProfileState={EditProfileState}></EditProfile>
     </SideBarContextProvider>
   );
 }
