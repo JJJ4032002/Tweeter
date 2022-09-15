@@ -1,6 +1,6 @@
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 
-import { app } from "./InitializeFirebase";
+import { app } from "../InitializeFirebase";
 const auth = getAuth(app);
 function SignInUser(
   email: string,
@@ -12,8 +12,6 @@ function SignInUser(
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.log(user);
-      SuccesfulSignUp();
       // ...
     })
     .catch((error) => {
