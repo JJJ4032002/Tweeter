@@ -7,6 +7,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 let UserContext = React.createContext<UserPropsContext>({
   user: null,
   RouteProfile: false,
+  setUserHelper: (user: User) => {},
 });
 
 function UserContextProvider({ children }: OverlayContextProviderChildren) {
@@ -16,7 +17,7 @@ function UserContextProvider({ children }: OverlayContextProviderChildren) {
   GetUser(setUserHelper, handleSuccessfulSignIn);
   let [user, setUser] = useState<User | null>(null);
   function setUserHelper(user: User) {
-    setUser(user);
+    setUser({ ...user });
   }
   function handleSuccessfulSignIn() {
     navigate(`${process.env.PUBLIC_URL}/home`);
@@ -31,6 +32,7 @@ function UserContextProvider({ children }: OverlayContextProviderChildren) {
   let contextObj = {
     user: user,
     RouteProfile: RouteProfile,
+    setUserHelper: setUserHelper,
   };
   return (
     <UserContext.Provider value={contextObj}>{children}</UserContext.Provider>
