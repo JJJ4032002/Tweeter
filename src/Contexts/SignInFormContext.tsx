@@ -5,7 +5,7 @@ import {
   SignInWithTextBlurCombinations,
 } from "../helpers/OverlayFormContextHelpers";
 import { OverlayContextProviderChildren } from "../Interfaces and Types/Types";
-import SignInUser from "../firebase/SignInUser";
+import SignInUser from "../firebase/SignIn/SignInUser";
 import { useNavigate } from "react-router-dom";
 const SignInFormPropsContext = React.createContext<OverlaySignInFormProps>({
   SignInStyles: [
