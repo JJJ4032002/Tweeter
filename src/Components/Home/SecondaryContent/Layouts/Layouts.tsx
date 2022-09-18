@@ -6,6 +6,7 @@ import Search from "./Search/Search";
 import Follow from "./Follow/Follow";
 import Trending from "./Trending/Trending";
 import { FlexItems, HomeHeading, ItemDiv } from "../../HomeCss";
+import { UserDocument } from "../../../../Interfaces and Types/Interfaces";
 function Mobile(handleSidebarState: () => void) {
   return (
     <>
@@ -16,7 +17,7 @@ function Mobile(handleSidebarState: () => void) {
     </>
   );
 }
-function MobileL(user: User | null, RouteProfile: boolean) {
+function MobileL(user: UserDocument | null, RouteProfile: boolean) {
   return (
     <>
       <ItemDiv>
@@ -29,11 +30,7 @@ function MobileL(user: User | null, RouteProfile: boolean) {
       <ItemDiv className="HeadingDiv">
         <HomeHeading className="RightSectionMobileL">
           {" "}
-          {RouteProfile
-            ? user != null
-              ? user.displayName
-              : "UserName"
-            : "Home"}
+          {RouteProfile ? (user != null ? user.name : "UserName") : "Home"}
         </HomeHeading>
       </ItemDiv>
     </>

@@ -30,11 +30,7 @@ function Content() {
           </ProfileDiv>
         </SideBarFlexItems>
         <SideBarFlexItems>
-          {user !== null ? (
-            <Name>{user.displayName}</Name>
-          ) : (
-            <Name>Loading..</Name>
-          )}
+          {user !== null ? <Name>{user.name}</Name> : <Name>Loading..</Name>}
         </SideBarFlexItems>
         <SideBarFlexItems className="flex">
           <p>

@@ -1,9 +1,9 @@
 import { db } from "./InitializeFirebase";
 import { doc, setDoc } from "firebase/firestore";
-
-async function AddUserData(name: string, Id: string) {
+import { UserDocument } from "../Interfaces and Types/Interfaces";
+async function AddUserData(userObj: UserDocument, Id: string) {
   await setDoc(doc(db, "Users", Id), {
-    name: name,
+    ...userObj,
   });
 }
 export default AddUserData;

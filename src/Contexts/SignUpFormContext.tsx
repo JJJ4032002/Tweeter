@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import validateEmail from "../helpers/ValidateEmail";
 import InputsReducer from "../Reducers/InputsReducer";
 import { useNavigate } from "react-router-dom";
+import AddUserData from "../firebase/AddUserData";
 import {
   FocusAllRedCombinations,
   BlurAllRedCombinations,
@@ -100,11 +101,14 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
       if (ElementType.nodeName === "BUTTON") {
         setLoader(true);
         SignUpUser(
-          inputVals.email,
-          inputVals.password,
-          inputVals.name,
+          {
+            name: inputVals.name,
+            email: inputVals.email,
+            password: inputVals.password,
+          },
           handleSignUpErr,
-          setUserHelper
+          handleSuccesfulSignUp,
+          AddUserData
         );
       } else {
         setValidNameEmail(true);
@@ -114,7 +118,7 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
     }
   }
   function handleSuccesfulSignUp() {
-    navigate(`${process.env.PUBLIC_URL}/home`);
+    navigate(`${process.env.PUBLIC_URL}/close`);
   }
   function handleSignUpErr(param: boolean) {
     setSignUpErr(param);

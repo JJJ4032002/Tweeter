@@ -1,5 +1,6 @@
 import React, { useContext, useRef } from "react";
 import { AuthenticationPageContext } from "../../../Contexts/AuthenticationPageContext";
+import SignInWithGoogle from "../../../firebase/SignIn/SignInGoogle";
 import Button from "../../Elements/Button";
 import Img from "../../Elements/Img";
 import {
@@ -28,7 +29,7 @@ function Main() {
         <PrimaryHeading>Happening Now</PrimaryHeading>
         <SecondaryHeading>Join Tweeter today</SecondaryHeading>
         <SignUpButtonsDiv>
-          <Button>Sign in with google</Button>
+          <Button onClick={SignInWithGoogle}>Sign in with google</Button>
           <Para>or</Para>
           <Button
             className="SignUpBtn"

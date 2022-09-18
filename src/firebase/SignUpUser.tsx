@@ -2,37 +2,36 @@ import { app } from "./InitializeFirebase";
 import {
   getAuth,
   createUserWithEmailAndPassword,
-  updateProfile,
-  User,
+  sendEmailVerification,
 } from "firebase/auth";
-import GetLatestUserData from "./GetLatestUserData";
+import { UserDocument } from "../Interfaces and Types/Interfaces";
+interface userData {
+  name: string;
+  email: string;
+  password: string;
+}
+const actionCodeSettings = {
+  url: "http://localhost:3000/Tweeter/home",
+  // This must be true.
+  handleCodeInApp: true,
+};
 const auth = getAuth(app);
 function SignUpUser(
-  email: string,
-  password: string,
-  name: string,
+  userData: userData,
   ErrFunc: (state: boolean) => void,
-  setUserHelper: (user: User) => void
+  SuccSignUp: () => void,
+  AddUser: (user: UserDocument, Id: string) => void
 ) {
+  let { name, email, password } = userData;
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
       console.log(user);
-
-      updateProfile(userCredential.user, {
-        displayName: name,
-      })
-        .then(() => {
-          // Profile updated!
-          // ...
-          GetLatestUserData(setUserHelper);
-          console.log("Profile updated");
-        })
-        .catch((error) => {
-          // An error occurred
-          // ...
-        });
+      AddUser({ name: name }, user.uid);
+      sendEmailVerification(user, actionCodeSettings).then(() => {
+        SuccSignUp();
+      });
 
       // ...
     })

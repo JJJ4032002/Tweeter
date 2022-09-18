@@ -19,11 +19,7 @@ function Header() {
       </LogoWrapper>
       <ItemDiv className="HeadingDiv">
         <HomeHeading className="RightSectionMobileL">
-          {RouteProfile
-            ? user != null
-              ? user.displayName
-              : "UserName"
-            : "Home"}
+          {RouteProfile ? (user != null ? user.name : "UserName") : "Home"}
         </HomeHeading>
       </ItemDiv>
     </HeaderWrapper>

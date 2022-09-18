@@ -4,13 +4,14 @@ import UserStatus from "../UserStatus";
 import SignOutOption from "../SignOutOption";
 import { User } from "firebase/auth";
 import { ClickAwayListener } from "@mui/material";
+import { UserDocument } from "../../../Interfaces and Types/Interfaces";
 function SignOutTooltip({
   children,
   user,
   clickable,
 }: {
   children: React.ReactNode;
-  user: User | null;
+  user: UserDocument | null;
   clickable: boolean;
 }) {
   const [open, setOpen] = React.useState(false);
@@ -29,9 +30,7 @@ function SignOutTooltip({
           title={
             <>
               <UserStatus user={user} className="Tooltip"></UserStatus>
-              <SignOutOption
-                text={`Log out ${user?.displayName}`}
-              ></SignOutOption>
+              <SignOutOption text={`Log out ${user?.name}`}></SignOutOption>
             </>
           }
         >
@@ -52,9 +51,7 @@ function SignOutTooltip({
               title={
                 <>
                   <UserStatus user={user} className="Tooltip"></UserStatus>
-                  <SignOutOption
-                    text={`Log out ${user?.displayName}`}
-                  ></SignOutOption>
+                  <SignOutOption text={`Log out ${user?.name}`}></SignOutOption>
                 </>
               }
             >

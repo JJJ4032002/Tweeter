@@ -116,9 +116,12 @@ interface TweetButtonProps {
 }
 
 interface UserPropsContext {
-  user: User | null;
+  user: UserDocument | null;
   RouteProfile: boolean;
-  setUserHelper: (user: User) => void;
+  setUserHelper: (user: UserDocument) => void;
+}
+interface UserDocument {
+  name: string;
 }
 export type {
   Props,
@@ -136,4 +139,5 @@ export type {
   FollowBlockProps,
   TweetButtonProps,
   UserPropsContext,
+  UserDocument,
 };

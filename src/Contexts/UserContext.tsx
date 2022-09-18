@@ -4,19 +4,21 @@ import { OverlayContextProviderChildren } from "../Interfaces and Types/Types";
 import { User } from "firebase/auth";
 import GetUser from "../firebase/GetUser";
 import { useNavigate, useLocation } from "react-router-dom";
+import { UserDocument } from "../Interfaces and Types/Interfaces";
+import GetUserData from "../firebase/GetUserData";
 let UserContext = React.createContext<UserPropsContext>({
   user: null,
   RouteProfile: false,
-  setUserHelper: (user: User) => {},
+  setUserHelper: (user: UserDocument) => {},
 });
 
 function UserContextProvider({ children }: OverlayContextProviderChildren) {
   let navigate = useNavigate();
   let location = useLocation();
   let [RouteProfile, setRouteProfile] = useState(false);
-  GetUser(setUserHelper, handleSuccessfulSignIn);
-  let [user, setUser] = useState<User | null>(null);
-  function setUserHelper(user: User) {
+  GetUser(setUserHelper, handleSuccessfulSignIn, GetUserData);
+  let [user, setUser] = useState<UserDocument | null>(null);
+  function setUserHelper(user: UserDocument) {
     setUser({ ...user });
   }
   function handleSuccessfulSignIn() {
