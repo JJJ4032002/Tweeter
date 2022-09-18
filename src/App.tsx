@@ -8,6 +8,7 @@ import theme from "./theme";
 import { ThemeProvider, createGlobalStyle } from "styled-components";
 import { Landing } from "./Components/Landing/Landing";
 import Tweets from "./Components/Tweets/Tweets";
+import Close from "./Components/Close/Close";
 const GlobalStyles = createGlobalStyle`
 body{
   background: ${(props) => props.theme.colors.background};
@@ -53,6 +54,10 @@ function App() {
                 }
               ></Route>
             </Route>
+            <Route
+              path={process.env.PUBLIC_URL + "/close"}
+              element={<Close></Close>}
+            ></Route>
           </Routes>
         </div>
       </ThemeProvider>
