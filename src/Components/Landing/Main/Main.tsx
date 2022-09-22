@@ -34,14 +34,21 @@ function Main() {
           <Button
             className="SignUpBtn"
             primary={true}
-            onClick={handleSignUpBtn}
+            onClick={(event) => {
+              handleSignUpBtn("SignUp", "open");
+            }}
           >
             Sign up with email
           </Button>
         </SignUpButtonsDiv>
         <SignInButtonsDiv>
           <Para primary={true}>Already have an account ?</Para>
-          <Button onClick={handleSignUpBtn} className="SignIn">
+          <Button
+            onClick={(event) => {
+              handleSignUpBtn("SignIn", "open");
+            }}
+            className="SignIn"
+          >
             Sign in
           </Button>
         </SignInButtonsDiv>

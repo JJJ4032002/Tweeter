@@ -62,7 +62,8 @@ interface OverlaySignInFormProps {
 interface AuthenticationPageContextProps {
   FormStyles: { opacity: number; display: string };
   handleSignUpBtn: (
-    event: React.MouseEvent<HTMLButtonElement | HTMLImageElement>
+    Form: "SignUp" | "SignIn",
+    action: "open" | "close"
   ) => void;
   signInFormStyles: { opacity: number; display: string };
 }
@@ -119,6 +120,11 @@ interface UserPropsContext {
   user: UserDocument | null;
   RouteProfile: boolean;
   setUserHelper: (user: UserDocument) => void;
+  signedIn: boolean;
+  SnackBarState: {
+    openSnackBar: boolean;
+    handleOpenSnackBar: (state: boolean) => void;
+  };
 }
 interface UserDocument {
   name: string;

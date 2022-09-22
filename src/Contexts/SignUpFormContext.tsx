@@ -19,6 +19,7 @@ import {
 } from "../helpers/OverlayFormContextHelpers";
 import SignUpUser from "../firebase/SignUpUser";
 import { UserContext } from "./UserContext";
+import { AuthenticationPageContext } from "./AuthenticationPageContext";
 const FormPropsContext = React.createContext<OverlayFormProps>({
   Styles: [
     {
@@ -52,7 +53,8 @@ const FormPropsContext = React.createContext<OverlayFormProps>({
 });
 
 function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
-  let { setUserHelper } = useContext(UserContext);
+  let { SnackBarState } = useContext(UserContext);
+  let { handleSignUpBtn } = useContext(AuthenticationPageContext);
   let navigate = useNavigate();
   const [styles, dispatchStyles] = useReducer(StylesReducer, [
     {
@@ -90,7 +92,12 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
   const [validNameEmail, setValidNameEmail] = useState(true);
   const [SignUpErr, setSignUpErr] = useState(false);
   const [loader, setLoader] = useState(false);
+
   function handleSubmitBtnClick(event: React.MouseEvent<HTMLElement>) {
+    let EventToPass = event as React.MouseEvent<
+      HTMLButtonElement | HTMLImageElement,
+      MouseEvent
+    >;
     let ElementType = event.target as Element;
     dispatchInputs({ type: "passwordReset", Value: "" });
     dispatchStyles({ type: "passwordChange", WhichState: "" });
@@ -107,8 +114,10 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
             password: inputVals.password,
           },
           handleSignUpErr,
-          handleSuccesfulSignUp,
-          AddUserData
+          handleSignUpBtn,
+          AddUserData,
+          ResetForm,
+          handleSuccesfulSignUp
         );
       } else {
         setValidNameEmail(true);
@@ -118,7 +127,7 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
     }
   }
   function handleSuccesfulSignUp() {
-    navigate(`${process.env.PUBLIC_URL}/close`);
+    SnackBarState.handleOpenSnackBar(true);
   }
   function handleSignUpErr(param: boolean) {
     setSignUpErr(param);
@@ -275,7 +284,15 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
         }
       }
     }
-  }, [validEmailInp, inputVals.name, inputVals.email, inputVals.password]);
+  }, [
+    validEmailInp,
+    inputVals.name,
+    inputVals.email,
+    inputVals.password,
+    inputVals.emailBool,
+    inputVals.passwordBool,
+    inputVals.nameBool,
+  ]);
   function ResetForm() {
     dispatchInputs({ type: "ResetInputs", Value: "" });
     setAllowBtn({ name: false, email: false, password: false });

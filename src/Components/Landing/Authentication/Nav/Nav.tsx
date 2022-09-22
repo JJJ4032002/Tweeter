@@ -20,7 +20,7 @@ export const Nav = ({ signIn }: FormContainersProps) => {
           <Img
             onClick={(event) => {
               if (validNameEmail) {
-                handleSignUpBtn(event);
+                handleSignUpBtn("SignUp", "close");
                 ResetForm();
               } else {
                 handleSubmitBtnClick(event);
@@ -38,7 +38,7 @@ export const Nav = ({ signIn }: FormContainersProps) => {
           <Img
             id="closeImg"
             onClick={(event) => {
-              handleSignUpBtn(event);
+              handleSignUpBtn("SignIn", "close");
               SignInResetForm();
             }}
             src={close}
