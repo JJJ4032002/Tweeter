@@ -10,13 +10,26 @@ let UserContext = React.createContext<UserPropsContext>({
   user: null,
   RouteProfile: false,
   setUserHelper: (user: UserDocument) => {},
+  signedIn: false,
+  SnackBarState: {
+    openSnackBar: false,
+    handleOpenSnackBar: () => {},
+  },
 });
 
 function UserContextProvider({ children }: OverlayContextProviderChildren) {
   let navigate = useNavigate();
   let location = useLocation();
+  let [signedIn, setSignedIn] = useState(false);
+  const [openSnackBar, setOpenSnackBar] = useState(false);
+  function handleOpenSnackBar(state: boolean) {
+    setOpenSnackBar(state);
+  }
+  function handleSignedIn(state: boolean) {
+    setSignedIn(state);
+  }
   let [RouteProfile, setRouteProfile] = useState(false);
-  GetUser(setUserHelper, handleSuccessfulSignIn, GetUserData);
+  GetUser(setUserHelper, handleSuccessfulSignIn, GetUserData, handleSignedIn);
   let [user, setUser] = useState<UserDocument | null>(null);
   function setUserHelper(user: UserDocument) {
     setUser({ ...user });
@@ -35,6 +48,11 @@ function UserContextProvider({ children }: OverlayContextProviderChildren) {
     user: user,
     RouteProfile: RouteProfile,
     setUserHelper: setUserHelper,
+    signedIn: signedIn,
+    SnackBarState: {
+      openSnackBar: openSnackBar,
+      handleOpenSnackBar: handleOpenSnackBar,
+    },
   };
   return (
     <UserContext.Provider value={contextObj}>{children}</UserContext.Provider>
