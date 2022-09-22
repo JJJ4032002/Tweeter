@@ -10,7 +10,9 @@ async function GetUserData(
   let docRef = doc(db, "Users", Id);
   let docSnapShot = await getDoc(docRef);
   if (docSnapShot.exists()) {
-    console.log(docSnapShot.data());
+    let userObj = docSnapShot.data();
+    setUserHelper(userObj as UserDocument);
+    SuccSign();
   } else {
     //No such document
   }

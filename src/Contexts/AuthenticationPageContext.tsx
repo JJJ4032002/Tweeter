@@ -20,16 +20,15 @@ function AuthenticationPageContextProvider({
     display: "none",
   });
   function handleSignUpBtn(
-    event: React.MouseEvent<HTMLButtonElement | HTMLImageElement>
+    Form: "SignUp" | "SignIn",
+    action: "open" | "close"
   ) {
-    let ElementType = event.target as Element;
-
-    if (ElementType.nodeName === "BUTTON") {
+    if (action === "open") {
       window.scrollTo(0, 0);
 
       document.body.style.overflowY = "hidden";
 
-      if (ElementType.classList.contains("SignUpBtn")) {
+      if (Form === "SignUp") {
         console.log("It works");
         setFormStyles({ opacity: 1, display: "flex" });
       } else {
@@ -40,7 +39,7 @@ function AuthenticationPageContextProvider({
       window.scrollTo(0, 0);
 
       document.body.style.overflowY = "visible";
-      if (ElementType.classList.contains("SignUpBtn")) {
+      if (Form === "SignUp") {
         setFormStyles({ opacity: 1, display: "none" });
       } else {
         setSignInFormStyles({ opacity: 1, display: "none" });

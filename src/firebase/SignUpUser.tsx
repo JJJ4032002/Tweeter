@@ -19,18 +19,25 @@ const auth = getAuth(app);
 function SignUpUser(
   userData: userData,
   ErrFunc: (state: boolean) => void,
-  SuccSignUp: () => void,
-  AddUser: (user: UserDocument, Id: string) => void
+  handleSignUpBtn: (
+    Form: "SignUp" | "SignIn",
+    action: "open" | "close"
+  ) => void,
+  AddUser: (user: UserDocument, Id: string) => void,
+  ResetFunc: () => void,
+  handleSuccSignUp: () => void
 ) {
   let { name, email, password } = userData;
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      console.log(user);
+
       AddUser({ name: name }, user.uid);
-      sendEmailVerification(user, actionCodeSettings).then(() => {
-        SuccSignUp();
+      sendEmailVerification(user).then(() => {
+        handleSignUpBtn("SignUp", "close");
+        ResetFunc();
+        handleSuccSignUp();
       });
 
       // ...
