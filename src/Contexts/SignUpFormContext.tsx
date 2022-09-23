@@ -94,10 +94,6 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
   const [loader, setLoader] = useState(false);
 
   function handleSubmitBtnClick(event: React.MouseEvent<HTMLElement>) {
-    let EventToPass = event as React.MouseEvent<
-      HTMLButtonElement | HTMLImageElement,
-      MouseEvent
-    >;
     let ElementType = event.target as Element;
     dispatchInputs({ type: "passwordReset", Value: "" });
     dispatchStyles({ type: "passwordChange", WhichState: "" });
@@ -127,7 +123,7 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
     }
   }
   function handleSuccesfulSignUp() {
-    SnackBarState.handleOpenSnackBar(true);
+    SnackBarState.handleOpenSnackBar("VerificationEmailSent", true);
   }
   function handleSignUpErr(param: boolean) {
     setSignUpErr(param);
