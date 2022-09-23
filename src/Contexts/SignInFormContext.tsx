@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { OverlaySignInFormProps } from "../Interfaces and Types/Interfaces";
 import {
   SignInWithoutTextBlurCombinations,
@@ -7,6 +7,8 @@ import {
 import { OverlayContextProviderChildren } from "../Interfaces and Types/Types";
 import SignInUser from "../firebase/SignIn/SignInUser";
 import { useNavigate } from "react-router-dom";
+import { AuthenticationPageContext } from "./AuthenticationPageContext";
+import { UserContext } from "./UserContext";
 const SignInFormPropsContext = React.createContext<OverlaySignInFormProps>({
   SignInStyles: [
     {
@@ -33,6 +35,8 @@ const SignInFormPropsContext = React.createContext<OverlaySignInFormProps>({
 
 function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
   let navigate = useNavigate();
+  let { handleSignUpBtn } = useContext(AuthenticationPageContext);
+  let { SnackBarState } = useContext(UserContext);
   const [styles, setStyles] = useState([
     {
       type: "email",
@@ -135,13 +139,20 @@ function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
       });
     }
   }
+  function VerificationEmailError() {
+    SnackBarState.handleOpenSnackBar("SignIn", true);
+  }
   function handleSignInSubmitButton(event: React.MouseEvent<HTMLElement>) {
     setSignInLoader(true);
     SignInUser(
-      inputVals.email,
-      inputVals.password,
+      {
+        email: inputVals.email,
+        password: inputVals.password,
+      },
       handleSignInErr,
-      handleSuccesfulSignIn
+      handleSignUpBtn,
+      VerificationEmailError,
+      SignInResetForm
     );
     setInputVals({
       email: "",
@@ -151,6 +162,7 @@ function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
     });
   }
   function SignInResetForm() {
+    setSignInLoader(false);
     setInputVals({
       email: "",
       password: "",
