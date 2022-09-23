@@ -22,11 +22,23 @@ function Landing() {
             <SignUp></SignUp>
             <SignIn></SignIn>
             <Snackbar
-              open={SnackBarState.openSnackBar}
+              open={SnackBarState.openSnackBar.VerificationEmailSent}
               autoHideDuration={3000}
               message="Verification Email Sent. Check your spam folder"
               onClose={() => {
-                SnackBarState.handleOpenSnackBar(false);
+                SnackBarState.handleOpenSnackBar(
+                  "VerificationEmailSent",
+                  false
+                );
+              }}
+            ></Snackbar>
+
+            <Snackbar
+              open={SnackBarState.openSnackBar.SignIn}
+              autoHideDuration={4000}
+              message="Sign in failed. Find the mail in spam folder and verify your email to sign in"
+              onClose={() => {
+                SnackBarState.handleOpenSnackBar("SignIn", false);
               }}
             ></Snackbar>
           </AuthenticationPageContextProvider>

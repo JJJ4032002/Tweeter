@@ -12,7 +12,7 @@ let UserContext = React.createContext<UserPropsContext>({
   setUserHelper: (user: UserDocument) => {},
   signedIn: false,
   SnackBarState: {
-    openSnackBar: false,
+    openSnackBar: { VerificationEmailSent: false, SignIn: false },
     handleOpenSnackBar: () => {},
   },
 });
@@ -21,9 +21,17 @@ function UserContextProvider({ children }: OverlayContextProviderChildren) {
   let navigate = useNavigate();
   let location = useLocation();
   let [signedIn, setSignedIn] = useState(false);
-  const [openSnackBar, setOpenSnackBar] = useState(false);
-  function handleOpenSnackBar(state: boolean) {
-    setOpenSnackBar(state);
+  const [openSnackBar, setOpenSnackBar] = useState({
+    VerificationEmailSent: false,
+    SignIn: false,
+  });
+  function handleOpenSnackBar(
+    name: "VerificationEmailSent" | "SignIn",
+    state: boolean
+  ) {
+    setOpenSnackBar((prev) => {
+      return { ...prev, [name]: state };
+    });
   }
   function handleSignedIn(state: boolean) {
     setSignedIn(state);

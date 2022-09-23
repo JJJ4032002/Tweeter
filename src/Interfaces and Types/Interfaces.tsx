@@ -122,8 +122,11 @@ interface UserPropsContext {
   setUserHelper: (user: UserDocument) => void;
   signedIn: boolean;
   SnackBarState: {
-    openSnackBar: boolean;
-    handleOpenSnackBar: (state: boolean) => void;
+    openSnackBar: { VerificationEmailSent: boolean; SignIn: boolean };
+    handleOpenSnackBar: (
+      name: "VerificationEmailSent" | "SignIn",
+      state: boolean
+    ) => void;
   };
 }
 interface UserDocument {
