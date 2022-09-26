@@ -1,4 +1,5 @@
 import { app } from "./InitializeFirebase";
+import { signOut } from "firebase/auth";
 import {
   getAuth,
   createUserWithEmailAndPassword,
@@ -16,30 +17,29 @@ const actionCodeSettings = {
   handleCodeInApp: true,
 };
 const auth = getAuth(app);
-function SignUpUser(
+async function SignUpUser(
   userData: userData,
   ErrFunc: (state: boolean) => void,
   handleSignUpBtn: (
     Form: "SignUp" | "SignIn",
     action: "open" | "close"
   ) => void,
-  AddUser: (user: UserDocument, Id: string) => void,
+  AddUser: (user: UserDocument, Id: string) => Promise<any>,
   ResetFunc: () => void,
   handleSuccSignUp: () => void
 ) {
   let { name, email, password } = userData;
   createUserWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
+    .then(async (userCredential) => {
       // Signed in
       const user = userCredential.user;
-
-      AddUser({ name: name }, user.uid);
-      sendEmailVerification(user).then(() => {
-        handleSignUpBtn("SignUp", "close");
-        ResetFunc();
-        handleSuccSignUp();
-      });
-
+      console.log(user);
+      await AddUser({ name: name }, user.uid);
+      await sendEmailVerification(user);
+      await signOut(auth);
+      handleSignUpBtn("SignUp", "close");
+      ResetFunc();
+      handleSuccSignUp();
       // ...
     })
     .catch((error) => {

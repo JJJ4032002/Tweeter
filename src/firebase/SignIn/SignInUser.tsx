@@ -1,4 +1,4 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
 
 import { app } from "../InitializeFirebase";
 interface userData {
@@ -17,10 +17,11 @@ function SignInUser(
   ResetFunc: () => void
 ) {
   signInWithEmailAndPassword(auth, user.email, user.password)
-    .then((userCredential) => {
+    .then(async (userCredential) => {
       // Signed in
       const user = userCredential.user;
       if (user !== null && !user.emailVerified) {
+        await signOut(auth);
         handleSignUpBtn("SignIn", "close");
         ResetFunc();
         VerificationError();

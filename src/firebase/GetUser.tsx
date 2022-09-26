@@ -10,14 +10,11 @@ import { UserDocument } from "../Interfaces and Types/Interfaces";
 function GetUser(
   setUserHelper: (user: UserDocument) => void,
   succSignIn: () => void,
-  GetUserData: (
-    Id: string,
-    setUserHelper: (user: UserDocument) => void,
-    SuccSign: () => void
-  ) => void,
+  GetUserData: (Id: string) => Promise<UserDocument | null>,
   handleLoadingState: (state: boolean) => void
 ) {
   useEffect(() => {
+    console.log("This runs");
     const auth = getAuth(app);
     let unsubscribe = onAuthStateChanged(auth, (user) => {
       // Check for user status
@@ -25,12 +22,14 @@ function GetUser(
       console.log(user?.emailVerified);
       if (user !== null && user.emailVerified) {
         console.log("This happens again");
-        GetUserData(user.uid, setUserHelper, succSignIn);
-      } else if (user !== null && !user.emailVerified) {
-        signOut(auth).then(() => {
-          console.log("User signed out");
+        GetUserData(user.uid).then((result) => {
+          if (result !== null) {
+            setUserHelper(result);
+            succSignIn();
+          }
         });
       } else if (user === null) {
+        console.log("The user is null");
         handleLoadingState(true);
       }
     });
