@@ -67,7 +67,7 @@ function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
     setSignInErr(param);
   }
   function handleSuccesfulSignIn() {
-    navigate(`${process.env.PUBLIC_URL}/home`);
+    navigate(`${process.env.PUBLIC_URL}/`);
   }
   useEffect(() => {
     setSignInLoader(false);

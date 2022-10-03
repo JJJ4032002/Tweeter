@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useLayoutEffect } from "react";
 import { UserPropsContext } from "../Interfaces and Types/Interfaces";
 import { OverlayContextProviderChildren } from "../Interfaces and Types/Types";
-import { User } from "firebase/auth";
+
 import GetUser from "../firebase/GetUser";
 import { useNavigate, useLocation } from "react-router-dom";
 import { UserDocument } from "../Interfaces and Types/Interfaces";
@@ -37,7 +37,13 @@ function UserContextProvider({ children }: OverlayContextProviderChildren) {
     setSignedIn(state);
   }
   let [RouteProfile, setRouteProfile] = useState(false);
-  GetUser(setUserHelper, handleSuccessfulSignIn, GetUserData, handleSignedIn);
+  GetUser(
+    setUserHelper,
+    handleSuccessfulSignIn,
+    GetUserData,
+    handleSignedIn,
+    location
+  );
   let [user, setUser] = useState<UserDocument | null>(null);
   function setUserHelper(user: UserDocument) {
     setUser({ ...user });
@@ -46,12 +52,13 @@ function UserContextProvider({ children }: OverlayContextProviderChildren) {
     navigate(`${process.env.PUBLIC_URL}/home`);
   }
   useLayoutEffect(() => {
-    if (location.pathname === "/Tweeter/home/profile") {
+    console.log("UseLayoutRuns infinitely");
+    if (location.pathname === "/Tweeter/profile") {
       setRouteProfile(true);
     } else if (location.pathname === "/Tweeter/home") {
       setRouteProfile(false);
     }
-  }, [location]);
+  }, [location.pathname]);
   let contextObj = {
     user: user,
     RouteProfile: RouteProfile,

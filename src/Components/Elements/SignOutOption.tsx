@@ -12,7 +12,7 @@ function SignOutOptions({ text }: { text: string }) {
   let navigate = useNavigate();
   function handleSuccesfulSignOut() {
     handleLoadingState(false);
-    navigate(`${process.env.PUBLIC_URL}/`);
+    navigate(`${process.env.PUBLIC_URL}/login`);
   }
   function handleLoadingState(state: boolean) {
     setLoading(state);

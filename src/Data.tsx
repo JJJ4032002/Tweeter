@@ -22,7 +22,7 @@ const MenuLayoutMobileLData = [
   { imgSrc: search, key: uuidv4(), to: "disable" },
   { imgSrc: notifications, key: uuidv4(), to: "disable" },
   { imgSrc: messages, key: uuidv4(), to: "disable" },
-  { imgSrc: profile, key: uuidv4(), to: "/home/profile" },
+  { imgSrc: profile, key: uuidv4(), to: "/profile" },
   { imgSrc: settings, key: uuidv4(), to: "disable" },
 ];
 const MenuLayoutLaptopMData = [
@@ -35,7 +35,7 @@ const MenuLayoutLaptopMData = [
     to: "disable",
   },
   { imgSrc: messages, key: uuidv4(), text: "Messages", to: "disable" },
-  { imgSrc: profile, key: uuidv4(), text: "Profile", to: "/home/profile" },
+  { imgSrc: profile, key: uuidv4(), text: "Profile", to: "/profile" },
   { imgSrc: settings, key: uuidv4(), text: "Settings", to: "disable" },
 ];
 
