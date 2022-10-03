@@ -9,15 +9,19 @@ const ProfileContainer = styled.div`
   border-top: 1px solid #cfd9de;
 `;
 
-function Profile({
-  handleDispEditProfile,
-}: {
-  handleDispEditProfile: (state: boolean) => void;
-}) {
+function Profile() {
+  let [dispEditProfile, setDispEditProfile] = useState(false);
+  function handleDispEditProfile(state: boolean) {
+    setDispEditProfile(state);
+  }
   return (
     <ProfileContainer>
       <ProfileView handleDispEditProfile={handleDispEditProfile}></ProfileView>
       <ProfileInformation></ProfileInformation>
+      <EditProfile
+        handleDispEditProfile={handleDispEditProfile}
+        EditProfileState={dispEditProfile}
+      ></EditProfile>
     </ProfileContainer>
   );
 }
