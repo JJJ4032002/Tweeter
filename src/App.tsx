@@ -31,13 +31,13 @@ function App() {
       setFirstLoad(false);
     }
   }, [FirstLoad]);
-
+  console.log(location.pathname);
   return (
     <UserContextProvider>
       <ThemeProvider theme={theme}>
         <div className="App">
           <GlobalStyles></GlobalStyles>
-          {FirstLoad && location.pathname === "/Tweeter/" && (
+          {FirstLoad && location.pathname === "/Tweeter" && (
             <Navigate to={process.env.PUBLIC_URL + "/login"}></Navigate>
           )}
           <Routes>
