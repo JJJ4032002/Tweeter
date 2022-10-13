@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { MutableRefObject, useContext } from "react";
 import { OverlayFormProps } from "../Interfaces and Types/Interfaces";
 import StylesReducer from "../Reducers/StylesReducer";
 import { useReducer } from "react";
@@ -10,13 +10,7 @@ import validateEmail from "../helpers/ValidateEmail";
 import InputsReducer from "../Reducers/InputsReducer";
 import { useNavigate } from "react-router-dom";
 import AddUserData from "../firebase/AddUserData";
-import {
-  FocusAllRedCombinations,
-  BlurAllRedCombinations,
-  BlurWithTextCombinations,
-  BlurWithoutTextCombinations,
-  invalidInputLengthChecker,
-} from "../helpers/OverlayFormContextHelpers";
+import { invalidInputLengthChecker } from "../helpers/OverlayFormContextHelpers";
 import SignUpUser from "../firebase/SignUpUser";
 import { UserContext } from "./UserContext";
 import { AuthenticationPageContext } from "./AuthenticationPageContext";
@@ -87,7 +81,6 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
     emailBool: false,
     passwordBool: false,
   });
-  const [validEmailInp, setValidEmailInp] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [validNameEmail, setValidNameEmail] = useState(true);
   const [SignUpErr, setSignUpErr] = useState(false);
@@ -141,46 +134,87 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
       handleSignUpErr(false);
     }, 2500);
   }, [SignUpErr]);
-  function FocusAchieved(event: React.FocusEvent<HTMLInputElement>): void {
-    console.log("Focussed", event.target, event.relatedTarget);
 
-    if (FocusAllRedCombinations(inputVals, event, validEmailInp, NameErrText)) {
+  function FocusAchieved(event: React.FocusEvent<HTMLInputElement>): void {
+    let FilteredStyles = styles.filter((ele) => {
+      return ele.type === event.target.name;
+    });
+    if (
+      FilteredStyles[0].WhichState === "AllRedBlurred" ||
+      FilteredStyles[0].WhichState === "WithTextRedBlurred"
+    ) {
       dispatchStyles({
         type: `${event.target.name}Change`,
         WhichState: "AllRedFocussed",
       });
-    } else {
+    } else if (
+      FilteredStyles[0].WhichState === "" ||
+      FilteredStyles[0].WhichState === "WithTextBlurred"
+    ) {
       dispatchStyles({
         type: `${event.target.name}Change`,
         WhichState: "AllBlueFocussed",
       });
     }
   }
+
   function BlurAchieved(event: React.FocusEvent<HTMLInputElement>): void {
-    if (BlurWithoutTextCombinations(inputVals, event)) {
+    console.log("Blurred  Input", event.target);
+    let FilteredStyles = styles.filter((ele) => {
+      return ele.type === event.target.name;
+    });
+    if (
+      FilteredStyles[0].WhichState === "AllBlueFocussed" &&
+      event.target.value.length === 0
+    ) {
       dispatchStyles({
         type: `${event.target.name}Change`,
         WhichState: "",
       });
-    } else if (BlurAllRedCombinations(inputVals, event)) {
+    } else if (
+      FilteredStyles[0].WhichState === "AllRedFocussed" &&
+      event.target.value.length === 0
+    ) {
       dispatchStyles({
         type: `${event.target.name}Change`,
         WhichState: "AllRedBlurred",
       });
-    } else if (BlurWithTextCombinations(inputVals, event)) {
+    } else if (
+      FilteredStyles[0].WhichState === "AllBlueFocussed" &&
+      event.target.value.length > 0
+    ) {
       dispatchStyles({
         type: `${event.target.name}Change`,
         WhichState: "WithTextBlurred",
       });
-    } else {
+    } else if (
+      FilteredStyles[0].WhichState === "AllRedFocussed" &&
+      event.target.value.length > 0
+    ) {
       dispatchStyles({
         type: `${event.target.name}Change`,
-        WhichState: "",
+        WhichState: "WithTextRedBlurred",
       });
     }
   }
+  function AfterInputChangeEffects(
+    refObj: { ref: MutableRefObject<HTMLSpanElement | null>; display: string },
+    allowBtnObj: { type: string; booleanValue: boolean },
+    stylesObj: { type: string; whichState: string }
+  ) {
+    if (refObj.ref.current) {
+      refObj.ref.current.style.display = refObj.display;
+    }
+    setAllowBtn((prev) => ({
+      ...prev,
+      [allowBtnObj.type]: allowBtnObj.booleanValue,
+    }));
+    dispatchStyles({
+      type: stylesObj.type,
+      WhichState: stylesObj.whichState,
+    });
+  }
   function InputChange(event: React.ChangeEvent<HTMLInputElement>): void {
-    console.log(event.target.value);
     if (invalidInputLengthChecker(inputVals, event)) {
       return;
     } else {
@@ -189,106 +223,61 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
           type: "emailInputChange",
           Value: event.target.value,
         });
-
-        let ans = validateEmail(event.target.value);
-        if (ans) {
-          setValidEmailInp(true);
+        let EmailValid = validateEmail(event.target.value);
+        if (EmailValid || !event.target.value) {
+          AfterInputChangeEffects(
+            { ref: EmailErrText, display: "none" },
+            { type: "email", booleanValue: true },
+            { type: "emailChange", whichState: "AllBlueFocussed" }
+          );
         } else {
-          setValidEmailInp(false);
+          AfterInputChangeEffects(
+            { ref: EmailErrText, display: "block" },
+            { type: "email", booleanValue: false },
+            { type: "emailChange", whichState: "AllRedFocussed" }
+          );
         }
       } else if (event.target.name === "password") {
         dispatchInputs({
           type: "passwordInputChange",
           Value: event.target.value,
         });
-      } else {
+        if (event.target.value.length < 8) {
+          AfterInputChangeEffects(
+            { ref: PasswordErrText, display: "block" },
+            { type: "password", booleanValue: false },
+            { type: "passwordChange", whichState: "AllRedFocussed" }
+          );
+        } else {
+          AfterInputChangeEffects(
+            { ref: PasswordErrText, display: "none" },
+            { type: "password", booleanValue: true },
+            { type: "passwordChange", whichState: "AllBlueFocussed" }
+          );
+        }
+      } else if (event.target.name === "name") {
         dispatchInputs({
           type: "nameInputChange",
           Value: event.target.value,
         });
+
+        if (event.target.value) {
+          AfterInputChangeEffects(
+            { ref: NameErrText, display: "none" },
+            { type: "name", booleanValue: true },
+            { type: "nameChange", whichState: "AllBlueFocussed" }
+          );
+        } else {
+          AfterInputChangeEffects(
+            { ref: NameErrText, display: "block" },
+            { type: "name", booleanValue: false },
+            { type: "nameChange", whichState: "AllRedFocussed" }
+          );
+        }
       }
     }
   }
 
-  useEffect(() => {
-    if (
-      inputVals.emailBool &&
-      inputVals.email &&
-      null != EmailErrText.current
-    ) {
-      if (!validEmailInp) {
-        EmailErrText.current.style.display = "block";
-        setAllowBtn((prev) => ({ ...prev, email: false }));
-        dispatchStyles({
-          type: `emailChange`,
-          WhichState: "AllRedFocussed",
-        });
-      } else {
-        EmailErrText.current.style.display = "none";
-        setAllowBtn((prev) => ({ ...prev, email: true }));
-        dispatchStyles({
-          type: `emailChange`,
-          WhichState: "AllBlueFocussed",
-        });
-      }
-    } else if (inputVals.passwordBool && null !== PasswordErrText.current) {
-      if (inputVals.password.length < 8) {
-        console.log("PasswordError");
-        PasswordErrText.current.style.display = "block";
-        setAllowBtn((prev) => ({ ...prev, password: false }));
-        dispatchStyles({
-          type: `passwordChange`,
-          WhichState: "AllRedFocussed",
-        });
-      } else {
-        PasswordErrText.current.style.display = "none";
-        setAllowBtn((prev) => ({ ...prev, password: true }));
-        dispatchStyles({
-          type: `passwordChange`,
-          WhichState: "AllBlueFocussed",
-        });
-      }
-    } else if (
-      inputVals.emailBool &&
-      !inputVals.email &&
-      null != EmailErrText.current
-    ) {
-      EmailErrText.current.style.display = "none";
-      setAllowBtn((prev) => ({ ...prev, email: false }));
-
-      dispatchStyles({
-        type: `emailChange`,
-        WhichState: "AllBlueFocussed",
-      });
-    } else {
-      if (inputVals.nameBool && null !== NameErrText.current) {
-        if (inputVals.name) {
-          setAllowBtn((prev) => ({ ...prev, name: true }));
-          NameErrText.current.style.display = "none";
-
-          dispatchStyles({
-            type: `nameChange`,
-            WhichState: "AllBlueFocussed",
-          });
-        } else {
-          setAllowBtn((prev) => ({ ...prev, name: false }));
-          NameErrText.current.style.display = "block";
-          dispatchStyles({
-            type: `nameChange`,
-            WhichState: "AllRedFocussed",
-          });
-        }
-      }
-    }
-  }, [
-    validEmailInp,
-    inputVals.name,
-    inputVals.email,
-    inputVals.password,
-    inputVals.emailBool,
-    inputVals.passwordBool,
-    inputVals.nameBool,
-  ]);
   function ResetForm() {
     dispatchInputs({ type: "ResetInputs", Value: "" });
     setAllowBtn({ name: false, email: false, password: false });

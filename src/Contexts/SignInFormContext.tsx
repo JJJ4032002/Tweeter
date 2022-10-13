@@ -1,9 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
 import { OverlaySignInFormProps } from "../Interfaces and Types/Interfaces";
-import {
-  SignInWithoutTextBlurCombinations,
-  SignInWithTextBlurCombinations,
-} from "../helpers/OverlayFormContextHelpers";
 import { OverlayContextProviderChildren } from "../Interfaces and Types/Types";
 import SignInUser from "../firebase/SignIn/SignInUser";
 import { useNavigate } from "react-router-dom";
@@ -66,9 +62,7 @@ function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
   function handleSignInErr(param: boolean) {
     setSignInErr(param);
   }
-  function handleSuccesfulSignIn() {
-    navigate(`${process.env.PUBLIC_URL}/`);
-  }
+
   useEffect(() => {
     setSignInLoader(false);
     setTimeout(() => {
@@ -95,7 +89,7 @@ function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
   }
   function SignInBlurAchieved(event: React.FocusEvent<HTMLInputElement>): void {
     let newStyles = [...styles];
-    if (SignInWithoutTextBlurCombinations(inputVals, event)) {
+    if (event.target.value.length === 0) {
       if (event.target.name === "email") {
         newStyles[0] = {
           type: "email",
@@ -107,7 +101,7 @@ function SignInFormPropsProvider({ children }: OverlayContextProviderChildren) {
           WhichState: "",
         };
       }
-    } else if (SignInWithTextBlurCombinations(inputVals, event)) {
+    } else if (event.target.value.length > 0) {
       if (event.target.name === "email") {
         newStyles[0] = {
           type: "email",
