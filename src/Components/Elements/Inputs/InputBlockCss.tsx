@@ -35,6 +35,12 @@ const Label = styled.label<Props>`
       border-width: 1px;
       border-color: #cfd9de;
     `}
+     ${(props) =>
+    props.WhichState === "WithTextRedBlurred" &&
+    css`
+      border-width: 1px;
+      border-color: red;
+    `}
 `;
 const SpanText = styled.span<Props>`
   left: 1.5%;
@@ -70,6 +76,13 @@ const SpanText = styled.span<Props>`
       top: 5%;
       font-size: 0.8rem;
       color: #536471;
+    `}
+     ${(props) =>
+    props.WhichState === "WithTextRedBlurred" &&
+    css`
+      top: 5%;
+      font-size: 0.8rem;
+      color: red;
     `}
 `;
 
