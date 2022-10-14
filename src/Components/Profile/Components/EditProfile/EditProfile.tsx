@@ -18,7 +18,7 @@ function EditProfile({
     <ModalBackdrop opacity={1} display={EditProfileState ? "flex" : "none"}>
       <EditProfileForm>
         <Header handleDispEditProfile={handleDispEditProfile}></Header>
-        <ProfileView></ProfileView>
+        <ProfileView Editable={true}></ProfileView>
       </EditProfileForm>
     </ModalBackdrop>
   );

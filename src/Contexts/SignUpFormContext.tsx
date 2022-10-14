@@ -110,7 +110,6 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
         );
       } else {
         setValidNameEmail(true);
-
         setShowPassword(false);
       }
     }

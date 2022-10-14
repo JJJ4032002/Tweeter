@@ -16,7 +16,10 @@ function Profile() {
   }
   return (
     <ProfileContainer>
-      <ProfileView handleDispEditProfile={handleDispEditProfile}></ProfileView>
+      <ProfileView
+        Editable={false}
+        handleDispEditProfile={handleDispEditProfile}
+      ></ProfileView>
       <ProfileInformation></ProfileInformation>
       <EditProfile
         handleDispEditProfile={handleDispEditProfile}

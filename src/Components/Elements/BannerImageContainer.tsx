@@ -1,7 +1,12 @@
 import React from "react";
 import styled from "styled-components/macro";
 import { devices } from "../../Media Queries/Queries";
+import IconButton from "@mui/material/IconButton";
+import PhotoCamera from "@mui/icons-material/PhotoCamera";
 const BannerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 130px;
   background-color: lightgrey;
   grid-area: BannerImage;
@@ -21,7 +26,20 @@ const BannerContainer = styled.div`
   }
 `;
 function BannerImageContainer({ Editable }: { Editable: boolean }) {
-  return <BannerContainer></BannerContainer>;
+  return (
+    <>
+      {Editable ? (
+        <BannerContainer>
+          <IconButton component="label">
+            <input hidden accept="image/*" type="file" />
+            <PhotoCamera />
+          </IconButton>
+        </BannerContainer>
+      ) : (
+        <BannerContainer></BannerContainer>
+      )}
+    </>
+  );
 }
 
 export default BannerImageContainer;

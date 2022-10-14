@@ -30,14 +30,16 @@ const PlaceHolder = styled.div`
 `;
 function ProfileView({
   handleDispEditProfile,
+  Editable,
 }: {
   handleDispEditProfile?: (state: boolean) => void;
+  Editable: boolean;
 }) {
   return (
     <>
       <Grid>
-        <BannerImageContainer Editable={true}></BannerImageContainer>
-        <ProfileImageContainer Editable={true}></ProfileImageContainer>
+        <BannerImageContainer Editable={Editable}></BannerImageContainer>
+        <ProfileImageContainer Editable={Editable}></ProfileImageContainer>
         <EditButtonContainer>
           {handleDispEditProfile === undefined ? (
             <PlaceHolder></PlaceHolder>
