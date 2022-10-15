@@ -1,7 +1,8 @@
 import React from "react";
 import { UserDocument } from "../Interfaces and Types/Interfaces";
 import { doc, getDoc } from "firebase/firestore";
-import { db } from "./InitializeFirebase";
+import { db, storage } from "./InitializeFirebase";
+
 async function GetUserData(Id: string) {
   let docRef = doc(db, "Users", Id);
   let docSnapShot = await getDoc(docRef);

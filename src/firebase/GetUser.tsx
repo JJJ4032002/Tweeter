@@ -28,7 +28,11 @@ function GetUser(
           if (result !== null) {
             setUserHelper(result);
             console.log(location.pathname);
-            if (location.pathname === "/Tweeter/login") succSignIn();
+            if (
+              location.pathname === "/Tweeter/login" ||
+              location.pathname === "/Tweeter"
+            )
+              succSignIn();
             handleLoadingState(true);
           }
         });

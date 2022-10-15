@@ -131,6 +131,7 @@ interface UserPropsContext {
 }
 interface UserDocument {
   name: string;
+  photoUrl: string | null;
 }
 export type {
   Props,

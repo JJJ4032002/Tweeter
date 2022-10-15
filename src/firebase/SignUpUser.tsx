@@ -34,7 +34,7 @@ async function SignUpUser(
       // Signed in
       const user = userCredential.user;
       console.log(user);
-      await AddUser({ name: name }, user.uid);
+      await AddUser({ name: name, photoUrl: user.photoURL }, user.uid);
       await sendEmailVerification(user);
       await signOut(auth);
       handleSignUpBtn("SignUp", "close");
