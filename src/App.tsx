@@ -37,9 +37,10 @@ function App() {
       <ThemeProvider theme={theme}>
         <div className="App">
           <GlobalStyles></GlobalStyles>
-          {FirstLoad && location.pathname === "/Tweeter" && (
-            <Navigate to={process.env.PUBLIC_URL + "/login"}></Navigate>
-          )}
+          {(FirstLoad && location.pathname === "/Tweeter") ||
+            (location.pathname === "/Tweeter/" && (
+              <Navigate to={process.env.PUBLIC_URL + "/login"}></Navigate>
+            ))}
           <Routes>
             <Route
               path={process.env.PUBLIC_URL + "/login"}
