@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components/macro";
+import IconButton from "@mui/material/IconButton";
+import PhotoCamera from "@mui/icons-material/PhotoCamera";
 const ProfileContainer = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   grid-row: 2/4;
   grid-column: 1/2;
@@ -16,7 +18,20 @@ const ProfileContainer = styled.div`
 `;
 
 function ProfileImageContainer({ Editable }: { Editable: boolean }) {
-  return <ProfileContainer></ProfileContainer>;
+  return (
+    <>
+      {Editable ? (
+        <ProfileContainer>
+          <IconButton component="label">
+            <input hidden accept="image/*" type="file" />
+            <PhotoCamera />
+          </IconButton>
+        </ProfileContainer>
+      ) : (
+        <ProfileContainer></ProfileContainer>
+      )}
+    </>
+  );
 }
 
 export default ProfileImageContainer;
