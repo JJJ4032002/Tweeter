@@ -49,13 +49,13 @@ function UserContextProvider({ children }: OverlayContextProviderChildren) {
     setUser({ ...user });
   }
   function handleSuccessfulSignIn() {
-    navigate(`${process.env.PUBLIC_URL}/home`);
+    navigate(`/home`);
   }
   useLayoutEffect(() => {
     console.log("UseLayoutRuns infinitely");
-    if (location.pathname === "/Tweeter/profile") {
+    if (location.pathname === "/profile") {
       setRouteProfile(true);
-    } else if (location.pathname === "/Tweeter/home") {
+    } else if (location.pathname === "/home") {
       setRouteProfile(false);
     }
   }, [location.pathname]);

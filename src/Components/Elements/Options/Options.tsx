@@ -19,7 +19,7 @@ function Options({
       {LinkTo === "disable" ? (
         <ItemDiv className="OptionsText">{children}</ItemDiv>
       ) : (
-        <OptionsLink to={`${process.env.PUBLIC_URL}${LinkTo}`}>
+        <OptionsLink to={`${LinkTo}`}>
           <ItemDiv className="OptionsText">{children}</ItemDiv>
         </OptionsLink>
       )}

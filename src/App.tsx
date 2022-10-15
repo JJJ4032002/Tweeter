@@ -31,23 +31,19 @@ function App() {
       setFirstLoad(false);
     }
   }, [FirstLoad]);
-  console.log(location.pathname);
+  console.log(location);
   return (
     <UserContextProvider>
       <ThemeProvider theme={theme}>
         <div className="App">
           <GlobalStyles></GlobalStyles>
-          {(FirstLoad && location.pathname === "/Tweeter") ||
-            (location.pathname === "/Tweeter/" && (
-              <Navigate to={process.env.PUBLIC_URL + "/login"}></Navigate>
-            ))}
+          {FirstLoad && location.pathname === "/" && (
+            <Navigate to={"/login"}></Navigate>
+          )}
           <Routes>
-            <Route
-              path={process.env.PUBLIC_URL + "/login"}
-              element={<Landing />}
-            ></Route>
+            <Route path={"/login"} element={<Landing />}></Route>
 
-            <Route path={process.env.PUBLIC_URL + "/"} element={<Home></Home>}>
+            <Route path={"/"} element={<Home></Home>}>
               <Route path="home" element={<Tweets />} />
               <Route path="profile" element={<Profile />}></Route>
             </Route>
