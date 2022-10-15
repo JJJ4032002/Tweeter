@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthenticationPageContextProvider } from "../../Contexts/AuthenticationPageContext";
 import { GridContainer } from "./LandingCss";
 import SignIn from "./Authentication/SignIn";
