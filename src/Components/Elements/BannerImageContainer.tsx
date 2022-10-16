@@ -3,6 +3,7 @@ import styled from "styled-components/macro";
 import { devices } from "../../Media Queries/Queries";
 import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
+
 const BannerContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -25,13 +26,24 @@ const BannerContainer = styled.div`
     height: 250px;
   }
 `;
-function BannerImageContainer({ Editable }: { Editable: boolean }) {
+function BannerImageContainer({
+  onFileChange,
+  Editable,
+}: {
+  onFileChange?: (e: React.ChangeEvent<HTMLInputElement>) => Promise<void>;
+  Editable: boolean;
+}) {
   return (
     <>
       {Editable ? (
         <BannerContainer>
           <IconButton component="label">
-            <input hidden accept="image/*" type="file" />
+            <input
+              onChange={onFileChange}
+              hidden
+              accept="image/*"
+              type="file"
+            />
             <PhotoCamera />
           </IconButton>
         </BannerContainer>

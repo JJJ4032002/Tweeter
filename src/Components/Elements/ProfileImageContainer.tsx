@@ -17,13 +17,24 @@ const ProfileContainer = styled.div`
   border-radius: 50%;
 `;
 
-function ProfileImageContainer({ Editable }: { Editable: boolean }) {
+function ProfileImageContainer({
+  onFileChange,
+  Editable,
+}: {
+  onFileChange?: (e: React.ChangeEvent<HTMLInputElement>) => Promise<void>;
+  Editable: boolean;
+}) {
   return (
     <>
       {Editable ? (
         <ProfileContainer>
           <IconButton component="label">
-            <input hidden accept="image/*" type="file" />
+            <input
+              onChange={onFileChange}
+              hidden
+              accept="image/*"
+              type="file"
+            />
             <PhotoCamera />
           </IconButton>
         </ProfileContainer>
