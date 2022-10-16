@@ -1,6 +1,5 @@
 import React from "react";
 import { ChangeStyles } from "./Types";
-import { User } from "firebase/auth";
 
 interface Props {
   primary?: boolean;
@@ -117,9 +116,9 @@ interface TweetButtonProps {
 }
 
 interface UserPropsContext {
-  user: UserDocument | null;
+  user: UserState | null;
   RouteProfile: boolean;
-  setUserHelper: (user: UserDocument) => void;
+  setUserHelper: (user: UserState) => void;
   signedIn: boolean;
   SnackBarState: {
     openSnackBar: { VerificationEmailSent: boolean; SignIn: boolean };
@@ -131,7 +130,11 @@ interface UserPropsContext {
 }
 interface UserDocument {
   name: string;
-  photoUrl: string | null;
+}
+interface UserState extends UserDocument {
+  Id: string;
+  profileImageUrl: string | null;
+  bannerImageUrl: string | null;
 }
 export type {
   Props,
@@ -150,4 +153,5 @@ export type {
   TweetButtonProps,
   UserPropsContext,
   UserDocument,
+  UserState,
 };

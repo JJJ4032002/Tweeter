@@ -1,10 +1,8 @@
 import React from "react";
-import { ItemDiv } from "../Home/HomeCss";
-import { ProfileDiv } from "../Home/HomeCss";
+import { ItemDiv, ProfileDiv } from "../Home/HomeCss";
 import profile from "../../assets/Icons/profile.svg";
-import { User } from "firebase/auth";
 import styled from "styled-components/macro";
-import { UserDocument } from "../../Interfaces and Types/Interfaces";
+import { UserDocument, UserState } from "../../Interfaces and Types/Interfaces";
 const UserName = styled.p`
   font-size: 1rem;
   font-weight: 600;
@@ -13,7 +11,7 @@ function UserStatus({
   user,
   className,
 }: {
-  user: UserDocument | null;
+  user: UserState | null;
   className: string;
 }) {
   console.log(user?.name, "HereUserName in UserStatus");

@@ -4,14 +4,17 @@ import UserStatus from "../UserStatus";
 import SignOutOption from "../SignOutOption";
 import { User } from "firebase/auth";
 import { ClickAwayListener } from "@mui/material";
-import { UserDocument } from "../../../Interfaces and Types/Interfaces";
+import {
+  UserDocument,
+  UserState,
+} from "../../../Interfaces and Types/Interfaces";
 function SignOutTooltip({
   children,
   user,
   clickable,
 }: {
   children: React.ReactNode;
-  user: UserDocument | null;
+  user: UserState | null;
   clickable: boolean;
 }) {
   const [open, setOpen] = React.useState(false);
