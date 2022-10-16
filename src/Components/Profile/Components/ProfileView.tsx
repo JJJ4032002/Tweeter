@@ -30,16 +30,39 @@ const PlaceHolder = styled.div`
 `;
 function ProfileView({
   handleDispEditProfile,
+  onFileChangeBanner,
+  onFileChangeProfile,
   Editable,
 }: {
   handleDispEditProfile?: (state: boolean) => void;
+  onFileChangeBanner?: (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => Promise<void>;
+  onFileChangeProfile?: (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => Promise<void>;
   Editable: boolean;
 }) {
   return (
     <>
       <Grid>
-        <BannerImageContainer Editable={Editable}></BannerImageContainer>
-        <ProfileImageContainer Editable={Editable}></ProfileImageContainer>
+        {onFileChangeBanner ? (
+          <BannerImageContainer
+            onFileChange={onFileChangeBanner}
+            Editable={Editable}
+          ></BannerImageContainer>
+        ) : (
+          <BannerImageContainer Editable={Editable}></BannerImageContainer>
+        )}
+        {onFileChangeProfile ? (
+          <ProfileImageContainer
+            onFileChange={onFileChangeProfile}
+            Editable={Editable}
+          ></ProfileImageContainer>
+        ) : (
+          <ProfileImageContainer Editable={Editable}></ProfileImageContainer>
+        )}
+
         <EditButtonContainer>
           {handleDispEditProfile === undefined ? (
             <PlaceHolder></PlaceHolder>
