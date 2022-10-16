@@ -1,15 +1,18 @@
 import React, { useEffect, useState, useLayoutEffect } from "react";
-import { UserPropsContext } from "../Interfaces and Types/Interfaces";
+import {
+  UserPropsContext,
+  UserState,
+} from "../Interfaces and Types/Interfaces";
 import { OverlayContextProviderChildren } from "../Interfaces and Types/Types";
 
-import GetUser from "../firebase/GetUser";
+import useGetUser from "../firebase/GetUser";
 import { useNavigate, useLocation } from "react-router-dom";
 import { UserDocument } from "../Interfaces and Types/Interfaces";
 import GetUserData from "../firebase/GetUserData";
 let UserContext = React.createContext<UserPropsContext>({
   user: null,
   RouteProfile: false,
-  setUserHelper: (user: UserDocument) => {},
+  setUserHelper: (user: UserState) => {},
   signedIn: false,
   SnackBarState: {
     openSnackBar: { VerificationEmailSent: false, SignIn: false },
@@ -37,15 +40,17 @@ function UserContextProvider({ children }: OverlayContextProviderChildren) {
     setSignedIn(state);
   }
   let [RouteProfile, setRouteProfile] = useState(false);
-  GetUser(
+
+  useGetUser(
     setUserHelper,
     handleSuccessfulSignIn,
     GetUserData,
     handleSignedIn,
     location
   );
-  let [user, setUser] = useState<UserDocument | null>(null);
-  function setUserHelper(user: UserDocument) {
+
+  let [user, setUser] = useState<UserState | null>(null);
+  function setUserHelper(user: UserState) {
     setUser({ ...user });
   }
   function handleSuccessfulSignIn() {

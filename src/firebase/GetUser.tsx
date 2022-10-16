@@ -1,15 +1,10 @@
-import {
-  getAdditionalUserInfo,
-  getAuth,
-  onAuthStateChanged,
-  signOut,
-} from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { Location } from "react-router-dom";
 import { app } from "./InitializeFirebase";
 import { useEffect } from "react";
-import { UserDocument } from "../Interfaces and Types/Interfaces";
-function GetUser(
-  setUserHelper: (user: UserDocument) => void,
+import { UserDocument, UserState } from "../Interfaces and Types/Interfaces";
+function useGetUser(
+  setUserHelper: (user: UserState) => void,
   succSignIn: () => void,
   GetUserData: (Id: string) => Promise<UserDocument | null>,
   handleLoadingState: (state: boolean) => void,
@@ -26,7 +21,13 @@ function GetUser(
         console.log("This happens again");
         GetUserData(user.uid).then((result) => {
           if (result !== null) {
-            setUserHelper(result);
+            let Newresult = {
+              ...result,
+              Id: user.uid,
+              profileImageUrl: null,
+              bannerImageUrl: null,
+            };
+            setUserHelper(Newresult);
             console.log(location.pathname);
             if (location.pathname === "/login" || location.pathname === "/")
               succSignIn();
@@ -45,4 +46,4 @@ function GetUser(
   }, []);
 }
 
-export default GetUser;
+export default useGetUser;
