@@ -40,6 +40,7 @@ function Header({
     <Wrapper>
       <HeaderItems>
         <Img
+          className="closeImg"
           onClick={() => {
             onPrevious(null);
           }}

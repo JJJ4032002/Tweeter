@@ -36,6 +36,7 @@ function Header({
     <Wrapper>
       <HeaderItems>
         <Img
+          className="closeImg"
           onClick={() => {
             handleDispEditProfile(false);
           }}

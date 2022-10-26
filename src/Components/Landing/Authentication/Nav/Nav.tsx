@@ -36,7 +36,7 @@ export const Nav = ({ signIn }: FormContainersProps) => {
         <>
           {" "}
           <Img
-            id="closeImg"
+            className="closeImg"
             onClick={(event) => {
               handleSignUpBtn("SignIn", "close");
               SignInResetForm();
