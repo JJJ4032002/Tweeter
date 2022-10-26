@@ -2,9 +2,6 @@ interface inputsVal {
   name: string;
   email: string;
   password: string;
-  nameBool: boolean;
-  emailBool: boolean;
-  passwordBool: boolean;
 }
 interface actionProps {
   type: string;
@@ -17,9 +14,6 @@ function InputsReducer(inputs: inputsVal, action: actionProps): inputsVal {
       let newInputs = {
         ...inputs,
         name: action.Value,
-        emailBool: false,
-        nameBool: true,
-        passwordBool: false,
       };
       return newInputs;
     }
@@ -27,9 +21,6 @@ function InputsReducer(inputs: inputsVal, action: actionProps): inputsVal {
       let newInputs = {
         ...inputs,
         email: action.Value,
-        emailBool: true,
-        nameBool: false,
-        passwordBool: false,
       };
       return newInputs;
     }
@@ -37,9 +28,6 @@ function InputsReducer(inputs: inputsVal, action: actionProps): inputsVal {
       let newInputs = {
         ...inputs,
         password: action.Value,
-        emailBool: false,
-        nameBool: false,
-        passwordBool: true,
       };
       return newInputs;
     }
@@ -47,7 +35,6 @@ function InputsReducer(inputs: inputsVal, action: actionProps): inputsVal {
       let newInputs = {
         ...inputs,
         password: action.Value,
-        passwordBool: false,
       };
       return newInputs;
     }
@@ -56,9 +43,6 @@ function InputsReducer(inputs: inputsVal, action: actionProps): inputsVal {
         name: "",
         email: "",
         password: "",
-        nameBool: false,
-        emailBool: false,
-        passwordBool: false,
       };
       return newInputs;
     }
