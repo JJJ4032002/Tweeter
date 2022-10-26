@@ -70,6 +70,8 @@ const GridContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 80vh 40vh;
+  justify-content: center;
+  align-content: center;
   grid-template-areas:
     "form"
     "Banner";
