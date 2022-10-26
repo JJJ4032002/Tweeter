@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components/macro";
 import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
+import { UserContext, UserStatePartial } from "../../Contexts/UserContext";
+import Img from "./Img";
 const ProfileContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -15,8 +17,21 @@ const ProfileContainer = styled.div`
   background-color: lightgray;
   border: 0.3em solid white;
   border-radius: 50%;
+  overflow: hidden;
+  z-index: 1;
+  position: relative;
 `;
-
+function ProfileImage({ user }: { user: UserStatePartial | null }) {
+  return (
+    <>
+      {user && user.profileImageUrl ? (
+        <Img src={user.profileImageUrl}></Img>
+      ) : (
+        ""
+      )}
+    </>
+  );
+}
 function ProfileImageContainer({
   onFileChange,
   Editable,
@@ -24,11 +39,21 @@ function ProfileImageContainer({
   onFileChange?: (e: React.ChangeEvent<HTMLInputElement>) => Promise<void>;
   Editable: boolean;
 }) {
+  let { user } = useContext(UserContext);
   return (
     <>
       {Editable ? (
         <ProfileContainer>
-          <IconButton component="label">
+          <ProfileImage user={user}></ProfileImage>
+          <IconButton
+            sx={{
+              position: "absolute",
+              left: "50%",
+              top: "50%",
+              transform: "translate(-50%, -50%)",
+            }}
+            component="label"
+          >
             <input
               onChange={onFileChange}
               hidden
@@ -39,7 +64,9 @@ function ProfileImageContainer({
           </IconButton>
         </ProfileContainer>
       ) : (
-        <ProfileContainer></ProfileContainer>
+        <ProfileContainer>
+          <ProfileImage user={user}></ProfileImage>
+        </ProfileContainer>
       )}
     </>
   );
