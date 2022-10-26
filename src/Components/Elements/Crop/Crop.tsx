@@ -67,7 +67,7 @@ function Crop({
       if (Image && croppedAreaPixels) {
         const croppedImage = await getCroppedImg(Image, croppedAreaPixels);
         console.log("donee", { croppedImage });
-        if (user && croppedImage) {
+        if (user && user.Id && croppedImage) {
           UploadUserImages(user.Id, fileName, croppedImage);
         }
 
