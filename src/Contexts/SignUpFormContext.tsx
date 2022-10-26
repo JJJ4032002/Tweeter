@@ -6,14 +6,15 @@ import { OverlayContextProviderChildren } from "../Interfaces and Types/Types";
 import { useRef } from "react";
 import { useState } from "react";
 import { useEffect } from "react";
-import validateEmail from "../helpers/ValidateEmail";
+import ValidateParameter from "../helpers/ValidateParameter";
 import InputsReducer from "../Reducers/InputsReducer";
-import { useNavigate } from "react-router-dom";
 import AddUserData from "../firebase/AddUserData";
 import { invalidInputLengthChecker } from "../helpers/OverlayFormContextHelpers";
 import SignUpUser from "../firebase/SignUpUser";
 import { UserContext } from "./UserContext";
 import { AuthenticationPageContext } from "./AuthenticationPageContext";
+import StyleOnFocus from "../helpers/StyleOnFocus";
+import StyleOnBlur from "../helpers/StyleOnBlur";
 const FormPropsContext = React.createContext<OverlayFormProps>({
   Styles: [
     {
@@ -49,7 +50,6 @@ const FormPropsContext = React.createContext<OverlayFormProps>({
 function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
   let { SnackBarState } = useContext(UserContext);
   let { handleSignUpBtn } = useContext(AuthenticationPageContext);
-  let navigate = useNavigate();
   const [styles, dispatchStyles] = useReducer(StylesReducer, [
     {
       type: "name",
@@ -77,9 +77,6 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
     name: "",
     email: "",
     password: "",
-    nameBool: false,
-    emailBool: false,
-    passwordBool: false,
   });
   const [showPassword, setShowPassword] = useState(false);
   const [validNameEmail, setValidNameEmail] = useState(true);
@@ -135,64 +132,22 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
   }, [SignUpErr]);
 
   function FocusAchieved(event: React.FocusEvent<HTMLInputElement>): void {
-    let FilteredStyles = styles.filter((ele) => {
-      return ele.type === event.target.name;
-    });
-    if (
-      FilteredStyles[0].WhichState === "AllRedBlurred" ||
-      FilteredStyles[0].WhichState === "WithTextRedBlurred"
-    ) {
+    let WhichState = StyleOnFocus(event, styles);
+    if (WhichState !== "Default") {
       dispatchStyles({
         type: `${event.target.name}Change`,
-        WhichState: "AllRedFocussed",
-      });
-    } else if (
-      FilteredStyles[0].WhichState === "" ||
-      FilteredStyles[0].WhichState === "WithTextBlurred"
-    ) {
-      dispatchStyles({
-        type: `${event.target.name}Change`,
-        WhichState: "AllBlueFocussed",
+        WhichState: WhichState,
       });
     }
   }
 
   function BlurAchieved(event: React.FocusEvent<HTMLInputElement>): void {
     console.log("Blurred  Input", event.target);
-    let FilteredStyles = styles.filter((ele) => {
-      return ele.type === event.target.name;
-    });
-    if (
-      FilteredStyles[0].WhichState === "AllBlueFocussed" &&
-      event.target.value.length === 0
-    ) {
+    let WhichState = StyleOnBlur(event, styles);
+    if (WhichState !== "Default") {
       dispatchStyles({
         type: `${event.target.name}Change`,
-        WhichState: "",
-      });
-    } else if (
-      FilteredStyles[0].WhichState === "AllRedFocussed" &&
-      event.target.value.length === 0
-    ) {
-      dispatchStyles({
-        type: `${event.target.name}Change`,
-        WhichState: "AllRedBlurred",
-      });
-    } else if (
-      FilteredStyles[0].WhichState === "AllBlueFocussed" &&
-      event.target.value.length > 0
-    ) {
-      dispatchStyles({
-        type: `${event.target.name}Change`,
-        WhichState: "WithTextBlurred",
-      });
-    } else if (
-      FilteredStyles[0].WhichState === "AllRedFocussed" &&
-      event.target.value.length > 0
-    ) {
-      dispatchStyles({
-        type: `${event.target.name}Change`,
-        WhichState: "WithTextRedBlurred",
+        WhichState: WhichState,
       });
     }
   }
@@ -222,11 +177,18 @@ function SignUpFormPropsProvider({ children }: OverlayContextProviderChildren) {
           type: "emailInputChange",
           Value: event.target.value,
         });
-        let EmailValid = validateEmail(event.target.value);
-        if (EmailValid || !event.target.value) {
+        let pattern = /^\S+@\S+\.\S+$/;
+        let EmailValid = ValidateParameter(event.target.value, pattern);
+        if (EmailValid) {
           AfterInputChangeEffects(
             { ref: EmailErrText, display: "none" },
             { type: "email", booleanValue: true },
+            { type: "emailChange", whichState: "AllBlueFocussed" }
+          );
+        } else if (!event.target.name) {
+          AfterInputChangeEffects(
+            { ref: EmailErrText, display: "none" },
+            { type: "email", booleanValue: false },
             { type: "emailChange", whichState: "AllBlueFocussed" }
           );
         } else {
