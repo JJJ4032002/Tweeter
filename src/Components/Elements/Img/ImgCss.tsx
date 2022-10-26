@@ -4,7 +4,10 @@ const Img = styled.img`
   display: block;
   width: 100%;
   object-fit: cover;
-
+  &.BannerContainer,
+  &.ProfileContainer {
+    height: 100%;
+  }
   &.BannerImg {
     grid-area: 1 / 1 / span 4 / span 4;
     width: 100%;
