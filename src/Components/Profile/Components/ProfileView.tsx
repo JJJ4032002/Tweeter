@@ -8,6 +8,7 @@ const Grid = styled.div`
   display: grid;
   grid-template-columns: 0.5fr 0.5fr;
   grid-template-rows: 0.7fr 0.2fr 0.1fr;
+  gap: 0.3em;
   width: 100%;
   grid-template-areas:
     "BannerImage"
@@ -22,7 +23,7 @@ const EditButtonContainer = styled.div`
   grid-column: 1/3;
   display: flex;
   justify-content: flex-end;
-  padding: 0.5em 1em;
+  padding: 0em 1em;
   align-items: flex-start;
 `;
 const PlaceHolder = styled.div`
