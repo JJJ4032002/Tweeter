@@ -15,7 +15,12 @@ type InputValues = {
 type LabelBlockComponentProps = {
   children: React.ReactNode;
 };
-
+type EditInputStateProps = {
+  name: string;
+  bio: string;
+  location: string;
+  website: string;
+};
 type InputStateProps = {
   name: string;
   email: string;
@@ -35,4 +40,5 @@ export type {
   OverlayContextProviderChildren,
   InputStateProps,
   AuthenticationContextProviderChildren,
+  EditInputStateProps,
 };
