@@ -1,18 +1,22 @@
 import SignOutUser from "../../firebase/SignOutUser";
 import styled from "styled-components/macro";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { UserContext } from "../../Contexts/UserContext";
 const SignOutOptionsDiv = styled.div`
   padding: 0.7em 0.9em;
   cursor: pointer;
 `;
-
 function SignOutOptions({ text }: { text: string }) {
+  let { setUserHelper, handleUserData } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
+
   let navigate = useNavigate();
   function handleSuccesfulSignOut() {
     handleLoadingState(false);
     navigate(`/login`);
+    setUserHelper(null);
+    handleUserData(null);
   }
   function handleLoadingState(state: boolean) {
     setLoading(state);
