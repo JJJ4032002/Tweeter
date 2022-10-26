@@ -13,10 +13,7 @@ import TweetButton from "../../../Elements/TweetButton";
 import UserStatus from "../../../Elements/UserStatus";
 import TweetButtonLogo from "../../../Elements/TweetButtonLogo";
 import { FlexItems, ItemDiv } from "../../HomeCss";
-import {
-  UserDocument,
-  UserState,
-} from "../../../../Interfaces and Types/Interfaces";
+import { UserStatePartial } from "../../../../Interfaces and Types/Interfaces";
 
 function Mobile() {
   return (
@@ -32,7 +29,7 @@ function Mobile() {
   );
 }
 
-function MobileL(user: UserState | null) {
+function MobileL(user: UserStatePartial | null) {
   return (
     <>
       <FlexItems>
@@ -54,7 +51,7 @@ function MobileL(user: UserState | null) {
   );
 }
 
-function LaptopM(user: UserState | null) {
+function LaptopM(user: UserStatePartial | null) {
   return (
     <>
       <FlexItems>

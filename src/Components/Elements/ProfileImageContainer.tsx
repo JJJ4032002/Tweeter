@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import styled from "styled-components/macro";
 import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
-import { UserContext, UserStatePartial } from "../../Contexts/UserContext";
+import { UserContext } from "../../Contexts/UserContext";
+import { UserStatePartial } from "../../Interfaces and Types/Interfaces";
 import Img from "./Img";
 const ProfileContainer = styled.div`
   display: flex;

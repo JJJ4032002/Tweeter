@@ -2,7 +2,7 @@ import React from "react";
 import { ItemDiv, ProfileDiv } from "../Home/HomeCss";
 import profile from "../../assets/Icons/profile.svg";
 import styled from "styled-components/macro";
-import { UserDocument, UserState } from "../../Interfaces and Types/Interfaces";
+import { UserStatePartial } from "../../Interfaces and Types/Interfaces";
 const UserName = styled.p`
   font-size: 1rem;
   font-weight: 600;
@@ -11,7 +11,7 @@ function UserStatus({
   user,
   className,
 }: {
-  user: UserState | null;
+  user: UserStatePartial | null;
   className: string;
 }) {
   console.log(user?.name, "HereUserName in UserStatus");

@@ -1,3 +1,4 @@
+import { User } from "firebase/auth";
 import React from "react";
 import { ChangeStyles } from "./Types";
 
@@ -116,9 +117,10 @@ interface TweetButtonProps {
 }
 
 interface UserPropsContext {
-  user: UserState | null;
+  user: UserStatePartial | null;
   RouteProfile: boolean;
-  setUserHelper: (user: UserState) => void;
+  setUserHelper: (user: UserState | null) => void;
+  handleUserData: (state: User | null) => void;
   signedIn: boolean;
   SnackBarState: {
     openSnackBar: { VerificationEmailSent: boolean; SignIn: boolean };
@@ -136,6 +138,8 @@ interface UserState extends UserDocument {
   profileImageUrl: string | null;
   bannerImageUrl: string | null;
 }
+
+export type UserStatePartial = Partial<UserState>;
 export type {
   Props,
   OverlayFormProps,

@@ -3,7 +3,8 @@ import styled from "styled-components/macro";
 import { devices } from "../../Media Queries/Queries";
 import IconButton from "@mui/material/IconButton";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
-import { UserContext, UserStatePartial } from "../../Contexts/UserContext";
+import { UserContext } from "../../Contexts/UserContext";
+import { UserStatePartial } from "../../Interfaces and Types/Interfaces";
 import Img from "./Img";
 
 const BannerContainer = styled.div`

@@ -6,7 +6,11 @@ import Search from "./Search/Search";
 import Follow from "./Follow/Follow";
 import Trending from "./Trending/Trending";
 import { FlexItems, HomeHeading, ItemDiv } from "../../HomeCss";
-import { UserDocument } from "../../../../Interfaces and Types/Interfaces";
+import {
+  UserDocument,
+  UserStatePartial,
+} from "../../../../Interfaces and Types/Interfaces";
+
 function Mobile(handleSidebarState: () => void) {
   return (
     <>
@@ -17,7 +21,7 @@ function Mobile(handleSidebarState: () => void) {
     </>
   );
 }
-function MobileL(user: UserDocument | null, RouteProfile: boolean) {
+function MobileL(user: UserStatePartial | null, RouteProfile: boolean) {
   return (
     <>
       <ItemDiv>
