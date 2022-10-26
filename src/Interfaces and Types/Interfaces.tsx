@@ -80,9 +80,9 @@ interface InputValsInterface {
   name: string;
   email: string;
   password: string;
-  nameBool: boolean;
-  emailBool: boolean;
-  passwordBool: boolean;
+  bio: string;
+  location: string;
+  website: string;
 }
 interface SignInInputValsInterface {
   email: string;
@@ -138,8 +138,8 @@ interface UserState extends UserDocument {
   profileImageUrl: string | null;
   bannerImageUrl: string | null;
 }
-
-export type UserStatePartial = Partial<UserState>;
+type UserStatePartial = Partial<UserState>;
+type InputValsInterfacePartial = Partial<InputValsInterface>;
 export type {
   Props,
   OverlayFormProps,
@@ -158,4 +158,6 @@ export type {
   UserPropsContext,
   UserDocument,
   UserState,
+  UserStatePartial,
+  InputValsInterfacePartial,
 };
