@@ -26,8 +26,7 @@ export const Nav = ({ signIn }: FormContainersProps) => {
                 handleSubmitBtnClick(event);
               }
             }}
-            className="SignUpBtn"
-            id="closeImg"
+            className="SignUpBtn closeImg"
             src={validNameEmail ? close : leftArrow}
           ></Img>
           <Img className="logoInForm" src={logo}></Img>
