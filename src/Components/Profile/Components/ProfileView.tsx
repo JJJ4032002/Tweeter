@@ -22,7 +22,7 @@ const EditButtonContainer = styled.div`
   grid-column: 1/3;
   display: flex;
   justify-content: flex-end;
-  padding: 0em 1em;
+  padding: 0.5em 1em;
   align-items: flex-start;
 `;
 const PlaceHolder = styled.div`
