@@ -2,6 +2,7 @@ import React from "react";
 import close from "../../../../../assets/Icons/close.svg";
 import Img from "../../../../Elements/Img";
 import styled from "styled-components/macro";
+import Button from "../../../../Elements/Button";
 let Wrapper = styled.div`
   padding: 0.6em 1em;
   display: flex;
@@ -45,7 +46,7 @@ function Header({
         <FormHeading>Edit Profile</FormHeading>
       </HeaderItems>
       <HeaderItems>
-        <SaveButton>Save</SaveButton>
+        <Button secondary={true}>Save</Button>
       </HeaderItems>
     </Wrapper>
   );
