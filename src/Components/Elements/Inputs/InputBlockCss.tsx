@@ -109,4 +109,18 @@ const Input = styled.input`
     outline: none;
   }
 `;
-export { Label, InputBlockWrapper, SpanText, Input, ErrorText };
+const TextArea = styled.textarea`
+  width: 100%;
+  -webkit-appearance: none;
+  border: none;
+  font-size: 1.2rem;
+  margin-top: 0.8em;
+  background-color: transparent;
+  position: relative;
+  z-index: 1;
+
+  &:focus {
+    outline: none;
+  }
+`;
+export { Label, InputBlockWrapper, SpanText, Input, ErrorText, TextArea };
