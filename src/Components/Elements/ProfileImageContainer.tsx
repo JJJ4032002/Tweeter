@@ -26,7 +26,7 @@ function ProfileImage({ user }: { user: UserStatePartial | null }) {
   return (
     <>
       {user && user.profileImageUrl ? (
-        <Img src={user.profileImageUrl}></Img>
+        <Img className="ProfileContainer" src={user.profileImageUrl}></Img>
       ) : (
         ""
       )}

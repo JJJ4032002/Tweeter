@@ -34,7 +34,11 @@ const BannerContainer = styled.div`
 function BannerImage({ user }: { user: UserStatePartial | null }) {
   return (
     <>
-      {user && user.bannerImageUrl ? <Img src={user.bannerImageUrl}></Img> : ""}
+      {user && user.bannerImageUrl ? (
+        <Img className="BannerContainer" src={user.bannerImageUrl}></Img>
+      ) : (
+        ""
+      )}
     </>
   );
 }
