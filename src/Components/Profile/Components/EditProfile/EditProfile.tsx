@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import ModalBackdrop from "../../../Elements/Modals/ModalBackdrop";
 import Header from "./Components/Header";
 import ProfileView from "../ProfileView";
-import { ProfileInformation, EditProfileForm } from "./EditProfileCss";
+import { EditProfileForm } from "./EditProfileCss";
+import EditProfileInformation from "./Components/EditProfileInformation";
 import { getOrientation } from "get-orientation/browser";
 import { getRotatedImage } from "../../../Elements/Crop/CanvasUtils";
 import Crop from "../../../Elements/Crop/Crop";
@@ -21,6 +22,48 @@ function EditProfile({
 }) {
   let [BannerImage, setBannerImage] = useState<string | null>(null);
   let [ProfileImage, setProfileImage] = useState<string | null>(null);
+  const [inputVals, setInputVals] = useState({
+    name: "",
+    bio: "",
+    location: "",
+    website: "",
+  });
+  let [styles, setStyles] = useState([
+    {
+      type: "name",
+      WhichState: "",
+    },
+    {
+      type: "bio",
+      WhichState: "",
+    },
+    {
+      type: "location",
+      WhichState: "",
+    },
+    {
+      type: "website",
+      WhichState: "",
+    },
+  ]);
+  function handleStyles(name: string, whichState: string) {
+    setStyles((prev) => {
+      return prev.map((element) => {
+        if (name === element.type) {
+          return { ...element, WhichState: whichState };
+        } else {
+          return { ...element };
+        }
+      });
+    });
+  }
+
+  function handleInputVals(name: string, value: string) {
+    setInputVals((prev) => {
+      return { ...prev, [name]: value };
+    });
+  }
+
   //helper function for BannerImage state
   function handleBannerImage(state: string | null) {
     setBannerImage(state);
@@ -57,6 +100,12 @@ function EditProfile({
           onFileChangeProfile={onProfileFileChange}
           Editable={true}
         ></ProfileView>
+        <EditProfileInformation
+          inputVals={inputVals}
+          styles={styles}
+          handleStyles={handleStyles}
+          handleInputVals={handleInputVals}
+        ></EditProfileInformation>
       </EditProfileForm>
       <Crop
         Image={BannerImage}
