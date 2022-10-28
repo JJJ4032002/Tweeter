@@ -79,8 +79,7 @@ function EditProfileInformation({
           AfterInputChangeEffects(refObj, ChangeStylesObj);
         }
       } else if (event.target.name === "website") {
-        let pattern =
-          /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/;
+        let pattern = /^(ftp|http|https):\/\/[^ "]+$/;
         let ifValidate = ValidateParameter(event.target.value, pattern);
         if (ifValidate || !event.target.value) {
           let refObj = { ref: WebsiteErrText, display: "none" };
