@@ -3,6 +3,7 @@ import { ItemDiv, ProfileDiv } from "../Home/HomeCss";
 import profile from "../../assets/Icons/profile.svg";
 import styled from "styled-components/macro";
 import { UserStatePartial } from "../../Interfaces and Types/Interfaces";
+import Img from "./Img";
 const UserName = styled.p`
   font-size: 1rem;
   font-weight: 600;
@@ -18,9 +19,16 @@ function UserStatus({
   return (
     <>
       <ItemDiv className={className}>
-        <ProfileDiv className="LeftSectionMobileS">
-          <img src={profile} alt="profilePic" />
-        </ProfileDiv>
+        {user && user.profileImageUrl ? (
+          <ProfileDiv className="LeftSectionMobileS ImageAvailable">
+            <Img src={user.profileImageUrl} alt="profilePic" />
+          </ProfileDiv>
+        ) : (
+          <ProfileDiv className="LeftSectionMobileS">
+            <Img src={profile} alt="profilePic" />
+          </ProfileDiv>
+        )}
+
         {user !== null ? (
           <UserName>{user.name}</UserName>
         ) : (
