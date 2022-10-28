@@ -1,5 +1,5 @@
 import { getAuth, onAuthStateChanged, User } from "firebase/auth";
-import { app } from "./InitializeFirebase";
+import { app } from "../firebase/InitializeFirebase";
 import { useEffect } from "react";
 function useGetUser(
   handleUserData: (state: User | null) => void,
