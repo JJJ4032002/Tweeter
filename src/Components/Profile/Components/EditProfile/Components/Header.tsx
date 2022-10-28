@@ -17,21 +17,17 @@ let HeaderItems = styled.div`
 const FormHeading = styled.h2`
   font-size: clamp(1.2rem, 1.1571rem + 0.2143vw, 1.5rem);
 `;
-const SaveButton = styled.button`
-  font-family: "Montserrat";
-  padding: 0.5em 1.2em;
-  border-radius: 2.5em;
-  border: transparent;
-  background-color: black;
-  color: white;
-  font-weight: 800;
-  cursor: pointer;
-`;
 
 function Header({
   handleDispEditProfile,
+  disabled,
+  SaveUserData,
+  ResetToOriginal,
 }: {
+  disabled: boolean;
   handleDispEditProfile: (state: boolean) => void;
+  SaveUserData: () => void;
+  ResetToOriginal: () => void;
 }) {
   return (
     <Wrapper>
@@ -40,13 +36,24 @@ function Header({
           className="closeImg"
           onClick={() => {
             handleDispEditProfile(false);
+            ResetToOriginal();
           }}
           src={close}
         ></Img>
         <FormHeading>Edit Profile</FormHeading>
       </HeaderItems>
       <HeaderItems>
-        <Button secondary={true}>Save</Button>
+        <Button
+          onClick={() => {
+            SaveUserData();
+            handleDispEditProfile(false);
+          }}
+          disabled={disabled}
+          size="small"
+          secondary={true}
+        >
+          Save
+        </Button>
       </HeaderItems>
     </Wrapper>
   );
