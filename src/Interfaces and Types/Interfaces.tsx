@@ -21,6 +21,8 @@ interface Props {
   ErrTextDispState?: boolean;
   sideBarDisp?: boolean;
   height?: number;
+  disabled?: boolean;
+  size?: "small" | "medium" | "large";
 }
 
 interface OverlayFormProps {
@@ -131,7 +133,10 @@ interface UserPropsContext {
   };
 }
 interface UserDocument {
-  name: string;
+  name?: string;
+  bio?: string;
+  location?: string;
+  website?: string;
 }
 interface UserState extends UserDocument {
   Id: string;
