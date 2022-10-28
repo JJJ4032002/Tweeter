@@ -10,11 +10,12 @@ import {
 } from "../Interfaces and Types/Interfaces";
 import GetUserImages from "../firebase/GetUserImages";
 import { OverlayContextProviderChildren } from "../Interfaces and Types/Types";
-import useGetUser from "../firebase/GetUser";
+import useGetUser from "../hooks/useGetUser";
 import { useNavigate, useLocation } from "react-router-dom";
 import { UserStatePartial } from "../Interfaces and Types/Interfaces";
 import GetUserData from "../firebase/GetUserData";
 import { User } from "firebase/auth";
+import UserDataChangeListener from "../firebase/UserDataChangeListener";
 let UserContext = React.createContext<UserPropsContext>({
   user: null,
   RouteProfile: false,
@@ -79,6 +80,7 @@ function UserContextProvider({ children }: OverlayContextProviderChildren) {
         };
         setUserHelper(Newresult);
         GetUserImages(userData.uid, setUserHelper);
+        UserDataChangeListener(userData.uid, setUserHelper);
         console.log(location.pathname);
         if (location.pathname === "/login" || location.pathname === "/")
           handleSuccessfulSignIn();
