@@ -50,6 +50,31 @@ const Button = styled.button<Props>`
       }
     `}
 
+  ${(props: Props) =>
+    props.disabled &&
+    css`
+      opacity: 0.7;
+      pointer-events: none;
+    `}
+
+  ${(props: Props) =>
+    props.size === "small" &&
+    css`
+      padding: 0.5em 1.2em;
+    `}
+
+      ${(props: Props) =>
+    props.size === "medium" &&
+    css`
+      padding: 1em 1.2em;
+    `}
+
+    ${(props: Props) =>
+    props.size === "large" &&
+    css`
+      padding: 1.4em 1.2em;
+    `}
+
   ${(props: Props) => {
     return (
       props.secondary &&

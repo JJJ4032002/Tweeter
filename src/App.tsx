@@ -42,8 +42,7 @@ function App() {
           )}
           <Routes>
             <Route path={"/login"} element={<Landing />}></Route>
-
-            <Route path={"/"} element={<Home></Home>}>
+            <Route path={"/"} element={<Home />}>
               <Route path="home" element={<Tweets />} />
               <Route path="profile" element={<Profile />}></Route>
             </Route>
