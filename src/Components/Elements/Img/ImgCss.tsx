@@ -60,6 +60,9 @@ const Img = styled.img`
     width: 100%;
     border-radius: 50%;
   }
+  &.logo {
+    width: 20px;
+  }
 `;
 
 export { Img };

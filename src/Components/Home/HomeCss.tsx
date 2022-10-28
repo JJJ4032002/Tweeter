@@ -96,10 +96,14 @@ const ProfileDiv = styled.div`
   align-items: center;
   padding: 0.4em;
   border-radius: 50%;
-  width: min-content;
+  width: 40px;
+  overflow: hidden;
   border: 0.5px solid black;
   &.LeftSectionMobileS {
     padding: 0.2em;
+  }
+  &.ImageAvailable {
+    padding: 0;
   }
 `;
 let HomeHeading = styled.div`
