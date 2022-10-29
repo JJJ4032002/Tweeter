@@ -20,7 +20,7 @@ const LogoWrapper = styled.div`
   padding-left: 0;
   width: 100%;
   @media ${devices.laptopM} {
-    padding-left: 2em;
+    padding-left: 0.8em;
   }
 `;
 

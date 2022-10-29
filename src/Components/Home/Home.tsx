@@ -3,12 +3,12 @@ import SideBar from "./Sidebar/Sidebar";
 import { Outlet } from "react-router-dom";
 import { Menu } from "./Menu/Menu";
 import SecondaryContent from "./SecondaryContent/SecondaryContent";
-import Header from "./Header/Header";
 import TweetButtonLogo from "../Elements/TweetButtonLogo";
-import EditProfile from "../Profile/Components/EditProfile/EditProfile";
 import { HomeWrapper } from "./HomeCss";
 import { SideBarContextProvider } from "../../Contexts/SideBarContext";
+import useWindowSize from "../../hooks/useWindowSize";
 function Home() {
+  let size = useWindowSize();
   const [MenuHeight, setMenuHeight] = useState<number | undefined>(0);
   useEffect(() => {
     setMenuHeight(document.body.querySelector(".Menu")?.clientHeight);
@@ -19,9 +19,8 @@ function Home() {
       <HomeWrapper>
         <Menu></Menu>
         <Outlet></Outlet>
-        <SecondaryContent></SecondaryContent>
+        {size <= 1024 ? "" : <SecondaryContent></SecondaryContent>}
         <SideBar></SideBar>
-        <Header></Header>
         <TweetButtonLogo height={MenuHeight} primary={true}></TweetButtonLogo>
       </HomeWrapper>
     </SideBarContextProvider>

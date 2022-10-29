@@ -14,6 +14,8 @@ import UserStatus from "../../../Elements/UserStatus";
 import TweetButtonLogo from "../../../Elements/TweetButtonLogo";
 import { FlexItems, ItemDiv } from "../../HomeCss";
 import { UserStatePartial } from "../../../../Interfaces and Types/Interfaces";
+import logo from "../../../../assets/Icons/logo.svg";
+import { LogoWrapper } from "../../Header/HeaderCss";
 
 function Mobile() {
   return (
@@ -33,6 +35,13 @@ function MobileL(user: UserStatePartial | null) {
   return (
     <>
       <FlexItems>
+        <LogoWrapper>
+          <Img
+            className="leftSection logoInForm gridItemLogo"
+            src={logo}
+            alt=""
+          />
+        </LogoWrapper>
         {MenuLayoutMobileLData.map((item) => {
           return (
             <Options LinkTo={item.to} key={item.key}>
@@ -55,6 +64,13 @@ function LaptopM(user: UserStatePartial | null) {
   return (
     <>
       <FlexItems>
+        <LogoWrapper>
+          <Img
+            className="leftSection logoInForm gridItemLogo"
+            src={logo}
+            alt=""
+          />
+        </LogoWrapper>
         {MenuLayoutLaptopMData.map((item) => {
           return (
             <Options LinkTo={item.to} key={item.key}>

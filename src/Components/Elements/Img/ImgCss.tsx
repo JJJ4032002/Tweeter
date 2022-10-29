@@ -39,13 +39,11 @@ const Img = styled.img`
   }
   &.gridItemLogo {
     margin: 0.1em auto;
-    padding: 0.3em;
     border-radius: 50%;
     width: 30px;
     border: 1px solid transparent;
     @media ${devices.laptopM} {
       margin: 0.1em 0;
-      padding: 0;
     }
   }
   &.gridItemLogo:hover {

@@ -5,9 +5,8 @@ import { devices } from "../../Media Queries/Queries";
 const HomeWrapper = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 0.4fr 5fr 0.5fr;
+  grid-template-rows: 0.9fr 0.1fr;
   grid-template-areas:
-    "SecondaryContent"
     "MainContent"
     "Menu";
   min-height: 100vh;
@@ -18,11 +17,8 @@ const HomeWrapper = styled.div`
     width: 100%;
     height: 100vh;
     grid-template-columns: 0.9fr 5fr;
-
-    grid-template-rows: 0.3fr 5fr;
-    grid-template-areas:
-      "SecondaryContent SecondaryContent"
-      "Menu MainContent";
+    grid-template-rows: 1fr;
+    grid-template-areas: "Menu MainContent";
     max-width: 700px;
   }
   @media ${devices.tablet} {
@@ -30,10 +26,8 @@ const HomeWrapper = styled.div`
   }
   @media ${devices.laptop} {
     grid-template-columns: 0.6fr 5fr 2.5fr;
-    grid-template-rows: 0.5fr 5fr;
-    grid-template-areas:
-      "Header Header SecondaryContent"
-      "Menu MainContent SecondaryContent";
+    grid-template-rows: 1fr;
+    grid-template-areas: "Menu MainContent SecondaryContent";
     max-width: 100%;
   }
   @media ${devices.laptopM} {
@@ -49,9 +43,8 @@ const ItemDiv = styled.div<Props>`
   gap: 1em;
 
   &.HeadingDiv {
-    border-left: 1px solid #cfd9de;
     border-radius: 0;
-    padding: 0.8em;
+    padding: 0.5em 1em;
   }
   &.TweetLogo {
     padding: 0.8em;
@@ -77,6 +70,12 @@ const ItemDiv = styled.div<Props>`
         display: none;
       }
     `}
+  @media ${devices.mobileL} {
+    &.HeadingDiv {
+      border-radius: 0;
+      padding: 0.75em 1em;
+    }
+  }
   @media ${devices.laptopM} {
     padding: 0.7em 0.9em;
     &.TweetButtonDiv {
@@ -96,7 +95,7 @@ const ProfileDiv = styled.div`
   align-items: center;
   padding: 0.4em;
   border-radius: 50%;
-  width: 40px;
+  width: 30px;
   overflow: hidden;
   border: 0.5px solid black;
   &.LeftSectionMobileS {
@@ -107,10 +106,13 @@ const ProfileDiv = styled.div`
   }
 `;
 let HomeHeading = styled.div`
-  font-size: clamp(1rem, 0.775rem + 1vw, 1.3rem);
+  font-size: 21px;
   font-weight: 1000;
   &.RightSectionMobileL {
-    padding: 0 0.7em;
+    padding: 0;
+  }
+  @media ${devices.tablet} {
+    width: 40px;
   }
 `;
 

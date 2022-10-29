@@ -8,8 +8,8 @@ import settings from "./assets/Icons/settings.svg";
 import { v4 as uuidv4 } from "uuid";
 
 const sideBarOptions = [
-  { imgSrc: profile, OptionName: "Profile", key: uuidv4() },
-  { imgSrc: bookmark, OptionName: "Bookmarks", key: uuidv4() },
+  { imgSrc: profile, OptionName: "Profile", key: uuidv4(), to: "/profile" },
+  { imgSrc: bookmark, OptionName: "Bookmarks", key: uuidv4(), to: "disable" },
 ];
 const MenuLayoutMobileData = [
   { imgSrc: home, key: uuidv4() },

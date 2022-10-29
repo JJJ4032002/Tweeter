@@ -1,20 +1,33 @@
 import React from "react";
 import { ProfileDiv } from "../Home/HomeCss";
 import profile from "../../assets/Icons/profile.svg";
+import Img from "./Img";
 function ProfilePicture({
   InteractOnClick,
+  Image,
 }: {
   InteractOnClick: null | (() => void);
+  Image?: string;
 }) {
   return (
     <>
       {InteractOnClick !== null ? (
-        <ProfileDiv className="LeftSectionMobileS">
-          <img onClick={InteractOnClick} src={profile} alt="ProfilePicture" />
-        </ProfileDiv>
+        Image ? (
+          <ProfileDiv className="LeftSectionMobileS ImageAvailable">
+            <Img onClick={InteractOnClick} src={Image} alt="ProfilePicture " />
+          </ProfileDiv>
+        ) : (
+          <ProfileDiv className="LeftSectionMobileS">
+            <Img
+              onClick={InteractOnClick}
+              src={profile}
+              alt="ProfilePicture "
+            />
+          </ProfileDiv>
+        )
       ) : (
         <ProfileDiv className="LeftSectionMobileS">
-          <img src={profile} alt="ProfilePicture" />
+          <Img src={Image ? Image : profile} alt="ProfilePicture" />
         </ProfileDiv>
       )}
     </>

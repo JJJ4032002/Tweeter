@@ -5,7 +5,6 @@ const SecondaryContentWrapper = styled.div`
   padding: 0px 1em;
   grid-area: SecondaryContent;
   @media ${devices.mobileL} {
-    border-left: 1px solid #cfd9de;
     grid-template-columns: 0.9fr 5fr;
     padding: 0em;
     display: grid;

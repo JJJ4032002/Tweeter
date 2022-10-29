@@ -11,11 +11,11 @@ const Grid = styled.div`
   gap: 0.3em;
   width: 100%;
   grid-template-areas:
-    "BannerImage"
-    "BannerImage"
-    "EditButton";
+    "BannerImage BannerImage"
+    "BannerImage BannerImage"
+    "EditButton EditButton";
   @media ${devices.mobileS} {
-    grid-template-columns: 0.45fr 0.55fr;
+    grid-template-columns: 0.4fr 0.6fr;
   }
 `;
 const EditButtonContainer = styled.div`

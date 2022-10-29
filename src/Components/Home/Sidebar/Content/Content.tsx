@@ -5,6 +5,7 @@ import { sideBarPropsContext } from "../../../../Contexts/SideBarContext";
 import { UserContext } from "../../../../Contexts/UserContext";
 import { sideBarOptions } from "../../../../Data";
 import { ProfileDiv } from "../../HomeCss";
+import Options from "../../../Elements/Options/Options";
 import {
   ContentWrapper,
   UpperContainer,
@@ -44,10 +45,10 @@ function Content() {
       <LowerContainer>
         {sideBarOptions.map((ele) => {
           return (
-            <SideBarFlexItems key={ele.key} className="flex">
+            <Options key={ele.key} LinkTo={ele.to}>
               <img src={ele.imgSrc} alt="" />
               <p>{ele.OptionName}</p>
-            </SideBarFlexItems>
+            </Options>
           );
         })}
       </LowerContainer>

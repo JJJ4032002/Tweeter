@@ -11,23 +11,19 @@ const BannerContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 130px;
+  width: 100%;
   background-color: lightgrey;
   grid-area: BannerImage;
   grid-column: 1/3;
   position: relative;
 
   @media ${devices.mobileM} {
-    height: 160px;
   }
   @media ${devices.mobileL} {
-    height: 180px;
   }
   @media ${devices.tablet} {
-    height: 200px;
   }
   @media ${devices.laptop} {
-    height: 250px;
   }
 `;
 
