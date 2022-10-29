@@ -15,7 +15,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { UserStatePartial } from "../Interfaces and Types/Interfaces";
 import GetUserData from "../firebase/GetUserData";
 import { User } from "firebase/auth";
-import UserDataChangeListener from "../firebase/UserDataChangeListener";
+import useUserDataChangeListener from "../firebase/UserDataChangeListener";
 let UserContext = React.createContext<UserPropsContext>({
   user: null,
   RouteProfile: false,
@@ -31,6 +31,7 @@ let UserContext = React.createContext<UserPropsContext>({
 function UserContextProvider({ children }: OverlayContextProviderChildren) {
   let navigate = useNavigate();
   let location = useLocation();
+
   let [userData, setUserData] = useState<User | null>(null);
   console.log(userData);
   const handleUserData = useCallback((state: User | null) => {
@@ -57,7 +58,7 @@ function UserContextProvider({ children }: OverlayContextProviderChildren) {
   useGetUser(handleUserData, handleSignedIn);
 
   let [user, setUser] = useState<UserStatePartial | null>(null);
-  function setUserHelper(user: UserStatePartial | null) {
+  const setUserHelper = useCallback((user: UserStatePartial | null) => {
     if (user === null) {
       setUser(user);
     } else {
@@ -65,7 +66,8 @@ function UserContextProvider({ children }: OverlayContextProviderChildren) {
         return { ...prev, ...user };
       });
     }
-  }
+  }, []);
+  useUserDataChangeListener(setUserHelper);
   function handleSuccessfulSignIn() {
     navigate(`/home`);
   }
@@ -80,7 +82,7 @@ function UserContextProvider({ children }: OverlayContextProviderChildren) {
         };
         setUserHelper(Newresult);
         GetUserImages(userData.uid, setUserHelper);
-        UserDataChangeListener(userData.uid, setUserHelper);
+
         console.log(location.pathname);
         if (location.pathname === "/login" || location.pathname === "/")
           handleSuccessfulSignIn();
