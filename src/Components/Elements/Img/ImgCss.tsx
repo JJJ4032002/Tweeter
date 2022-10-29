@@ -8,6 +8,9 @@ const Img = styled.img`
   &.ProfileContainer {
     height: 100%;
   }
+  &.ProfileContainer {
+    border-radius: 50%;
+  }
   &.BannerImg {
     grid-area: 1 / 1 / span 4 / span 4;
     width: 100%;
