@@ -8,6 +8,7 @@ import location from "../../../assets/Icons/location.svg";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   padding: 0em 1em;
   gap: 0.8em;
 `;
@@ -17,14 +18,16 @@ const UserName = styled.p`
 `;
 
 const UserBio = styled.p`
-  font-size: 1rem;
+  font-size: 0.9rem;
+  width: 100%;
+  word-wrap: break-word;
 `;
 
 const SecondaryInformation = styled.div`
   display: flex;
   gap: 1em;
   align-items: center;
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 `;
 
 const Item = styled.div`
